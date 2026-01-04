@@ -3,60 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resources & Articles | Meli Pil, MHC-LP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Clinical Journal | Meli Pil, MHC-LP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2C3E50; --accent: #D4AF37; --bg: #fdfdfd; }
-        body { margin: 0; font-family: 'Lato', sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
+        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: #333; }
         
-        /* HEADER */
-        header { 
-            padding: 80px 20px; text-align: center; 
-            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('pexels-vividcafe-681391.jpg');
-            background-size: cover; background-position: center;
+        /* Minimalist Nav */
+        nav { padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; background: var(--white); }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--forest); text-decoration: none; font-weight: 700; }
+        
+        .header { text-align: center; padding: 100px 20px; background: var(--white); }
+        .header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--forest); margin: 0; }
+        .header p { color: var(--sage); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-top: 15px; }
+
+        .container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; }
+        
+        .featured-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
+        
+        .card { 
+            background: var(--white); text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s;
         }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--primary); margin: 0; }
-        .subtitle { font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; color: #777; margin-top: 10px; }
+        .card:hover { transform: translateY(-10px); }
+        .card-img { height: 300px; background-size: cover; background-position: center; }
+        .card-content { padding: 40px; }
+        .card-content span { font-size: 0.7rem; font-weight: 700; color: var(--sage); letter-spacing: 1px; }
+        .card-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--forest); margin: 15px 0; }
+        .card-content p { font-size: 0.9rem; color: #666; line-height: 1.6; }
 
-        /* BLOG GRID */
-        .blog-grid { 
-            max-width: 1100px; margin: -50px auto 100px; 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; padding: 0 20px;
-        }
-
-        .blog-card { 
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none; color: inherit; display: flex; flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
-
-        .card-image { height: 200px; background-size: cover; background-position: center; }
-        .card-content { padding: 30px; flex-grow: 1; }
-        .card-content h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0 0 15px 0; color: var(--primary); }
-        .card-content p { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
-        .read-more { font-weight: bold; color: var(--accent); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-
-        nav { padding: 20px; text-align: center; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        nav a { margin: 0 15px; text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
-
-        footer { text-align: center; padding: 60px; background: var(--primary); color: white; }
+        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">HOME</a>
-        <a href="blogs.html">ARTICLES</a>
-        <a href="index.html#contact">CONTACT</a>
+        <a href="index.html" class="logo">MELI PIL, MHC-LP</a>
+        <div class="nav-links">
+            <a href="index.html" style="text-decoration:none; color:var(--forest); font-size:0.8rem; font-weight:600;">BACK TO HOME</a>
+        </div>
     </nav>
 
-    <header>
-        <h1>Insights & Healing</h1>
-        <div class="subtitle">Meli Pil, MHC-LP | Brooklyn, NY</div>
-    </header>
+    <div class="header">
+        <h1>The Journal</h1>
+        <p>Essays on Schema Therapy, Depression, and the Path to Healing</p>
+    </div>
 
-    <div class="blog-grid">
+    <div class="container">
+        <div class="featured-grid">
+            
+            <a href="blog-unlocking.html" class="card">
+                <div class="card-img" style="background-image: url('pexels-being-the-traveller-579914-2730218.jpg');"></div>
+                <div class="card-content">
+                    <span>SCHEMA THERAPY</span>
+                    <h2>Unlocking the Source of Darkness</h2>
+                    <p>Exploring the core unmet needs and maladaptive patterns that fuel emotional pain.</p>
+                </div>
+            </a>
+
+            <a href="blog-depression.html" class="card">
+                <div class="card-img" style="background-image: url('pexels-solce-31661850.jpg');"></div>
+                <div class="card-content">
+                    <span>CLINICAL INSIGHTS</span>
+                    <h2>Struggling with Depression?</h2>
+                    <p>Moving beyond symptoms to understand the root causes of deep sadness and numbness.</p>
+                </div>
+            </a>
+
+            <a href="blog-emotions.html" class="card">
+                <div class="card-img" style="background-image: url('pexels-vividcafe-681391.jpg');"></div>
+                <div class="card-content">
+                    <span>ROADMAP</span>
+                    <h2>6 Principles for Emotions</h2>
+                    <p>A clinical framework for processing, regulating, and transforming your emotional world.</p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Meli Pil, MHC-LP | Brooklyn, NY | In-Person Sessions Only
+    </footer>
+
+</body>
+</html>
