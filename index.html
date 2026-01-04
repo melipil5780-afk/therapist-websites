@@ -3,63 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Therapeutic Blog - Home</title>
+    <title>Meli Pil, LMHC | Private Practice Therapist</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; color: #333; line-height: 1.6; }
-        header { background-image: url('images/image10.jpg'); background-size: cover; background-position: center; position: relative; color: white; text-align: center; padding: 150px 20px; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; }
+        header { background-image: url('pexels-packermann-1666012.jpg'); background-size: cover; background-position: center; position: relative; color: white; text-align: center; padding: 150px 20px; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1; }
         header * { position: relative; z-index: 2; }
-        section { padding: 50px 20px; max-width: 1200px; margin: auto; }
-        #about { background: white; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-        #services { background: #e8f4f8; }
-        #blog-teaser { background: white; }
-        footer { background: #333; color: white; text-align: center; padding: 20px; }
-        a { color: #3498db; text-decoration: none; transition: color 0.3s; }
-        a:hover { color: #2c3e50; }
-        .card { display: inline-block; vertical-align: top; width: 30%; margin: 1.5%; background: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; transition: transform 0.3s; }
-        .card:hover { transform: translateY(-5px); }
-        img { max-width: 100%; height: auto; border-radius: 8px; }
+        nav { background: #2c3e50; padding: 15px; text-align: center; }
+        nav a { color: white; margin: 0 20px; text-decoration: none; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        section { padding: 50px 20px; max-width: 1200px; margin: auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Therapeutic Blog</h1>
-        <p>Discover your path back to your authentic self through reflection and growth</p>
+        <h1>Meli Pil, LMHC</h1>
+        <p>Licensed Mental Health Counselor | Private Practice in Brooklyn, NY</p>
+        <p>Compassionate, In-Person Therapy for Emotional Healing and Growth</p>
     </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="blogs.html">Blog</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="welcome">
+        <h2>Welcome</h2>
+        <p>I offer warm, culturally sensitive therapy in Brooklyn. Specializing in anxiety, depression, trauma, relationships, and identity.</p>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" title="Introduction" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+
     <section id="about">
         <h2>About Me</h2>
-        <p>As a dedicated therapist, I help individuals navigate life's challenges and rediscover their inner strength. My approach is rooted in empathy, mindfulness, and practical strategies for personal development.</p>
-        <img src="images/image4.jpg" alt="Sunset over mountains with white flowers in the foreground, symbolizing growth and serenity">
+        <p>My approach is collaborative, holistic, and rooted in exploration. In-person sessions only.</p>
+        <p>Location: 5309 18th Ave, Brooklyn, NY<br>Fees: $150–$300</p>
     </section>
-    <section id="services">
-        <h2>Services Offered</h2>
-        <ul>
-            <li>Individual Therapy Sessions</li>
-            <li>Group Workshops on Emotional Wellness</li>
-            <li>Online Consultations for Remote Support</li>
-        </ul>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: your-email@example.com<br>Phone: your-phone</p>
     </section>
-    <section id="blog-teaser">
-        <h2>Latest Blog Posts</h2>
-        <div class="card">
-            <h3>Dealing with Depression</h3>
-            <p>Explore strategies to manage and overcome depressive thoughts in everyday life.</p>
-            <a href="blog-depression.html">Read More</a>
-        </div>
-        <div class="card">
-            <h3>Unlocking Your Potential</h3>
-            <p>Discover ways to break free from self-imposed limitations and embrace your true capabilities.</p>
-            <a href="blog-unlocking.html">Read More</a>
-        </div>
-        <div class="card">
-            <h3>Understanding Emotions</h3>
-            <p>Learn how to identify, process, and harness your emotions for a more balanced life.</p>
-            <a href="blog-emotions.html">Read More</a>
-        </div>
-        <p style="text-align: center;"><a href="blogs.html">View All Blogs</a></p>
-    </section>
+
     <footer>
-        <p>Contact: email@example.com | &copy; 2026 Therapeutic Blog</p>
+        <p>&copy; 2026 Meli Pil, LMHC</p>
     </footer>
 </body>
 </html>
