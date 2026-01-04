@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struggling with Depression?</title>
+    <title>Struggling with Depression? | Meli Pil, LMHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; color: #333; }
-        header { background-image: url('pexels-philippedonn-1133957.jpg'); background-size: cover; background-position: center; position: relative; color: white; text-align: center; padding: 120px 20px; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1; }
-        header * { position: relative; z-index: 2; }
-        article { max-width: 800px; margin: 50px auto; padding: 30px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.05); border-radius: 8px; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
+        :root { --primary: #2c3e50; --accent: #3498db; --light: #f9f9f9; }
+        body { margin: 0; font-family: 'Open Sans', sans-serif; color: #333; background: var(--light); }
+        header { background: url('pexels-raybilcliff-1672813.jpg') center/cover no-repeat; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(44,62,80,0.7), rgba(52,152,219,0.3)); }
+        header > * { position: absolute; z-index: 1; }
+        nav { background: var(--primary); padding: 20px; text-align: center; position: sticky; top: 0; }
+        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 600; }
+        .container { max-width: 900px; margin: 60px auto; padding: 0 30px; background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        ol li { margin-bottom: 20px; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 50px; }
     </style>
 </head>
 <body>
@@ -18,11 +23,31 @@
         <h1>Struggling with Depression?</h1>
         <p>Discover the Hidden Causes Behind Your Emotional Pain</p>
     </header>
-    <article>
-        <p>Many people ask what causes depression or deep sadness...</p>
-        <!-- Your full article content here -->
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blog</a>
+    </nav>
+
+    <div class="container">
+        <p><small>By Meli Pil, LMHC | December 13, 2024</small></p>
+        <p>Many people ask what causes depression or deep sadness. Depression is a symptom experienced by many, stemming from a variety of underlying issues. Similar to how a fever signals a physical problem in the body, depression indicates that something is going wrong in our emotional world. However, the specific cause of depression can vary from person to person. That said, there are common factors that can help someone understand the root of their depression, though it's important to recognize that these factors are nuanced and unique to each individual.</p>
+
+        <ol>
+            <li><strong>Learned Helplessness (Martin Seligman):</strong> This theory suggests that when individuals repeatedly experience uncontrollable negative events, they learn to feel helpless and stop trying to change their situation, even when opportunities for change exist. This learned helplessness can lead to depression.</li>
+            <li><strong>Self-Treatment Mechanisms from Childhood:</strong> Many people develop coping mechanisms in childhood to deal with overwhelming emotions or situations. These mechanisms might include dissociation, avoidance, or self-soothing behaviors that become maladaptive in adulthood and contribute to depression.</li>
+            <li><strong>Dissociation:</strong> Dissociation is a disconnection from thoughts, feelings, memories, or sense of identity. In severe cases, it can lead to feelings of emptiness or numbness, which are common in depression.</li>
+            <li><strong>Avoidance of Painful Emotions:</strong> Avoiding painful emotions can lead to a buildup of unprocessed feelings, which can manifest as depression. When emotions are suppressed, they don't disappear; they find other ways to express themselves.</li>
+            <li><strong>Unprocessed Emotions:</strong> Emotions that are not acknowledged, expressed, or processed can accumulate and lead to depression. This is often seen in cases where individuals have experienced trauma or significant loss without adequate emotional processing.</li>
+            <li><strong>Lack of Purpose or Meaning in Life:</strong> Viktor Frankl's logotherapy emphasizes that a lack of meaning or purpose can lead to existential depression. When individuals feel their life lacks direction or significance, they may experience deep sadness or depression.</li>
+            <li><strong>Confusion and Decision Paralysis:</strong> When individuals are overwhelmed by too many choices or conflicting values, they may experience confusion and paralysis, leading to feelings of helplessness and depression.</li>
+        </ol>
+
+        <p>In addition to these factors, there are many other reasons why depression might occur, as it is a complex condition that affects individuals in unique ways.</p>
+
         <p><a href="blogs.html">← Back to Blog</a></p>
-    </article>
+    </div>
+
     <footer>
         <p>&copy; 2026 Meli Pil, LMHC</p>
     </footer>
