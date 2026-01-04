@@ -3,85 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlocking the Source of Darkness | Meli Pil, LMHC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Meli Pil, MHC-LP | Psychotherapy & Schema Work</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #1a1a1a; --glass: rgba(255, 255, 255, 0.95); --accent: #b71c1c; }
-        body { margin: 0; font-family: 'Lato', sans-serif; color: #333; background: #000; line-height: 1.9; }
-        
-        /* PARALLAX HEADER */
-        .blog-header {
-            height: 70vh;
-            background: fixed url('pexels-being-the-traveller-579914-2730218.jpg') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center; position: relative;
-        }
-        .blog-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
-        
-        .title-box { position: relative; z-index: 2; text-align: center; color: white; padding: 0 20px; animation: fadeIn 2s ease; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        
-        /* GLASS CONTENT CONTAINER */
-        .content-wrapper {
-            max-width: 800px; margin: -100px auto 50px; position: relative; z-index: 3;
-            background: var(--glass); padding: 60px; border-radius: 4px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-        
-        h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin-top: 40px; }
-        .schema-list { list-style: none; padding: 0; }
-        .schema-list li { margin-bottom: 25px; padding-left: 20px; border-left: 4px solid var(--accent); }
-        .schema-list strong { color: var(--accent); font-size: 1.1rem; }
-        
-        nav { position: fixed; top: 0; width: 100%; padding: 20px; text-align: center; z-index: 100; mix-blend-mode: difference; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: bold; }
+        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --text: #333; --white: #ffffff; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.7; }
 
-        footer { text-align: center; color: #666; padding: 40px; background: #111; }
+        /* Navigation */
+        nav { 
+            position: fixed; width: 100%; top: 0; z-index: 1000; 
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(244, 241, 234, 0.95); backdrop-filter: blur(5px);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--forest); text-decoration: none; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: var(--forest); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+
+        /* Hero Section with Organic Image Integration */
+        .hero {
+            height: 90vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 80px; gap: 40px;
+        }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--forest); line-height: 1.1; margin: 0 0 20px; }
+        .hero-text p { font-size: 1.2rem; color: var(--sage); margin-bottom: 40px; max-width: 500px; }
+        .hero-img {
+            width: 100%; height: 80%;
+            background: url('pexels-vividcafe-681391.jpg') center/cover;
+            border-radius: 200px 200px 20px 20px; /* Sophisticated arch shape */
+            box-shadow: 30px 30px 0 var(--sage);
+        }
+
+        /* Call to Action Bar */
+        .cta-bar { background: var(--forest); color: var(--sand); padding: 40px; text-align: center; border-radius: 20px; margin: -50px 80px 80px; position: relative; z-index: 10; }
+        .btn-main { background: var(--sand); color: var(--forest); padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .btn-main:hover { background: var(--sage); color: white; }
+
+        /* Sections */
+        .section { padding: 100px 80px; }
+        .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--forest); margin-bottom: 30px; }
         
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .content-wrapper { padding: 30px; margin-top: -50px; } h1 { font-size: 2.5rem; } }
+        /* The Journal - Top Tier Layout */
+        .journal-header { text-align: center; margin-bottom: 60px; }
+        .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .journal-card { 
+            background: var(--white); text-decoration: none; color: inherit; border-radius: 12px; overflow: hidden; 
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-bottom: 4px solid transparent;
+        }
+        .journal-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--sage); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .journal-img { height: 250px; background-size: cover; background-position: center; }
+        .journal-body { padding: 30px; }
+        .journal-body span { color: var(--sage); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+        .journal-body h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin: 10px 0; color: var(--forest); }
+
+        /* Footer */
+        footer { background: var(--forest); color: var(--sand); padding: 80px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        
+        @media (max-width: 900px) {
+            .hero, .split, .journal-grid, .footer-grid { grid-template-columns: 1fr; padding: 40px; }
+            .hero-img { height: 400px; order: -1; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .cta-bar { margin: 20px; }
+        }
     </style>
 </head>
 <body>
-    <nav><a href="index.html">Home</a><a href="blogs.html">All Blogs</a></nav>
 
-    <div class="blog-header">
-        <div class="title-box">
-            <h1>Unlocking the Source of Darkness</h1>
-            <p>What Really Causes Sadness, Anxiety, Shame, Confusion, Emptiness, and Numbness?</p>
+    <nav>
+        <a href="index.html" class="logo">Meli Pil, MHC-LP</a>
+        <div class="nav-links">
+            <a href="#approach">APPROACH</a>
+            <a href="#journal">JOURNAL</a>
+            <a href="#contact">CONTACT</a>
         </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>A quiet space for deep work.</h1>
+            <p>Providing specialized individual therapy in Brooklyn for those ready to move past symptoms and uncover the source.</p>
+            <p><strong>Meli Pil, MHC-LP</strong><br>Mental Health Counselor, Limited Permit</p>
+        </div>
+        <div class="hero-img"></div>
+    </section>
+
+    <div class="cta-bar">
+        <span style="margin-right: 30px; font-weight: 300; letter-spacing: 1px;">Currently accepting in-person clients in Brooklyn, NY</span>
+        <a href="#contact" class="btn-main">BOOK A CONSULTATION</a>
     </div>
 
-    <div class="content-wrapper">
-        <p><strong>By Meli Pil, MHC-LP | December 31, 2024</strong></p>
-        
-        <p>The emotional pain we experience—sadness, anxiety, shame, confusion, emptiness, and numbness—is not random. It is often the result of unmet emotional needs, deeply ingrained <strong>schemas</strong>, and maladaptive coping modes that develop over time. This article dives deep into the hidden roots of emotional chaos, exposing what really fuels the inner storm.</p>
+    <section id="approach" class="section split">
+        <div>
+            <img src="pexels-webbshow-2406395.jpg" style="width: 100%; border-radius: 20px; filter: grayscale(0.2);">
+        </div>
+        <div>
+            <span style="color: var(--sage); font-weight: 700; letter-spacing: 2px;">THE PHILOSOPHY</span>
+            <h2 class="section-title">Beyond the Symptom</h2>
+            <p>Depression, anxiety, and shame are often messengers. In our work together, we don't just aim to silence them; we aim to understand them. Using Schema Therapy and deep emotional processing, we identify the internal "blueprints" that have kept you stuck.</p>
+            
+        </div>
+    </section>
 
-        <h2>1. The 5 Essential Emotional Needs</h2>
-        <p>According to Schema Therapy, every child has core emotional needs. When these are frustrated, we spend our adulthood trying to fill the void:</p>
-        <ol>
-            <li><strong>Safety & Security:</strong> The need to feel safe, stable, and nurtured.</li>
-            <li><strong>Autonomy & Competence:</strong> The need to feel capable and have a sense of identity.</li>
-            <li><strong>Freedom of Expression:</strong> The need to express valid needs and emotions without fear.</li>
-            <li><strong>Spontaneity & Play:</strong> The need for joy, fun, and relaxation.</li>
-            <li><strong>Realistic Limits:</strong> The need for boundaries and self-control.</li>
-        </ol>
+    <section id="journal" class="section" style="background: rgba(255,255,255,0.4);">
+        <div class="journal-header">
+            <h2 class="section-title">Collected Insights</h2>
+            <p>Resources and deep-dives into the mechanics of healing.</p>
+        </div>
 
-        <h2>2. Maladaptive Schemas: The Patterns That Bind Us</h2>
-        <p>When core needs are unmet, we develop "Schemas"—broad, pervasive themes regarding oneself and one's relationship with others. These are the lenses through which we view the world:</p>
-        
-        <ul class="schema-list">
-            <li><strong>Abandonment/Instability:</strong> The belief that loved ones are unreliable and will inevitably leave or die, leading to chronic anxiety about being alone.</li>
-            <li><strong>Mistrust/Abuse:</strong> The expectation that others will hurt, abuse, humiliate, cheat, lie, or take advantage of you.</li>
-            <li><strong>Emotional Deprivation:</strong> The belief that your primary emotional needs (nurturance, empathy, protection) will never be met by others.</li>
-            <li><strong>Defectiveness/Shame:</strong> The feeling that you are inwardly defective, flawed, or invalid, making you fundamentally unlovable.</li>
-            <li><strong>Social Isolation:</strong> The feeling of being alienated from the rest of the world, or "different" from other people.</li>
-            <li><strong>Dependence/Incompetence:</strong> The belief that you cannot handle everyday responsibilities without considerable help from others.</li>
-            <li><strong>Enmeshment:</strong> Excessive emotional involvement with others (often parents) at the expense of your own individuation.</li>
-        </ul>
+        <div class="journal-grid">
+            <a href="blog-unlocking.html" class="journal-card">
+                <div class="journal-img" style="background-image: url('pexels-being-the-traveller-579914-2730218.jpg');"></div>
+                <div class="journal-body">
+                    <span>Schema Therapy</span>
+                    <h3>Unlocking the Source of Darkness</h3>
+                    <p>What really causes sadness, anxiety, and shame? Exploring the 18 maladaptive schemas.</p>
+                </div>
+            </a>
 
-        <p>Healing begins by recognizing these schemas not as "truths," but as learned patterns that can be unlearned.</p>
-    </div>
+            <a href="blog-depression.html" class="journal-card">
+                <div class="journal-img" style="background-image: url('pexels-solce-31661850.jpg');"></div>
+                <div class="journal-body">
+                    <span>Depression</span>
+                    <h3>The Hidden Causes of Pain</h3>
+                    <p>Understanding depression as a symptom of learned helplessness and unprocessed emotion.</p>
+                </div>
+            </a>
 
-    <footer>&copy; 2026 Meli Pil, LMHC</footer>
+            <a href="blog-emotions.html" class="journal-card">
+                <div class="journal-img" style="background-image: url('pexels-vividcafe-681391.jpg');"></div>
+                <div class="journal-body">
+                    <span>Roadmap</span>
+                    <h3>6 Principles for Working With Emotions</h3>
+                    <p>A structured guide to awareness, expression, and transforming emotional experiences.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Meli Pil, MHC-LP</div>
+                <p>Private Psychotherapy Practice<br>Brooklyn, New York</p>
+            </div>
+            <div>
+                <h4 style="color: var(--sage);">Availability</h4>
+                <p>In-Person Sessions Only<br>Monday — Thursday</p>
+            </div>
+            <div>
+                <h4 style="color: var(--sage);">Contact</h4>
+                <p>hello@melipiltherapy.com<br>123 Brooklyn Ave, NY</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 80px; opacity: 0.5; font-size: 0.8rem;">
+            &copy; 2026 Meli Pil Therapy. All Rights Reserved. Mental Health Counselor, Limited Permit.
+        </div>
+    </footer>
+
 </body>
 </html>
