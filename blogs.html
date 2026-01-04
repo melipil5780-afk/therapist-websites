@@ -3,71 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struggling with Depression? | Meli Pil, LMHC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Resources & Articles | Meli Pil, MHC-LP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2c3e50; --glass: rgba(255, 255, 255, 0.98); --accent: #5D6D7E; }
-        body { margin: 0; font-family: 'Merriweather', serif; color: #444; background: #f4f6f7; line-height: 2; }
+        :root { --primary: #2C3E50; --accent: #D4AF37; --bg: #fdfdfd; }
+        body { margin: 0; font-family: 'Lato', sans-serif; background: var(--bg); color: #333; line-height: 1.6; }
         
-        /* PARALLAX HERO */
-        .hero {
-            height: 65vh;
-            background: fixed url('pexels-solce-31661850.jpg') center/cover no-repeat;
-            display: flex; align-items: flex-end; justify-content: center; position: relative;
+        /* HEADER */
+        header { 
+            padding: 80px 20px; text-align: center; 
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('pexels-vividcafe-681391.jpg');
+            background-size: cover; background-position: center;
         }
-        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(30,40,50,0.4); }
-        
-        .hero-text { position: relative; z-index: 2; text-align: center; color: white; padding-bottom: 80px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; }
-        
-        /* CONTENT CARD */
-        .article-card {
-            max-width: 720px; margin: -60px auto 80px; position: relative; z-index: 10;
-            background: var(--glass); padding: 70px; border-radius: 8px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--primary); margin: 0; }
+        .subtitle { font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; color: #777; margin-top: 10px; }
+
+        /* BLOG GRID */
+        .blog-grid { 
+            max-width: 1100px; margin: -50px auto 100px; 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; padding: 0 20px;
         }
 
-        h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        strong { color: var(--primary); }
-        
-        nav { position: absolute; top: 0; width: 100%; padding: 25px; text-align: center; z-index: 20; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; font-family: sans-serif; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; }
+        .blog-card { 
+            background: white; border-radius: 15px; overflow: hidden; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; color: inherit; display: flex; flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 25px 50px rgba(0,0,0,0.1); }
 
-        footer { text-align: center; padding: 40px; color: #888; font-family: sans-serif; font-size: 0.9rem; }
-        
-        @media (max-width: 768px) { .article-card { padding: 30px; margin: -30px 15px 50px; } h1 { font-size: 2.2rem; } }
+        .card-image { height: 200px; background-size: cover; background-position: center; }
+        .card-content { padding: 30px; flex-grow: 1; }
+        .card-content h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0 0 15px 0; color: var(--primary); }
+        .card-content p { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
+        .read-more { font-weight: bold; color: var(--accent); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+        nav { padding: 20px; text-align: center; background: white; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav a { margin: 0 15px; text-decoration: none; color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 60px; background: var(--primary); color: white; }
     </style>
 </head>
 <body>
-    <nav><a href="index.html">Home</a><a href="blogs.html">All Blogs</a></nav>
 
-    <div class="hero">
-        <div class="hero-text">
-            <h1>Struggling with Depression?</h1>
-            <p>Discover the Hidden Causes Behind Your Emotional Pain</p>
-        </div>
-    </div>
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="blogs.html">ARTICLES</a>
+        <a href="index.html#contact">CONTACT</a>
+    </nav>
 
-    <div class="article-card">
-        <p><strong>By Meli Pil, MHC-LP | December 13, 2024</strong></p>
-        <p>Many people ask what causes depression or deep sadness. Depression is a symptom experienced by many, stemming from a variety of underlying issues. Similar to how a fever signals a physical problem in the body, depression indicates that something is going wrong in our emotional world. Here are the hidden causes:</p>
+    <header>
+        <h1>Insights & Healing</h1>
+        <div class="subtitle">Meli Pil, MHC-LP | Brooklyn, NY</div>
+    </header>
 
-        <h3>1. Learned Helplessness</h3>
-        <p>Coined by Martin Seligman, this occurs when individuals repeatedly experience uncontrollable negative events. They "learn" that they have no control over their circumstances. Even when opportunities for change arise, they may feel paralyzed, believing that no effort will make a difference.</p>
-
-        <h3>2. Self-Treatment Mechanisms from Childhood</h3>
-        <p>As children, we develop coping strategies (like shutting down or worrying) to survive difficult environments. In adulthood, these outdated mechanisms can become traps. For example, constant rumination—trying to "think" your way out of feelings—can actually deepen depression.</p>
-
-        <h3>3. Dissociation & Numbness</h3>
-        <p>When emotions are too overwhelming to feel, the mind may disconnect. This is called dissociation. While it protects you from pain in the moment, it leads to a sense of emptiness, numbness, or feeling "dead inside"—a core component of severe depression.</p>
-
-        <h3>4. Avoidance of Painful Emotions</h3>
-        <p>We often unconsciously avoid specific painful feelings (like grief or shame). Instead of feeling them, we might experience <strong>secondary emotions</strong>—like vague frustration or irritability—while the primary emotion remains stuck and unprocessed.</p>
-
-        <h3>5. Confusion & Decision Paralysis</h3>
-        <p>When we are overwhelmed by conflicting values or choices, we can become paralyzed. The inability to move forward or make decisions drains our energy and can lead to a state of depressive collapse.</p>
-    </div>
-
-    <footer>&copy; 2026 Meli Pil, LMHC</footer>
-</body>
-</html>
+    <div class="blog-grid">
