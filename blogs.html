@@ -3,58 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Meli Pil, LMHC</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Struggling with Depression? | Meli Pil, LMHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --light: #f9f9f9; }
-        body { margin: 0; font-family: 'Open Sans', sans-serif; color: #333; background: var(--light); }
-        header { background: url('pexels-philippedonn-1133957.jpg') center/cover no-repeat; height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(44,62,80,0.7), rgba(52,152,219,0.3)); }
-        header > * { position: relative; animation: fadeIn 2s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        nav { background: var(--primary); padding: 20px; text-align: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 600; }
-        nav a:hover { color: var(--accent); }
-        .container { max-width: 1100px; margin: 80px auto; padding: 0 20px; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px,1fr)); gap: 40px; }
-        .blog-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; }
-        .blog-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
-        footer { background: var(--primary); color: white; text-align: center; padding: 50px; }
+        :root { --primary: #2c3e50; --glass: rgba(255, 255, 255, 0.98); --accent: #5D6D7E; }
+        body { margin: 0; font-family: 'Merriweather', serif; color: #444; background: #f4f6f7; line-height: 2; }
+        
+        /* PARALLAX HERO */
+        .hero {
+            height: 65vh;
+            background: fixed url('pexels-solce-31661850.jpg') center/cover no-repeat;
+            display: flex; align-items: flex-end; justify-content: center; position: relative;
+        }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(30,40,50,0.4); }
+        
+        .hero-text { position: relative; z-index: 2; text-align: center; color: white; padding-bottom: 80px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; }
+        
+        /* CONTENT CARD */
+        .article-card {
+            max-width: 720px; margin: -60px auto 80px; position: relative; z-index: 10;
+            background: var(--glass); padding: 70px; border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); margin-top: 50px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        strong { color: var(--primary); }
+        
+        nav { position: absolute; top: 0; width: 100%; padding: 25px; text-align: center; z-index: 20; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; font-family: sans-serif; text-transform: uppercase; font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; }
+
+        footer { text-align: center; padding: 40px; color: #888; font-family: sans-serif; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) { .article-card { padding: 30px; margin: -30px 15px 50px; } h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Blog</h1>
-        <p>Insights on mental health, emotional well-being, and personal growth</p>
-    </header>
+    <nav><a href="index.html">Home</a><a href="blogs.html">All Blogs</a></nav>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="blogs.html">Blog</a>
-    </nav>
-
-    <div class="container">
-        <div class="blog-grid">
-            <div class="blog-card">
-                <h2><a href="blog-depression.html">Struggling with Depression? Discover the Hidden Causes Behind Your Emotional Pain</a></h2>
-                <p><small>By Meli Pil, LMHC | December 13, 2024</small></p>
-                <p>Many people ask what causes depression or deep sadness. Depression is a symptom experienced by many, stemming from a variety of underlying issues...</p>
-            </div>
-            <div class="blog-card">
-                <h2><a href="blog-unlocking.html">Unlocking the Source of Darkness: What Really Causes Sadness, Anxiety, Shame, Confusion, Emptiness, and Numbness?</a></h2>
-                <p><small>By Meli Pil, LMHC | December 31, 2024</small></p>
-                <p>This article dives deep into the hidden roots of emotional chaos, exposing what really fuels the inner storm...</p>
-            </div>
-            <div class="blog-card">
-                <h2><a href="blog-emotions.html">Six Principles for Working With Emotions: A Guide to Emotional Healing</a></h2>
-                <p><small>By Meli Pil, LMHC | January 4, 2026</small></p>
-                <p>Emotions are wise messengers. Learn awareness, expression, regulation, reflection, transformation, and corrective experiences...</p>
-            </div>
+    <div class="hero">
+        <div class="hero-text">
+            <h1>Struggling with Depression?</h1>
+            <p>Discover the Hidden Causes Behind Your Emotional Pain</p>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Meli Pil, LMHC</p>
-    </footer>
+    <div class="article-card">
+        <p><strong>By Meli Pil, MHC-LP | December 13, 2024</strong></p>
+        <p>Many people ask what causes depression or deep sadness. Depression is a symptom experienced by many, stemming from a variety of underlying issues. Similar to how a fever signals a physical problem in the body, depression indicates that something is going wrong in our emotional world. Here are the hidden causes:</p>
+
+        <h3>1. Learned Helplessness</h3>
+        <p>Coined by Martin Seligman, this occurs when individuals repeatedly experience uncontrollable negative events. They "learn" that they have no control over their circumstances. Even when opportunities for change arise, they may feel paralyzed, believing that no effort will make a difference.</p>
+
+        <h3>2. Self-Treatment Mechanisms from Childhood</h3>
+        <p>As children, we develop coping strategies (like shutting down or worrying) to survive difficult environments. In adulthood, these outdated mechanisms can become traps. For example, constant rumination—trying to "think" your way out of feelings—can actually deepen depression.</p>
+
+        <h3>3. Dissociation & Numbness</h3>
+        <p>When emotions are too overwhelming to feel, the mind may disconnect. This is called dissociation. While it protects you from pain in the moment, it leads to a sense of emptiness, numbness, or feeling "dead inside"—a core component of severe depression.</p>
+
+        <h3>4. Avoidance of Painful Emotions</h3>
+        <p>We often unconsciously avoid specific painful feelings (like grief or shame). Instead of feeling them, we might experience <strong>secondary emotions</strong>—like vague frustration or irritability—while the primary emotion remains stuck and unprocessed.</p>
+
+        <h3>5. Confusion & Decision Paralysis</h3>
+        <p>When we are overwhelmed by conflicting values or choices, we can become paralyzed. The inability to move forward or make decisions drains our energy and can lead to a state of depressive collapse.</p>
+    </div>
+
+    <footer>&copy; 2026 Meli Pil, LMHC</footer>
 </body>
 </html>
