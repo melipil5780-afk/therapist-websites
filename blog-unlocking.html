@@ -1,48 +1,56 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unlocking the Source of Darkness | Meli Pil, MHC-LP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: 'Open Sans', sans-serif; background: #000; color: #fff; line-height: 1.8; }
-        .parallax { height: 70vh; background: fixed url('pexels-being-the-traveller-579914-2730218.jpg') center/cover; display: flex; align-items: center; justify-content: center; position: relative; }
-        .glass-box { max-width: 850px; margin: -100px auto 100px; background: rgba(255,255,255,0.98); color: #222; padding: 60px; border-radius: 10px; box-shadow: 0 40px 100px rgba(0,0,0,0.6); position: relative; z-index: 10; }
-        .schema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #f4f4f4; padding: 25px; border-radius: 10px; margin: 20px 0; }
-        .schema-item strong { color: #b71c1c; }
+        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: #333; line-height: 1.8; }
+        .article-header { height: 70vh; background: url('pexels-being-the-traveller-579914-2730218.jpg') center/cover; display: flex; align-items: center; justify-content: center; position: relative; }
+        .article-header::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.5); }
+        .header-content { position: relative; z-index: 2; text-align: center; color: white; padding: 20px; }
+        .header-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+        .article-body { max-width: 850px; margin: -100px auto 100px; background: var(--white); padding: 80px; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.2); position: relative; z-index: 10; }
+        .schema-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; background: var(--sand); padding: 30px; border-radius: 8px; margin: 30px 0; }
+        .schema-item strong { color: var(--forest); }
+        h2, h3 { font-family: 'Playfair Display', serif; color: var(--forest); }
+        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; }
     </style>
 </head>
 <body>
-    <div class="parallax"><h1>Unlocking the Source of Darkness</h1></div>
-    <div class="glass-box">
+    <div class="article-header">
+        <div class="header-content"><h1>Unlocking the Source of Darkness</h1></div>
+    </div>
+    <article class="article-body">
         <p><strong>By Meli Pil, MHC-LP, Mental Health Counselor, Limited Permit: IN PERSON SESSIONS ONLY</strong></p>
-        <p>The emotional pain we experience—sadness, anxiety, shame, and emptiness—is not random. It is the result of unmet emotional needs and <strong>Schemas</strong>.</p>
-        
-        
+        <p>The emotional pain we experience—sadness, anxiety, shame, confusion, emptiness, and numbness—is not random. It is the result of unmet emotional needs and deeply ingrained patterns called <strong>Schemas</strong>.</p>
 
         <h3>5 Essential Emotional Needs</h3>
         <ul>
-            <li><strong>Safety & Security:</strong> To feel protected and stable.</li>
-            <li><strong>Autonomy:</strong> To feel independent and capable.</li>
-            <li><strong>Expression:</strong> To voice needs without fear of rejection.</li>
-            <li><strong>Play:</strong> To experience joy and spontaneity.</li>
-            <li><strong>Limits:</strong> To have guidance and self-control.</li>
+            <li><strong>Safety:</strong> To feel protected and nurtured.</li>
+            <li><strong>Autonomy:</strong> To feel capable of independence.</li>
+            <li><strong>Expression:</strong> To voice needs without fear.</li>
+            <li><strong>Spontaneity:</strong> To experience joy and play.</li>
+            <li><strong>Limits:</strong> To have healthy boundaries.</li>
         </ul>
 
         <h3>The 18 Maladaptive Schemas</h3>
         <div class="schema-grid">
-            <div class="schema-item"><strong>Abandonment:</strong> Belief that others will leave.</div>
-            <div class="schema-item"><strong>Mistrust:</strong> Expectation of being hurt.</div>
-            <div class="schema-item"><strong>Emotional Deprivation:</strong> Feeling unlovable.</div>
-            <div class="schema-item"><strong>Defectiveness:</strong> Feeling inwardly flawed.</div>
-            <div class="schema-item"><strong>Social Isolation:</strong> Feeling you don't belong.</div>
-            <div class="schema-item"><strong>Failure:</strong> Belief that you are inadequate.</div>
-            <div class="schema-item"><strong>Subjugation:</strong> Surrendering to others' control.</div>
-            <div class="schema-item"><strong>Unrelenting Standards:</strong> Striving for perfection.</div>
-            <div class="schema-item"><strong>Self-Sacrifice:</strong> Prioritizing others always.</div>
-            <div class="schema-item"><strong>Punitiveness:</strong> Wanting to punish mistakes.</div>
+            <div class="schema-item"><strong>Abandonment:</strong> Fear of loss.</div>
+            <div class="schema-item"><strong>Mistrust:</strong> Expectation of harm.</div>
+            <div class="schema-item"><strong>Emotional Deprivation:</strong> Feeling unloved.</div>
+            <div class="schema-item"><strong>Defectiveness:</strong> Feeling flawed.</div>
+            <div class="schema-item"><strong>Social Isolation:</strong> Not belonging.</div>
+            <div class="schema-item"><strong>Failure:</strong> Feeling inadequate.</div>
+            <div class="schema-item"><strong>Subjugation:</strong> Giving up control.</div>
+            <div class="schema-item"><strong>Unrelenting Standards:</strong> High rules.</div>
+            <div class="schema-item"><strong>Self-Sacrifice:</strong> Neglecting self.</div>
+            <div class="schema-item"><strong>Punitiveness:</strong> Wanting punishment.</div>
         </div>
-        <p style="text-align: center; font-weight: bold;">Understanding this source is the first step toward the light.</p>
-    </div>
+        <p>Understanding these schemas is the light that begins to dissolve the darkness.</p>
+    </article>
+    <footer>&copy; 2026 Meli Pil, MHC-LP | Brooklyn, NY</footer>
 </body>
 </html>
