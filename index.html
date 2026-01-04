@@ -3,117 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meli Pil, LMHC | Brooklyn Therapist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Unlocking the Source of Darkness | Meli Pil, LMHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --light: #f9f9f9; --text: #333; --soft: #e8f4f8; --shadow: rgba(0,0,0,0.05); }
-        body { margin: 0; font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--light); line-height: 1.7; scroll-behavior: smooth; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); }
-        header { background: url('pexels-packermann-1666012.jpg') center/cover no-repeat; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(44,62,80,0.7), rgba(52,152,219,0.3)); }
-        header > * { position: relative; z-index: 1; animation: fadeIn 2s ease; }
+        :root { --primary: #1a1a1a; --glass: rgba(255, 255, 255, 0.95); --accent: #b71c1c; }
+        body { margin: 0; font-family: 'Lato', sans-serif; color: #333; background: #000; line-height: 1.9; }
+        
+        /* PARALLAX HEADER */
+        .blog-header {
+            height: 70vh;
+            background: fixed url('pexels-being-the-traveller-579914-2730218.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; position: relative;
+        }
+        .blog-header::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
+        
+        .title-box { position: relative; z-index: 2; text-align: center; color: white; padding: 0 20px; animation: fadeIn 2s ease; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        
+        /* GLASS CONTENT CONTAINER */
+        .content-wrapper {
+            max-width: 800px; margin: -100px auto 50px; position: relative; z-index: 3;
+            background: var(--glass); padding: 60px; border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin-top: 40px; }
+        .schema-list { list-style: none; padding: 0; }
+        .schema-list li { margin-bottom: 25px; padding-left: 20px; border-left: 4px solid var(--accent); }
+        .schema-list strong { color: var(--accent); font-size: 1.1rem; }
+        
+        nav { position: fixed; top: 0; width: 100%; padding: 20px; text-align: center; z-index: 100; mix-blend-mode: difference; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: bold; }
+
+        footer { text-align: center; color: #666; padding: 40px; background: #111; }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        header h1 { font-size: 4.5rem; margin: 0; letter-spacing: 1px; }
-        nav { background: var(--primary); padding: 20px; text-align: center; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 15px var(--shadow); }
-        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 600; position: relative; transition: 0.3s; }
-        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s; }
-        nav a:hover::after { width: 100%; }
-        nav a:hover { color: var(--accent); }
-        .container { max-width: 1200px; margin: 80px auto; padding: 0 30px; }
-        section { background: white; padding: 70px; border-radius: 20px; box-shadow: 0 15px 40px var(--shadow); margin-bottom: 60px; opacity: 0; transform: translateY(30px); transition: all 1s ease; }
-        section.visible { opacity: 1; transform: translateY(0); }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 15px 40px var(--shadow); margin: 40px 0; transition: transform 0.4s; }
-        .video-container:hover { transform: scale(1.02); }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .btn { background: var(--accent); color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: all 0.4s; box-shadow: 0 8px 20px rgba(52,152,219,0.3); }
-        .btn:hover { background: #2980b9; transform: translateY(-5px); box-shadow: 0 12px 30px rgba(52,152,219,0.5); }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 40px; }
-        .blog-card { background: var(--soft); padding: 40px; border-radius: 20px; transition: all 0.4s; box-shadow: 0 10px 30px var(--shadow); }
-        .blog-card:hover { transform: translateY(-15px); box-shadow: 0 20px 50px var(--shadow); }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 40px; }
-        .testimonial-card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px var(--shadow); font-style: italic; position: relative; }
-        .testimonial-card::before { content: '“'; font-size: 4rem; color: var(--accent); position: absolute; top: -20px; left: 20px; }
-        footer { background: var(--primary); color: white; text-align: center; padding: 50px; }
+        @media (max-width: 768px) { .content-wrapper { padding: 30px; margin-top: -50px; } h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
+    <nav><a href="index.html">Home</a><a href="blogs.html">All Blogs</a></nav>
 
-    <header>
-        <h1>Meli Pil, LMHC</h1>
-        <p>Licensed Mental Health Counselor | Private Practice in Brooklyn, NY</p>
-        <p>Compassionate, Culturally Sensitive Therapy for Lasting Emotional Growth</p>
-        <a href="#contact" class="btn">Book Free Consultation</a>
-    </header>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="blogs.html">Blog</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="container">
-        <section id="welcome" class="visible">
-            <h2 style="text-align:center;">Welcome to Your Healing Journey</h2>
-            <p style="text-align:center;">Watch this short introduction to learn about my approach and how I can support you.</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" title="Introduction to Meli Pil, LMHC" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <p style="text-align:center;"><a href="blogs.html" class="btn">Explore Blog Insights</a></p>
-        </section>
-
-        <section id="about">
-            <h2>About Me</h2>
-            <p>My approach is collaborative, rooted in exploration, and culturally sensitive. I specialize in anxiety, depression, trauma, relationships, gender identity, religious issues, mood disorders, and life transitions. Style: Warm, open-minded, energetic, holistic, creative.</p>
-            <p>Location: 5309 18th Ave, Brooklyn, NY (Borough Park) • Sessions: In-person only • Fees: $100–$300 (insurance accepted)</p>
-        </section>
-
-        <section id="services">
-            <h2>Services</h2>
-            <p>Individual therapy for adolescents (13+), adults, and elders. Special focus on the Jewish community.</p>
-        </section>
-
-        <section id="blog-teaser">
-            <h2>Recent Blogs</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <h3>Struggling with Depression?</h3>
-                    <p>Discover hidden causes behind emotional pain.</p>
-                    <a href="blog-depression.html">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Unlocking the Source of Darkness</h3>
-                    <p>What really causes sadness, anxiety, shame?</p>
-                    <a href="blog-unlocking.html">Read More</a>
-                </div>
-                <div class="blog-card">
-                    <h3>Six Principles for Working With Emotions</h3>
-                    <p>Guide to emotional healing.</p>
-                    <a href="blog-emotions.html">Read More</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Get in Touch</h2>
-            <p style="text-align:center;">Schedule a free 15-minute consultation.</p>
-            <p style="text-align:center;">Email: [your-email] • Phone: [your-phone]</p>
-        </section>
+    <div class="blog-header">
+        <div class="title-box">
+            <h1>Unlocking the Source of Darkness</h1>
+            <p>What Really Causes Sadness, Anxiety, Shame, Confusion, Emptiness, and Numbness?</p>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Meli Pil, LMHC | All Rights Reserved</p>
-    </footer>
+    <div class="content-wrapper">
+        <p><strong>By Meli Pil, MHC-LP | December 31, 2024</strong></p>
+        
+        <p>The emotional pain we experience—sadness, anxiety, shame, confusion, emptiness, and numbness—is not random. It is often the result of unmet emotional needs, deeply ingrained <strong>schemas</strong>, and maladaptive coping modes that develop over time. This article dives deep into the hidden roots of emotional chaos, exposing what really fuels the inner storm.</p>
 
-    <script>
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        });
-        sections.forEach(sec => observer.observe(sec));
-    </script>
+        <h2>1. The 5 Essential Emotional Needs</h2>
+        <p>According to Schema Therapy, every child has core emotional needs. When these are frustrated, we spend our adulthood trying to fill the void:</p>
+        <ol>
+            <li><strong>Safety & Security:</strong> The need to feel safe, stable, and nurtured.</li>
+            <li><strong>Autonomy & Competence:</strong> The need to feel capable and have a sense of identity.</li>
+            <li><strong>Freedom of Expression:</strong> The need to express valid needs and emotions without fear.</li>
+            <li><strong>Spontaneity & Play:</strong> The need for joy, fun, and relaxation.</li>
+            <li><strong>Realistic Limits:</strong> The need for boundaries and self-control.</li>
+        </ol>
+
+        <h2>2. Maladaptive Schemas: The Patterns That Bind Us</h2>
+        <p>When core needs are unmet, we develop "Schemas"—broad, pervasive themes regarding oneself and one's relationship with others. These are the lenses through which we view the world:</p>
+        
+        <ul class="schema-list">
+            <li><strong>Abandonment/Instability:</strong> The belief that loved ones are unreliable and will inevitably leave or die, leading to chronic anxiety about being alone.</li>
+            <li><strong>Mistrust/Abuse:</strong> The expectation that others will hurt, abuse, humiliate, cheat, lie, or take advantage of you.</li>
+            <li><strong>Emotional Deprivation:</strong> The belief that your primary emotional needs (nurturance, empathy, protection) will never be met by others.</li>
+            <li><strong>Defectiveness/Shame:</strong> The feeling that you are inwardly defective, flawed, or invalid, making you fundamentally unlovable.</li>
+            <li><strong>Social Isolation:</strong> The feeling of being alienated from the rest of the world, or "different" from other people.</li>
+            <li><strong>Dependence/Incompetence:</strong> The belief that you cannot handle everyday responsibilities without considerable help from others.</li>
+            <li><strong>Enmeshment:</strong> Excessive emotional involvement with others (often parents) at the expense of your own individuation.</li>
+        </ul>
+
+        <p>Healing begins by recognizing these schemas not as "truths," but as learned patterns that can be unlearned.</p>
+    </div>
+
+    <footer>&copy; 2026 Meli Pil, LMHC</footer>
 </body>
 </html>
