@@ -2,60 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Struggling with Depression? | Meli Pil, MHC-LP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: 'Merriweather', serif; background: #fafafa; line-height: 2; color: #333; }
-        .hero { height: 60vh; background: fixed url('pexels-solce-31661850.jpg') center/cover; position: relative; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.45); }
-        .hero-inner { position: relative; z-index: 1; }
-        .content { max-width: 800px; margin: -80px auto 100px; background: white; padding: 80px; border-radius: 15px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); position: relative; z-index: 2; }
-        .author { border-bottom: 1px solid #eee; padding-bottom: 25px; margin-bottom: 40px; }
-        .status-box { background: #fdf2f2; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; text-align: center; font-weight: bold; margin: 30px 0; border-radius: 8px; letter-spacing: 1px; }
-        h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-top: 50px; color: #2C3E50; }
+        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: #333; line-height: 1.8; }
+        
+        /* Full Bleed Header */
+        .article-header { 
+            height: 70vh; background: url('pexels-solce-31661850.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; position: relative;
+        }
+        .article-header::after { content: ''; position: absolute; inset: 0; background: rgba(45, 58, 48, 0.4); }
+        .header-content { position: relative; z-index: 2; text-align: center; color: white; padding: 20px; }
+        .header-content h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; }
+
+        .article-body { 
+            max-width: 800px; margin: -100px auto 100px; background: var(--white); 
+            padding: 80px; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); position: relative; z-index: 10;
+        }
+        .meta { color: var(--sage); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; margin-bottom: 20px; display: block; }
+        .creds { border-bottom: 1px solid #eee; padding-bottom: 30px; margin-bottom: 40px; font-size: 0.9rem; color: #666; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--forest); margin-top: 40px; }
+        .in-person-tag { background: var(--sand); color: var(--forest); padding: 15px; border-radius: 4px; text-align: center; font-weight: bold; margin: 30px 0; }
+        
+        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; }
+        @media (max-width: 768px) { .article-body { padding: 40px 20px; margin-top: -50px; } .header-content h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-inner">
-            <h1 style="font-family:'Playfair Display'; font-size: 3.5rem;">Struggling with Depression?</h1>
-            <p style="font-size: 1.2rem; font-style: italic;">Discover the Hidden Causes Behind Your Emotional Pain</p>
-        </div>
+    <div class="article-header">
+        <div class="header-content"><h1>Struggling with Depression?</h1></div>
     </div>
 
-    <div class="content">
-        <div class="author">
-            <strong>Meli Pil, MHC-LP</strong><br>
-            Mental Health Counselor, Limited Permit
-        </div>
-
-        <div class="status-box">IN PERSON SESSIONS ONLY</div>
+    <article class="article-body">
+        <span class="meta">Clinical Insights</span>
+        <div class="creds"><strong>Meli Pil, MHC-LP</strong><br>Mental Health Counselor, Limited Permit</div>
+        
+        <div class="in-person-tag">IN PERSON SESSIONS ONLY | BROOKLYN, NY</div>
 
         <p>Many people ask what causes depression or deep sadness. Depression is a symptom experienced by many, stemming from a variety of underlying issues. Similar to how a fever signals a physical problem in the body, depression indicates that something is going wrong in our emotional world.</p>
 
-        
-
+        <h3>Common Factors in Emotional Pain</h3>
         <p>While the specific cause of depression varies from person to person, there are common factors that help us understand the root of this pain:</p>
 
-        <h3>1. Learned Helplessness (Martin Seligman)</h3>
-        <p>This occurs when individuals repeatedly experience uncontrollable negative events. They "learn" that they have no control over their circumstances, leading them to stop trying to change even when opportunities arise. This state of learned helplessness is a significant driver of depressive symptoms.</p>
-
-        <h3>2. Self-Treatment Mechanisms from Childhood</h3>
-        <p>As children, we develop coping strategies—like dissociation or shutting down—to survive difficult environments. In adulthood, these outdated mechanisms can become traps that manifest as depression.</p>
-
-        <h3>3. Dissociation & Numbness</h3>
-        <p>When emotions become too overwhelming to process, the mind may disconnect. This results in profound numbness or feeling "dead inside," which is a core component of many depressive experiences.</p>
-
-        <h3>4. Avoidance of Painful Emotions</h3>
-        <p>Avoiding specific feelings like grief or shame leads to a buildup of unprocessed emotions. These suppressed feelings eventually weigh the person down, manifesting as chronic depression.</p>
-
-        <h3>5. Lack of Purpose or Meaning</h3>
-        <p>Following Viktor Frankl’s logotherapy, a lack of personal meaning can lead to an "existential void," where deep sadness takes root because life feels directionless.</p>
-
-        <h3>6. Decision Paralysis</h3>
-        <p>When overwhelmed by conflicting values or impossible choices, an individual can enter a "freeze" state. This paralysis drains energy and leads to a state of depressive collapse.</p>
+        <p><strong>1. Learned Helplessness:</strong> Coined by Martin Seligman, this occurs when individuals repeatedly experience uncontrollable negative events. They "learn" that they have no control, eventually leading to a state of collapse and despair.</p>
         
-        <p style="margin-top: 50px; font-style: italic; text-align: center;">If you are feeling these symptoms, reaching out is the first step toward reclaiming your agency.</p>
-    </div>
+        <p><strong>2. Self-Treatment Mechanisms:</strong> Many develop coping mechanisms in childhood, like dissociation, to survive overwhelming environments. These "life-savers" often become maladaptive in adulthood, contributing to the cycle of depression.</p>
+
+        <p><strong>3. Dissociation:</strong> When the mind decides it is "too much to feel," it shuts the lights off. This leads to profound feelings of emptiness or numbness, where the individual feels "dead inside."</p>
+
+        <p><strong>4. Avoidance & Suppression:</strong> Avoiding painful emotions leads to a buildup of unprocessed feelings. Suppressed emotions manifest as the heavy, weighted feeling we recognize as depression.</p>
+
+        <p><strong>5. Lack of Purpose:</strong> Following Viktor Frankl’s work, a lack of personal meaning can lead to an "existential depression," where life feels without significance.</p>
+
+        <p><strong>6. Decision Paralysis:</strong> Being overwhelmed by impossible choices or conflicting internal values can cause a "freeze" state, draining the individual of all vital energy.</p>
+    </article>
+
+    <footer>&copy; 2026 Meli Pil, MHC-LP | Brooklyn Therapy</footer>
 </body>
 </html>
