@@ -3,31 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Six Principles for Working With Emotions</title>
+    <title>Six Principles for Working With Emotions | Meli Pil, LMHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f9f9f9; color: #333; }
-        header { background-image: url('pexels-raybilcliff-1672813.jpg'); background-size: cover; background-position: center; position: relative; color: white; text-align: center; padding: 120px 20px; }
-        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1; }
-        header * { position: relative; z-index: 2; }
-        article { max-width: 800px; margin: 50px auto; padding: 30px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.05); border-radius: 8px; }
-        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin: 40px 0; border-radius: 8px; }
+        :root { --primary: #2c3e50; --accent: #3498db; --light: #f9f9f9; }
+        body { margin: 0; font-family: 'Open Sans', sans-serif; color: #333; background: var(--light); }
+        header { background: url('pexels-raybilcliff-1672813.jpg') center/cover no-repeat; height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative; }
+        header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(44,62,80,0.7), rgba(52,152,219,0.3)); }
+        header > * { position: absolute; z-index: 1; }
+        nav { background: var(--primary); padding: 20px; text-align: center; position: sticky; top: 0; }
+        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 600; }
+        .container { max-width: 900px; margin: 60px auto; padding: 0 30px; background: white; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        ol li { margin-bottom: 20px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); margin: 40px 0; transition: transform 0.4s; }
+        .video-container:hover { transform: scale(1.02); }
         .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 20px; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 50px; }
     </style>
 </head>
 <body>
     <header>
         <h1>Six Principles for Working With Emotions</h1>
+        <p>A Guide to Emotional Healing</p>
     </header>
-    <article>
-        <p>Awareness, Expression, Regulation, Reflection, Transformation, Corrective Experience...</p>
-        
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="blogs.html">Blog</a>
+    </nav>
+
+    <div class="container">
+        <p><small>By Meli Pil, LMHC | January 4, 2026</small></p>
+        <p>Emotions are not the enemy—they are wise messengers guiding us toward growth and healing. In Emotion-Focused Therapy and related approaches, we learn to work <em>with</em> emotions rather than against them. Here are six essential principles for healthy emotional processing:</p>
+
+        <ol>
+            <li><strong>Awareness:</strong> Instead of being overwhelmed or fused with the emotion ("I <em>am</em> angry"), step back and observe it ("I notice anger arising in my body"). This mindful awareness creates space, reduces reactivity, and allows you to respond rather than react.</li>
+            <li><strong>Expression:</strong> Emotions need a voice. Allow yourself to name, verbalize, or symbolically express the feeling (through words, art, movement). Important note: Secondary emotions (like defensiveness or surface anger) often mask primary ones (like hurt or fear). Expressing only secondary emotions keeps the cycle going—true healing requires reaching and expressing the underlying primary emotion.</li>
+            <li><strong>Regulation:</strong> When emotions feel overwhelming, gently bring down their intensity so they become manageable. Use grounding techniques (deep breathing, body awareness, safe place imagery) to create a window of tolerance where deeper processing can occur.</li>
+            <li><strong>Reflection:</strong> Once the emotion is at a tolerable level, explore its meaning. What is this feeling telling me about my needs, values, or past experiences? Reflection helps uncover patterns and turns raw emotion into insight.</li>
+            <li><strong>Transforming Emotion:</strong> Emotions can shift when met with new energy. For example, shame (often rooted in self-attack) can transform into healthy anger or assertiveness. In Internal Family Systems (IFS) therapy, connecting with "Self-energy"—the calm, compassionate, curious core of who you are—naturally softens and transforms painful emotions.</li>
+            <li><strong>Corrective Emotional Experience:</strong> The most powerful healing often happens interpersonally. Experiencing a new, caring, attuned connection (in therapy or safe relationships) rewires old emotional patterns, replacing isolation or fear with felt safety and understanding.</li>
+        </ol>
+
+        <p>These principles form a roadmap for turning emotional pain into growth. Watch this insightful video by Dr. Les Greenberg explaining the six principles:</p>
+
         <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/VfsVqk-ke_s" title="Les Greenberg on Emotions" frameborder="0" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/VfsVqk-ke_s" title="Six principles for working with emotions - Les Greenberg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        
+
         <p><a href="blogs.html">← Back to Blog</a></p>
-    </article>
+    </div>
+
     <footer>
         <p>&copy; 2026 Meli Pil, LMHC</p>
     </footer>
