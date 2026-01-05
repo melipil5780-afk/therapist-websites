@@ -1,152 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meli Pil, LMHC | Brooklyn Psychotherapy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --forest: #2c3e50; --sage: #5d7b6a; --sand: #f5f2eb; --white: #ffffff; --text: #333; }
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meli Pil, LMHC | Psychotherapy in Brooklyn</title>
 
-        /* Modern Nav */
-        nav { 
-            position: fixed; top: 0; width: 100%; padding: 30px 60px; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(245,242,235,0.7); backdrop-filter: blur(20px); z-index: 1000; transition: 0.4s;
-        }
-        nav.scrolled { padding: 15px 60px; background: rgba(245,242,235,0.95); }
-        nav a { color: var(--forest); text-decoration: none; font-weight: 600; letter-spacing: 2px; font-size: 0.75rem; text-transform: uppercase; }
+<meta name="description" content="Psychotherapy in Brooklyn, NY. A reflective, depth-oriented space for understanding emotional experiences and recurring patterns.">
 
-        /* Immersive Hero */
-        .hero {
-            height: 100vh; display: grid; place-items: center;
-            background: linear-gradient(rgba(44,62,80,0.4), rgba(44,62,80,0.2)), url('pexels-packermann-1666012.jpg');
-            background-attachment: fixed; background-size: cover; background-position: center;
-        }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: white; text-align: center; }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        /* Main Content Rise */
-        main { background: var(--white); border-radius: 80px 80px 0 0; margin-top: -100px; padding: 180px 10%; position: relative; z-index: 10; }
+<style>
+:root{
+  --forest:#2c3e50;
+  --sage:#5d7b6a;
+  --sand:#f5f2eb;
+  --ink:#2b2b2b;
+  --white:#ffffff;
+}
 
-        /* The Hexagonal Jewel Section */
-        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; margin-bottom: 160px; }
-        .split h2 { font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--forest); line-height: 1.1; }
-        .jewel-img {
-            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-            width: 100%; height: 650px; overflow: hidden;
-        }
-        .jewel-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
-        .jewel-img:hover img { transform: scale(1.1); }
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
-        /* Authority & Diagrams */
-        .authority { max-width: 800px; margin: 0 auto 150px; text-align: center; }
-        .diagram-container { margin: 60px 0; background: var(--sand); padding: 40px; border-radius: 40px; }
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--sand);
+  color:var(--ink);
+  line-height:1.85;
+}
 
-        /* Glassmorphism Journal */
-        .journal { margin-top: 100px; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .j-card {
-            background: rgba(245,242,235,0.4); backdrop-filter: blur(15px); border-radius: 40px; overflow: hidden;
-            text-decoration: none; color: inherit; transition: 0.6s cubic-bezier(0.2,0,0.2,1); border: 1px solid rgba(255,255,255,0.3);
-        }
-        .j-card:hover { transform: translateY(-15px); background: white; box-shadow: 0 40px 80px rgba(0,0,0,0.08); }
-        .j-img { height: 280px; background-size: cover; background-position: center; }
-        .j-body { padding: 40px; }
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:22px 60px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(245,242,235,.9);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(0,0,0,.04);
+  z-index:1000;
+}
 
-        footer { background: var(--forest); color: white; text-align: center; padding: 140px 10%; }
-        .btn { border: 1px solid white; padding: 20px 60px; color: white; text-decoration: none; letter-spacing: 4px; font-size: 0.75rem; text-transform: uppercase; transition: 0.5s; }
-        .btn:hover { background: white; color: var(--forest); }
+.logo{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;
+  text-decoration:none;
+  color:var(--forest);
+}
 
-        .reveal { opacity: 0; transform: translateY(50px); transition: 1.2s ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+.nav-links{
+  display:flex;
+  gap:36px;
+}
 
-        @media (max-width: 900px) { .split, .grid { grid-template-columns: 1fr; } }
-    </style>
+.nav-links a{
+  font-size:.75rem;
+  letter-spacing:2px;
+  text-decoration:none;
+  color:var(--forest);
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.9) contrast(.9);
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    rgba(44,62,80,.55),
+    rgba(44,62,80,.25)
+  );
+}
+
+.hero h1{
+  position:relative;
+  z-index:2;
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(3rem,7vw,5.8rem);
+  color:white;
+  text-align:center;
+  max-width:900px;
+}
+
+/* MAIN */
+main{
+  background:white;
+  border-radius:80px 80px 0 0;
+  margin-top:-120px;
+  padding:160px 10% 120px;
+  position:relative;
+  z-index:5;
+}
+
+/* SPLIT */
+.split{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:90px;
+  align-items:center;
+  margin-bottom:160px;
+}
+
+.split h2{
+  font-family:'Playfair Display';
+  font-size:3.4rem;
+  color:var(--forest);
+  line-height:1.15;
+  margin:20px 0;
+}
+
+/* JEWEL IMAGE */
+.jewel{
+  aspect-ratio:4/5;
+  clip-path:polygon(30% 0%,70% 0%,100% 50%,70% 100%,30% 100%,0% 50%);
+  overflow:hidden;
+  box-shadow:0 40px 80px rgba(0,0,0,.12);
+}
+
+.jewel img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* DIAGRAM */
+.diagram{
+  max-width:600px;
+  margin:0 auto 160px;
+  text-align:center;
+}
+
+.diagram svg{
+  margin-top:40px;
+}
+
+/* JOURNAL */
+.journal h2{
+  text-align:center;
+  font-family:'Playfair Display';
+  font-size:3.2rem;
+  margin-bottom:80px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:50px;
+}
+
+.card{
+  background:var(--sand);
+  border-radius:32px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  transition:transform 1.4s ease, box-shadow 1.4s ease;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 40px 80px rgba(0,0,0,.12);
+}
+
+.card-img{
+  height:260px;
+  background-size:cover;
+  background-position:center;
+  filter:saturate(.9);
+}
+
+.card-body{
+  padding:36px;
+}
+
+.card-body h4{
+  font-family:'Playfair Display';
+  font-size:1.45rem;
+  margin:0 0 10px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--forest);
+  color:white;
+  text-align:center;
+  padding:140px 10%;
+}
+
+.btn{
+  margin-top:36px;
+  display:inline-block;
+  padding:18px 54px;
+  border:1px solid white;
+  text-decoration:none;
+  letter-spacing:3px;
+  font-size:.75rem;
+  color:white;
+}
+
+.btn:hover{
+  background:white;
+  color:var(--forest);
+}
+
+/* REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 1.4s ease, transform 1.4s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .split,.grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  main{padding:120px 8%;}
+}
+</style>
 </head>
+
 <body>
 
-    <nav id="nav">
-        <a href="#">MELI PIL, LMHC</a>
-        <div>
-            <a href="#approach">APPROACH</a>
-            <a href="#journal">JOURNAL</a>
-            <a href="#contact">CONTACT</a>
+<nav>
+  <a href="#" class="logo">MELI PIL, LMHC</a>
+  <div class="nav-links">
+    <a href="#approach">APPROACH</a>
+    <a href="#journal">JOURNAL</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <img src="pexels-vividcafe-681391.jpg" alt="">
+  <h1 class="reveal">Where understanding begins to change how things feel.</h1>
+</section>
+
+<main id="approach">
+
+  <section class="split reveal">
+    <div>
+      <small style="letter-spacing:5px;color:var(--sage);font-weight:700;">THE WORK</small>
+      <h2>A Space to Slow Things Down</h2>
+      <p>
+        Therapy is not about advice or quick fixes.  
+        It is a space where thoughts, feelings, memories, and reactions are taken seriously — especially the ones that tend to repeat or feel difficult to name.
+      </p>
+      <p>
+        By staying close to emotional experience as it unfolds, new understanding can emerge — often in ways that begin to feel different, not just make sense.
+      </p>
+    </div>
+
+    <div class="jewel">
+      <img src="pexels-philippedonn-1133957.jpg" alt="">
+    </div>
+  </section>
+
+  <section class="diagram reveal">
+    <h2 style="font-family:'Playfair Display';font-size:3rem;">How the Work Unfolds</h2>
+    <p>
+      Difficulties rarely come from a single cause.  
+      Feelings take shape through experience, relationships, and the ways we learned to adapt.
+    </p>
+
+    <!-- SIGNATURE SVG -->
+    <svg viewBox="0 0 600 600" width="100%" role="img">
+      <style>
+        .ring{fill:none;stroke:#5d7b6a;stroke-width:2;opacity:.6}
+        .core{fill:#2c3e50;opacity:.9}
+        .label{font-family:Inter,sans-serif;font-size:14px;fill:#2c3e50;letter-spacing:1px}
+        .center{fill:white;font-family:'Playfair Display',serif;font-size:18px}
+      </style>
+
+      <circle cx="300" cy="300" r="230" class="ring"/>
+      <circle cx="300" cy="300" r="160" class="ring"/>
+      <circle cx="300" cy="300" r="80" class="core"/>
+
+      <text x="300" y="85" text-anchor="middle" class="label">EARLY EXPERIENCE</text>
+      <text x="515" y="305" text-anchor="middle" class="label">RELATIONSHIPS</text>
+      <text x="300" y="535" text-anchor="middle" class="label">WHAT REPEATS</text>
+      <text x="85" y="305" text-anchor="middle" class="label">INNER LIFE</text>
+
+      <text x="300" y="295" text-anchor="middle" class="center">WHAT’S</text>
+      <text x="300" y="320" text-anchor="middle" class="center">HAPPENING NOW</text>
+    </svg>
+  </section>
+
+  <section class="journal" id="journal">
+    <h2 class="reveal">Clinical Reflections</h2>
+    <div class="grid">
+      <a href="blog-unlocking.html" class="card reveal">
+        <div class="card-img" style="background-image:url('pexels-being-the-traveller-579914-2730218.jpg')"></div>
+        <div class="card-body">
+          <h4>Unlocking the Source</h4>
+          <p>How early emotional experiences quietly shape expectations.</p>
         </div>
-    </nav>
+      </a>
 
-    <section class="hero">
-        <h1 class="reveal">Uncovering the inner world.</h1>
-    </section>
+      <a href="blog-depression.html" class="card reveal">
+        <div class="card-img" style="background-image:url('pexels-solce-31661850.jpg')"></div>
+        <div class="card-body">
+          <h4>When Things Begin to Feel Heavy</h4>
+          <p>Understanding the slow erosion of hope and effort.</p>
+        </div>
+      </a>
 
-    <main id="approach">
-        <section class="split reveal">
-            <div>
-                <small style="letter-spacing: 6px; color: var(--sage); font-weight: 700;">THE PHILOSOPHY</small>
-                <h2>A Journey of Discovery</h2>
-                <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems, we uncover the patterns of your inner world.</p>
-                <p>By naming the unseen, we align your life with your authentic values.</p>
-            </div>
-            <div class="jewel-img">
-                <img src="pexels-philippedonn-1133957.jpg" alt="Nature landscape">
-            </div>
-        </section>
+      <a href="blog-emotions.html" class="card reveal">
+        <div class="card-img" style="background-image:url('pexels-vividcafe-681391.jpg')"></div>
+        <div class="card-body">
+          <h4>Listening to Emotion</h4>
+          <p>Why feelings persist until they are understood.</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
-        <section class="authority reveal">
-            <h2>Grounding the Work</h2>
-            <p>We work at the intersection of biology, psychology, and social dynamics to understand the source of your pain.</p>
-            <div class="diagram-container">
-                
-            </div>
-        </section>
+</main>
 
-        <section class="journal" id="journal">
-            <h2 class="reveal" style="text-align:center; font-family:'Playfair Display'; font-size:3rem; margin-bottom:60px;">Clinical Journal</h2>
-            <div class="grid">
-                <a href="blog-unlocking.html" class="j-card reveal">
-                    <div class="j-img" style="background-image: url('pexels-simon73-1266810.jpg');"></div>
-                    <div class="j-body">
-                        <h4>Unlocking the Source</h4>
-                        <p>The 18 maladaptive schemas and core emotional needs.</p>
-                    </div>
-                </a>
-                <a href="blog-depression.html" class="j-card reveal">
-                    <div class="j-img" style="background-image: url('pexels-raybilcliff-1672813.jpg');"></div>
-                    <div class="j-body">
-                        <h4>Understanding Depression</h4>
-                        <p>Learned helplessness and the path back to agency.</p>
-                    </div>
-                </a>
-                <a href="blog-emotions.html" class="j-card reveal">
-                    <div class="j-img" style="background-image: url('pexels-yunustug-8337508.jpg');"></div>
-                    <div class="j-body">
-                        <h4>6 Principles</h4>
-                        <p>A roadmap for emotional awareness and regulation.</p>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="diagram-container reveal" style="background:none;">
-                
-            </div>
-        </section>
-    </main>
+<footer id="contact">
+  <h2 style="font-family:'Playfair Display';font-style:italic;">Begin the Work</h2>
+  <a href="mailto:hello@melipil.com" class="btn">Request a Consultation</a>
+</footer>
 
-    <footer id="contact">
-        <h2 style="font-family:'Playfair Display'; font-style:italic; font-size:3rem;">Begin the Work</h2>
-        <a href="mailto:hello@melipil.com" class="btn">Request a Consultation</a>
-    </footer>
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>e.isIntersecting&&e.target.classList.add('active'));
+},{threshold:.1});
 
-    <script>
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 
-        window.addEventListener('scroll', () => {
-            document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 100);
-        });
-    </script>
 </body>
 </html>
