@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meli Pil | Depth & Transformation</title>
+    <title>Meli Pil | The Architecture of the Interior</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -23,182 +23,176 @@
             overflow-x: hidden;
         }
 
-        /* Cinematic Scrolling Container */
-        .scroller { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+            backdrop-filter: blur(5px);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px; }
+        nav a { color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-left: 20px; opacity: 0.7; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--accent); }
+
+        /* Sections */
         section { 
-            height: 100vh; 
-            scroll-snap-align: start; 
-            position: relative; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 5%;
-            overflow: hidden;
+            min-height: 100vh; padding: 120px 8%; position: relative; 
+            display: flex; align-items: center; justify-content: center;
         }
 
-        /* Background Treatments */
-        .bg-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1; background-size: cover; background-position: center;
-            filter: brightness(0.4); transition: transform 2s ease-out;
+        /* Hero with Animation */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
+            background-size: cover; background-position: center; text-align: center;
+        }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 6rem); 
+            font-weight: 400; line-height: 1; margin-bottom: 20px;
         }
 
-        /* Hero */
-        .hero-title { text-align: center; max-width: 900px; }
-        .hero-title h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 7vw, 6rem); 
-            font-weight: 400; letter-spacing: -1px; line-height: 1;
+        /* Video Modal Overlay */
+        #videoOverlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 2000; display: none; align-items: center; justify-content: center;
         }
-        .play-btn {
-            margin-top: 40px; cursor: pointer; color: var(--accent);
-            text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem;
-            border: 1px solid var(--accent); padding: 15px 30px; transition: 0.4s;
+        .close-video {
+            position: absolute; top: 40px; right: 40px; color: #fff;
+            cursor: pointer; letter-spacing: 3px; font-size: 0.8rem; border: 1px solid #333; padding: 10px 20px;
         }
-        .play-btn:hover { background: var(--accent); color: #000; }
 
-        /* Split Sections */
-        .content-wrap {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-            align-items: center; width: 100%; max-width: 1200px;
+        /* Content Grid */
+        .split { 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%;
         }
-        .img-box { position: relative; width: 100%; height: 500px; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
-        .img-box .frame { 
+        .img-container { position: relative; width: 100%; }
+        .img-container img { width: 100%; height: auto; border-radius: 2px; filter: grayscale(10%); }
+        .img-border { 
             position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; 
             border: 1px solid var(--accent); z-index: -1; 
         }
 
-        /* Article Grid */
-        .article-stack {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-            width: 100%; max-width: 1100px;
+        /* Play Button */
+        .play-trigger {
+            display: inline-block; margin-top: 30px; padding: 15px 40px;
+            border: 1px solid var(--accent); color: var(--accent);
+            text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+            font-size: 0.8rem; cursor: pointer; transition: 0.4s;
         }
-        .article-item {
-            height: 350px; background-size: cover; padding: 30px;
-            display: flex; align-items: flex-end; text-decoration: none;
-            color: #fff; border: 1px solid rgba(255,255,255,0.1); transition: 0.5s;
-        }
-        .article-item:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .article-item h4 { font-family: 'Playfair Display'; font-size: 1.5rem; }
+        .play-trigger:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px rgba(197,160,89,0.3); }
 
-        /* Video Modal */
-        #videoModal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 2000; display: none; align-items: center; justify-content: center;
+        /* Articles */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
+        .card { 
+            background: var(--surface); padding: 40px; border: 1px solid #1a1a1a; 
+            transition: 0.4s; text-decoration: none; color: #fff;
         }
-        .close-vid { position: absolute; top: 30px; right: 30px; cursor: pointer; letter-spacing: 2px; }
-
-        /* Navigation */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 40px 60px;
-            display: flex; justify-content: space-between; font-size: 0.7rem; letter-spacing: 3px;
-        }
-        nav a { color: #fff; text-decoration: none; opacity: 0.6; transition: 0.3s; }
-        nav a:hover { opacity: 1; color: var(--accent); }
+        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px; }
 
         /* Mobile Adjustments */
         @media (max-width: 900px) {
-            .content-wrap { grid-template-columns: 1fr; gap: 30px; }
-            .img-box { height: 300px; }
-            nav { padding: 20px; }
-            .hero-title h1 { font-size: 3rem; }
-            .article-stack { grid-template-columns: 1fr; height: auto; overflow-y: scroll; }
-            section { height: auto; min-height: 100vh; padding: 100px 5%; }
+            .split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            nav .nav-links { display: none; }
+            section { padding: 80px 5%; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-family: 'Playfair Display'; font-size: 1.2rem; opacity: 1;">MELI PIL</div>
+        <div class="logo">MELI PIL</div>
         <div class="nav-links">
-            <a href="#about">THE GUIDE</a>&nbsp;&nbsp;&nbsp;
-            <a href="#philosophy">PHILOSOPHY</a>&nbsp;&nbsp;&nbsp;
-            <a href="#insights">INSIGHTS</a>
+            <a href="#about">The Guide</a>
+            <a href="#philosophy">Philosophy</a>
+            <a href="#insights">Insights</a>
+            <a href="#consult">Consultation</a>
         </div>
     </nav>
 
-    <div id="videoModal">
-        <div class="close-vid" onclick="closeModal()">✕ EXIT EXPERIENCE</div>
-        <div style="width: 90%; max-width: 1000px; aspect-ratio: 16/9;">
-            <iframe id="vFrame" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+    <div id="videoOverlay">
+        <div class="close-video" onclick="closeVideo()">✕ EXIT EXPERIENCE</div>
+        <div style="width: 90%; max-width: 1100px; aspect-ratio: 16/9;">
+            <iframe id="ytPlayer" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
-    <section id="hero">
-        <div class="bg-layer" style="background-image: url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');"></div>
-        <div class="hero-title">
-            <h1 style="color: var(--accent);">THE ARCHITECTURE<br>OF THE SELF</h1>
-            <p style="margin-top: 20px; font-weight: 200; opacity: 0.8;">A Synthesis of Depth, Emotion, and Embodied Transformation.</p>
-            <div class="play-btn" onclick="openModal()">Watch Introduction</div>
+    <section class="hero">
+        <div style="max-width: 900px;">
+            <h1 style="color: var(--accent);">THE ART OF <br> BECOMING</h1>
+            <p style="opacity: 0.8; font-weight: 200; letter-spacing: 2px;">Beyond symptoms. Into the architecture of the self.</p>
+            <div class="play-trigger" onclick="openVideo()">Watch Introduction</div>
         </div>
     </section>
 
-    <section id="about">
-        <div class="bg-layer" style="background-image: url('pexels-packermann-1666012.jpg'); opacity: 0.3;"></div>
-        <div class="content-wrap">
-            <div class="img-box">
+    <section id="about" style="background: var(--surface);">
+        <div class="split">
+            <div class="img-container">
                 <img src="IMG_1860.jpg" alt="Meli Pil">
-                <div class="frame"></div>
+                <div class="img-border"></div>
             </div>
             <div>
-                <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Guide</h2>
-                <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
-                <p style="margin-top: 15px;">Therapy, to me, is an emotional journey—an opportunity to name, process, and make sense of feelings that may have been difficult to access before.</p>
+                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 25px;">The Guide</h2>
+                <p>My approach is rooted in exploration. Rather than simply identifying problems, I work with you to uncover the inner world that drives your patterns. Therapy is an emotional journey—a collaborative effort to name and process what was previously unarticulated.</p>
             </div>
         </div>
     </section>
 
     <section id="philosophy">
-        <div class="bg-layer" style="background-image: url('pexels-liubava-fedoryshyn-1833670446-28430595.jpg'); opacity: 0.2;"></div>
-        <div class="content-wrap" style="grid-template-columns: 1.2fr 1fr;">
-            <div>
-                <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Live Encounter</h2>
-                <p>I incorporate both conversation and experiential exercises to help clients engage with their emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided, denied, or projected onto others.</p>
-                <p style="margin-top: 15px;">By examining recurring patterns, we begin to shift and move toward a life more aligned with your authentic values.</p>
+        <div class="split" style="direction: rtl;">
+            <div class="img-container" style="direction: ltr;">
+                <img src="pexels-anniroenkae-5278835.jpg" alt="Complex Patterns">
+                <div class="img-border" style="left: -20px; right: 20px;"></div>
             </div>
-            <div class="img-box">
-                <img src="pexels-anniroenkae-5278835.jpg" alt="Complexity">
-            </div>
-        </div>
-    </section>
-
-    <section id="insights" style="background: #000;">
-        <div style="width: 100%; max-width: 1100px;">
-            <h2 style="font-family: 'Playfair Display'; margin-bottom: 40px;">Insights & Articles</h2>
-            <div class="article-stack">
-                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-octoptimist-3546132.jpg');">
-                    <h4>The Somatic Chair</h4>
-                </a>
-                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-will-74514991-8531908.jpg');">
-                    <h4>Rhythm & Rupture</h4>
-                </a>
-                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-philippedonn-1133957.jpg');">
-                    <h4>The Art of Noticing</h4>
-                </a>
+            <div style="direction: ltr;">
+                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 25px;">The Live Encounter</h2>
+                <p>By blending depth-oriented conversation with experiential movement, we engage the parts of yourself that have been avoided or projected. We don't just talk about change; we experience the shift in the room, aligning your life with your most authentic values.</p>
             </div>
         </div>
     </section>
 
-    <section id="consult">
-        <div class="bg-layer" style="background-image: url('pexels-raybilcliff-1672813.jpg');"></div>
-        <div style="text-align: center; background: rgba(0,0,0,0.6); padding: 80px; width: 100%;">
-            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Threshold of Change</h2>
-            <p style="max-width: 600px; margin: 0 auto 40px auto;">A 15-minute consultation to explore the architecture of your transformation.</p>
-            <a href="mailto:contact@melipil.com" class="play-btn" style="text-decoration: none;">Request Consultation</a>
+    <section id="insights" style="background: #000; flex-direction: column; align-items: flex-start;">
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 50px;">Library of Insights</h2>
+        <div class="grid">
+            <a href="#" class="card">
+                <h3>The Somatic Anchor</h3>
+                <p>How the body holds the logic of our history.</p>
+            </a>
+            <a href="#" class="card">
+                <h3>Character Structure</h3>
+                <p>Understanding the architecture of your internal defenses.</p>
+            </a>
+            <a href="#" class="card">
+                <h3>Symbol & Sensation</h3>
+                <p>Moving from raw emotion to meaningful integration.</p>
+            </a>
+        </div>
+    </section>
+
+    <section id="consult" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('pexels-raybilcliff-1672813.jpg') fixed center/cover; text-align: center;">
+        <div style="max-width: 700px;">
+            <h2 style="font-family: 'Playfair Display'; font-size: 4rem;">The Threshold</h2>
+            <p style="margin-bottom: 40px;">For those seeking a deeper encounter with themselves.</p>
+            <a href="mailto:consultation@melipil.com" class="play-trigger">Request a Consultation</a>
         </div>
     </section>
 
     <script>
-        function openModal() {
-            document.getElementById('videoModal').style.display = 'flex';
-            document.getElementById('vFrame').src = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1";
+        // The Video URL must be in /embed/ format for websites
+        const videoURL = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&rel=0&modestbranding=1";
+
+        function openVideo() {
+            document.getElementById('videoOverlay').style.display = 'flex';
+            document.getElementById('ytPlayer').src = videoURL;
+            document.body.style.overflow = 'hidden'; // Lock scrolling
         }
-        function closeModal() {
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('vFrame').src = "";
+
+        function closeVideo() {
+            document.getElementById('videoOverlay').style.display = 'none';
+            document.getElementById('ytPlayer').src = "";
+            document.body.style.overflow = 'auto'; // Unlock scrolling
         }
     </script>
+
 </body>
 </html>
