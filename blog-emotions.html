@@ -1,359 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meli Pil, LMHC | Psychotherapy in Brooklyn</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listening to Emotion | Meli Pil, LMHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --forest:#2c3e50; --sage:#5d7b6a; --sand:#f5f2eb;
+            --ink:#2b2b2b; --white:#ffffff;
+        }
+        *{box-sizing:border-box;}
+        body{
+            margin:0; font-family:'Inter',sans-serif;
+            background:var(--sand); color:var(--ink); line-height:1.85;
+        }
 
-<meta name="description" content="Psychotherapy in Brooklyn, NY. A reflective, depth-oriented space for understanding emotional experiences and recurring patterns.">
+        /* Consistent Nav */
+        nav{
+            position:fixed; top:0; width:100%; padding:20px 60px;
+            display:flex; justify-content:space-between; align-items:center;
+            background:rgba(245,242,235,.95); backdrop-filter:blur(20px);
+            border-bottom:1px solid rgba(0,0,0,.03); z-index:1000;
+        }
+        .logo{ font-family:'Playfair Display',serif; font-size:1.1rem; text-decoration:none; color:var(--forest); font-weight:700; }
+        .back-link{ font-size:.75rem; letter-spacing:2px; text-decoration:none; color:var(--sage); font-weight:600; text-transform:uppercase; }
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        /* Article Header */
+        header.post-hero {
+            height: 60vh; position: relative; display: grid; place-items: center; overflow: hidden;
+        }
+        header.post-hero img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8);
+        }
+        .header-content { position: relative; z-index: 2; text-align: center; color: white; padding: 0 10%; }
+        .header-content h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; margin: 0; }
 
-<style>
-:root{
-  --forest:#2c3e50;
-  --sage:#5d7b6a;
-  --sand:#f5f2eb;
-  --ink:#2b2b2b;
-  --white:#ffffff;
-}
+        /* Content Layout */
+        article {
+            background: white; border-radius: 80px 80px 0 0; margin-top: -80px;
+            position: relative; z-index: 5; padding: 120px 0;
+        }
+        .container { max-width: 750px; margin: 0 auto; padding: 0 8%; }
+        
+        .meta { color: var(--sage); font-weight: 600; letter-spacing: 3px; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        p { margin-bottom: 30px; font-size: 1.05rem; opacity: 0.9; }
+        
+        /* Clinical Roadmap Box */
+        .roadmap {
+            background: var(--sand); border-radius: 40px; padding: 50px; margin: 60px 0;
+            border-left: 5px solid var(--sage);
+        }
+        .roadmap h3 { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--forest); margin-top: 0; }
+        .roadmap ul { padding-left: 20px; }
+        .roadmap li { margin-bottom: 15px; font-weight: 500; }
 
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+        footer { background: var(--forest); color: white; text-align: center; padding: 80px 10%; }
+        .cta-btn { 
+            display: inline-block; padding: 18px 45px; border: 1px solid white; 
+            color: white; text-decoration: none; letter-spacing: 2px; font-size: 0.8rem; margin-top: 20px;
+        }
 
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--sand);
-  color:var(--ink);
-  line-height:1.85;
-}
-
-/* NAV */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:22px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(245,242,235,.9);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(0,0,0,.04);
-  z-index:1000;
-}
-
-.logo{
-  font-family:'Playfair Display',serif;
-  font-size:1.15rem;
-  text-decoration:none;
-  color:var(--forest);
-}
-
-.nav-links{
-  display:flex;
-  gap:36px;
-}
-
-.nav-links a{
-  font-size:.75rem;
-  letter-spacing:2px;
-  text-decoration:none;
-  color:var(--forest);
-  font-weight:600;
-}
-
-/* HERO */
-.hero{
-  min-height:100vh;
-  position:relative;
-  display:grid;
-  place-items:center;
-  overflow:hidden;
-}
-
-.hero img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:saturate(.9) contrast(.9);
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    rgba(44,62,80,.55),
-    rgba(44,62,80,.25)
-  );
-}
-
-.hero h1{
-  position:relative;
-  z-index:2;
-  font-family:'Playfair Display',serif;
-  font-style:italic;
-  font-size:clamp(3rem,7vw,5.8rem);
-  color:white;
-  text-align:center;
-  max-width:900px;
-}
-
-/* MAIN */
-main{
-  background:white;
-  border-radius:80px 80px 0 0;
-  margin-top:-120px;
-  padding:160px 10% 120px;
-  position:relative;
-  z-index:5;
-}
-
-/* SPLIT */
-.split{
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:90px;
-  align-items:center;
-  margin-bottom:160px;
-}
-
-.split h2{
-  font-family:'Playfair Display';
-  font-size:3.4rem;
-  color:var(--forest);
-  line-height:1.15;
-  margin:20px 0;
-}
-
-/* JEWEL IMAGE */
-.jewel{
-  aspect-ratio:4/5;
-  clip-path:polygon(30% 0%,70% 0%,100% 50%,70% 100%,30% 100%,0% 50%);
-  overflow:hidden;
-  box-shadow:0 40px 80px rgba(0,0,0,.12);
-}
-
-.jewel img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* DIAGRAM */
-.diagram{
-  max-width:600px;
-  margin:0 auto 160px;
-  text-align:center;
-}
-
-.diagram svg{
-  margin-top:40px;
-}
-
-/* JOURNAL */
-.journal h2{
-  text-align:center;
-  font-family:'Playfair Display';
-  font-size:3.2rem;
-  margin-bottom:80px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:50px;
-}
-
-.card{
-  background:var(--sand);
-  border-radius:32px;
-  overflow:hidden;
-  text-decoration:none;
-  color:inherit;
-  transition:transform 1.4s ease, box-shadow 1.4s ease;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 40px 80px rgba(0,0,0,.12);
-}
-
-.card-img{
-  height:260px;
-  background-size:cover;
-  background-position:center;
-  filter:saturate(.9);
-}
-
-.card-body{
-  padding:36px;
-}
-
-.card-body h4{
-  font-family:'Playfair Display';
-  font-size:1.45rem;
-  margin:0 0 10px;
-}
-
-/* FOOTER */
-footer{
-  background:var(--forest);
-  color:white;
-  text-align:center;
-  padding:140px 10%;
-}
-
-.btn{
-  margin-top:36px;
-  display:inline-block;
-  padding:18px 54px;
-  border:1px solid white;
-  text-decoration:none;
-  letter-spacing:3px;
-  font-size:.75rem;
-  color:white;
-}
-
-.btn:hover{
-  background:white;
-  color:var(--forest);
-}
-
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(24px);
-  transition:opacity 1.4s ease, transform 1.4s ease;
-}
-
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* MOBILE */
-@media(max-width:900px){
-  .split,.grid{grid-template-columns:1fr;}
-  .nav-links{display:none;}
-  main{padding:120px 8%;}
-}
-</style>
+        @media(max-width:768px) { nav { padding: 20px 30px; } }
+    </style>
 </head>
-
 <body>
 
-<nav>
-  <a href="#" class="logo">MELI PIL, LMHC</a>
-  <div class="nav-links">
-    <a href="#approach">APPROACH</a>
-    <a href="#journal">JOURNAL</a>
-    <a href="#contact">CONTACT</a>
-  </div>
-</nav>
+    <nav>
+        <a href="index.html" class="logo">MELI PIL, LMHC</a>
+        <a href="index.html#journal" class="back-link">← Back to Journal</a>
+    </nav>
 
-<section class="hero">
-  <img src="pexels-vividcafe-681391.jpg" alt="">
-  <h1 class="reveal">Where understanding begins to change how things feel.</h1>
-</section>
-
-<main id="approach">
-
-  <section class="split reveal">
-    <div>
-      <small style="letter-spacing:5px;color:var(--sage);font-weight:700;">THE WORK</small>
-      <h2>A Space to Slow Things Down</h2>
-      <p>
-        Therapy is not about advice or quick fixes.  
-        It is a space where thoughts, feelings, memories, and reactions are taken seriously — especially the ones that tend to repeat or feel difficult to name.
-      </p>
-      <p>
-        By staying close to emotional experience as it unfolds, new understanding can emerge — often in ways that begin to feel different, not just make sense.
-      </p>
-    </div>
-
-    <div class="jewel">
-      <img src="pexels-philippedonn-1133957.jpg" alt="">
-    </div>
-  </section>
-
-  <section class="diagram reveal">
-    <h2 style="font-family:'Playfair Display';font-size:3rem;">How the Work Unfolds</h2>
-    <p>
-      Difficulties rarely come from a single cause.  
-      Feelings take shape through experience, relationships, and the ways we learned to adapt.
-    </p>
-
-    <!-- SIGNATURE SVG -->
-    <svg viewBox="0 0 600 600" width="100%" role="img">
-      <style>
-        .ring{fill:none;stroke:#5d7b6a;stroke-width:2;opacity:.6}
-        .core{fill:#2c3e50;opacity:.9}
-        .label{font-family:Inter,sans-serif;font-size:14px;fill:#2c3e50;letter-spacing:1px}
-        .center{fill:white;font-family:'Playfair Display',serif;font-size:18px}
-      </style>
-
-      <circle cx="300" cy="300" r="230" class="ring"/>
-      <circle cx="300" cy="300" r="160" class="ring"/>
-      <circle cx="300" cy="300" r="80" class="core"/>
-
-      <text x="300" y="85" text-anchor="middle" class="label">EARLY EXPERIENCE</text>
-      <text x="515" y="305" text-anchor="middle" class="label">RELATIONSHIPS</text>
-      <text x="300" y="535" text-anchor="middle" class="label">WHAT REPEATS</text>
-      <text x="85" y="305" text-anchor="middle" class="label">INNER LIFE</text>
-
-      <text x="300" y="295" text-anchor="middle" class="center">WHAT’S</text>
-      <text x="300" y="320" text-anchor="middle" class="center">HAPPENING NOW</text>
-    </svg>
-  </section>
-
-  <section class="journal" id="journal">
-    <h2 class="reveal">Clinical Reflections</h2>
-    <div class="grid">
-      <a href="blog-unlocking.html" class="card reveal">
-        <div class="card-img" style="background-image:url('pexels-being-the-traveller-579914-2730218.jpg')"></div>
-        <div class="card-body">
-          <h4>Unlocking the Source</h4>
-          <p>How early emotional experiences quietly shape expectations.</p>
+    <header class="post-hero">
+        <img src="pexels-yunustug-8337508.jpg" alt="Water surface ripples">
+        <div class="header-content">
+            <h1>Listening to Emotion</h1>
         </div>
-      </a>
+    </header>
 
-      <a href="blog-depression.html" class="card reveal">
-        <div class="card-img" style="background-image:url('pexels-solce-31661850.jpg')"></div>
-        <div class="card-body">
-          <h4>When Things Begin to Feel Heavy</h4>
-          <p>Understanding the slow erosion of hope and effort.</p>
+    <article>
+        <div class="container">
+            <span class="meta">Clinical Reflection</span>
+            <p>We often treat emotions as interruptions—unwanted noise that gets in the way of our productivity or our peace. We try to think our way out of them, or wait for them to simply pass.</p>
+            
+            <p>But in depth-oriented therapy, we view emotions differently: as <strong>signals</strong>. An emotion is often the psyche's way of trying to bring our attention to a need that is going unmet or a boundary that has been crossed.</p>
+
+            <div class="roadmap">
+                <h3>The 6 Principles of Emotional Awareness</h3>
+                <p>A roadmap for when feelings begin to feel overwhelming:</p>
+                <ul>
+                    <li><strong>Naming:</strong> Moving from "I feel bad" to "I feel dismissed."</li>
+                    <li><strong>Localization:</strong> Where is the feeling sitting in the body?</li>
+                    <li><strong>Validation:</strong> Acknowledging the feeling makes sense given your history.</li>
+                    <li><strong>Investigation:</strong> What is the "hidden" request this emotion is making?</li>
+                    <li><strong>Non-Judgment:</strong> Feelings are data, not moral failings.</li>
+                    <li><strong>Expression:</strong> Finding a safe container to let the feeling move.</li>
+                </ul>
+            </div>
+
+            <p>When a feeling persists, it is usually because it hasn't been fully heard yet. By slowing down and staying close to the experience, the "noise" begins to transform into insight. This is where the work of change truly begins.</p>
+            
+            <p>Understanding your emotional landscape isn't about control; it's about relationship. It’s about learning to trust your internal compass once again.</p>
         </div>
-      </a>
+    </article>
 
-      <a href="blog-emotions.html" class="card reveal">
-        <div class="card-img" style="background-image:url('pexels-vividcafe-681391.jpg')"></div>
-        <div class="card-body">
-          <h4>Listening to Emotion</h4>
-          <p>Why feelings persist until they are understood.</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<footer id="contact">
-  <h2 style="font-family:'Playfair Display';font-style:italic;">Begin the Work</h2>
-  <a href="mailto:hello@melipil.com" class="btn">Request a Consultation</a>
-</footer>
-
-<script>
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>e.isIntersecting&&e.target.classList.add('active'));
-},{threshold:.1});
-
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-</script>
+    <footer>
+        <h2 style="font-family:'Playfair Display'; font-style:italic;">Ready to dive deeper?</h2>
+        <a href="mailto:hello@melipil.com" class="cta-btn">REQUEST A CONSULTATION</a>
+    </footer>
 
 </body>
 </html>
