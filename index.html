@@ -59,7 +59,8 @@ nav{
   text-align:center;
   background:
     linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.85)),
-    url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.png') center/cover no-repeat;
+    url('https://media.architecturaldigest.com/photos/674ca5a3c851c10eea2e5eae/master/w_1600%2Cc_limit/Henderson_Eigelberger_SlalomPath_SKJ_16.jpg') center/cover no-repeat;
+  background-attachment:fixed; /* Parallax */
 }
 .hero-inner{
   max-width:880px;
@@ -119,10 +120,23 @@ section{
   background:
     radial-gradient(1200px 600px at 50% -200px, rgba(197,160,89,.08), transparent),
     linear-gradient(to bottom, #050505, #000);
+  background-attachment:fixed; /* Parallax for depth */
 }
-.section-inner{
-  max-width:1200px;
-  margin:auto;
+/* REFLECTION SECTION FOR THERAPY FEEL */
+.reflection{
+  text-align:center;
+  max-width:800px;
+  margin:0 auto;
+  opacity:0;
+  transition:3s ease;
+}
+.reflection.visible{
+  opacity:1;
+}
+.reflection p{
+  font-style:italic;
+  font-weight:200;
+  margin-bottom:40px;
 }
 /* THRESHOLD */
 .threshold{
@@ -155,9 +169,15 @@ section{
   transform:scale(1.1);
   filter:grayscale(15%);
   transition:3s ease;
+  animation:breathe 10s ease-in-out infinite; /* Alive feel */
+}
+@keyframes breathe{
+  0%,100%{transform:scale(1.1);}
+  50%{transform:scale(1.12);}
 }
 .image-field.visible img{
   transform:scale(1);
+  filter:grayscale(0%);
 }
 /* TEXT REVEAL */
 .reveal{
@@ -187,10 +207,15 @@ h2{
   height:480px;
   padding:40px;
   display:flex;
-  align-items:flex-end;
+  flex-direction:column;
+  justify-content:flex-end;
   border:1px solid rgba(255,255,255,.08);
   box-shadow:0 40px 80px rgba(0,0,0,.6);
   overflow:hidden;
+  transition:.5s ease;
+}
+.insight:hover{
+  transform:translateY(-10px);
 }
 .insight img{
   position:absolute;
@@ -201,26 +226,38 @@ h2{
   opacity:.45;
   z-index:-1;
   transition:.5s ease;
+  animation:breathe 8s ease-in-out infinite;
 }
 .insight:hover img{
   transform:scale(1.05);
-  opacity:.55;
+  opacity:.65;
+  filter:brightness(1.1);
 }
 .insight h3{
   font-family:'Playfair Display',serif;
   font-size:1.7rem;
+  transition:.3s ease;
+}
+.insight:hover h3{
+  color:var(--accent);
 }
 .insight p{
   font-size:.85rem;
   opacity:.75;
   margin-top:12px;
+  max-height:0;
+  overflow:hidden;
+  transition:.5s ease;
+}
+.insight:hover p{
+  max-height:200px;
 }
 /* CONSULT — GATE */
 .consult{
   text-align:center;
   background:
     linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.9)),
-    url('pexels-packermann-1666012.jpg') center/cover fixed;
+    url('https://www.usmcu.edu/Portals/218/JAMS_Zweibelson_Figure%2010.jpg?ver=Zys7GGDTG75Qsg8I_A7mwA%3D%3D') center/cover fixed;
 }
 /* MOBILE */
 @media(max-width:900px){
@@ -228,6 +265,7 @@ h2{
   nav .nav{display:none;}
   .hero .btn{display:none;}
   .mobile-video{display:block;}
+  .insight p{max-height:200px;} /* Always show on mobile */
 }
 </style>
 </head>
@@ -260,7 +298,7 @@ h2{
 <section id="guide">
   <div class="section-inner split">
     <div class="image-field reveal">
-      <img src="pexels-raybilcliff-1672813.jpg">
+      <img src="https://images.squarespace-cdn.com/content/v1/5f6979d970252656db07c170/1621454512192-2BV5YQTZJDVU23UGPN55/Calm+Nervous+System+by+Orienting.jpg">
     </div>
     <div class="reveal">
       <h2 class="gold">The Guide</h2>
@@ -291,9 +329,14 @@ h2{
       </p>
     </div>
     <div class="image-field reveal">
-      <img src="pexels-packermann-1666012.jpg">
+      <img src="https://images.newscientist.com/wp-content/uploads/2019/09/16145926/new-scientist-full.jpg">
     </div>
   </div>
+</section>
+<div class="threshold"></div>
+<section class="reflection reveal">
+  <h2 class="gold">Pause and Reflect</h2>
+  <p>As you scroll, notice your breath. What arises in this moment? Allow the space between sections to be a breath of awareness, guiding you deeper into your interior world.</p>
 </section>
 <div class="threshold"></div>
 <section id="insights">
@@ -303,19 +346,19 @@ h2{
     </h2>
     <div class="insights">
       <div class="insight reveal">
-        <img src="pexels-octoptimist-3546132.jpg">
+        <img src="https://cdn.prod.website-files.com/61258807d2d4f9553cc9d3e6/659f1f4a6db483d80a607c51_frame-48108525-659f1f2a29005.webp">
         <h3>The Somatic Chair</h3>
-        <p>A practice of sitting with bodily sensations to uncover hidden narratives and foster deeper self-understanding.</p>
+        <p>A practice of sitting with bodily sensations to uncover hidden narratives and foster deeper self-understanding. Feel the chair beneath you now—what does your body whisper?</p>
       </div>
       <div class="insight reveal">
-        <img src="pexels-will-74514991-8531908.jpg">
+        <img src="https://thumbs.dreamstime.com/b/digital-illustration-abstract-shapes-black-blue-purple-orange-image-presents-captivating-display-art-dominated-392589288.jpg">
         <h3>Rhythm & Rupture</h3>
-        <p>Exploring the cycles of harmony and disruption in our inner world, learning to navigate breaks as opportunities for growth.</p>
+        <p>Exploring the cycles of harmony and disruption in our inner world, learning to navigate breaks as opportunities for growth. Where in your rhythm do you sense a rupture emerging?</p>
       </div>
       <div class="insight reveal">
-        <img src="pexels-philippedonn-1133957.jpg">
+        <img src="https://thumbs.dreamstime.com/b/glimpse-soul-vivid-eye-artwork-captivating-digital-features-highly-detailed-realistic-human-rendered-341284471.jpg">
         <h3>The Art of Noticing</h3>
-        <p>Cultivating attention to the subtle shifts in experience, transforming ordinary moments into portals of insight.</p>
+        <p>Cultivating attention to the subtle shifts in experience, transforming ordinary moments into portals of insight. What subtle detail catches your eye in this very image?</p>
       </div>
     </div>
   </div>
@@ -339,13 +382,13 @@ h2{
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
-      e.target.classList.add('visible');
+      setTimeout(()=>{e.target.classList.add('visible');}, 200); // Delay for smooth re-entry
     } else {
       e.target.classList.remove('visible');
     }
   });
 },{threshold:.25});
-document.querySelectorAll('.reveal, .image-field').forEach(el=>observer.observe(el));
+document.querySelectorAll('.reveal, .image-field, .reflection').forEach(el=>observer.observe(el));
 document.getElementById('hero').classList.add('visible');
 function openVideo(){
   if(window.innerWidth<900) return;
