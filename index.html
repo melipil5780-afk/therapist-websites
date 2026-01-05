@@ -8,11 +8,8 @@
 <style>
 :root{
   --bg:#050505;
-  --deep:#000;
-  --surface:#0e0e0e;
   --accent:#c5a059;
   --text:#ffffff;
-  --dim:rgba(255,255,255,.65);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -20,8 +17,7 @@ body{
   background:var(--bg);
   color:var(--text);
   font-family:'Montserrat',sans-serif;
-  line-height:1.9;
-  letter-spacing:.02em;
+  line-height:1.8;
   overflow-x:hidden;
 }
 /* NAV */
@@ -29,377 +25,146 @@ nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:26px 6%;
+  padding:25px 6%;
   z-index:1000;
   display:flex;
   justify-content:space-between;
-  background:linear-gradient(to bottom,rgba(0,0,0,.85),transparent);
-  backdrop-filter:blur(10px);
+  background:linear-gradient(to bottom,rgba(0,0,0,0.8),transparent);
+  backdrop-filter:blur(5px);
 }
-.logo{
-  font-family:'Playfair Display',serif;
-  letter-spacing:3px;
-  font-size:.8rem;
-}
-.nav a{
-  color:#fff;
-  text-decoration:none;
-  font-size:.65rem;
-  letter-spacing:2px;
-  margin-left:28px;
-  opacity:.65;
-}
-.nav a:hover{opacity:1;color:var(--accent);}
-/* HERO — ARRIVAL */
+.logo{ font-family:'Playfair Display',serif; letter-spacing:3px; font-size:.9rem; }
+.nav a{ color:#fff; text-decoration:none; font-size:.7rem; letter-spacing:2px; margin-left:25px; opacity:.7; transition: .3s;}
+.nav a:hover{opacity:1; color:var(--accent);}
+
+/* HERO - Mountain Sunrise */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
-  background:
-    linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.85)),
-    url('https://images.pexels.com/photos/2157570219/pexels-photo-2157570219.jpeg') center/cover no-repeat;
-  background-attachment:fixed;
+  background: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.6)), 
+              url('https://images.pexels.com/photos/2157570219/pexels-photo-2157570219.jpeg') center/cover no-repeat;
+  background-attachment: fixed;
 }
-.hero-inner{
-  max-width:880px;
-  opacity:0;
-  transform:translateY(40px);
-  transition:2.5s ease;
-}
-.hero.visible .hero-inner{
-  opacity:1;
-  transform:none;
-}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2.8rem,7vw,5.4rem);
-  color:var(--accent);
-  margin-bottom:22px;
-}
-.hero p{
-  font-weight:200;
-  letter-spacing:3px;
-  opacity:.85;
-  margin-bottom:44px;
-}
-/* BUTTON */
-.btn{
-  display:inline-block;
-  padding:18px 52px;
-  border:1px solid var(--accent);
-  color:var(--accent);
-  text-decoration:none;
-  letter-spacing:4px;
-  font-size:.7rem;
-}
-.btn:hover{background:var(--accent);color:#000;}
-/* MOBILE VIDEO (FIXED) */
-.mobile-video{
-  display:none;
-  padding:100px 6%;
-  background:#000;
-}
-.video-wrap{
-  position:relative;
-  padding-top:56.25%;
-  box-shadow:0 40px 80px rgba(0,0,0,.7);
-}
-.video-wrap iframe{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  border:none;
-}
+.hero-inner{ opacity:0; transform:translateY(30px); transition:2s ease; }
+.hero.visible .hero-inner{ opacity:1; transform:none; }
+.hero h1{ font-family:'Playfair Display',serif; font-size:clamp(2.5rem, 6vw, 5rem); color:var(--accent); margin-bottom:20px; }
+.hero p{ font-weight:200; letter-spacing:4px; text-transform:uppercase; font-size: 0.9rem; }
+
 /* SECTIONS */
-section{
-  padding:180px 8%;
-  position:relative;
-  background:
-    radial-gradient(1200px 600px at 50% -200px, rgba(197,160,89,.08), transparent),
-    linear-gradient(to bottom, #050505, #000);
-  background-attachment:fixed;
+section{ padding:140px 10%; }
+.split{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:center; }
+.image-box{ overflow:hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+.image-box img{ width:100%; display:block; transition: 2s ease; transform: scale(1.05); }
+.reveal.visible .image-box img{ transform: scale(1); }
+
+h2{ font-family:'Playfair Display',serif; font-size:3rem; margin-bottom:25px; color:var(--accent); }
+p{ margin-bottom: 20px; opacity: 0.85; font-weight: 300; }
+
+/* INSIGHTS GRID */
+.grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:30px; margin-top:60px; }
+.card{ 
+    position:relative; height:500px; padding:40px; 
+    display:flex; flex-direction:column; justify-content:flex-end;
+    border: 1px solid rgba(255,255,255,0.1); overflow:hidden;
 }
-/* REFLECTION SECTION FOR THERAPY FEEL */
-.reflection{
-  text-align:center;
-  max-width:800px;
-  margin:0 auto;
-  opacity:0;
-  transition:3s ease;
+.card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:0.4; transition: 0.6s; }
+.card:hover img{ opacity: 0.7; transform: scale(1.05); }
+.card h3{ font-family:'Playfair Display',serif; font-size:1.6rem; margin-bottom:10px; }
+
+/* FINAL CALL - Milky Way */
+.final{ 
+    text-align:center; padding:180px 10%;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), 
+                url('https://images.pexels.com/photos/5574638/pexels-photo-5574638.jpeg') center/cover no-repeat;
 }
-.reflection.visible{
-  opacity:1;
+.btn{ 
+    display:inline-block; padding:15px 40px; border:1px solid var(--accent); 
+    color:var(--accent); text-decoration:none; letter-spacing:3px; font-size:0.8rem;
+    transition: 0.4s; margin-top: 20px;
 }
-.reflection p{
-  font-style:italic;
-  font-weight:200;
-  margin-bottom:40px;
-}
-/* THRESHOLD */
-.threshold{
-  height:260px;
-  background:
-    linear-gradient(to bottom,
-      rgba(0,0,0,0),
-      rgba(0,0,0,.9),
-      rgba(0,0,0,1)
-    );
-}
-/* SPLIT */
-.split{
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:100px;
-  align-items:center;
-}
-/* IMAGE FIELD — ENVIRONMENT */
-.image-field{
-  position:relative;
-  overflow:hidden;
-  box-shadow:
-    0 50px 120px rgba(0,0,0,.7),
-    inset 0 0 0 1px rgba(255,255,255,.05);
-}
-.image-field img{
-  width:100%;
-  height:auto;
-  display:block;
-  object-fit:cover;
-  transform:scale(1.1);
-  filter:grayscale(15%);
-  transition:3s ease;
-  animation:breathe 10s ease-in-out infinite;
-}
-@keyframes breathe{
-  0%,100%{transform:scale(1.1);}
-  50%{transform:scale(1.12);}
-}
-.image-field.visible img{
-  transform:scale(1);
-  filter:grayscale(0%);
-}
-/* TEXT REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(50px);
-  transition:2s ease;
-}
-.reveal.visible{
-  opacity:1;
-  transform:none;
-}
-/* HEADINGS */
-h2{
-  font-family:'Playfair Display',serif;
-  font-size:3.2rem;
-  margin-bottom:30px;
-}
-.gold{color:var(--accent);}
-/* INSIGHTS — LANDSCAPE */
-.insights{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:40px;
-}
-.insight{
-  position:relative;
-  height:480px;
-  padding:40px;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 40px 80px rgba(0,0,0,.6);
-  overflow:hidden;
-  transition:.5s ease;
-}
-.insight:hover{
-  transform:translateY(-10px);
-}
-.insight img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.45;
-  z-index:-1;
-  transition:.5s ease;
-  animation:breathe 8s ease-in-out infinite;
-}
-.insight:hover img{
-  transform:scale(1.05);
-  opacity:.65;
-  filter:brightness(1.1);
-}
-.insight h3{
-  font-family:'Playfair Display',serif;
-  font-size:1.7rem;
-  transition:.3s ease;
-}
-.insight:hover h3{
-  color:var(--accent);
-}
-.insight p{
-  font-size:.85rem;
-  opacity:.75;
-  margin-top:12px;
-  max-height:0;
-  overflow:hidden;
-  transition:.5s ease;
-}
-.insight:hover p{
-  max-height:200px;
-}
-/* CONSULT — GATE */
-.consult{
-  text-align:center;
-  background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.9)),
-    url('https://images.pexels.com/photos/5574638/pexels-photo-5574638.jpeg') center/cover fixed;
-}
-/* MOBILE */
-@media(max-width:900px){
-  .split{grid-template-columns:1fr;text-align:center;}
-  nav .nav{display:none;}
-  .hero .btn{display:none;}
-  .mobile-video{display:block;}
-  .insight p{max-height:200px;}
-  .image-field img{object-fit:contain;}
-}
+.btn:hover{ background:var(--accent); color:#000; }
+
+.reveal{ opacity:0; transform:translateY(40px); transition: 1.5s ease; }
+.reveal.visible{ opacity:1; transform:none; }
+
+@media(max-width:850px){ .split{ grid-template-columns:1fr; text-align:center; } }
 </style>
 </head>
 <body>
+
 <nav>
   <div class="logo">MELI PIL</div>
   <div class="nav">
     <a href="#guide">Guide</a>
     <a href="#process">Process</a>
     <a href="#insights">Insights</a>
-    <a href="#consult">Begin</a>
   </div>
 </nav>
+
 <section class="hero" id="hero">
   <div class="hero-inner">
     <h1>The Interior Architecture</h1>
-    <p>Change that unfolds from lived experience</p>
-    <div class="btn" onclick="openVideo()">Watch Introduction</div>
+    <p>A Depth Psychology Approach</p>
   </div>
 </section>
-<section class="mobile-video">
-  <div class="video-wrap">
-    <iframe
-      src="https://www.youtube.com/embed/ujKka2Eo9rU?playsinline=1&rel=0"
-      allowfullscreen></iframe>
-  </div>
-</section>
-<div class="threshold"></div>
-<section id="guide">
-  <div class="section-inner split">
-    <div class="image-field reveal">
-      <img src="https://images.pexels.com/photos/4906520/pexels-photo-4906520.jpeg">
+
+<section id="guide" class="reveal">
+  <div class="split">
+    <div class="image-box">
+        <img src="https://images.pexels.com/photos/1672813/pexels-photo-1672813.jpeg" alt="Natural Arch View">
     </div>
-    <div class="reveal">
-      <h2 class="gold">The Guide</h2>
-      <p>
-        This work begins by slowing down.
-        By attending closely to what is already present —
-        thoughts forming, emotions shifting, sensations arising.
-      </p>
-      <p>
-        Patterns become visible.
-        What once operated silently enters awareness.
-      </p>
+    <div>
+      <h2>The Guide</h2>
+      <p>Therapy is the art of looking through the "arches" of our own defenses to see the vast landscape of the soul that lies beyond.</p>
+      <p>By slowing down and attending to the lived experience, we begin to map the architecture of our inner world.</p>
     </div>
   </div>
 </section>
-<div class="threshold"></div>
-<section id="process">
-  <div class="section-inner split">
-    <div class="reveal">
-      <h2>The Live Encounter</h2>
-      <p>
-        Therapy here is not an explanation of life,
-        but a lived encounter with it.
-      </p>
-      <p>
-        Meaning emerges through experience,
-        not instruction.
-      </p>
+
+<section id="process" class="reveal" style="background: #0a0a0a;">
+  <div class="split">
+    <div>
+      <h2>Somatic Dialogue</h2>
+      <p>We use the <strong>Somatic Chair</strong> practice to give voice to the parts of you that have remained silent. This isn't just talk; it is a live encounter.</p>
+      <p>Sit with the tension. Notice the shift in your breath. Let the architecture of the room hold the space for what needs to emerge.</p>
     </div>
-    <div class="image-field reveal">
-      <img src="https://images.pexels.com/photos/1672813/pexels-photo-1672813.jpeg">
+    <div class="image-box">
+        <img src="https://images.pexels.com/photos/4906520/pexels-photo-4906520.jpeg" alt="Interior with Red Chairs">
     </div>
   </div>
 </section>
-<div class="threshold"></div>
-<section class="reflection reveal">
-  <h2 class="gold">Pause and Reflect</h2>
-  <p>As you scroll, notice your breath. What arises in this moment? Allow the space between sections to be a breath of awareness, guiding you deeper into your interior world.</p>
-</section>
-<div class="threshold"></div>
+
 <section id="insights">
-  <div class="section-inner">
-    <h2 class="reveal" style="text-align:center;margin-bottom:80px;">
-      Library of Insights
-    </h2>
-    <div class="insights">
-      <div class="insight reveal">
-        <img src="https://images.pexels.com/photos/569202/pexels-photo-569202.jpeg">
-        <h3>The Somatic Chair</h3>
-        <p>A practice of sitting with bodily sensations to uncover hidden narratives and foster deeper self-understanding. Sit comfortably, imagine an empty chair opposite holding an unresolved feeling or inner voice. Speak from your chair to it, then switch to respond back, letting dialogue flow until clarity emerges. Feel the chair beneath you now—what does your body whisper?</p>
-      </div>
-      <div class="insight reveal">
-        <img src="https://images.pexels.com/photos/545960/pexels-photo-545960.jpeg">
-        <h3>Rhythm & Rupture</h3>
-        <p>Exploring the cycles of harmony and disruption in our inner world, learning to navigate breaks as opportunities for growth. Where in your rhythm do you sense a rupture emerging?</p>
-      </div>
-      <div class="insight reveal">
-        <img src="https://images.pexels.com/photos/5574638/pexels-photo-5574638.jpeg">
-        <h3>The Art of Noticing</h3>
-        <p>Cultivating attention to the subtle shifts in experience, transforming ordinary moments into portals of insight. What subtle detail catches your eye in this very image?</p>
-      </div>
+  <h2 style="text-align:center">Library of Insights</h2>
+  <div class="grid">
+    <div class="card reveal">
+        <img src="https://images.pexels.com/photos/569202/pexels-photo-569202.jpeg" alt="Horseshoe Bend">
+        <h3>The Turning Point</h3>
+        <p>Like the river carving the stone, change happens slowly, then all at once. Explore the "bends" in your own narrative.</p>
+    </div>
+    <div class="card reveal">
+        <img src="https://images.pexels.com/photos/545960/pexels-photo-545960.jpeg" alt="Grand Canyon">
+        <h3>Depth & Scale</h3>
+        <p>Understanding the layers of our history. Each stratum represents a different era of your becoming.</p>
     </div>
   </div>
 </section>
-<section id="consult" class="consult">
-  <div class="section-inner reveal">
-    <h2>The Threshold</h2>
-    <p style="max-width:620px;margin:30px auto;">
-      This work is for those willing to stay
-      long enough for something real to emerge.
-    </p>
-    <a class="btn" href="mailto:consultation@melipil.com">Request Consultation</a>
-  </div>
+
+<section class="final reveal">
+    <h2>Enter the Threshold</h2>
+    <p>This work is for those willing to stay long enough for something real to emerge.</p>
+    <a href="mailto:contact@melipil.com" class="btn">BEGIN THE JOURNEY</a>
 </section>
-<div id="videoModal" style="display:none;position:fixed;inset:0;background:#000;z-index:3000;align-items:center;justify-content:center;">
-  <div style="position:absolute;top:30px;right:30px;color:#fff;cursor:pointer;" onclick="closeVideo()">CLOSE</div>
-  <iframe id="vid" width="90%" height="90%" allowfullscreen></iframe>
-</div>
+
 <script>
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      setTimeout(()=>{e.target.classList.add('visible');}, 200);
-    } else {
-      e.target.classList.remove('visible');
-    }
-  });
-},{threshold:.25});
-document.querySelectorAll('.reveal, .image-field, .reflection').forEach(el=>observer.observe(el));
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.getElementById('hero').classList.add('visible');
-function openVideo(){
-  if(window.innerWidth<900) return;
-  document.getElementById('videoModal').style.display='flex';
-  document.getElementById('vid').src="https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&mute=1";
-}
-function closeVideo(){
-  document.getElementById('videoModal').style.display='none';
-  document.getElementById('vid').src="";
-}
 </script>
+
 </body>
 </html>
