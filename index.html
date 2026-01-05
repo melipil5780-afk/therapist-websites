@@ -23,77 +23,82 @@
             overflow-x: hidden;
         }
 
-        /* --- Global Elements --- */
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
-        .btn-gold {
-            display: inline-block; padding: 18px 45px; border: 1px solid var(--accent);
-            color: var(--accent); text-transform: uppercase; letter-spacing: 4px;
-            font-size: 0.75rem; cursor: pointer; transition: 0.4s; text-decoration: none;
-        }
-        .btn-gold:hover { background: var(--accent); color: #000; box-shadow: 0 0 40px rgba(197,160,89,0.3); }
-
-        /* --- Navigation --- */
+        /* Navigation */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 5%;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
             backdrop-filter: blur(10px);
         }
-        .logo { font-size: 1.2rem; letter-spacing: 3px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px; }
         .nav-links a { 
             color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; 
             text-transform: uppercase; margin-left: 25px; opacity: 0.7; transition: 0.3s;
         }
         .nav-links a:hover { opacity: 1; color: var(--accent); }
 
-        /* --- Hero Section --- */
-        .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.3), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
-            background-size: cover; background-position: center; text-align: center;
-        }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 20px; }
-
-        /* --- Cinematic Video Modal --- */
+        /* Video Modal Overlay */
         #videoModal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 2000; display: none; align-items: center; justify-content: center;
         }
-        .close-vid { position: absolute; top: 30px; right: 30px; color: #fff; cursor: pointer; letter-spacing: 2px; border: 1px solid #333; padding: 10px 20px; }
+        .close-vid { 
+            position: absolute; top: 30px; right: 30px; color: #fff; cursor: pointer; 
+            letter-spacing: 2px; border: 1px solid #333; padding: 10px 20px; font-size: 0.7rem;
+        }
 
-        /* --- Content Blocks --- */
-        section { padding: 120px 8%; }
+        /* Hero */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
+            background-size: cover; background-position: center; text-align: center;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 20px; color: var(--accent); }
+        .btn-gold {
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--accent);
+            color: var(--accent); text-transform: uppercase; letter-spacing: 4px;
+            font-size: 0.75rem; cursor: pointer; transition: 0.4s; text-decoration: none;
+        }
+        .btn-gold:hover { background: var(--accent); color: #000; }
+
+        /* General Sections */
+        section { padding: 120px 8%; position: relative; }
         .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
         .img-frame { position: relative; width: 100%; }
-        .img-frame img { width: 100%; border-radius: 2px; filter: grayscale(15%); }
+        .img-frame img { width: 100%; display: block; filter: grayscale(10%); border-radius: 2px; }
         .accent-border { position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 1px solid var(--accent); z-index: -1; }
 
-        /* --- Articles (Visual Grid) --- */
-        .article-grid { 
+        /* Insights Grid with Images */
+        .insight-grid { 
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
             gap: 25px; margin-top: 50px; 
         }
-        .article-card {
+        .insight-card {
             height: 450px; position: relative; display: flex; align-items: flex-end;
             padding: 35px; text-decoration: none; color: #fff; overflow: hidden;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .article-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.4; transition: 0.6s; }
-        .article-card:hover img { opacity: 0.6; transform: scale(1.05); }
-        .article-card h3 { font-size: 1.8rem; position: relative; }
+        .insight-card img { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            object-fit: cover; z-index: -1; opacity: 0.4; transition: 0.6s; 
+        }
+        .insight-card:hover img { opacity: 0.7; transform: scale(1.05); }
+        .insight-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; }
 
-        /* --- Footer / Consult --- */
+        /* Consultation Parallax */
         .consult-section {
             padding: 180px 5%; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('pexels-raybilcliff-1672813.jpg') fixed center/cover;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('pexels-raybilcliff-1672813.jpg');
+            background-attachment: fixed; background-size: cover; background-position: center;
         }
 
-        /* --- Mobile --- */
+        /* Mobile */
         @media (max-width: 900px) {
             .split { grid-template-columns: 1fr; text-align: center; }
+            .accent-border { display: none; }
             .nav-links { display: none; }
-            .hero h1 { font-size: 3rem; }
             section { padding: 80px 5%; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -112,17 +117,17 @@
     <div id="videoModal">
         <div class="close-vid" onclick="closeModal()">✕ CLOSE EXPERIENCE</div>
         <div style="width: 90%; max-width: 1000px; aspect-ratio: 16/9;">
-            <iframe id="player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
+            <iframe id="videoIframe" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 
-    <header class="hero">
+    <section class="hero">
         <div style="max-width: 900px;">
-            <h1 style="color: var(--accent);">THE INTERIOR ARCHITECTURE</h1>
-            <p style="letter-spacing: 3px; font-weight: 200; margin-bottom: 30px;">TRANSFORMATION WHERE WORDS END.</p>
+            <h1>THE INTERIOR ARCHITECTURE</h1>
+            <p style="letter-spacing: 3px; font-weight: 200; margin-bottom: 30px; opacity: 0.8;">TRANSFORMATION WHERE WORDS END.</p>
             <div class="btn-gold" onclick="openModal()">Watch Introduction</div>
         </div>
-    </header>
+    </section>
 
     <section id="about" style="background: var(--surface);">
         <div class="split">
@@ -131,10 +136,10 @@
                 <div class="accent-border"></div>
             </div>
             <div>
-                <h2 style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;">The Guide</h2>
+                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;">The Guide</h2>
                 <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
                 <br>
-                <p>Therapy is an opportunity to name, process, and make sense of feelings that have been difficult to access. Together, we create a space for curiosity and transformation.</p>
+                <p>Therapy is an opportunity to name, process, and make sense of feelings that may have been difficult to access before. Together, we create a space for curiosity and transformation.</p>
             </div>
         </div>
     </section>
@@ -142,54 +147,59 @@
     <section id="philosophy">
         <div class="split" style="direction: rtl;">
             <div class="img-frame" style="direction: ltr;">
-                <img src="pexels-anniroenkae-5278835.jpg" alt="Complexity">
+                <img src="pexels-anniroenkae-5278835.jpg" alt="Emotional Patterns">
                 <div class="accent-border" style="left: -20px; right: 20px;"></div>
             </div>
             <div style="direction: ltr;">
-                <h2 style="font-size: 3.5rem; margin-bottom: 25px;">The Live Encounter</h2>
-                <p>I incorporate conversation and experiential exercises to help you engage with emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided, denied, or projected onto others.</p>
+                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 25px;">The Live Encounter</h2>
+                <p>I incorporate both conversation and experiential exercises to help you engage with your emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided, denied, or projected onto others.</p>
                 <br>
-                <p>By examining recurring patterns in the here-and-now, we shift toward a life more aligned with your authentic values.</p>
+                <p>By examining recurring patterns in the here-and-now, we begin to shift and move toward a life more aligned with your authentic values.</p>
             </div>
         </div>
     </section>
 
     <section id="insights" style="background: #000;">
-        <h2 style="font-size: 3rem; margin-bottom: 40px;">Library of Insights</h2>
-        <div class="article-grid">
-            <a href="#" class="article-card">
-                <img src="pexels-octoptimist-3546132.jpg" alt="The Room">
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 40px; text-align: center;">Library of Insights</h2>
+        <div class="insight-grid">
+            <a href="#" class="insight-card">
+                <img src="pexels-octoptimist-3546132.jpg" alt="Somatic Work">
                 <h3>The Somatic Chair</h3>
             </a>
-            <a href="#" class="article-card">
+            <a href="#" class="insight-card">
                 <img src="pexels-will-74514991-8531908.jpg" alt="Rhythm">
                 <h3>Rhythm & Rupture</h3>
             </a>
-            <a href="#" class="article-card">
-                <img src="pexels-philippedonn-1133957.jpg" alt="The Bird">
+            <a href="#" class="insight-card">
+                <img src="pexels-philippedonn-1133957.jpg" alt="Noticing">
                 <h3>The Art of Noticing</h3>
             </a>
         </div>
     </section>
 
     <section id="consult" class="consult-section">
-        <h2 style="font-size: 4rem; margin-bottom: 20px;">The Threshold</h2>
-        <p style="margin-bottom: 40px; opacity: 0.8;">A space for those seeking depth and alignment.</p>
+        <h2 style="font-family: 'Playfair Display'; font-size: 4rem; margin-bottom: 20px;">The Threshold</h2>
+        <p style="margin-bottom: 40px; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">A dedicated space for those ready to move toward their most authentic self.</p>
         <a href="mailto:consultation@melipil.com" class="btn-gold">Request Consultation</a>
     </section>
 
     <script>
-        // YouTube Embed URL Fix
-        const embedURL = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&rel=0";
+        // Use the exact YouTube embed path with no extra fluff
+        const ytSource = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&rel=0&modestbranding=1";
 
         function openModal() {
-            document.getElementById('videoModal').style.display = 'flex';
-            document.getElementById('player').src = embedURL;
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            modal.style.display = 'flex';
+            iframe.src = ytSource;
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
-            document.getElementById('videoModal').style.display = 'none';
-            document.getElementById('player').src = "";
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoIframe');
+            modal.style.display = 'none';
+            iframe.src = ""; // Stop the video
             document.body.style.overflow = 'auto';
         }
     </script>
