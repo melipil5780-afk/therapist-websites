@@ -8,111 +8,142 @@
     <style>
         :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; --text: #333; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; overflow-x: hidden; }
 
-        /* Navigation */
+        /* Premium Navigation */
         nav { 
             position: fixed; width: 100%; top: 0; z-index: 1000; 
             padding: 25px 50px; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(244, 241, 234, 0.95); backdrop-filter: blur(10px);
+            background: rgba(244, 241, 234, 0.8); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--forest); text-decoration: none; }
-        .nav-links a { margin-left: 30px; text-decoration: none; color: var(--forest); font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--forest); text-decoration: none; letter-spacing: 2px; }
+        .nav-links a { margin-left: 30px; text-decoration: none; color: var(--forest); font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* Hero */
-        .hero { height: 95vh; display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; padding: 0 10%; gap: 60px; }
-        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 4.2rem; color: var(--forest); line-height: 1.1; margin: 0; font-style: italic; }
-        .hero-text p { font-size: 1.1rem; color: var(--sage); margin: 30px 0; max-width: 480px; }
-        .hero-img { width: 100%; height: 70vh; background: url('pexels-vividcafe-681391.jpg') center/cover; border-radius: 200px 200px 0 0; box-shadow: 25px 25px 0 var(--sage); }
+        /* Full-Bleed Parallax Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(45, 58, 48, 0.4), rgba(45, 58, 48, 0.1)), 
+                        url('pexels-vividcafe-681391.jpg') center/cover no-repeat fixed;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 6rem); line-height: 1.1; margin: 0; font-style: italic; }
+        .hero p { font-size: 1.2rem; margin-top: 20px; max-width: 650px; font-weight: 300; letter-spacing: 1px; }
 
-        /* Section Styling */
-        .section { padding: 120px 10%; background: var(--white); }
-        .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
-        .organic-img { width: 100%; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .sub-label { color: var(--sage); font-weight: 700; letter-spacing: 3px; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 15px; }
-        .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--forest); margin: 0 0 30px; }
+        /* Section Layouts */
+        .content-layer { position: relative; background: var(--white); border-radius: 60px 60px 0 0; margin-top: -10vh; z-index: 10; padding: 120px 10%; }
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; margin-bottom: 140px; }
         
-        /* Expectation Cards */
-        .bg-sand { background: var(--sand); padding: 100px 10%; }
-        .exp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px; }
-        .exp-card { background: var(--white); padding: 40px; border-radius: 15px; border-bottom: 3px solid var(--sage); transition: 0.3s; }
-        .exp-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .exp-card h4 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin: 0 0 15px; }
+        /* The Nature Mask */
+        .waterfall-shape { 
+            width: 100%; height: 650px; 
+            background: url('pexels-webbshow-2406395.jpg') center/cover; 
+            border-radius: 40% 60% 70% 30% / 40% 40% 60% 60%;
+            box-shadow: 40px 40px 0 var(--sand);
+            transition: 1.5s ease-in-out;
+        }
+        .waterfall-shape:hover { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
 
-        footer { background: var(--forest); color: var(--sand); padding: 100px 10% 40px; text-align: center; }
-        .btn { background: var(--sand); color: var(--forest); padding: 20px 50px; text-decoration: none; font-weight: 700; border-radius: 5px; display: inline-block; transition: 0.3s; }
-        .btn:hover { background: var(--sage); color: white; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--forest); margin-bottom: 30px; }
+        .sub { color: var(--sage); font-weight: 700; letter-spacing: 4px; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 15px; display: block; }
 
-        @media (max-width: 1000px) { .hero, .split, .exp-grid { grid-template-columns: 1fr; } .hero { height: auto; padding-top: 150px; } .hero-img { height: 400px; order: -1; } }
+        /* Journal Connection */
+        .journal-section { background: var(--sand); padding: 100px 10%; border-radius: 60px; margin: 20px 0; }
+        .journal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px; }
+        .journal-card { 
+            background: white; border-radius: 20px; overflow: hidden; text-decoration: none; color: inherit; 
+            transition: all 0.4s ease; border: 1px solid rgba(0,0,0,0.05);
+        }
+        .journal-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(45,58,48,0.15); }
+        .card-img { height: 240px; background-size: cover; background-position: center; }
+        .card-body { padding: 30px; }
+        .card-body h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--forest); margin: 0 0 10px; }
+
+        /* Call to Action */
+        footer { background: var(--forest); color: var(--sand); padding: 120px 10% 40px; text-align: center; }
+        .cta { border: 1px solid var(--sand); color: var(--sand); padding: 20px 60px; text-decoration: none; display: inline-block; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; border-radius: 4px; transition: 0.3s; }
+        .cta:hover { background: var(--sand); color: var(--forest); }
+
+        @media (max-width: 1000px) { .split, .journal-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 3.2rem; } }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html" class="logo">Meli Pil, MHC-LP</a>
+        <a href="index.html" class="logo">MELI PIL, MHC-LP</a>
         <div class="nav-links">
             <a href="#approach">APPROACH</a>
-            <a href="blogs.html">JOURNAL</a>
+            <a href="#journal">JOURNAL</a>
             <a href="#contact">CONTACT</a>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="hero-text">
-            <h1>Uncovering the inner world.</h1>
-            <p>An experiential psychotherapy practice in Brooklyn, focused on transformation through curiosity, connection, and deep emotional processing.</p>
-            <p style="font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; color: var(--sage);">In-Person Sessions Only</p>
-        </div>
-        <div class="hero-img"></div>
+        <h1>Uncovering the inner world.</h1>
+        <p>A collaborative, experiential journey through curiosity and connection.</p>
     </header>
 
-    <section id="approach" class="section">
+    <main class="content-layer" id="approach">
         <div class="split">
-            <img src="pexels-webbshow-2406395.jpg" alt="Nature Waterfall" class="organic-img">
+            <div class="waterfall-shape"></div>
             <div>
-                <span class="sub-label">THE APPROACH</span>
-                <h2 class="section-title">A Journey of Discovery</h2>
+                <span class="sub">THE PHILOSOPHY</span>
+                <h2>A Journey of Discovery</h2>
                 <p>My approach to therapy is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
-                <p>Therapy, to me, is an emotional journey—an opportunity to name, process, and make sense of feelings that may have been difficult to access or articulate before.</p>
+                <p>Therapy is an emotional journey—an opportunity to name, process, and make sense of feelings that may have been difficult to access before.</p>
             </div>
         </div>
 
-        <div style="margin-top: 80px; text-align: center;">
-            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">By examining recurring patterns, clients can begin to shift and move toward a life more aligned with their authentic selves. I view each session as a collaborative process, ensuring that any ideas or strategies we explore feel true and helpful.</p>
+        <div style="max-width: 850px; margin: 0 auto; text-align: center; margin-bottom: 120px;">
+            <span class="sub">THE PROCESS</span>
+            <h2>Naming the Unseen</h2>
+            <p>I incorporate conversation and experiential exercises to help engage with emotions more deeply—addressing experiences that may have been avoided, denied, or projected.</p>
             
+            
+            
+            <p>By examining these patterns, we move toward a life aligned with your authentic values. If it doesn't serve your needs, it doesn't belong in the work.</p>
         </div>
-    </section>
 
-    <section class="bg-sand">
-        <h2 class="section-title" style="text-align: center;">What you can expect</h2>
-        <div class="exp-grid">
-            <div class="exp-card">
-                <h4>Safety & Pace</h4>
-                <p>Your story unfolds at your own pace. It’s important that you feel safe and comfortable before diving into deeper layers of your experience.</p>
+        <section id="journal" class="journal-section">
+            <span class="sub" style="text-align: center;">COLLECTED WRITINGS</span>
+            <h2 style="text-align: center;">The Clinical Journal</h2>
+            <div class="journal-grid">
+                <a href="blog-unlocking.html" class="journal-card">
+                    <div class="card-img" style="background-image: url('pexels-being-the-traveller-579914-2730218.jpg');"></div>
+                    <div class="card-body">
+                        <h4>Unlocking the Source of Darkness</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Exploring the 18 patterns and core emotional needs.</p>
+                    </div>
+                </a>
+                <a href="blog-depression.html" class="journal-card">
+                    <div class="card-img" style="background-image: url('pexels-solce-31661850.jpg');"></div>
+                    <div class="card-body">
+                        <h4>Struggling with Depression?</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">Identifying the roots of emotional pain and helplessness.</p>
+                    </div>
+                </a>
+                <a href="blog-emotions.html" class="journal-card">
+                    <div class="card-img" style="background-image: url('pexels-vividcafe-681391.jpg');"></div>
+                    <div class="card-body">
+                        <h4>6 Principles for Emotions</h4>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">A practical roadmap for transformation and awareness.</p>
+                    </div>
+                </a>
             </div>
-            <div class="exp-card">
-                <h4>Naming Emotions</h4>
-                <p>We’ll name emotions never fully acknowledged and recognize parts of yourself that may have gone unnoticed or been in conflict.</p>
+            
+            <div style="margin-top: 80px; text-align: center;">
+                 
             </div>
-            <div class="exp-card">
-                <h4>Breaking Patterns</h4>
-                <p>Using conversation, chair work, and relational dynamics to bring repeating patterns into focus and move toward intentional choices.</p>
-            </div>
-            <div class="exp-card">
-                <h4>Authentic Self</h4>
-                <p>Confronting difficult parts with compassion, allowing you to explore why you feel stuck and how to align with your values.</p>
-            </div>
-        </div>
-        <div style="margin-top: 60px; text-align: center;">
-             
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer id="contact">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Begin the Work</h2>
-        <p style="margin-bottom: 40px; opacity: 0.8;">Available for in-person consultation in Brooklyn, NY.</p>
-        <a href="mailto:hello@melipiltherapy.com" class="btn">REQUEST A CONSULTATION</a>
-        <p style="margin-top: 40px;"><strong>Meli Pil, MHC-LP</strong><br>Mental Health Counselor, Limited Permit</p>
+        <h2 style="font-style: italic;">Begin the Work</h2>
+        <p>In-person psychotherapy in Brooklyn, NY.</p>
+        <a href="mailto:hello@melipiltherapy.com" class="cta">REQUEST A CONSULTATION</a>
+        <div style="margin-top: 80px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">
+            MELI PIL, MHC-LP | MENTAL HEALTH COUNSELOR, LIMITED PERMIT
+        </div>
     </footer>
 
 </body>
