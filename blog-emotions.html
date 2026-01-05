@@ -7,32 +7,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; --text: #333; }
+        * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
-        
+
         .article-hero { 
-            height: 50vh; 
-            background: linear-gradient(rgba(45, 58, 48, 0.4), rgba(45, 58, 48, 0.4)), url('pexels-vividcafe-681391.jpg') center/cover;
+            height: 60vh; 
+            background: linear-gradient(rgba(45, 58, 48, 0.4), rgba(45, 58, 48, 0.4)), url('pexels-vividcafe-681391.jpg') center/cover no-repeat fixed;
             display: flex; align-items: center; justify-content: center; color: white; text-align: center;
         }
-        .article-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; padding: 0 20px; }
+        .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); margin: 0; font-style: italic; }
 
         .article-container { 
-            max-width: 850px; margin: -80px auto 100px; 
-            background: var(--white); padding: 80px; border-radius: 12px; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1); position: relative; z-index: 10;
+            max-width: 900px; margin: -100px auto 100px; 
+            background: var(--white); padding: 80px; border-radius: 40px; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08); position: relative; z-index: 10;
         }
         
-        .principle-item { margin-bottom: 60px; border-bottom: 1px solid #f0f0f0; padding-bottom: 40px; }
-        .principle-item:last-child { border-bottom: none; }
-        
-        .num { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--sand); -webkit-text-stroke: 1px var(--sage); margin-bottom: -20px; display: block; }
-        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--forest); margin: 0 0 20px; }
-        
-        .diagram-space { margin: 40px 0; text-align: center; padding: 20px; background: #fafafa; border-radius: 8px; }
+        .nav-back { position: absolute; top: 30px; left: 80px; text-decoration: none; color: var(--sage); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+        .principle-step { margin-bottom: 60px; padding-left: 30px; border-left: 2px solid var(--sand); }
+        .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--sage); display: block; margin-bottom: 10px; opacity: 0.5; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--forest); margin-top: 0; }
 
-        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; }
-        
-        @media (max-width: 768px) { .article-container { padding: 40px 20px; } .article-hero h1 { font-size: 2.2rem; } }
+        footer { background: var(--forest); color: var(--sand); padding: 80px 20px; text-align: center; border-radius: 60px 60px 0 0; }
+        @media (max-width: 768px) { .article-container { padding: 40px 20px; } .nav-back { left: 20px; } }
     </style>
 </head>
 <body>
@@ -42,57 +39,52 @@
     </header>
 
     <article class="article-container">
-        <p style="font-size: 1.2rem; color: var(--sage); font-style: italic; margin-bottom: 50px;">
-            In our therapy work, we don't just talk about problems; we engage with the emotional energy behind them. Use these six principles as your roadmap for emotional transformation.
-        </p>
-
-        <div class="principle-item">
+        <a href="index.html" class="nav-back">← BACK TO HOME</a>
+        
+        <div class="principle-step">
             <span class="num">01</span>
             <h2>Awareness</h2>
-            <p>The first step is moving from "being" the emotion to observing it. Awareness allows you to feel the physical sensation of an emotion in your body without being consumed by it. We work to identify where the emotion lives—perhaps a tightness in the chest or a knot in the stomach—creating the space necessary for processing.</p>
+            <p>The first step is moving from "being" the emotion to observing it. Awareness allows you to feel the physical sensation of an emotion in your body without being consumed by it.</p>
         </div>
 
         
 
-        <div class="principle-item">
+        <div class="principle-step">
             <span class="num">02</span>
             <h2>Expression</h2>
-            <p>True healing requires moving beyond secondary emotions (like anger or frustration) to find the primary emotion beneath (like loneliness, sadness, or shame). Authentic expression is about naming the unacknowledged and allowing the energy of that emotion to be seen and symbolized.</p>
+            <p>Authentic expression is about finding the primary emotion (like loneliness or shame) hidden beneath secondary reactions like anger. We symbolize these feelings through words, imagery, or chair work.</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-step">
             <span class="num">03</span>
             <h2>Regulation</h2>
-            <p>Emotions can sometimes feel like a tidal wave. Regulation isn't about suppression; it's about learning to manage the intensity so you stay within your "window of tolerance." This ensures that the work of therapy remains safe and productive rather than overwhelming.</p>
+            <p>Regulation isn't about stopping a feeling; it's about keeping the intensity within your "window of tolerance" so that the work remains safe and healing.</p>
         </div>
 
         
 
-        <div class="principle-item">
+        <div class="principle-step">
             <span class="num">04</span>
             <h2>Reflection</h2>
-            <p>Every emotion is a messenger. Reflection is the process of asking: "What is this feeling telling me about my needs, my boundaries, or my values?" We use this insight to make sense of your internal world and your relationships with others.</p>
+            <p>Every emotion is a messenger. We ask: "What is this feeling telling me about my needs, my boundaries, or my values?"</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-step">
             <span class="num">05</span>
             <h2>Transformation</h2>
-            <p>This is where the shift happens. We use "healthy" emotional states—such as self-compassion, assertive anger, or protective grief—to transform stuck, maladaptive feelings. We replace the old "Inner Blueprints" with new emotional experiences that align with who you are today.</p>
+            <p>We use healthy emotional states (like self-compassion) to transform stuck, maladaptive feelings. We replace old "Inner Blueprints" with new, adaptive emotional experiences.</p>
         </div>
 
-        <div class="principle-item">
+        <div class="principle-step">
             <span class="num">06</span>
-            <h2>Corrective Emotional Experience</h2>
-            <p>Healing often happens in the "here and now." By exploring the relational dynamics that surface during our sessions, we create a real-time experience of safety, connection, and empowerment. This experience acts as the ultimate antidote to the neglect or trauma of the past.</p>
+            <h2>Corrective Experience</h2>
+            <p>By exploring the "here and now" in our session, we create real-time experiences of safety and connection that counteract the neglect or trauma of the past.</p>
         </div>
 
-        <p style="text-align: center; margin-top: 80px; font-weight: 600; color: var(--forest);">
-            Meli Pil, MHC-LP | Brooklyn, NY | In-Person Psychotherapy
-        </p>
     </article>
 
     <footer>
-        &copy; 2026 Meli Pil Therapy. All Rights Reserved.
+        <p>Meli Pil, MHC-LP | Brooklyn, NY</p>
     </footer>
 
 </body>
