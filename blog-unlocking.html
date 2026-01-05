@@ -7,96 +7,128 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; --text: #333; }
+        * { box-sizing: border-box; }
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
-        .hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('pexels-being-the-traveller-579914-2730218.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; text-align: center; padding: 0 20px; }
-        
-        .container { max-width: 850px; margin: -80px auto 100px; background: white; padding: 80px; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .intro-lead { font-size: 1.4rem; color: var(--sage); font-style: italic; margin-bottom: 40px; border-left: 4px solid var(--sage); padding-left: 20px; }
-        
-        h2 { font-family: 'Playfair Display', serif; color: var(--forest); font-size: 2.2rem; margin-top: 60px; }
-        h3 { font-family: 'Playfair Display', serif; color: var(--sage); font-size: 1.6rem; margin-top: 40px; }
-        
-        .needs-grid { display: grid; grid-template-columns: 1fr; gap: 20px; background: var(--sand); padding: 30px; border-radius: 10px; margin: 30px 0; }
-        .schema-category { background: #f9f9f9; padding: 30px; border-radius: 8px; margin-bottom: 30px; border-top: 4px solid var(--forest); }
-        .coping-box { border: 2px dashed var(--sage); padding: 30px; border-radius: 10px; margin-top: 40px; }
-        
-        .diagram { margin: 40px 0; text-align: center; font-size: 0.9rem; color: #777; font-style: italic; }
-        .diagram img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
 
-        @media (max-width: 768px) { .container { padding: 40px 20px; } }
+        .article-hero { 
+            height: 50vh; 
+            background: linear-gradient(rgba(45, 58, 48, 0.5), rgba(45, 58, 48, 0.5)), url('pexels-being-the-traveller-579914-2730218.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        }
+        .article-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; padding: 0 20px; font-style: italic; }
+
+        .container { 
+            max-width: 850px; margin: -80px auto 100px; 
+            background: var(--white); padding: 80px; border-radius: 12px; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1); position: relative; z-index: 10;
+        }
+        
+        .intro-lead { font-size: 1.25rem; color: var(--sage); font-style: italic; margin-bottom: 50px; border-left: 4px solid var(--sage); padding-left: 20px; }
+        
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--forest); margin-top: 60px; }
+        h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--sage); margin-top: 45px; margin-bottom: 15px; }
+        h4 { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: var(--forest); margin: 25px 0 10px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .schema-list { margin-bottom: 40px; }
+        .schema-item { margin-bottom: 25px; padding-left: 20px; border-left: 1px solid #eee; }
+        .schema-item strong { color: var(--forest); font-size: 1.1rem; }
+        
+        .needs-box { background: var(--sand); padding: 40px; border-radius: 10px; margin: 40px 0; }
+        .coping-section { background: #fdfdfd; border: 1px solid #eee; padding: 40px; border-radius: 10px; margin-top: 50px; }
+
+        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; }
+        
+        @media (max-width: 768px) { .container { padding: 40px 20px; } .article-hero h1 { font-size: 2.2rem; } }
     </style>
 </head>
 <body>
-    <div class="hero"><h1>Unlocking the Source of Darkness</h1></div>
-    
-    <div class="container">
+
+    <header class="article-hero">
+        <h1>Unlocking the Source of Darkness</h1>
+    </header>
+
+    <article class="container">
         <p class="intro-lead">This article dives deep into the hidden roots of emotional chaos, exposing what really fuels the inner storm that goes beyond life’s everyday challenges. Prepare to uncover the true forces shaping your emotions and mindset!</p>
 
         <h2>The 5 Essential Emotional Needs</h2>
-        <p>The frustration of core emotional needs, especially during childhood, can lead to the development of negative early maladaptive patterns. These are persistent patterns of negative thoughts, emotions, sensations, and memories that shape how we view ourselves, others, and the world.</p>
+        <p>The frustration of core emotional needs, especially during childhood, can lead to the development of negative maladaptive patterns. These patterns—or schemas—shape how we view ourselves and the world.</p>
 
-        <div class="diagram">
-            
+        <div class="needs-box">
+            <p><strong>1. Secure Attachments:</strong> Safety, stability, and acceptance in relationships.</p>
+            <p><strong>2. Autonomy & Identity:</strong> Feeling independent and capable.</p>
+            <p><strong>3. Freedom of Expression:</strong> Expressing needs authentically without fear.</p>
+            <p><strong>4. Spontaneity and Play:</strong> Creativity, enjoyment, and relaxation.</p>
+            <p><strong>5. Realistic Limits:</strong> Boundaries that foster self-regulation and balance.</p>
         </div>
 
-        <div class="needs-grid">
-            <p><strong>1. Secure Attachments to Others:</strong> The need for safety, stability, and acceptance.</p>
-            <p><strong>2. Autonomy & Identity:</strong> The need to feel independent and capable.</p>
-            <p><strong>3. Freedom of Expression:</strong> The need to express valid needs and emotions authentically.</p>
-            <p><strong>4. Spontaneity and Play:</strong> The need for creativity, enjoyment, and relaxation.</p>
-            <p><strong>5. Realistic Limits:</strong> The need for boundaries that foster self-regulation.</p>
-        </div>
-
-        <h3>How Needs Become Negative Patterns</h3>
-        <p><strong>Toxic Frustration:</strong> When support is absent, leading to feelings of emptiness.<br>
-        <strong>Traumatization:</strong> Abuse creates a belief that others will always harm or neglect you.<br>
-        <strong>Too Much of a Good Thing:</strong> Overprotection prevents the development of independence.<br>
-        <strong>Selective Internalization:</strong> Absorbing the negative behaviors or victim roles of parents.</p>
+        
 
         <h2>The 18 Maladaptive Patterns</h2>
+        <p>When these needs go unmet, the mind develops these 18 specific patterns across five clinical categories:</p>
+
+        <h3>Category I: Disconnection and Rejection</h3>
+        <p><em>Expected needs for security, stability, and nurturance will not be met. Usually stems from detached or cold environments.</em></p>
+        <div class="schema-list">
+            <div class="schema-item"><strong>1. Abandonment/Instability:</strong> Fear that supporters are unreliable or will leave.</div>
+            <div class="schema-item"><strong>2. Mistrust/Abuse:</strong> Expectation that others will harm, cheat, or manipulate you.</div>
+            <div class="schema-item"><strong>3. Emotional Deprivation:</strong> Belief that your need for nurturance, empathy, or protection will never be met.</div>
+            <div class="schema-item"><strong>4. Defectiveness/Shame:</strong> Feeling inherently flawed, unworthy, or unlovable.</div>
+            <div class="schema-item"><strong>5. Social Isolation:</strong> Feeling disconnected or different from the rest of the world.</div>
+        </div>
+
+        <h3>Category II: Impaired Autonomy and Performance</h3>
+        <p><em>Beliefs that hinder your ability to function independently or perform effectively.</em></p>
+        <div class="schema-list">
+            <div class="schema-item"><strong>6. Dependence/Incompetence:</strong> Belief that you cannot manage daily tasks without significant help.</div>
+            <div class="schema-item"><strong>7. Vulnerability to Harm:</strong> Exaggerated fear of imminent disaster or catastrophe.</div>
+            <div class="schema-item"><strong>8. Enmeshment:</strong> Excessive emotional dependence at the cost of your personal growth.</div>
+            <div class="schema-item"><strong>9. Failure:</strong> The belief that you are destined to fail or are inadequate compared to peers.</div>
+        </div>
+
+        <h3>Category III: Impaired Limits</h3>
+        <p><em>Difficulty with personal responsibility, boundaries, and long-term goals.</em></p>
+        <div class="schema-list">
+            <div class="schema-item"><strong>10. Entitlement/Grandiosity:</strong> Belief that you are superior or entitled to special privileges.</div>
+            <div class="schema-item"><strong>11. Insufficient Self-Control:</strong> Difficulty exercising discipline or frustration tolerance.</div>
+        </div>
+
+        <h3>Category IV: Other-Directedness</h3>
+        <p><em>Excessive focus on meeting others' needs to gain love or avoid conflict.</em></p>
+        <div class="schema-list">
+            <div class="schema-item"><strong>12. Subjugation:</strong> Surrendering control to avoid anger or abandonment.</div>
+            <div class="schema-item image-trigger"><strong>13. Self-Sacrifice:</strong> Prioritizing others to avoid guilt or conflict.</div>
+            <div class="schema-item"><strong>14. Approval/Recognition Seeking:</strong> Dependency on external validation for self-esteem.</div>
+        </div>
+
         
-        <div class="schema-category">
-            <h3>Disconnection and Rejection</h3>
-            <p><em>Family environments that were cold, neglectful, or unpredictable.</em></p>
-            <p><strong>1. Abandonment:</strong> The belief that support is unreliable.<br>
-            <strong>2. Mistrust/Abuse:</strong> The expectation that others will harm or manipulate you.<br>
-            <strong>3. Emotional Deprivation:</strong> The belief that nurturance, empathy, or protection will never be met.<br>
-            <strong>4. Defectiveness/Shame:</strong> Feeling inherently flawed or unlovable.<br>
-            <strong>5. Social Isolation:</strong> A sense of being excluded or different from others.</p>
+
+        <h3>Category V: Overvigilance and Inhibition</h3>
+        <p><em>Excessive focus on controlling emotions and thoughts at the expense of well-being.</em></p>
+        <div class="schema-list">
+            <div class="schema-item"><strong>15. Negativity/Pessimism:</strong> Chronic focus on negative outcomes and worry.</div>
+            <div class="schema-item"><strong>16. Emotional Inhibition:</strong> Suppressing emotions and affection to avoid disapproval.</div>
+            <div class="schema-item"><strong>17. Unrelenting Standards:</strong> Belief that you must meet impossible internal rules to avoid failure.</div>
+            <div class="schema-item"><strong>18. Punitiveness:</strong> Belief that mistakes should be harshly punished.</div>
         </div>
 
-        <div class="schema-category">
-            <h3>Impaired Autonomy</h3>
-            <p><strong>6. Dependence:</strong> Feeling unable to manage everyday tasks alone.<br>
-            <strong>7. Vulnerability to Harm:</strong> Exaggerated fear of imminent catastrophe.<br>
-            <strong>8. Enmeshment:</strong> Excessive emotional dependence at the cost of the self.<br>
-            <strong>9. Failure:</strong> The belief that one is destined to be inadequate.</p>
+        <div class="coping-section">
+            <h3>Coping Modes</h3>
+            <p>Coping modes are the strategies (Fight, Flight, or Freeze) we use to manage the pain of these patterns. While they provide temporary relief, they reinforce the cycle.</p>
+            <ul>
+                <li><strong>Overcompensation (Fight):</strong> Doing the opposite of the belief to hide the pain.</li>
+                <li><strong>Avoidance (Flight):</strong> Distancing from situations that trigger the pattern.</li>
+                <li><strong>Surrender (Freeze):</strong> Accepting the pattern as truth and repeating the cycle.</li>
+            </ul>
         </div>
 
-        <div class="diagram">
-            
-        </div>
+        <p style="margin-top: 60px; text-align: center; font-weight: 600;">
+            Meli Pil, MHC-LP | Brooklyn, NY | In-Person Therapy
+        </p>
+    </article>
 
-        <div class="schema-category">
-            <h3>Impaired Limits & Other-Directedness</h3>
-            <p><strong>10. Entitlement:</strong> Feeling superior or disregarding social norms.<br>
-            <strong>11. Insufficient Self-Control:</strong> Difficulty exercising frustration tolerance.<br>
-            <strong>12. Subjugation:</strong> Surrendering control to avoid conflict.<br>
-            <strong>13. Self-Sacrifice:</strong> Prioritizing others to avoid guilt.<br>
-            <strong>14. Approval-Seeking:</strong> Decisions based on external validation rather than the self.</p>
-        </div>
+    <footer>
+        &copy; 2026 Meli Pil Therapy. All Rights Reserved.
+    </footer>
 
-        <h2>Understanding Coping Modes</h2>
-        <p>A coping mode refers to the strategies we develop to manage or avoid the emotional pain from these patterns. While they provide temporary relief, they don't heal the root.</p>
-
-        <div class="coping-box">
-            <p><strong>1. Overcompensation (Fight):</strong> Adopting the opposite behavior of the negative belief (e.g., striving for perfection to hide feeling flawed).</p>
-            <p><strong>2. Avoidance (Flight):</strong> Distancing oneself from situations that trigger the pain (e.g., substance use or avoiding intimacy).</p>
-            <p><strong>3. Surrender (Freeze):</strong> Giving in to the pattern and accepting it as true (e.g., choosing partners who repeat the childhood neglect).</p>
-        </div>
-
-        <p style="margin-top: 50px;">By naming these modes and patterns, we begin the work of discovery and growth. <strong>In-Person sessions with Meli Pil, MHC-LP in Brooklyn</strong> offer the space to unpack these cycles and move toward clarity.</p>
-    </div>
 </body>
 </html>
