@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meli Pil | The Architecture of the Interior</title>
+    <title>Meli Pil | The Architecture of Transformation</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #060606;
+            --bg: #050505;
             --accent: #c5a059;
             --surface: #0f0f0f;
             --text: #ffffff;
-            --dim: rgba(255,255,255,0.5);
+            --dim: rgba(255,255,255,0.6);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,78 +23,77 @@
             overflow-x: hidden;
         }
 
-        /* Nav */
+        /* --- Global Elements --- */
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; }
+        .btn-gold {
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--accent);
+            color: var(--accent); text-transform: uppercase; letter-spacing: 4px;
+            font-size: 0.75rem; cursor: pointer; transition: 0.4s; text-decoration: none;
+        }
+        .btn-gold:hover { background: var(--accent); color: #000; box-shadow: 0 0 40px rgba(197,160,89,0.3); }
+
+        /* --- Navigation --- */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 5%;
             display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-            backdrop-filter: blur(5px);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            backdrop-filter: blur(10px);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px; }
-        nav a { color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; margin-left: 20px; opacity: 0.7; transition: 0.3s; }
-        nav a:hover { opacity: 1; color: var(--accent); }
-
-        /* Sections */
-        section { 
-            min-height: 100vh; padding: 120px 8%; position: relative; 
-            display: flex; align-items: center; justify-content: center;
+        .logo { font-size: 1.2rem; letter-spacing: 3px; }
+        .nav-links a { 
+            color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; 
+            text-transform: uppercase; margin-left: 25px; opacity: 0.7; transition: 0.3s;
         }
+        .nav-links a:hover { opacity: 1; color: var(--accent); }
 
-        /* Hero with Animation */
+        /* --- Hero Section --- */
         .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.3), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
             background-size: cover; background-position: center; text-align: center;
         }
-        .hero h1 { 
-            font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 6rem); 
-            font-weight: 400; line-height: 1; margin-bottom: 20px;
-        }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); margin-bottom: 20px; }
 
-        /* Video Modal Overlay */
-        #videoOverlay {
+        /* --- Cinematic Video Modal --- */
+        #videoModal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: #000; z-index: 2000; display: none; align-items: center; justify-content: center;
         }
-        .close-video {
-            position: absolute; top: 40px; right: 40px; color: #fff;
-            cursor: pointer; letter-spacing: 3px; font-size: 0.8rem; border: 1px solid #333; padding: 10px 20px;
+        .close-vid { position: absolute; top: 30px; right: 30px; color: #fff; cursor: pointer; letter-spacing: 2px; border: 1px solid #333; padding: 10px 20px; }
+
+        /* --- Content Blocks --- */
+        section { padding: 120px 8%; }
+        .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+        .img-frame { position: relative; width: 100%; }
+        .img-frame img { width: 100%; border-radius: 2px; filter: grayscale(15%); }
+        .accent-border { position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 1px solid var(--accent); z-index: -1; }
+
+        /* --- Articles (Visual Grid) --- */
+        .article-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 25px; margin-top: 50px; 
+        }
+        .article-card {
+            height: 450px; position: relative; display: flex; align-items: flex-end;
+            padding: 35px; text-decoration: none; color: #fff; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .article-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; opacity: 0.4; transition: 0.6s; }
+        .article-card:hover img { opacity: 0.6; transform: scale(1.05); }
+        .article-card h3 { font-size: 1.8rem; position: relative; }
+
+        /* --- Footer / Consult --- */
+        .consult-section {
+            padding: 180px 5%; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('pexels-raybilcliff-1672813.jpg') fixed center/cover;
         }
 
-        /* Content Grid */
-        .split { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%;
-        }
-        .img-container { position: relative; width: 100%; }
-        .img-container img { width: 100%; height: auto; border-radius: 2px; filter: grayscale(10%); }
-        .img-border { 
-            position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; 
-            border: 1px solid var(--accent); z-index: -1; 
-        }
-
-        /* Play Button */
-        .play-trigger {
-            display: inline-block; margin-top: 30px; padding: 15px 40px;
-            border: 1px solid var(--accent); color: var(--accent);
-            text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
-            font-size: 0.8rem; cursor: pointer; transition: 0.4s;
-        }
-        .play-trigger:hover { background: var(--accent); color: #000; box-shadow: 0 0 30px rgba(197,160,89,0.3); }
-
-        /* Articles */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
-        .card { 
-            background: var(--surface); padding: 40px; border: 1px solid #1a1a1a; 
-            transition: 0.4s; text-decoration: none; color: #fff;
-        }
-        .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 15px; }
-
-        /* Mobile Adjustments */
+        /* --- Mobile --- */
         @media (max-width: 900px) {
-            .split { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            nav .nav-links { display: none; }
-            section { padding: 80px 5%; }
+            .split { grid-template-columns: 1fr; text-align: center; }
+            .nav-links { display: none; }
             .hero h1 { font-size: 3rem; }
+            section { padding: 80px 5%; }
         }
     </style>
 </head>
@@ -110,89 +109,89 @@
         </div>
     </nav>
 
-    <div id="videoOverlay">
-        <div class="close-video" onclick="closeVideo()">✕ EXIT EXPERIENCE</div>
-        <div style="width: 90%; max-width: 1100px; aspect-ratio: 16/9;">
-            <iframe id="ytPlayer" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    <div id="videoModal">
+        <div class="close-vid" onclick="closeModal()">✕ CLOSE EXPERIENCE</div>
+        <div style="width: 90%; max-width: 1000px; aspect-ratio: 16/9;">
+            <iframe id="player" width="100%" height="100%" src="" frameborder="0" allow="autoplay; encrypted-media;" allowfullscreen></iframe>
         </div>
     </div>
 
-    <section class="hero">
+    <header class="hero">
         <div style="max-width: 900px;">
-            <h1 style="color: var(--accent);">THE ART OF <br> BECOMING</h1>
-            <p style="opacity: 0.8; font-weight: 200; letter-spacing: 2px;">Beyond symptoms. Into the architecture of the self.</p>
-            <div class="play-trigger" onclick="openVideo()">Watch Introduction</div>
+            <h1 style="color: var(--accent);">THE INTERIOR ARCHITECTURE</h1>
+            <p style="letter-spacing: 3px; font-weight: 200; margin-bottom: 30px;">TRANSFORMATION WHERE WORDS END.</p>
+            <div class="btn-gold" onclick="openModal()">Watch Introduction</div>
         </div>
-    </section>
+    </header>
 
     <section id="about" style="background: var(--surface);">
         <div class="split">
-            <div class="img-container">
+            <div class="img-frame">
                 <img src="IMG_1860.jpg" alt="Meli Pil">
-                <div class="img-border"></div>
+                <div class="accent-border"></div>
             </div>
             <div>
-                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 25px;">The Guide</h2>
-                <p>My approach is rooted in exploration. Rather than simply identifying problems, I work with you to uncover the inner world that drives your patterns. Therapy is an emotional journey—a collaborative effort to name and process what was previously unarticulated.</p>
+                <h2 style="font-size: 3.5rem; color: var(--accent); margin-bottom: 25px;">The Guide</h2>
+                <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
+                <br>
+                <p>Therapy is an opportunity to name, process, and make sense of feelings that have been difficult to access. Together, we create a space for curiosity and transformation.</p>
             </div>
         </div>
     </section>
 
     <section id="philosophy">
         <div class="split" style="direction: rtl;">
-            <div class="img-container" style="direction: ltr;">
-                <img src="pexels-anniroenkae-5278835.jpg" alt="Complex Patterns">
-                <div class="img-border" style="left: -20px; right: 20px;"></div>
+            <div class="img-frame" style="direction: ltr;">
+                <img src="pexels-anniroenkae-5278835.jpg" alt="Complexity">
+                <div class="accent-border" style="left: -20px; right: 20px;"></div>
             </div>
             <div style="direction: ltr;">
-                <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; margin-bottom: 25px;">The Live Encounter</h2>
-                <p>By blending depth-oriented conversation with experiential movement, we engage the parts of yourself that have been avoided or projected. We don't just talk about change; we experience the shift in the room, aligning your life with your most authentic values.</p>
+                <h2 style="font-size: 3.5rem; margin-bottom: 25px;">The Live Encounter</h2>
+                <p>I incorporate conversation and experiential exercises to help you engage with emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided, denied, or projected onto others.</p>
+                <br>
+                <p>By examining recurring patterns in the here-and-now, we shift toward a life more aligned with your authentic values.</p>
             </div>
         </div>
     </section>
 
-    <section id="insights" style="background: #000; flex-direction: column; align-items: flex-start;">
-        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 50px;">Library of Insights</h2>
-        <div class="grid">
-            <a href="#" class="card">
-                <h3>The Somatic Anchor</h3>
-                <p>How the body holds the logic of our history.</p>
+    <section id="insights" style="background: #000;">
+        <h2 style="font-size: 3rem; margin-bottom: 40px;">Library of Insights</h2>
+        <div class="article-grid">
+            <a href="#" class="article-card">
+                <img src="pexels-octoptimist-3546132.jpg" alt="The Room">
+                <h3>The Somatic Chair</h3>
             </a>
-            <a href="#" class="card">
-                <h3>Character Structure</h3>
-                <p>Understanding the architecture of your internal defenses.</p>
+            <a href="#" class="article-card">
+                <img src="pexels-will-74514991-8531908.jpg" alt="Rhythm">
+                <h3>Rhythm & Rupture</h3>
             </a>
-            <a href="#" class="card">
-                <h3>Symbol & Sensation</h3>
-                <p>Moving from raw emotion to meaningful integration.</p>
+            <a href="#" class="article-card">
+                <img src="pexels-philippedonn-1133957.jpg" alt="The Bird">
+                <h3>The Art of Noticing</h3>
             </a>
         </div>
     </section>
 
-    <section id="consult" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('pexels-raybilcliff-1672813.jpg') fixed center/cover; text-align: center;">
-        <div style="max-width: 700px;">
-            <h2 style="font-family: 'Playfair Display'; font-size: 4rem;">The Threshold</h2>
-            <p style="margin-bottom: 40px;">For those seeking a deeper encounter with themselves.</p>
-            <a href="mailto:consultation@melipil.com" class="play-trigger">Request a Consultation</a>
-        </div>
+    <section id="consult" class="consult-section">
+        <h2 style="font-size: 4rem; margin-bottom: 20px;">The Threshold</h2>
+        <p style="margin-bottom: 40px; opacity: 0.8;">A space for those seeking depth and alignment.</p>
+        <a href="mailto:consultation@melipil.com" class="btn-gold">Request Consultation</a>
     </section>
 
     <script>
-        // The Video URL must be in /embed/ format for websites
-        const videoURL = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&rel=0&modestbranding=1";
+        // YouTube Embed URL Fix
+        const embedURL = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1&rel=0";
 
-        function openVideo() {
-            document.getElementById('videoOverlay').style.display = 'flex';
-            document.getElementById('ytPlayer').src = videoURL;
-            document.body.style.overflow = 'hidden'; // Lock scrolling
+        function openModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+            document.getElementById('player').src = embedURL;
+            document.body.style.overflow = 'hidden';
         }
-
-        function closeVideo() {
-            document.getElementById('videoOverlay').style.display = 'none';
-            document.getElementById('ytPlayer').src = "";
-            document.body.style.overflow = 'auto'; // Unlock scrolling
+        function closeModal() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('player').src = "";
+            document.body.style.overflow = 'auto';
         }
     </script>
-
 </body>
 </html>
