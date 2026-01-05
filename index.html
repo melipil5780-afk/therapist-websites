@@ -14,6 +14,7 @@
   --text:#ffffff;
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
@@ -22,6 +23,7 @@ body{
   font-family:'Montserrat',sans-serif;
   line-height:1.8;
   letter-spacing:.02em;
+  overflow-x:hidden;
 }
 
 /* NAVIGATION */
@@ -36,18 +38,16 @@ nav{
 .nav a{ color:#fff; text-decoration:none; font-size:.75rem; letter-spacing:2px; margin-left:32px; opacity:.65; transition: .3s;}
 .nav a:hover{opacity:1;color:var(--accent);}
 
-/* HERO SECTION */
+/* HERO WITH PARALLAX */
 .hero{
   height:100vh;
-  width:100%;
   display:flex; align-items:center; justify-content:center; text-align:center;
-  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)),
-              url('images/hero-architecture.jpg') center/cover no-repeat fixed;
+  background: url('hero-architecture.jpg') center/cover no-repeat fixed;
   position:relative;
 }
 .hero::after{
   content:""; position:absolute; inset:0;
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.35);
 }
 .hero-inner{ position:relative; z-index:2; opacity:0; transform:translateY(30px); transition:2.5s ease; }
 .hero.visible .hero-inner{ opacity:1; transform:none; }
@@ -55,14 +55,14 @@ nav{
 .hero p{ font-weight:200; letter-spacing:4px; text-transform:uppercase; font-size:0.85rem; }
 
 /* SECTIONS */
-section{ padding:100px 10%; position:relative; }
+section{ padding:120px 10%; position:relative; overflow:hidden; }
 .reveal{ opacity:0; transform:translateY(40px); transition:1.5s ease; }
 .reveal.visible{ opacity:1; transform:none; }
 h2{ font-family:'Playfair Display',serif; font-size:2.6rem; margin-bottom:25px; color:var(--accent); }
 
 /* SPLIT LAYOUT */
-.split{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:center; }
-.image-box img, .headshot { width:100%; display:block; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border-radius:10px; }
+.split{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:center; position:relative; }
+.image-box img, .headshot { width:100%; display:block; box-shadow: 0 30px 60px rgba(0,0,0,0.6); border-radius:10px; transition: transform 1.2s ease, opacity 1.2s ease; }
 .headshot-wrap { text-align: center; }
 .headshot { border-radius: 50%; max-width: 300px; border: 2px solid var(--accent); padding: 5px; }
 
@@ -84,9 +84,11 @@ iframe { width: 100%; height: 100%; border: none; border-radius:10px; }
     display:flex; flex-direction:column; justify-content:flex-end;
     border: 1px solid rgba(255,255,255,0.05); overflow:hidden; border-radius:15px;
     background: var(--surface);
+    transition: transform 1s ease;
 }
-.card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:0.3; transition: 0.8s; border-radius:15px; }
+.card img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-1; opacity:0.3; transition: 1s; border-radius:15px; }
 .card:hover img{ opacity: 0.5; transform: scale(1.05); }
+.card:hover{ transform: translateY(-10px); }
 .card h3{ font-family:'Playfair Display',serif; font-size:1.6rem; margin-bottom:10px; color: var(--accent); }
 
 /* FOOTER */
@@ -95,7 +97,9 @@ footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,25
 .linkedin-icon:hover { color: #fff; transform: scale(1.1); }
 .copyright{ font-size: 0.75rem; opacity: 0.4; margin-top: 25px; letter-spacing: 2px; text-transform: uppercase; }
 
+/* RESPONSIVE */
 @media(max-width:900px){ .split{ grid-template-columns: 1fr; text-align: center; gap:40px;} }
+
 </style>
 </head>
 <body>
@@ -111,28 +115,28 @@ footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,25
 
 <section class="hero" id="hero">
   <div class="hero-inner">
-    <h1>The Interior Architecture</h1>
-    <p>Psychotherapy & Change</p>
+    <h1>Interior Architecture of Change</h1>
+    <p>Guiding Emotion, Reflection & Transformation</p>
   </div>
 </section>
 
 <section id="meet" class="reveal">
     <div class="split">
         <div class="headshot-wrap">
-            <img src="images/meli-headshot.png" class="headshot" alt="Meli Pil">
+            <img src="meli-headshot.png" class="headshot" alt="Meli Pil">
         </div>
         <div class="text-block">
             <h2>Meet Meli</h2>
-            <p>My approach to therapy is collaborative and rooted in exploration. Rather than simply identifying problems, I work with my clients to help them uncover and understand their inner worlds.</p>
-            <p>Therapy is an emotional journey—an opportunity to name and make sense of feelings that may have been difficult to articulate before. Together, we create a space where emotions are symbolized and transformed.</p>
+            <p>Explore the inner landscapes of emotion and reflection. Together we trace currents shaping choices, relationships, and sense of self.</p>
+            <p>Through guided presence, emotions emerge and transform into insight. This journey is deeply personal yet anchored in collaboration.</p>
         </div>
     </div>
 </section>
 
-<section style="background: #080808; text-align: center;" class="reveal">
+<section style="background:#080808; text-align:center;" class="reveal">
     <h2>Introduction</h2>
     <div class="video-wrap">
-        <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" allowfullscreen></iframe>
+        <iframe src="ujKka2Eo9rU" allowfullscreen></iframe>
     </div>
 </section>
 
@@ -140,12 +144,12 @@ footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,25
     <div class="split">
         <div class="text-block">
             <h2>The Somatic Chair</h2>
-            <p>I incorporate conversation and experiential exercises like <strong>chair work</strong> to help clients engage with emotions deeply. We address avoided or denied parts of your experience with compassion and courage.</p>
-            <p>By examining recurring patterns, you can begin to shift toward a life more aligned with your authentic self.</p>
-            <a href="mailto:consultation@melipil.com" class="btn">REQUEST CONSULTATION</a>
+            <p>Experiential exercises, including <strong>chair work</strong>, help you engage with emotions safely and deeply. By attending to both body and mind, patterns shift toward authenticity.</p>
+            <p>This practice cultivates awareness, reflection, and personal growth.</p>
+            <a href="mailto:consultation@melipil.com" class="btn">Request Consultation</a>
         </div>
         <div class="image-box">
-            <img src="images/somatic-chair.jpg" alt="Somatic Therapy Chairs">
+            <img src="somatic-chair.jpg" alt="Somatic Therapy Chair">
         </div>
     </div>
 </section>
@@ -153,19 +157,19 @@ footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,25
 <section id="insights" class="reveal">
     <div class="grid">
         <div class="card">
-            <img src="images/patterns.jpg" alt="Patterns">
+            <img src="patterns.jpg" alt="Patterns">
             <h3>Lived Experience</h3>
-            <p>Tailoring the journey to your unique voice and empowering your growth.</p>
+            <p>Trace patterns with curiosity and uncover new ways of being in life and relationships.</p>
         </div>
         <div class="card">
-            <img src="images/authentic-values.jpg" alt="Growth">
-            <h3>Authentic Values</h3>
-            <p>Shifting patterns to move toward a life aligned with who you truly are.</p>
+            <img src="authentic-values.jpg" alt="Authenticity">
+            <h3>Authenticity</h3>
+            <p>Recognize and align with your deepest values, fostering integrity and coherence.</p>
         </div>
         <div class="card">
-            <img src="images/safety-discovery.jpg" alt="Clarity">
-            <h3>Safety & Discovery</h3>
-            <p>Your story unfolds at your own pace in a space of total clarity.</p>
+            <img src="safety-discovery.jpg" alt="Safety & Discovery">
+            <h3>Safety & Exploration</h3>
+            <p>Step into a space honoring your pace, where discovery feels secure and supported.</p>
         </div>
     </div>
 </section>
@@ -182,10 +186,21 @@ footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,25
 </footer>
 
 <script>
+// Scroll-triggered reveal & parallax
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const hero = document.querySelector('.hero');
+  hero.style.backgroundPositionY = -(scrolled * 0.3) + 'px'; // parallax
+  document.querySelectorAll('.image-box img').forEach(img => {
+      img.style.transform = `translateY(${scrolled*0.05}px) scale(1.02)`;
+  });
+});
+
 window.onload = () => document.getElementById('hero').classList.add('visible');
 </script>
 
