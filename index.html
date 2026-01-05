@@ -69,18 +69,20 @@ nav.scrolled{padding:18px 60px;}
     display:grid;
     place-items:center;
 }
-.hero-layer {
+.hero-bg {
     position:absolute;
     inset:0;
+    background-image:url('hero-door.jpg'); /* ← rename your first image to this */
     background-size:cover;
     background-position:center;
-    opacity:0.4;
-    transform:scale(1.05);
-    transition: transform 1.5s ease, opacity 1.5s ease;
+    transform:scale(1.1);
+    transition:transform 1.8s ease;
 }
-.hero-layer.back { filter:blur(6px); opacity:0.35; z-index:1; }
-.hero-layer.mid { filter:blur(2px); opacity:0.5; z-index:2; }
-.hero-layer.front { filter:brightness(0.9); opacity:0.25; z-index:3; }
+.hero-overlay {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+}
 .hero-text {
     position:relative;
     z-index:5;
@@ -91,9 +93,14 @@ nav.scrolled{padding:18px 60px;}
     text-align:center;
     max-width:1000px;
     line-height:1.2;
+    text-shadow:0 2px 20px rgba(0,0,0,0.4);
     opacity:0;
     transform:translateY(40px);
-    transition:opacity 1.6s ease, transform 1.6s ease;
+    transition:opacity 1.8s ease, transform 1.8s ease;
+}
+.hero-text.active {
+    opacity:1;
+    transform:translateY(0);
 }
 
 /* MAIN CONTENT */
@@ -135,15 +142,15 @@ main{
     height:100%;
     object-fit:cover;
     filter:blur(2px) brightness(0.95);
-    transform:scale(1);
-    transition: transform 2s ease, filter 2s ease;
+    transform:scale(1.05);
+    transition: transform 2.5s ease, filter 2.5s ease;
 }
 .cinematic-jewel img.active{
-    transform:scale(1.1);
+    transform:scale(1.15);
     filter:blur(0) brightness(1);
 }
 
-/* JOURNAL GRID AS LIVED EXPERIENCE */
+/* JOURNAL GRID */
 .journal h2{
     text-align:center;
     font-family:'Playfair Display';
@@ -154,7 +161,6 @@ main{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:40px;
-    position:relative;
 }
 .card{
     background:var(--sand);
@@ -196,12 +202,63 @@ main{
     transform:translateY(0);
 }
 
+/* FOOTER / CONSULTATION */
+footer{
+    position:relative;
+    background:var(--forest);
+    color:white;
+    text-align:center;
+    padding:200px 10% 160px;
+    overflow:hidden;
+}
+footer::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:url('forest-path.jpg'); /* ← rename your third image to this */
+    background-size:cover;
+    background-position:center;
+    opacity:0.45;
+}
+footer::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(44,62,80,0.35); /* soft mist overlay */
+}
+footer > * {
+    position:relative;
+    z-index:2;
+}
+footer h2{
+    font-family:'Playfair Display';
+    font-style:italic;
+    font-size:3.6rem;
+    margin-bottom:20px;
+}
+footer a{
+    margin-top:40px;
+    display:inline-block;
+    padding:20px 60px;
+    border:1px solid white;
+    text-decoration:none;
+    letter-spacing:3.5px;
+    font-size:.78rem;
+    color:white;
+    transition:0.5s;
+}
+footer a:hover{
+    background:white;
+    color:var(--forest);
+}
+
 @media(max-width:900px){
     .split{grid-template-columns:1fr;}
     .nav-links{display:none;}
     main{padding:140px 8%;}
     .hero-text{font-size:clamp(2.8rem,7vw,4.5rem);}
     .grid{gap:30px;}
+    footer{padding:160px 8%;}
 }
 </style>
 </head>
@@ -219,9 +276,8 @@ main{
 
 <!-- HERO -->
 <section class="hero">
-    <div class="hero-layer back" style="background-image:url('pexels-packermann-1666012.jpg');"></div>
-    <div class="hero-layer mid" style="background-image:url('pexels-philippedonn-1133957.jpg');"></div>
-    <div class="hero-layer front" style="background-image:url('pexels-yunustug-8337508.jpg');"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
     <h1 class="hero-text">Where understanding begins to change how things feel.</h1>
 </section>
 
@@ -235,7 +291,7 @@ main{
             <p>By staying close to emotional experience as it unfolds, new understanding can emerge — often in ways that begin to feel different, not just make sense.</p>
         </div>
         <div class="cinematic-jewel">
-            <img src="pexels-philippedonn-1133957.jpg" alt="Misty landscape with reflection">
+            <img src="interior-room.jpg" alt="Serene therapy room with natural light"> <!-- ← rename your second image to this -->
         </div>
     </section>
 
@@ -268,11 +324,11 @@ main{
     </section>
 </main>
 
-<!-- FOOTER -->
-<footer id="contact" style="background:var(--forest); color:white; text-align:center; padding:160px 10%;">
-    <h2 style="font-family:'Playfair Display';font-style:italic; font-size:3.2rem;">Begin the Work</h2>
+<!-- FOOTER / CONSULTATION -->
+<footer id="contact">
+    <h2>Begin the Work</h2>
     <p>In-person psychotherapy in Brooklyn, NY</p>
-    <a href="mailto:hello@melipil.com" class="btn" style="margin-top:40px; display:inline-block; padding:20px 60px; border:1px solid white; text-decoration:none; letter-spacing:3.5px; font-size:.78rem; color:white; transition:0.5s;">Request a Consultation</a>
+    <a href="mailto:hello@melipil.com">Request a Consultation</a>
 </footer>
 
 <script>
@@ -286,31 +342,32 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold:0.15 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+// HERO TEXT FADE IN + PARALLAX ZOOM
+window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    const heroBg = document.querySelector('.hero-bg');
+    const heroText = document.querySelector('.hero-text');
+    
+    // Parallax zoom
+    heroBg.style.transform = `scale(${1.1 + scroll * 0.0003})`;
+    
+    // Text fade in
+    if(scroll > 100) heroText.classList.add('active');
+    
+    // Nav shrink
+    document.querySelector('nav').classList.toggle('scrolled', scroll > 80);
+});
+
 // CINEMATIC JEWEL ANIMATION
 const jewel = document.querySelector('.cinematic-jewel img');
 const jewelObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
         if(e.isIntersecting){
-            e.target.classList.add('active');
-        } else {
-            e.target.classList.remove('active');
+            jewel.classList.add('active');
         }
     });
-}, { threshold:0.35 });
+}, { threshold:0.4 });
 jewelObserver.observe(jewel);
-
-// HERO PARALLAX
-window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    document.querySelector('.hero-layer.back').style.transform = `translateY(${scroll * 0.1}px) scale(1.05)`;
-    document.querySelector('.hero-layer.mid').style.transform = `translateY(${scroll * 0.2}px) scale(1.05)`;
-    document.querySelector('.hero-layer.front').style.transform = `translateY(${scroll * 0.3}px) scale(1.05)`;
-
-    const heroText = document.querySelector('.hero-text');
-    if(scroll > 50) heroText.style.opacity = 1;
-
-    document.querySelector('nav').classList.toggle('scrolled', scroll > 80);
-});
 </script>
 
 </body>
