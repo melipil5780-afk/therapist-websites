@@ -1,212 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meli Pil, LMHC | Psychotherapy & Personhood</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink: #141414;
-  --paper: #f8f5f0;
-  --sage-dark: #3e4a42;
-  --gold: #b08d57;
-  --shadow: rgba(0,0,0,0.35);
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meli Pil | Synthesis of the Self</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #c5a059; /* Muted Gold */
+            --text-dim: rgba(255,255,255,0.6);
+            --surface: #0f0f0f;
+        }
 
-/* BASE */
-*{box-sizing:border-box; margin:0; padding:0;}
-body{
-  background: var(--ink);
-  color: var(--paper);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            color: #fff; 
+            font-family: 'Montserrat', sans-serif; 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-/* NOISE OVERLAY */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 9999;
-}
+        /* Cinematic Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-/* TYPOGRAPHY */
-h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; text-shadow: 0 1px 3px var(--shadow); }
-.label { font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: block; }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
+            background-size: cover;
+            background-position: center;
+            animation: zoomOut 20s infinite alternate;
+            z-index: -1;
+        }
 
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; width: 100%;
-  padding: 40px 60px;
-  display: flex; justify-content: space-between;
-  z-index: 1000;
-  mix-blend-mode: difference;
-}
+        @keyframes zoomOut { from { transform: scale(1); } to { transform: scale(1.1); } }
 
-/* HERO - Threshold Entry */
-.section-hero {
-  height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-  text-align: center;
-  overflow: hidden;
-}
-.hero-img {
-  position: absolute; inset: 0;
-  background: url('https://your-hosted-unseen-gate-door.jpg') center/cover no-repeat; /* Your misty forest door image */
-  filter: brightness(0.6) contrast(1.15);
-  z-index: -1;
-  animation: subtlePulse 25s infinite ease-in-out;
-}
-@keyframes subtlePulse { 0%,100% { transform: scale(1.05); } 50% { transform: scale(1.1); } }
-.hero-title { font-size: clamp(3rem, 7vw, 6rem); font-style: italic; max-width: 1000px; padding: 0 20px; opacity: 0; animation: fadeIn 3s ease forwards 1s; }
+        .hero-content { text-align: center; max-width: 900px; padding: 20px; }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 6vw, 5rem); 
+            font-weight: 400; 
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
 
-/* ABOUT - Unveiling Patterns */
-.section-about {
-  background: var(--paper);
-  color: var(--ink);
-  padding: 160px 10%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 100px;
-  position: relative;
-}
-.about-overlay { position: absolute; inset: 0; background: url('https://your-hosted-mirror-hand.jpg') center/cover no-repeat; opacity: 0.08; filter: blur(2px); pointer-events: none; } /* Your mirror hand as subtle pattern overlay */
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 40px; display: flex; justify-content: space-between;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+        }
+        .nav-link { color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-left: 30px; opacity: 0.7; transition: 0.3s; }
+        .nav-link:hover { opacity: 1; color: var(--accent); }
 
-/* STICKY WORK - Deep Relational Descent */
-.sticky-container { height: 450vh; position: relative; }
-.sticky-element { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
-.sticky-img { position: absolute; inset: 0; background: url('https://your-hosted-armchair-room.jpg') center/cover no-repeat; filter: brightness(0.45); transform: scale(1.1); transition: all 1.2s ease; } /* Your cozy armchair room */
-.sticky-content { position: relative; z-index: 2; padding-left: 10%; max-width: 600px; opacity: 0; transition: opacity 1.8s ease, transform 1.8s ease; transform: translateY(40px); }
-.sticky-content.visible { opacity: 1; transform: translateY(0); }
+        /* Content Sections */
+        .section { padding: 150px 10%; position: relative; }
+        
+        .video-wrapper {
+            width: 100%; max-width: 1000px; margin: 60px auto;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 15px; background: var(--surface);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        }
 
-/* GALLERY - Unconscious Echo Exhibits */
-.section-gallery { background: var(--paper); color: var(--ink); padding: 140px 0; }
-.exhibit { display: flex; align-items: center; min-height: 85vh; padding: 0 10%; margin-bottom: 140px; opacity: 0; transition: opacity 1.8s ease, transform 1.8s ease; transform: translateY(80px); }
-.exhibit.visible { opacity: 1; transform: translateY(0); }
-.exhibit-art { flex: 1.2; height: 75vh; overflow: hidden; box-shadow: 0 15px 40px var(--shadow); border-radius: 4px; }
-.art-inner { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 4s ease; }
-.exhibit:hover .art-inner { transform: scale(1.15); }
-.exhibit.alt { flex-direction: row-reverse; }
+        .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
 
-/* FOOTER - Integration */
-footer { padding: 140px 10%; text-align: center; background: var(--sage-dark); position: relative; }
-.footer-overlay { position: absolute; inset: 0; background: url('https://your-hosted-unseen-gate-door.jpg') center/cover no-repeat; opacity: 0.12; filter: brightness(0.7); pointer-events: none; } /* Echo your door for closure */
+        .about-img {
+            width: 100%; height: 600px;
+            background: url('IMG_1860.jpg') center/cover;
+            filter: grayscale(30%);
+            border-left: 1px solid var(--accent);
+        }
 
-@media (max-width: 900px) {
-  .section-about, .exhibit { grid-template-columns: 1fr; flex-direction: column; gap: 50px; }
-}
-</style>
+        /* Articles / Insights Grid */
+        .insights-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px;
+        }
+        .insight-card {
+            background: var(--surface); height: 450px; 
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 30px; position: relative; overflow: hidden;
+            border: 1px solid #1a1a1a; transition: 0.5s;
+            text-decoration: none; color: #fff;
+        }
+        .insight-card:hover { border-color: var(--accent); transform: translateY(-10px); }
+        .insight-card img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.3; z-index: 0; transition: 0.5s;
+        }
+        .insight-card:hover img { opacity: 0.5; transform: scale(1.05); }
+        .insight-card h3 { position: relative; z-index: 1; font-family: 'Playfair Display'; font-size: 1.8rem; }
+
+        /* Consultation Button */
+        .cta-btn {
+            display: inline-block; padding: 25px 60px;
+            background: transparent; border: 1px solid var(--accent);
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 5px; text-decoration: none;
+            font-size: 0.8rem; transition: 0.4s; margin-top: 40px;
+        }
+        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 50px rgba(197, 160, 89, 0.4); }
+
+        h2 { font-family: 'Playfair Display'; font-size: 3.5rem; font-weight: 400; margin-bottom: 30px; }
+        p { font-weight: 200; font-size: 1.1rem; color: var(--text-dim); }
+
+    </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo">MELI PIL</a>
-  <div class="nav-links">
-    <a href="#about">The Guide</a>
-    <a href="#work">The Work</a>
-    <a href="#gallery">Reflections</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+    <nav>
+        <div style="font-family: 'Playfair Display'; font-size: 1.2rem;">MELI PIL</div>
+        <div>
+            <a href="#work" class="nav-link">The Work</a>
+            <a href="#philosophy" class="nav-link">Philosophy</a>
+            <a href="#insights" class="nav-link">Insights</a>
+            <a href="#consult" class="nav-link">Consultation</a>
+        </div>
+    </nav>
 
-<section class="section-hero">
-  <div class="hero-img"></div>
-  <h1 class="hero-title">Cross the Threshold Into Your Inner World.</h1>
-</section>
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>The Architecture of Insight</h1>
+            <p>Moving beyond symptom toward the soul of the experience.</p>
+        </div>
+    </header>
 
-<section class="section-about" id="about">
-  <div class="about-overlay"></div>
-  <div class="about-text">
-    <span class="label">The Perspective</span>
-    <h2>A Person is Not a Diagnosis.</h2>
-    <p>My journey through inpatient clinics and psychiatric rehabilitation has brought me face-to-face with every presentation of human suffering—from the shadows of schizophrenia and bipolar experiences to the heavy silences of trauma and personality disorders.</p>
-    <p>I have learned that while a diagnosis provides a symptom map, it rarely reveals the person. I focus on the personality—the intricate patterns, the deep desires, and the unique way you make sense of the world.</p>
-  </div>
-  <div class="stats-box">
-    <em>Clinically Grounded</em>
-    <p>Experience in psych-rehab and acute clinical settings ensures that no presentation is too "heavy" or too "complex" for our space.</p>
-    <em style="margin-top:40px;">Relationally Driven</em>
-    <p>We work experientially to understand your themes and build a therapeutic alliance that achieves your specific goals.</p>
-  </div>
-</section>
+    <section class="section" id="work">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2>An Introduction</h2>
+            <p>Transformation is a live encounter. It is the process of moving from the unarticulated to the known. Watch the introduction below to understand the depth of our collaborative journey.</p>
+        </div>
+        <div class="video-wrapper">
+            <iframe width="100%" height="560" src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
 
-<div class="sticky-container" id="work">
-  <div class="sticky-element">
-    <div class="sticky-img"></div>
-    <div class="sticky-content">
-      <span class="label" style="color:white;">The Space</span>
-      <h2 style="color:white;">A Realm for the Unspoken.</h2>
-      <p style="color:rgba(255,255,255,0.8);">We move past the directional advice of the world and enter a relational space where understanding begins to change how things feel.</p>
-    </div>
-  </div>
-</div>
+    <section class="section" id="philosophy" style="background: var(--surface);">
+        <div class="split">
+            <div class="about-img"></div>
+            <div>
+                <h2>Meli Pil, MHC-LP</h2>
+                <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
+                <br>
+                <p>Therapy is an opportunity to name, process, and make sense of feelings that may have been difficult to articulate. We use the "here-and-now" relationship as a laboratory for transformation, where emotions are symbolized and recurring patterns are finally shifted.</p>
+            </div>
+        </div>
+    </section>
 
-<section class="section-gallery" id="gallery">
-  <div class="exhibit">
-    <div class="exhibit-art">
-      <div class="art-inner" style="background-image: url('https://your-hosted-mirror-hand.jpg');"></div> <!-- Your hand to mirror -->
-    </div>
-    <div class="exhibit-info">
-      <span class="label">Reflection 01</span>
-      <h3>Unlocking the Source</h3>
-      <p>Exploring how early patterns shape the adult personality and the therapeutic relationship.</p>
-      <a href="blog-1.html" class="btn-contact" style="color:var(--ink); border-color:var(--ink); padding: 12px 30px;">Read More</a>
-    </div>
-  </div>
+    <section class="section" id="insights">
+        <h2>Therapy Insights</h2>
+        <p>Reflections on character, motion, and the unspoken.</p>
+        <div class="insights-grid">
+            <a href="#" class="insight-card">
+                <img src="pexels-anniroenkae-5278835.jpg" alt="">
+                <h3>The Fractal Pattern: Why We Repeat</h3>
+            </a>
+            <a href="#" class="insight-card">
+                <img src="pexels-liubava-fedoryshyn-1833670446-28430595.jpg" alt="">
+                <h3>The Mirror & The Body</h3>
+            </a>
+            <a href="#" class="insight-card">
+                <img src="pexels-packermann-1666012.jpg" alt="">
+                <h3>Emergence from the Fog</h3>
+            </a>
+        </div>
+    </section>
 
-  <div class="exhibit alt">
-    <div class="exhibit-art">
-      <div class="art-inner" style="background-image: url('https://your-hosted-canyon-1.jpg');"></div> <!-- Your first canyon -->
-    </div>
-    <div class="exhibit-info">
-      <span class="label">Reflection 02</span>
-      <h3>The Weight of the Valley</h3>
-      <p>Moving through mood presentations by focusing on the underlying desire for connection and hope.</p>
-      <a href="blog-2.html" class="btn-contact" style="color:var(--ink); border-color:var(--ink); padding: 12px 30px;">Read More</a>
-    </div>
-  </div>
+    <section class="section" id="consult" style="text-align: center; background: url('pexels-raybilcliff-1672813.jpg') center/cover;">
+        <div style="background: rgba(0,0,0,0.7); padding: 80px; display: inline-block; width: 100%;">
+            <h2>The Invitation</h2>
+            <p>For those seeking depth, alignment, and an authentic encounter with the self.</p>
+            <a href="mailto:contact@melipil.com" class="cta-btn">Begin the Consultation</a>
+        </div>
+    </section>
 
-  <div class="exhibit">
-    <div class="exhibit-art">
-      <div class="art-inner" style="background-image: url('https://your-hosted-abstract-swirl.jpg');"></div> <!-- Your swirling abstract -->
-    </div>
-    <div class="exhibit-info">
-      <span class="label">Reflection 03</span>
-      <h3>The Language of Emotion</h3>
-      <p>Decoding schizophrenia and schizo-affective presentations as expressions of a unique inner world.</p>
-      <a href="blog-3.html" class="btn-contact" style="color:var(--ink); border-color:var(--ink); padding: 12px 30px;">Read More</a>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="footer-overlay"></div>
-  <span class="label" style="color:white;">Contact</span>
-  <h2 style="font-size:3rem; font-style:italic;">Begin the Relational Work.</h2>
-  <p style="margin-top:20px;">Brooklyn, NY | In-Person & Remote</p>
-  <a href="mailto:hello@melipil.com" class="btn-contact">Request a Consultation</a>
-</footer>
-
-<script>
-const observer = new IntersectionObserver(e => e.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }), { threshold: 0.2 });
-document.querySelectorAll('.exhibit, .sticky-content').forEach(el => observer.observe(el));
-
-window.addEventListener('scroll', () => {
-  const stickyImg = document.querySelector('.sticky-img');
-  if (stickyImg) {
-    const offset = window.scrollY - stickyImg.parentElement.parentElement.offsetTop;
-    stickyImg.style.transform = `scale(${1.1 - offset * 0.00007})`;
-    stickyImg.style.filter = `brightness(${0.45 + offset * 0.0001})`;
-  }
-});
-</script>
+    <footer style="padding: 50px; text-align: center; font-size: 0.6rem; letter-spacing: 2px; opacity: 0.5;">
+        © 2026 MELI PIL | AN ARCHITECTURE OF THE INTERIOR
+    </footer>
 
 </body>
 </html>
-
