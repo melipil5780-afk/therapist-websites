@@ -2,58 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Struggling with Depression? | Meli Pil, MHC-LP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Depression | Meli Pil, MHC-LP</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); line-height: 1.8; }
-        .hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('pexels-solce-31661850.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; }
-        .container { max-width: 800px; margin: -80px auto 100px; background: white; padding: 80px; border-radius: 12px; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        h1 { font-family: 'Playfair Display'; font-size: 3rem; text-align: center; }
-        h3 { font-family: 'Playfair Display'; color: var(--forest); margin-top: 40px; font-size: 1.8rem; }
-        .factor-card { border-bottom: 1px solid #eee; padding: 30px 0; }
+        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; --text: #333; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
+
+        .article-hero { 
+            height: 60vh; 
+            background: linear-gradient(rgba(45, 58, 48, 0.6), rgba(45, 58, 48, 0.2)), url('pexels-solce-31661850.jpg') center/cover no-repeat fixed;
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        }
+        .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 0; font-style: italic; }
+
+        .article-container { 
+            max-width: 900px; margin: -100px auto 100px; 
+            background: var(--white); padding: 80px; border-radius: 40px; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.08); position: relative; z-index: 10;
+        }
+        
+        .nav-back { position: absolute; top: 30px; left: 80px; text-decoration: none; color: var(--sage); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
+        .intro-lead { font-size: 1.3rem; color: var(--sage); font-style: italic; margin-bottom: 50px; border-left: 4px solid var(--sage); padding-left: 25px; }
+        
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--forest); margin-top: 60px; }
+        .factor-card { background: #fdfdfd; border: 1px solid #eee; padding: 30px; border-radius: 20px; margin-bottom: 25px; transition: 0.3s; }
+        .factor-card:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .factor-card strong { color: var(--forest); font-size: 1.1rem; display: block; margin-bottom: 8px; }
+
+        footer { background: var(--forest); color: var(--sand); padding: 80px 20px; text-align: center; border-radius: 60px 60px 0 0; }
+        @media (max-width: 768px) { .article-container { padding: 40px 20px; } .nav-back { left: 20px; } }
     </style>
 </head>
 <body>
-    <div class="hero"><h1>Struggling with Depression?</h1></div>
-    <div class="container">
-        <p style="color: var(--sage); font-weight: 700;">Dec. 13, 2024 | By Meli Pil, MHC-LP</p>
-        <p>Depression is a symptom experienced by many, stemming from a variety of underlying issues. Similar to how a fever signals a physical problem, depression indicates that something is going wrong in our emotional world.</p>
 
-        <div class="diagram">
-            
-        </div>
+    <header class="article-hero">
+        <h1>Struggling with Depression?</h1>
+    </header>
 
-        <div class="factor-card">
-            <h3>1. Learned Helplessness</h3>
-            <p>A condition where a person believes they have no control over their circumstances. This belief often stems from past experiences—rooted in childhood—leaving a person feeling trapped in a cycle of negativity. The work of Martin Seligman highlights how this reduces one's sense of agency.</p>
-        </div>
+    <article class="article-container">
+        <a href="index.html" class="nav-back">← BACK TO HOME</a>
+        <p class="intro-lead">Depression is more than a low mood; it is often a complex, multi-layered response to unmet needs, biological factors, and learned behaviors. Understanding the "Why" is the first step toward the "How."</p>
 
-        <div class="factor-card">
-            <h3>2. Self-Treatment Mechanisms</h3>
-            <p>We often develop strategies as children that no longer work as adults. Rumination—constantly replaying thoughts—might have been a problem-solving tool then, but now it fuels anxiety and heaviness.</p>
-        </div>
-
-        <div class="factor-card">
-            <h3>3. Dissociation</h3>
-            <p>Disconnecting from our emotional experience to cope with unbearable pain. While it numbs the feelings, it eventually leads to feeling lost or detached. Unprocessed emotions eventually "leak out" as chronic sadness.</p>
-        </div>
-
-        <div class="diagram">
-            
-        </div>
-
-        <div class="factor-card">
-            <h3>4. Avoidance and Unprocessed Emotions</h3>
-            <p>Unconsciously avoiding painful thoughts leads to expressing pain in indirect ways, like projection or secondary anger. When emotions like grief (the loss of a mother) or trauma (abuse) are not processed, they manifest as emotional heaviness.</p>
-        </div>
-
-        <div class="factor-card">
-            <h3>5. Lack of Meaning & Decision Paralysis</h3>
-            <p>Depression arises from a lack of purpose or from being overwhelmed by life's complexities. The inability to navigate choices can lead to frustration and a sense of being stuck.</p>
-        </div>
         
-        <p style="margin-top: 40px; text-align: center;"><strong>Meli Pil, MHC-LP | Brooklyn, NY | In-Person Only</strong></p>
-    </div>
+
+        <h2>The 7 Core Factors</h2>
+        <div class="factor-card"><strong>1. Biology:</strong> Genetics and brain chemistry (neurotransmitters like serotonin) play a foundational role in how we experience joy and stability.</div>
+        <div class="factor-card"><strong>2. Psychology:</strong> Learned helplessness—the belief that we have no control over our pain—often keeps us trapped in a cycle of despair.</div>
+        <div class="factor-card"><strong>3. Social/Relational:</strong> Isolation or toxic relationship dynamics can reinforce a sense of worthlessness.</div>
+        <div class="factor-card"><strong>4. Internalized Blueprints:</strong> Maladaptive patterns formed in childhood that tell us we are defective or destined to fail.</div>
+        <div class="factor-card"><strong>5. Emotional Suppression:</strong> When we are unable to express "forbidden" emotions (like anger), they often turn inward, manifesting as depression.</div>
+        <div class="factor-card"><strong>6. Trauma & Loss:</strong> Unprocessed grief or significant life stressors can overwhelm the nervous system.</div>
+        <div class="factor-card"><strong>7. Purpose & Identity:</strong> A disconnect between your daily life and your authentic self often creates a profound sense of emptiness.</div>
+
+        <p style="margin-top: 60px; text-align: center;">In our work, we look at the intersection of these factors to build a personalized path toward recovery.</p>
+    </article>
+
+    <footer>
+        <p>Meli Pil, MHC-LP | Brooklyn, NY</p>
+    </footer>
+
 </body>
 </html>
