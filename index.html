@@ -127,6 +127,24 @@
             transition:transform 2s ease;
         }
         .jewel:hover img{transform:scale(1.12);}
+        .video-section{
+            max-width:900px;
+            margin:180px auto;
+            text-align:center;
+        }
+        .video-container{
+            position:relative;
+            padding-bottom:56.25%;
+            height:0;
+            overflow:hidden;
+            border-radius:40px;
+            box-shadow:0 50px 100px var(--soft-shadow);
+        }
+        .video-container iframe{
+            position:absolute;
+            top:0; left:0;
+            width:100%; height:100%;
+        }
         .diagram{
             max-width:700px;
             margin:0 auto 180px;
@@ -136,10 +154,6 @@
             font-family:'Playfair Display';
             font-size:3.2rem;
             margin-bottom:40px;
-        }
-        .diagram svg{
-            margin-top:50px;
-            filter:drop-shadow(0 20px 40px var(--soft-shadow));
         }
         .journal h2{
             text-align:center;
@@ -208,24 +222,6 @@
             opacity:1;
             transform:translateY(0);
         }
-        .video-section{
-            max-width:900px;
-            margin:180px auto;
-            text-align:center;
-        }
-        .video-container{
-            position:relative;
-            padding-bottom:56.25%;
-            height:0;
-            overflow:hidden;
-            border-radius:40px;
-            box-shadow:0 50px 100px var(--soft-shadow);
-        }
-        .video-container iframe{
-            position:absolute;
-            top:0; left:0;
-            width:100%; height:100%;
-        }
         @media(max-width:900px){
             .split,.grid{grid-template-columns:1fr;}
             .nav-links{display:none;}
@@ -245,7 +241,7 @@
     </nav>
 
     <section class="hero">
-        <img src="https://www.wallmur.com/media/catalog/product/cache/af07dfdb28b408d54fee9501edc13278/m/o/mountain-wallpaper-misty-forest-wall-mural-sunrise-wall-print-na_zgt5zqlmbgp_3d_0.jpg" alt="Misty mountain sunrise over calm water">
+        <img src="pexels-packermann-1666012.jpg" alt="Person standing above clouds at sunrise">
         <h1 class="reveal">Where understanding begins to change how things feel.</h1>
     </section>
 
@@ -258,7 +254,7 @@
                 <p>By staying close to emotional experience as it unfolds, new understanding can emerge — often in ways that begin to feel different, not just make sense.</p>
             </div>
             <div class="jewel">
-                <img src="https://thumbs.dreamstime.com/b/misty-river-landscape-dawn-serene-water-reflecting-soft-pastel-colors-surrounded-lush-trees-flowers-tranquil-atmosphere-357330390.jpg" alt="Serene misty river at dawn">
+                <img src="pexels-philippedonn-1133957.jpg" alt="Misty landscape with reflection">
             </div>
         </section>
 
@@ -296,21 +292,21 @@
             <h2 class="reveal">Clinical Reflections</h2>
             <div class="grid">
                 <a href="blog-unlocking.html" class="card reveal">
-                    <div class="card-img" style="background-image:url('https://thumbs.dreamstime.com/b/misty-mountain-landscape-reflection-serene-lake-surrounded-tall-trees-dramatic-clouds-monochrome-tones-ai-generated-356325675.jpg')"></div>
+                    <div class="card-img" style="background-image:url('pexels-simon73-1266810.jpg');"></div>
                     <div class="card-body">
                         <h4>Unlocking the Source</h4>
                         <p>How early emotional experiences quietly shape expectations.</p>
                     </div>
                 </a>
                 <a href="blog-depression.html" class="card reveal">
-                    <div class="card-img" style="background-image:url('https://thumbs.dreamstime.com/b/stepping-stones-lead-to-misty-mountain-lake-sunrise-calm-water-reflects-sky-clouds-mountains-serene-scenic-nature-landscape-367497267.jpg')"></div>
+                    <div class="card-img" style="background-image:url('pexels-raybilcliff-1672813.jpg');"></div>
                     <div class="card-body">
                         <h4>When Things Begin to Feel Heavy</h4>
                         <p>Understanding the slow erosion of hope and effort.</p>
                     </div>
                 </a>
                 <a href="blog-emotions.html" class="card reveal">
-                    <div class="card-img" style="background-image:url('https://thumbs.dreamstime.com/b/tranquil-reflection-trees-misty-lake-serene-mountain-landscape-generative-ai-reflects-cluster-shrouded-mist-creating-425315846.jpg')"></div>
+                    <div class="card-img" style="background-image:url('pexels-yunustug-8337508.jpg');"></div>
                     <div class="card-body">
                         <h4>Listening to Emotion</h4>
                         <p>Why feelings persist until they are understood.</p>
@@ -338,4 +334,3 @@
     </script>
 </body>
 </html>
-
