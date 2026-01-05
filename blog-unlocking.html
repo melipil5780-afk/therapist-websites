@@ -3,132 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unlocking the Source | Meli Pil, MHC-LP</title>
+    <title>Listening to Emotion | Meli Pil, LMHC</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; --text: #333; }
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: var(--text); line-height: 1.8; }
+        :root{ --forest:#2c3e50; --sage:#5d7b6a; --sand:#f5f2eb; --ink:#2b2b2b; --white:#ffffff; }
+        *{box-sizing:border-box;}
+        body{ margin:0; font-family:'Inter',sans-serif; background:var(--sand); color:var(--ink); line-height:1.85; }
 
-        /* Hero Header */
-        .article-hero { 
-            height: 60vh; 
-            background: linear-gradient(rgba(45, 58, 48, 0.5), rgba(45, 58, 48, 0.5)), url('pexels-being-the-traveller-579914-2730218.jpg') center/cover no-repeat fixed;
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+        /* NAV */
+        nav{
+            position:fixed; top:0; width:100%; padding:20px 60px;
+            display:flex; justify-content:space-between; align-items:center;
+            background:rgba(245,242,235,.95); backdrop-filter:blur(20px);
+            border-bottom:1px solid rgba(0,0,0,.03); z-index:1000;
         }
-        .article-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); margin: 0; font-style: italic; padding: 0 20px; }
+        .logo{ font-family:'Playfair Display',serif; font-size:1.1rem; text-decoration:none; color:var(--forest); font-weight:700; }
+        .back-link{ font-size:.75rem; letter-spacing:2px; text-decoration:none; color:var(--sage); font-weight:600; text-transform:uppercase; }
 
-        /* Article Container */
-        .article-container { 
-            max-width: 900px; margin: -100px auto 100px; 
-            background: var(--white); padding: 80px; border-radius: 40px; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.08); position: relative; z-index: 10;
+        /* BLOG HERO (Cinematic Layers) */
+        .post-hero { height: 60vh; position: relative; display: grid; place-items: center; overflow: hidden; background: var(--forest); }
+        .hero-layer { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.4; }
+        .header-content { position: relative; z-index: 5; text-align: center; color: white; }
+        .header-content h1 { font-family: 'Playfair Display'; font-size: 3.5rem; font-style: italic; margin: 0; }
+
+        /* CONTENT */
+        article {
+            background: white; border-radius: 80px 80px 0 0; margin-top: -80px;
+            position: relative; z-index: 10; padding: 120px 0;
         }
+        .container { max-width: 750px; margin: 0 auto; padding: 0 8%; }
+        .meta { color: var(--sage); font-weight: 700; letter-spacing: 4px; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 20px; display: block; }
         
-        .intro-lead { font-size: 1.3rem; color: var(--sage); font-style: italic; margin-bottom: 50px; border-left: 4px solid var(--sage); padding-left: 25px; }
-        
-        h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--forest); margin-top: 70px; }
-        h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--sage); margin-top: 50px; border-bottom: 1px solid var(--sand); padding-bottom: 10px; }
-        h4 { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--forest); margin: 30px 0 10px; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        /* DIAGRAM BOX */
+        .roadmap {
+            background: var(--sand); border-radius: 40px; padding: 45px; margin: 60px 0;
+            border-left: 6px solid var(--sage);
+        }
+        .roadmap h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin-top: 0; }
 
-        .needs-highlight { background: var(--sand); padding: 40px; border-radius: 20px; margin: 40px 0; }
-        .schema-box { margin-bottom: 30px; padding: 20px; border-radius: 15px; transition: 0.3s; border: 1px solid transparent; }
-        .schema-box:hover { background: #fcfcfc; border: 1px solid #eee; }
-        .schema-box strong { color: var(--forest); display: block; font-size: 1.1rem; margin-bottom: 5px; }
-
-        .coping-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-        .coping-card { background: var(--sand); padding: 25px; border-radius: 15px; text-align: center; }
-        .coping-card span { display: block; font-weight: 700; color: var(--forest); margin-bottom: 10px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-
-        footer { background: var(--forest); color: var(--sand); padding: 80px 20px; text-align: center; border-radius: 60px 60px 0 0; }
-        .nav-back { position: absolute; top: 30px; left: 80px; text-decoration: none; color: var(--sage); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; }
-
-        @media (max-width: 768px) { .article-container { padding: 40px 20px; margin-top: -50px; border-radius: 20px; } .coping-grid { grid-template-columns: 1fr; } .nav-back { left: 20px; } }
+        footer { background: var(--forest); color: white; text-align: center; padding: 100px 10%; }
+        .btn { border: 1px solid white; padding: 18px 45px; color: white; text-decoration: none; letter-spacing: 2px; font-size: 0.8rem; display: inline-block; }
     </style>
 </head>
 <body>
 
-    <header class="article-hero">
-        <h1>Unlocking the Source of Darkness</h1>
+    <nav>
+        <a href="index.html" class="logo">MELI PIL, LMHC</a>
+        <a href="index.html#journal" class="back-link">← Back to Reflections</a>
+    </nav>
+
+    <header class="post-hero">
+        <div class="hero-layer" style="background-image:url('pexels-yunustug-8337508.jpg'); filter: brightness(0.6);"></div>
+        <div class="header-content">
+            <h1>Listening to Emotion</h1>
+        </div>
     </header>
 
-    <article class="article-container">
-        <a href="index.html" class="nav-back">← BACK TO HOME</a>
-        
-        <p class="intro-lead">This article dives deep into the hidden roots of emotional chaos, exposing what really fuels the inner storm that goes beyond life’s everyday challenges. Prepare to uncover the true forces shaping your emotions and mindset!</p>
+    <article>
+        <div class="container">
+            <span class="meta">Lived Experience</span>
+            <p>An emotion is often the psyche's way of trying to bring our attention to a need that is going unmet or a boundary that has been crossed. We treat them as noise, but they are actually data.</p>
+            
+            <div class="roadmap">
+                <h3>Clinical Grounding</h3>
+                <p>In our work, we use a framework to translate these signals:</p>
+                
+                <p>By naming the specific vibration of a feeling—moving from "upset" to "lonely" or "invalidated"—we begin to unlock the choice of what to do next.</p>
+            </div>
 
-        <h2>The 5 Essential Emotional Needs</h2>
-        <p>The frustration of core emotional needs, especially during childhood, can lead to the development of negative early maladaptive schemas (EMS). These schemas are persistent patterns of negative thoughts, emotions, sensations, and memories that shape how we view ourselves, others, and the world.</p>
-
-        
-
-        <div class="needs-highlight">
-            <p><strong>1. Secure Attachments to Others:</strong> The need for safety, stability, and acceptance in relationships.</p>
-            <p><strong>2. Autonomy & Identity:</strong> The need to feel independent and capable.</p>
-            <p><strong>3. Freedom to Express Needs:</strong> The need to express emotions openly and authentically.</p>
-            <p><strong>4. Spontaneity and Play:</strong> The need for creativity, enjoyment, and relaxation.</p>
-            <p><strong>5. Realistic Limits:</strong> The need for boundaries that foster self-regulation and discipline.</p>
+            <p>When a feeling persists, it is usually because it hasn't been fully heard yet. By slowing down and staying close to the experience, the "noise" begins to transform into insight.</p>
         </div>
-
-        <h3>The Origins of Negative Patterns</h3>
-        <p>When these fundamental needs are unmet, they have a lasting impact. This occurs through:</p>
-        <ul>
-            <li><strong>Toxic Frustration:</strong> Inadequate love or understanding leading to emptiness.</li>
-            <li><strong>Traumatization:</strong> Abuse creating deep-seated mistrust and shame.</li>
-            <li><strong>Overindulgence:</strong> Being overprotected, preventing independence and self-control.</li>
-            <li><strong>Internalization:</strong> Absorbing the negative behaviors or victim roles of parents.</li>
-        </ul>
-
-        <h2>The 18 Maladaptive Schemas</h2>
-        <p>These 18 patterns are categorized into five domains, reflecting the specific emotional needs that were compromised.</p>
-
-        
-
-        <h4>I. Disconnection and Rejection</h4>
-        <div class="schema-box"><strong>1. Abandonment/Instability:</strong> Fear that loved ones are unreliable or will leave.</div>
-        <div class="schema-box"><strong>2. Mistrust/Abuse:</strong> The expectation that others will intentionally harm or manipulate you.</div>
-        <div class="schema-box"><strong>3. Emotional Deprivation:</strong> Belief that your need for nurturance or empathy will never be met.</div>
-        <div class="schema-box"><strong>4. Defectiveness/Shame:</strong> Feeling inherently flawed, unlovable, or inferior.</div>
-        <div class="schema-box"><strong>5. Social Isolation:</strong> The sense of being disconnected from the rest of the world.</div>
-
-        <h4>II. Impaired Autonomy and Performance</h4>
-        <div class="schema-box"><strong>6. Dependence/Incompetence:</strong> Belief that you cannot manage daily life without help.</div>
-        <div class="schema-box"><strong>7. Vulnerability to Harm:</strong> Exaggerated fear of imminent disaster or medical crisis.</div>
-        <div class="schema-box"><strong>8. Enmeshment:</strong> Excessive emotional dependence at the cost of your identity.</div>
-        <div class="schema-box"><strong>9. Failure:</strong> The belief that you are fundamentally less successful or talented than others.</div>
-
-        <h4>III. Impaired Limits</h4>
-        <div class="schema-box"><strong>10. Entitlement/Grandiosity:</strong> Belief that you are superior or deserve special privileges.</div>
-        <div class="schema-box"><strong>11. Insufficient Self-Control:</strong> Difficulty exercising discipline or frustration tolerance.</div>
-
-        <h4>IV. Other-Directedness</h4>
-        <div class="schema-box"><strong>12. Subjugation:</strong> Surrendering control to avoid conflict or abandonment.</div>
-        <div class="schema-box"><strong>13. Self-Sacrifice:</strong> Prioritizing others to avoid guilt or conflict.</div>
-        <div class="schema-box"><strong>14. Approval-Seeking:</strong> Excessive concern for status and validation from others.</div>
-
-        <h4>V. Overvigilance and Inhibition</h4>
-        <div class="schema-box"><strong>15. Negativity/Pessimism:</strong> A pervasive focus on potential negative outcomes.</div>
-        <div class="schema-box"><strong>16. Emotional Inhibition:</strong> Suppressing emotions and affection to avoid disapproval.</div>
-        <div class="schema-box"><strong>17. Unrelenting Standards:</strong> Striving to meet extremely high internal rules to avoid failure.</div>
-        <div class="schema-box"><strong>18. Punitiveness:</strong> The belief that mistakes should be harshly punished.</div>
-
-        <h3>Coping Modes</h3>
-        <p>Coping modes are the behaviors we use to deal with the pain of these schemas. While they provide temporary relief, they ultimately keep the cycle alive.</p>
-        
-        <div class="coping-grid">
-            <div class="coping-card"><span>Overcompensation</span>(Fight) Acting the opposite to hide the pain.</div>
-            <div class="coping-card"><span>Avoidance</span>(Flight) Distancing oneself from triggers.</div>
-            <div class="coping-card"><span>Surrender</span>(Freeze) Accepting the schema as an absolute truth.</div>
-        </div>
-
-        <p style="margin-top: 60px; text-align: center; font-style: italic;">
-            "Naming these patterns is the first step toward reclaiming your authentic self."
-        </p>
     </article>
 
     <footer>
-        <p>Meli Pil, MHC-LP | Brooklyn, NY</p>
-        <p style="font-size: 0.7rem; opacity: 0.6; letter-spacing: 1px;">&copy; 2026 IN-PERSON SESSIONS ONLY</p>
+        <h2 style="font-family:'Playfair Display'; font-style:italic;">Continue the Conversation</h2>
+        <a href="mailto:hello@melipil.com" class="btn">REQUEST A CONSULTATION</a>
     </footer>
 
 </body>
