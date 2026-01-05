@@ -3,190 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meli Pil | Synthesis of the Self</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Meli Pil | Depth & Transformation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #050505;
-            --accent: #c5a059; /* Muted Gold */
-            --text-dim: rgba(255,255,255,0.6);
+            --bg: #060606;
+            --accent: #c5a059;
             --surface: #0f0f0f;
+            --text: #ffffff;
+            --dim: rgba(255,255,255,0.5);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             background-color: var(--bg); 
-            color: #fff; 
+            color: var(--text); 
             font-family: 'Montserrat', sans-serif; 
+            line-height: 1.8;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* Cinematic Hero */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
+        /* Cinematic Scrolling Container */
+        .scroller { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; }
+        section { 
+            height: 100vh; 
+            scroll-snap-align: start; 
+            position: relative; 
+            display: flex; 
+            align-items: center; 
             justify-content: center;
+            padding: 5%;
             overflow: hidden;
         }
 
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), var(--bg)), url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');
-            background-size: cover;
-            background-position: center;
-            animation: zoomOut 20s infinite alternate;
-            z-index: -1;
+        /* Background Treatments */
+        .bg-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; background-size: cover; background-position: center;
+            filter: brightness(0.4); transition: transform 2s ease-out;
         }
 
-        @keyframes zoomOut { from { transform: scale(1); } to { transform: scale(1.1); } }
-
-        .hero-content { text-align: center; max-width: 900px; padding: 20px; }
-        .hero h1 { 
+        /* Hero */
+        .hero-title { text-align: center; max-width: 900px; }
+        .hero-title h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 6vw, 5rem); 
-            font-weight: 400; 
-            letter-spacing: 5px;
-            text-transform: uppercase;
+            font-size: clamp(2.5rem, 7vw, 6rem); 
+            font-weight: 400; letter-spacing: -1px; line-height: 1;
         }
+        .play-btn {
+            margin-top: 40px; cursor: pointer; color: var(--accent);
+            text-transform: uppercase; letter-spacing: 5px; font-size: 0.7rem;
+            border: 1px solid var(--accent); padding: 15px 30px; transition: 0.4s;
+        }
+        .play-btn:hover { background: var(--accent); color: #000; }
+
+        /* Split Sections */
+        .content-wrap {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center; width: 100%; max-width: 1200px;
+        }
+        .img-box { position: relative; width: 100%; height: 500px; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(20%); }
+        .img-box .frame { 
+            position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; 
+            border: 1px solid var(--accent); z-index: -1; 
+        }
+
+        /* Article Grid */
+        .article-stack {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            width: 100%; max-width: 1100px;
+        }
+        .article-item {
+            height: 350px; background-size: cover; padding: 30px;
+            display: flex; align-items: flex-end; text-decoration: none;
+            color: #fff; border: 1px solid rgba(255,255,255,0.1); transition: 0.5s;
+        }
+        .article-item:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .article-item h4 { font-family: 'Playfair Display'; font-size: 1.5rem; }
+
+        /* Video Modal */
+        #videoModal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 2000; display: none; align-items: center; justify-content: center;
+        }
+        .close-vid { position: absolute; top: 30px; right: 30px; cursor: pointer; letter-spacing: 2px; }
 
         /* Navigation */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            padding: 40px; display: flex; justify-content: space-between;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 40px 60px;
+            display: flex; justify-content: space-between; font-size: 0.7rem; letter-spacing: 3px;
         }
-        .nav-link { color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; margin-left: 30px; opacity: 0.7; transition: 0.3s; }
-        .nav-link:hover { opacity: 1; color: var(--accent); }
+        nav a { color: #fff; text-decoration: none; opacity: 0.6; transition: 0.3s; }
+        nav a:hover { opacity: 1; color: var(--accent); }
 
-        /* Content Sections */
-        .section { padding: 150px 10%; position: relative; }
-        
-        .video-wrapper {
-            width: 100%; max-width: 1000px; margin: 60px auto;
-            border: 1px solid rgba(197, 160, 89, 0.2);
-            padding: 15px; background: var(--surface);
-            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .content-wrap { grid-template-columns: 1fr; gap: 30px; }
+            .img-box { height: 300px; }
+            nav { padding: 20px; }
+            .hero-title h1 { font-size: 3rem; }
+            .article-stack { grid-template-columns: 1fr; height: auto; overflow-y: scroll; }
+            section { height: auto; min-height: 100vh; padding: 100px 5%; }
         }
-
-        .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
-
-        .about-img {
-            width: 100%; height: 600px;
-            background: url('IMG_1860.jpg') center/cover;
-            filter: grayscale(30%);
-            border-left: 1px solid var(--accent);
-        }
-
-        /* Articles / Insights Grid */
-        .insights-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 50px;
-        }
-        .insight-card {
-            background: var(--surface); height: 450px; 
-            display: flex; flex-direction: column; justify-content: flex-end;
-            padding: 30px; position: relative; overflow: hidden;
-            border: 1px solid #1a1a1a; transition: 0.5s;
-            text-decoration: none; color: #fff;
-        }
-        .insight-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-        .insight-card img {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.3; z-index: 0; transition: 0.5s;
-        }
-        .insight-card:hover img { opacity: 0.5; transform: scale(1.05); }
-        .insight-card h3 { position: relative; z-index: 1; font-family: 'Playfair Display'; font-size: 1.8rem; }
-
-        /* Consultation Button */
-        .cta-btn {
-            display: inline-block; padding: 25px 60px;
-            background: transparent; border: 1px solid var(--accent);
-            color: var(--accent); text-transform: uppercase;
-            letter-spacing: 5px; text-decoration: none;
-            font-size: 0.8rem; transition: 0.4s; margin-top: 40px;
-        }
-        .cta-btn:hover { background: var(--accent); color: #000; box-shadow: 0 0 50px rgba(197, 160, 89, 0.4); }
-
-        h2 { font-family: 'Playfair Display'; font-size: 3.5rem; font-weight: 400; margin-bottom: 30px; }
-        p { font-weight: 200; font-size: 1.1rem; color: var(--text-dim); }
-
     </style>
 </head>
 <body>
 
     <nav>
-        <div style="font-family: 'Playfair Display'; font-size: 1.2rem;">MELI PIL</div>
-        <div>
-            <a href="#work" class="nav-link">The Work</a>
-            <a href="#philosophy" class="nav-link">Philosophy</a>
-            <a href="#insights" class="nav-link">Insights</a>
-            <a href="#consult" class="nav-link">Consultation</a>
+        <div style="font-family: 'Playfair Display'; font-size: 1.2rem; opacity: 1;">MELI PIL</div>
+        <div class="nav-links">
+            <a href="#about">THE GUIDE</a>&nbsp;&nbsp;&nbsp;
+            <a href="#philosophy">PHILOSOPHY</a>&nbsp;&nbsp;&nbsp;
+            <a href="#insights">INSIGHTS</a>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1>The Architecture of Insight</h1>
-            <p>Moving beyond symptom toward the soul of the experience.</p>
+    <div id="videoModal">
+        <div class="close-vid" onclick="closeModal()">✕ EXIT EXPERIENCE</div>
+        <div style="width: 90%; max-width: 1000px; aspect-ratio: 16/9;">
+            <iframe id="vFrame" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
         </div>
-    </header>
+    </div>
 
-    <section class="section" id="work">
-        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-            <h2>An Introduction</h2>
-            <p>Transformation is a live encounter. It is the process of moving from the unarticulated to the known. Watch the introduction below to understand the depth of our collaborative journey.</p>
-        </div>
-        <div class="video-wrapper">
-            <iframe width="100%" height="560" src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+    <section id="hero">
+        <div class="bg-layer" style="background-image: url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');"></div>
+        <div class="hero-title">
+            <h1 style="color: var(--accent);">THE ARCHITECTURE<br>OF THE SELF</h1>
+            <p style="margin-top: 20px; font-weight: 200; opacity: 0.8;">A Synthesis of Depth, Emotion, and Embodied Transformation.</p>
+            <div class="play-btn" onclick="openModal()">Watch Introduction</div>
         </div>
     </section>
 
-    <section class="section" id="philosophy" style="background: var(--surface);">
-        <div class="split">
-            <div class="about-img"></div>
+    <section id="about">
+        <div class="bg-layer" style="background-image: url('pexels-packermann-1666012.jpg'); opacity: 0.3;"></div>
+        <div class="content-wrap">
+            <div class="img-box">
+                <img src="IMG_1860.jpg" alt="Meli Pil">
+                <div class="frame"></div>
+            </div>
             <div>
-                <h2>Meli Pil, MHC-LP</h2>
+                <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Guide</h2>
                 <p>My approach is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
-                <br>
-                <p>Therapy is an opportunity to name, process, and make sense of feelings that may have been difficult to articulate. We use the "here-and-now" relationship as a laboratory for transformation, where emotions are symbolized and recurring patterns are finally shifted.</p>
+                <p style="margin-top: 15px;">Therapy, to me, is an emotional journey—an opportunity to name, process, and make sense of feelings that may have been difficult to access before.</p>
             </div>
         </div>
     </section>
 
-    <section class="section" id="insights">
-        <h2>Therapy Insights</h2>
-        <p>Reflections on character, motion, and the unspoken.</p>
-        <div class="insights-grid">
-            <a href="#" class="insight-card">
-                <img src="pexels-anniroenkae-5278835.jpg" alt="">
-                <h3>The Fractal Pattern: Why We Repeat</h3>
-            </a>
-            <a href="#" class="insight-card">
-                <img src="pexels-liubava-fedoryshyn-1833670446-28430595.jpg" alt="">
-                <h3>The Mirror & The Body</h3>
-            </a>
-            <a href="#" class="insight-card">
-                <img src="pexels-packermann-1666012.jpg" alt="">
-                <h3>Emergence from the Fog</h3>
-            </a>
+    <section id="philosophy">
+        <div class="bg-layer" style="background-image: url('pexels-liubava-fedoryshyn-1833670446-28430595.jpg'); opacity: 0.2;"></div>
+        <div class="content-wrap" style="grid-template-columns: 1.2fr 1fr;">
+            <div>
+                <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Live Encounter</h2>
+                <p>I incorporate both conversation and experiential exercises to help clients engage with their emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided, denied, or projected onto others.</p>
+                <p style="margin-top: 15px;">By examining recurring patterns, we begin to shift and move toward a life more aligned with your authentic values.</p>
+            </div>
+            <div class="img-box">
+                <img src="pexels-anniroenkae-5278835.jpg" alt="Complexity">
+            </div>
         </div>
     </section>
 
-    <section class="section" id="consult" style="text-align: center; background: url('pexels-raybilcliff-1672813.jpg') center/cover;">
-        <div style="background: rgba(0,0,0,0.7); padding: 80px; display: inline-block; width: 100%;">
-            <h2>The Invitation</h2>
-            <p>For those seeking depth, alignment, and an authentic encounter with the self.</p>
-            <a href="mailto:contact@melipil.com" class="cta-btn">Begin the Consultation</a>
+    <section id="insights" style="background: #000;">
+        <div style="width: 100%; max-width: 1100px;">
+            <h2 style="font-family: 'Playfair Display'; margin-bottom: 40px;">Insights & Articles</h2>
+            <div class="article-stack">
+                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-octoptimist-3546132.jpg');">
+                    <h4>The Somatic Chair</h4>
+                </a>
+                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-will-74514991-8531908.jpg');">
+                    <h4>Rhythm & Rupture</h4>
+                </a>
+                <a href="#" class="article-item" style="background-image: linear-gradient(rgba(0,0,0,0.5), #000), url('pexels-philippedonn-1133957.jpg');">
+                    <h4>The Art of Noticing</h4>
+                </a>
+            </div>
         </div>
     </section>
 
-    <footer style="padding: 50px; text-align: center; font-size: 0.6rem; letter-spacing: 2px; opacity: 0.5;">
-        © 2026 MELI PIL | AN ARCHITECTURE OF THE INTERIOR
-    </footer>
+    <section id="consult">
+        <div class="bg-layer" style="background-image: url('pexels-raybilcliff-1672813.jpg');"></div>
+        <div style="text-align: center; background: rgba(0,0,0,0.6); padding: 80px; width: 100%;">
+            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 20px;">The Threshold of Change</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px auto;">A 15-minute consultation to explore the architecture of your transformation.</p>
+            <a href="mailto:contact@melipil.com" class="play-btn" style="text-decoration: none;">Request Consultation</a>
+        </div>
+    </section>
 
+    <script>
+        function openModal() {
+            document.getElementById('videoModal').style.display = 'flex';
+            document.getElementById('vFrame').src = "https://www.youtube.com/embed/ujKka2Eo9rU?autoplay=1";
+        }
+        function closeModal() {
+            document.getElementById('videoModal').style.display = 'none';
+            document.getElementById('vFrame').src = "";
+        }
+    </script>
 </body>
 </html>
