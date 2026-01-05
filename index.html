@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meli Pil | Interior Architecture of Change</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root{
   --bg:#050505;
@@ -34,16 +35,13 @@ nav{
 .nav a{ color:#fff; text-decoration:none; font-size:.65rem; letter-spacing:2px; margin-left:28px; opacity:.65; transition: .3s;}
 .nav a:hover{opacity:1;color:var(--accent);}
 
-/* HERO SECTION - Mountain Sunrise */
+/* HERO SECTION */
 .hero{
   height: 100vh;
   width: 100%;
   display:flex; align-items:center; justify-content:center; text-align:center;
   background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-              url('https://images.pexels.com/photos/2157570219/pexels-photo-2157570219.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+              url('https://images.pexels.com/photos/2157570219/pexels-photo-2157570219.jpeg') center/cover no-repeat fixed;
 }
 .hero-inner{ opacity:0; transform:translateY(30px); transition:2.5s ease; }
 .hero.visible .hero-inner{ opacity:1; transform:none; }
@@ -57,20 +55,17 @@ section{ padding:120px 10%; position:relative; }
 h2{ font-family:'Playfair Display',serif; font-size:2.6rem; margin-bottom:30px; color:var(--accent); }
 
 /* SPLIT LAYOUT */
-.split{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:start; }
-.image-box{ overflow:hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
-.image-box img{ width:100%; display:block; }
-.headshot { border-radius: 50%; max-width: 380px; margin: 0 auto; display: block; border: 2px solid var(--accent); padding: 5px; }
+.split{ display:grid; grid-template-columns: 1fr 1fr; gap:80px; align-items:center; }
+.image-box img{ width:100%; display:block; box-shadow: 0 40px 80px rgba(0,0,0,0.6); }
+.headshot-wrap { text-align: center; }
+.headshot { border-radius: 50%; max-width: 350px; width: 100%; border: 1px solid var(--accent); padding: 10px; }
 
 /* YOUTUBE VIDEO */
 .video-wrap {
-    width: 100%; max-width: 900px; margin: 40px auto 0;
+    width: 100%; max-width: 800px; margin: 40px auto;
     aspect-ratio: 16 / 9; box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 iframe { width: 100%; height: 100%; border: none; }
-
-/* TEXT STYLING */
-.text-block p{ margin-bottom: 25px; font-weight: 300; opacity: 0.9; }
 
 /* INSIGHTS GRID */
 .grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:40px; margin-top:60px; }
@@ -84,17 +79,15 @@ iframe { width: 100%; height: 100%; border: none; }
 .card h3{ font-family:'Playfair Display',serif; font-size:1.6rem; margin-bottom:10px; color: var(--accent); }
 
 /* FOOTER */
-footer{ padding: 80px 10% 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000; }
-.footer-link{ color: var(--accent); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; }
-.copyright{ font-size: 0.6rem; opacity: 0.4; margin-top: 40px; letter-spacing: 1px; }
+footer{ padding: 60px 10%; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); background: #000; }
+.linkedin-icon { color: var(--accent); font-size: 2.5rem; transition: 0.3s; }
+.linkedin-icon:hover { color: #fff; transform: scale(1.1); }
+.copyright{ font-size: 0.7rem; opacity: 0.4; margin-top: 30px; letter-spacing: 2px; text-transform: uppercase; }
 
-.btn{ display:inline-block; padding: 15px 45px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; letter-spacing: 2px; transition: 0.3s; }
+.btn{ display:inline-block; padding: 15px 45px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; letter-spacing: 2px; transition: 0.3s; margin-top: 20px;}
 .btn:hover{ background: var(--accent); color: #000; }
 
-@media(max-width:900px){ 
-    .split{ grid-template-columns: 1fr; text-align: center; } 
-    .hero{ background-attachment: scroll; }
-}
+@media(max-width:900px){ .split{ grid-template-columns: 1fr; text-align: center; } }
 </style>
 </head>
 <body>
@@ -104,80 +97,79 @@ footer{ padding: 80px 10% 40px; text-align: center; border-top: 1px solid rgba(2
   <div class="nav">
     <a href="#meet">Meet Meli</a>
     <a href="#approach">Approach</a>
-    <a href="#process">Insights</a>
-    <a href="#consult">Begin</a>
+    <a href="#consult">Consultation</a>
   </div>
 </nav>
 
 <section class="hero" id="hero">
   <div class="hero-inner">
     <h1>The Interior Architecture</h1>
-    <p>Meli Pil, MHC-LP | Change from Lived Experience</p>
+    <p>Psychotherapy & Change</p>
   </div>
 </section>
 
 <section id="meet" class="reveal">
     <div class="split">
-        <div class="image-box" style="box-shadow: none;">
+        <div class="headshot-wrap">
             <img src="https://i.ibb.co/Lzf7P8q/image-c60686.png" class="headshot" alt="Meli Pil">
         </div>
         <div class="text-block">
             <h2>Meet Meli</h2>
-            <p>My approach to therapy is collaborative and rooted in exploration. Rather than simply identifying problems and prescribing solutions, I work with my clients to help them uncover and understand their inner worlds.</p>
-            <p>I incorporate both conversation and experiential exercises to help clients engage with their emotions more deeply. This includes addressing aspects of emotional experience that may have been avoided or denied.</p>
-            <div class="video-wrap">
-                <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" allowfullscreen></iframe>
-            </div>
+            <p>My approach to therapy is collaborative and rooted in exploration. Rather than simply identifying problems, I work with my clients to help them uncover and understand their inner worlds.</p>
+            <p>Therapy is an emotional journey—an opportunity to name and make sense of feelings that may have been difficult to articulate before. Together, we create a space where emotions are symbolized and transformed.</p>
         </div>
     </div>
 </section>
 
-<section id="approach" class="reveal" style="background: #080808;">
+<section style="background: #080808; text-align: center;" class="reveal">
+    <h2>Introduction</h2>
+    <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="approach" class="reveal">
     <div class="split">
         <div class="text-block">
             <h2>The Somatic Chair</h2>
-            <p>By using a range of approaches such as conversation, <strong>chair work</strong>, and an exploration of relational dynamics, we bring recurring patterns into focus.</p>
-            <p>You can expect a space where your story unfolds at your own pace. Together, we will explore your emotions within the framework of your thoughts, beliefs, values, and needs.</p>
+            <p>I incorporate conversation and experiential exercises like <strong>chair work</strong> to help clients engage with emotions deeply. We address avoided or denied parts of your experience with compassion and courage.</p>
+            <p>By examining recurring patterns, you can begin to shift toward a life more aligned with your authentic self.</p>
+            <a href="mailto:consultation@melipil.com" class="btn">REQUEST CONSULTATION</a>
         </div>
         <div class="image-box">
-            <img src="https://images.pexels.com/photos/4906520/pexels-photo-4906520.jpeg" alt="Therapy Chairs">
+            <img src="https://images.pexels.com/photos/4906520/pexels-photo-4906520.jpeg" alt="Somatic Therapy Chairs">
         </div>
     </div>
 </section>
 
-<section id="process" class="reveal">
-    <h2 style="text-align:center;">Library of Insights</h2>
+<section id="insights" class="reveal">
     <div class="grid">
         <div class="card">
-            <img src="https://images.pexels.com/photos/1672813/pexels-photo-1672813.jpeg" alt="Perspective">
-            <h3>The Authentic Self</h3>
-            <p>Moving toward a life more aligned with your authentic values and identity.</p>
-        </div>
-        <div class="card">
             <img src="https://images.pexels.com/photos/569202/pexels-photo-569202.jpeg" alt="Patterns">
-            <h3>Recurring Patterns</h3>
-            <p>Examining the themes in your life that hold you back from fulfillment.</p>
+            <h3>Lived Experience</h3>
+            <p>Tailoring the journey to your unique voice and empowering your growth.</p>
         </div>
         <div class="card">
-            <img src="https://images.pexels.com/photos/545960/pexels-photo-545960.jpeg" alt="Depth">
-            <h3>Inner Worlds</h3>
-            <p>Therapy is an opportunity to name, process, and make sense of difficult feelings.</p>
+            <img src="https://images.pexels.com/photos/1672813/pexels-photo-1672813.jpeg" alt="Growth">
+            <h3>Authentic Values</h3>
+            <p>Shifting patterns to move toward a life aligned with who you truly are.</p>
         </div>
-    </div>
-</section>
-
-<section id="consult" style="text-align: center; padding: 160px 10%; background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/5574638/pexels-photo-5574638.jpeg') center/cover;">
-    <div class="reveal">
-        <h2 style="color: var(--accent);">Enter the Threshold</h2>
-        <p style="max-width: 600px; margin: 0 auto 30px;">"Emotions are not just felt but symbolized, reflected upon, and ultimately transformed."</p>
-        <a href="mailto:consultation@melipil.com" class="btn">REQUEST 15-MINUTE CONSULTATION</a>
+        <div class="card">
+            <img src="https://images.pexels.com/photos/545960/pexels-photo-545960.jpeg" alt="Clarity">
+            <h3>Safety & Discovery</h3>
+            <p>Your story unfolds at your own pace in a space of total clarity.</p>
+        </div>
     </div>
 </section>
 
 <footer>
-    <a href="https://www.linkedin.com/in/meli-pil" target="_blank" class="footer-link">LINKEDIN</a>
-    <div class="copyright">
-        MELI PIL, MHC-LP © 2026 | INTERIOR ARCHITECTURE OF CHANGE
+    <div class="reveal">
+        <a href="https://www.linkedin.com/in/meli-pil" target="_blank">
+            <i class="fab fa-linkedin linkedin-icon"></i>
+        </a>
+        <div class="copyright">
+            MELI PIL, MHC-LP © 2026 | INTERIOR ARCHITECTURE OF CHANGE
+        </div>
     </div>
 </footer>
 
