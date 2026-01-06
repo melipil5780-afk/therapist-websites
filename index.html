@@ -13,48 +13,51 @@
 :root {
   --accent: #c9a96e;
   --text: #1e1610;
-  --border: rgba(201,169,110,0.2);
-  --overlay: rgba(255,255,255,0.2);
+  --bg: #f9f8f6;
+  --light-overlay: rgba(0,0,0,0.12);
+  --content-bg: rgba(249,248,246,0.92);
+  --border-gold: 1px solid rgba(201,169,110,0.3);
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
-  background:#f9f8f6;
+  background:var(--bg);
   color: var(--text);
-  line-height:1.7;
+  line-height:1.8;
   overflow-x:hidden;
 }
 
-/* NAVIGATION */
+/* NAV */
 nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:24px 48px;
+  padding:28px 48px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(6px);
+  background: rgba(249,248,246,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: var(--border-gold);
 }
 .logo{
   font-family:'Cinzel',serif;
-  letter-spacing:3px;
+  font-size:1.6rem;
+  letter-spacing:4px;
   color: var(--accent);
 }
 .nav-btn{
   font-family:'Cinzel',serif;
-  text-decoration:none;
-  padding:10px 22px;
+  padding:12px 28px;
   background: var(--accent);
   color:#1e1610;
-  font-size:.85rem;
-  transition:.3s;
+  text-decoration:none;
+  border-radius:6px;
+  transition:.4s;
 }
-.nav-btn:hover{background:#fff;}
+.nav-btn:hover{background:#fff; box-shadow:0 4px 20px rgba(201,169,110,0.4);}
 
 /* FLOATING CTA */
 .cta-float{
@@ -63,19 +66,22 @@ nav{
   right:40px;
   background: var(--accent);
   color: #1e1610;
-  padding:16px 30px;
+  padding:18px 34px;
   font-family:'Cinzel', serif;
+  font-size:1rem;
   text-decoration:none;
   z-index:1000;
-  box-shadow:0 10px 30px rgba(0,0,0,.4);
-  transition:.3s;
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+  border-radius:8px;
+  transition:.4s;
 }
 .cta-float:hover{
-  transform:translateY(-5px);
+  transform:translateY(-8px);
   background:#fff;
+  box-shadow:0 16px 50px rgba(201,169,110,0.5);
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero{
   min-height:100vh;
   display:grid;
@@ -87,102 +93,95 @@ nav{
   content:'';
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.3);
+  background: var(--light-overlay);
 }
 .hero-content{
   position:relative;
   text-align:center;
-  max-width:900px;
+  max-width:1000px;
   padding:0 10%;
+  background: var(--content-bg);
+  padding:60px 80px;
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+  border: var(--border-gold);
 }
 .hero h1{
   font-family:'Cinzel',serif;
-  font-size:clamp(3.5rem,9vw,6rem);
-  margin-bottom:24px;
-  text-shadow:0 3px 12px rgba(0,0,0,0.5);
-  color:#fff;
+  font-size:clamp(4rem,10vw,7rem);
+  color: var(--accent);
+  margin-bottom:20px;
+  text-shadow:0 4px 12px rgba(0,0,0,0.3);
 }
 .hero p{
-  font-weight:500;
-  letter-spacing:4px;
-  text-shadow:0 2px 8px rgba(0,0,0,0.5);
-  color:#fff;
+  font-size:1.6rem;
+  letter-spacing:5px;
+  color: var(--text);
 }
 
-/* VIDEO SECTION */
+/* VIDEO */
 .video-container{
-  padding:120px 10%;
+  padding:140px 10%;
   text-align:center;
-  position:relative;
-  background: #f9f8f6;
+  background: var(--bg);
 }
 .video-container h2{
   font-family:'Cinzel', serif;
-  font-size:2.7rem;
+  font-size:3.2rem;
   color:var(--accent);
-  margin-bottom:50px;
-  text-shadow:0 2px 8px rgba(0,0,0,0.2);
+  margin-bottom:60px;
 }
 .video-wrapper{
-  position:relative;
-  max-width:900px;
+  max-width:1000px;
   margin:0 auto;
-  padding-bottom:56.25%;
-  height:0;
-  border-radius:12px;
+  border-radius:16px;
   overflow:hidden;
-  border:1px solid var(--border);
-  box-shadow:0 15px 40px rgba(0,0,0,0.25);
-  transition:.4s ease;
-}
-.video-wrapper:hover{
-  transform: scale(1.02);
-}
-.video-wrapper iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  border:0;
+  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  border: var(--border-gold);
 }
 
-/* ABOUT ME SECTION */
+/* ABOUT */
 .about{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:80px;
+  gap:100px;
   align-items:center;
-  padding:120px 10%;
+  padding:140px 10%;
+  background: var(--bg);
 }
 .about-img{
-  height:600px;
+  height:700px;
   background-image: url('pexels-yunustug-8337508.jpg');
   background-size:cover;
   background-position:center;
-  border-radius:8px;
-  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+  border: var(--border-gold);
+}
+.about-text{
+  padding:40px;
+  background: var(--content-bg);
+  border-radius:16px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.1);
 }
 .about-text h2{
   font-family:'Cinzel', serif;
-  font-size:3rem;
+  font-size:3.5rem;
   color: var(--accent);
-  margin-bottom:30px;
+  margin-bottom:40px;
 }
 .about-text p{
-  font-size:1.15rem;
-  margin-bottom:20px;
-  color:#1e1610;
+  font-size:1.2rem;
+  margin-bottom:28px;
 }
 
-/* JOURNEY SECTION */
+/* JOURNEY */
 .journey{
   min-height:90vh;
-  display:flex;
-  align-items:center;
-  padding:100px 10%;
+  display:grid;
+  place-items:center;
+  padding:140px 10%;
   position:relative;
-  overflow:hidden;
 }
 .journey-bg{
   position:absolute;
@@ -190,42 +189,45 @@ nav{
   background-size:cover;
   background-position:center;
   z-index:0;
-  filter: brightness(0.85);
 }
 .journey-bg::after{
   content:'';
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,0.25);
+  background: var(--light-overlay);
 }
 .journey-content{
   position:relative;
   z-index:2;
-  max-width:650px;
-  padding:25px 20px;
-  border-radius:8px;
-  background: rgba(255,255,255,0.08); /* subtle overlay for readability */
+  max-width:800px;
+  padding:60px 80px;
+  background: var(--content-bg);
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  border: var(--border-gold);
+  text-align:center;
 }
 .journey h3{
   font-family:'Cinzel', serif;
-  font-size:clamp(2rem,5vw,3rem);
-  margin-bottom:20px;
+  font-size:clamp(2.5rem,6vw,4rem);
   color: var(--accent);
+  margin-bottom:30px;
 }
 .journey p{
-  font-size:1.15rem;
-  margin-bottom:20px;
-  color:#1e1610;
+  font-size:1.25rem;
+  margin-bottom:30px;
 }
 .quote{
+  font-family:'Cinzel', serif;
+  font-size:1.8rem;
   font-style:italic;
-  font-size:1.4rem;
-  border-left:3px solid var(--accent);
-  padding-left:15px;
-  opacity:.9;
+  color: var(--accent);
+  border-left:4px solid var(--accent);
+  padding-left:20px;
+  margin:40px 0;
 }
 
-/* LEVEL IMAGES */
+/* LEVEL IMAGES - Keeping your original images but with elegant framing */
 #lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');}
 #lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg');}
 #lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg');}
@@ -233,74 +235,77 @@ nav{
 #lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg');}
 #lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.png');}
 
-/* JOURNAL / ARTICLES */
+/* JOURNAL */
 .journal{
-  padding:120px 10%;
+  padding:140px 10%;
+  background: var(--bg);
+  text-align:center;
 }
 .journal h2{
   font-family:'Cinzel', serif;
-  font-size:3rem;
-  margin-bottom:40px;
+  font-size:3.5rem;
   color: var(--accent);
+  margin-bottom:60px;
 }
 .journal-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+  gap:50px;
 }
 .article-card{
-  text-decoration:none;
-  color:#1e1610;
-  transition:.3s;
+  background: var(--content-bg);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 15px 50px rgba(0,0,0,0.15);
+  border: var(--border-gold);
+  transition:.4s;
+}
+.article-card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 25px 70px rgba(0,0,0,0.2);
 }
 .article-card img{
   width:100%;
-  height:300px;
+  height:320px;
   object-fit:cover;
-  border-radius:8px;
-  border:1px solid var(--border);
-  transition:.4s;
-}
-.article-card:hover img{
-  transform:scale(1.03);
 }
 .article-card h3{
   font-family:'Cinzel', serif;
-  font-size:1.5rem;
-  margin:15px 0 8px 0;
+  font-size:1.8rem;
+  color: var(--accent);
+  padding:20px 30px 10px;
 }
 .article-card p{
-  font-size:1rem;
-  color:#444;
+  padding:0 30px 30px;
+  font-size:1.1rem;
 }
 
 /* FOOTER */
 footer{
-  position:relative;
-  padding:120px 10%;
+  padding:140px 10%;
   text-align:center;
   background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.png') center/cover no-repeat;
-  border-top:1px solid var(--border);
-  border-radius:6px;
+  position:relative;
+}
+footer::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(249,248,246,0.9);
 }
 footer p{
   position:relative;
-  color:#fff;
-  font-size:.85rem;
-  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+  color: var(--text);
+  font-size:1rem;
+  letter-spacing:2px;
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  nav{padding:20px}
-  .nav-btn{display:none}
-  .about{grid-template-columns:1fr}
-  .about-img{height:400px}
-  .journey{padding:80px 5%}
-  .journey-content{padding:20px 15px}
-  .journey h3{font-size:2rem}
-  .quote{font-size:1.2rem}
-  .journal-grid{gap:20px}
+  .about{grid-template-columns:1fr; gap:60px;}
+  .about-img{height:500px;}
+  .journey-content{padding:40px 30px;}
+  .journal-grid{gap:40px;}
 }
 </style>
 </head>
@@ -395,7 +400,7 @@ footer p{
   </div>
 </section>
 
-<!-- JOURNAL / ARTICLES -->
+<!-- JOURNAL -->
 <section class="journal">
   <h2>The Sanctuary of Thought</h2>
   <div class="journal-grid">
@@ -425,14 +430,11 @@ footer p{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* Fade-in text for journey sections */
-gsap.utils.toArray('.journey-content').forEach(el=>{
-  gsap.from(el,{opacity:0, y:40, duration:1, scrollTrigger:{trigger:el, start:"top 80%"}});
+gsap.utils.toArray('.journey-content, .about-text, .video-container h2, .journal h2').forEach(el => {
+  gsap.from(el, {opacity:0, y:60, duration:1.2, ease:"power3.out", scrollTrigger:{trigger:el, start:"top 85%"}});
 });
 
-/* Fade-in About text and Video heading */
-gsap.from('.about-text',{opacity:0, y:40, duration:1, scrollTrigger:{trigger:'.about', start:"top 80%"}});
-gsap.from('.video-container h2',{opacity:0, y:30, duration:1, scrollTrigger:{trigger:'.video-container', start:"top 80%"}});
+gsap.from('.hero-content', {opacity:0, scale:0.95, duration:1.5, ease:"power2.out"});
 </script>
 
 </body>
