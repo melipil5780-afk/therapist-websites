@@ -21,6 +21,7 @@ body {
   background-color: var(--bg-earth);
   color: var(--text-light);
   line-height:1.8;
+  overflow-x: hidden;
 }
 
 /* --- NAVIGATION --- */
@@ -35,8 +36,9 @@ nav {
 }
 .logo { font-family:'Cinzel', serif; letter-spacing:6px; color: var(--accent); font-weight:700; }
 
-/* --- HERO: THE DOOR --- */
+/* --- HERO: FIXED READABILITY --- */
 .hero {
+  position: relative;
   height: 100vh;
   background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.png') center/cover no-repeat;
   display: flex;
@@ -44,9 +46,21 @@ nav {
   align-items: center;
   text-align: center;
 }
-.hero h1 { font-family:'Cinzel'; font-size: clamp(3rem, 8vw, 6rem); text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4); /* readability overlay */
+}
+.hero-content { position: relative; z-index: 1; }
+.hero h1 { 
+  font-family:'Cinzel'; 
+  font-size: clamp(3rem, 8vw, 6rem); 
+  text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  color: var(--text-light);
+}
 
-/* --- SECTION STRUCTURE: SPLIT SCREEN FOR CLARITY --- */
+/* --- SECTION STRUCTURE: RESPONSIVE FIXES --- */
 .section-wrap {
   display: flex;
   min-height: 100vh;
@@ -55,21 +69,17 @@ nav {
 }
 .section-wrap:nth-child(even) { flex-direction: row-reverse; }
 
-.img-box {
-  flex: 1;
-  height: 100vh;
-  min-width: 50%;
+.img-box { 
+  flex: 1; 
+  min-height: 50vh; 
+  min-width: 50%; 
+  overflow:hidden; 
 }
 .img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-.text-box {
-  flex: 1;
-  padding: 10%;
-  min-width: 350px;
-}
+.text-box { flex: 1; padding: 8%; min-width: 350px; }
 h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px; font-size: 3rem; }
 
-/* --- VIDEO --- */
 .video-container { margin-top:30px; padding-bottom:56.25%; position:relative; border: 1px solid var(--accent); }
 .video-container iframe { position:absolute; width:100%; height:100%; top:0; left:0; }
 
@@ -88,7 +98,7 @@ footer::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--bg-earth) 10%, transparent 100%);
+  background: linear-gradient(to top, var(--bg-earth) 15%, transparent 100%);
 }
 .footer-content { position: relative; z-index: 2; }
 .btn { 
@@ -100,9 +110,13 @@ footer::before {
   font-family: 'Cinzel'; 
   font-weight: 700; 
   margin-top: 30px; 
-  letter-spacing: 2px;
 }
 
+/* --- RESPONSIVE TWEAKS --- */
+@media (max-width:768px) {
+  .section-wrap { flex-direction: column !important; }
+  .img-box, .text-box { width: 100%; min-height: 400px; }
+}
 </style>
 </head>
 <body>
@@ -131,7 +145,7 @@ footer::before {
   <div class="img-box"><img src="pexels-raybilcliff-1672813.jpg"></div>
   <div class="text-box">
     <h3>01 Arrival</h3>
-    <p>Stand before the threshold. Here, we begin with presence. Feel your breath and the ground beneath you.</p>
+    <p>Stand before the threshold. Feel your breath, your body, and the ground beneath you.</p>
   </div>
 </section>
 
@@ -139,7 +153,7 @@ footer::before {
   <div class="img-box"><img src="pexels-octoptimist-3546132.jpg"></div>
   <div class="text-box">
     <h3>02 Chair Work</h3>
-    <p>Two chairs face each other. One holds you. The other holds a part of you or an inner voice. We bridge the gap between words and felt truth.</p>
+    <p>Two chairs face each other. One holds you. The other holds a part of you or a loved one.</p>
   </div>
 </section>
 
@@ -147,31 +161,55 @@ footer::before {
   <div class="img-box"><img src="pexels-lkloeppel-545960.jpg"></div>
   <div class="text-box">
     <h3>03 Movement</h3>
-    <p>Anger, grief, fear — they live in the body. What is held must be moved to be freed. We turn stagnant energy into purposeful action.</p>
+    <p>Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="img-box"><img src="pexels-will-74514991-8531908.jpg"></div>
+  <div class="text-box">
+    <h3>04 Sensing</h3>
+    <p>Pause. Feel what remains. Notice the heat, the tingling, the spaciousness.</p>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="img-box"><img src="pexels-philippedonn-1133957.jpg"></div>
+  <div class="text-box">
+    <h3>05 Voice</h3>
+    <p>Name what moved. Connect sensation to meaning and turn raw energy into insight.</p>
+  </div>
+</section>
+
+<section class="section-wrap">
+  <div class="img-box"><img src="pexels-anniroenkae-5278835.jpg"></div>
+  <div class="text-box">
+    <h3>06 Integration</h3>
+    <p>Carry the shift into your world. This is not just a session; it is a new way of being.</p>
   </div>
 </section>
 
 <footer>
   <div class="footer-content">
     <h2 style="color:white; font-size: 4rem;">Living the Change</h2>
-    <p>Your journey toward integration begins here.</p>
     <a href="#" class="btn">Book Consultation</a>
-    <p style="margin-top:80px; opacity:0.6; font-size: 0.8rem;">© 2026 MELI PIL</p>
+    <p style="margin-top:60px; opacity:0.6;">© 2026 MELI PIL</p>
   </div>
 </footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Clean fade reveals
-gsap.utils.toArray(".text-box").forEach(box => {
-  gsap.from(box, { 
-    opacity: 0, 
-    y: 50, 
-    duration: 1, 
-    scrollTrigger: { trigger: box, start: "top 80%" }
+window.onload = () => {
+  gsap.utils.toArray(".text-box").forEach(box => {
+    gsap.from(box, { 
+      opacity: 0, 
+      y: 30, 
+      duration: 1, 
+      scrollTrigger: { trigger: box, start: "top 80%" }
+    });
   });
-});
+};
 </script>
 
 </body>
