@@ -14,10 +14,10 @@
   --accent: #c9a96e;
   --text: #1e1610;
   --bg: #f9f8f6;
-  --light-overlay: rgba(0,0,0,0.08); /* Very subtle for full image beauty */
-  --content-bg: rgba(249,248,246,0.88); /* Light, elegant semi-transparent panel */
-  --border-gold: 1px solid rgba(201,169,110,0.25);
-  --shadow-soft: 0 15px 50px rgba(0,0,0,0.12);
+  --light-overlay: rgba(0,0,0,0.05); /* Almost none — images fully visible */
+  --text-overlay: rgba(249,248,246,0.85); /* Only behind text for perfect readability */
+  --border-gold: 1px solid rgba(201,169,110,0.3);
+  --shadow-soft: 0 20px 60px rgba(0,0,0,0.15);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -39,7 +39,7 @@ nav{
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  background: rgba(249,248,246,0.85);
+  background: rgba(249,248,246,0.9);
   backdrop-filter: blur(12px);
   border-bottom: var(--border-gold);
 }
@@ -82,7 +82,7 @@ nav{
   box-shadow:0 16px 50px rgba(201,169,110,0.5);
 }
 
-/* HERO - Full image beauty preserved */
+/* HERO - Maximum image visibility */
 .hero{
   min-height:100vh;
   display:grid;
@@ -101,18 +101,18 @@ nav{
   text-align:center;
   max-width:1000px;
   padding:60px 80px;
-  background: var(--content-bg);
+  background: var(--text-overlay);
   border-radius:16px;
   box-shadow: var(--shadow-soft);
   border: var(--border-gold);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 .hero h1{
   font-family:'Cinzel',serif;
   font-size:clamp(4rem,10vw,7rem);
   color: var(--accent);
   margin-bottom:20px;
-  text-shadow:0 4px 12px rgba(0,0,0,0.3);
+  text-shadow:0 4px 12px rgba(0,0,0,0.4);
 }
 .hero p{
   font-size:1.6rem;
@@ -160,11 +160,11 @@ nav{
   border: var(--border-gold);
 }
 .about-text{
-  padding:40px;
-  background: var(--content-bg);
+  padding:50px;
+  background: var(--text-overlay);
   border-radius:16px;
   box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 .about-text h2{
   font-family:'Cinzel', serif;
@@ -177,7 +177,7 @@ nav{
   margin-bottom:28px;
 }
 
-/* JOURNEY - Full image visible, text perfectly readable */
+/* JOURNEY - Images dominate, text floats elegantly */
 .journey{
   min-height:90vh;
   display:grid;
@@ -190,7 +190,7 @@ nav{
   inset:0;
   background-size:cover;
   background-position:center;
-  background-attachment:fixed; /* Parallax for immersion */
+  background-attachment:fixed;
   z-index:0;
 }
 .journey-bg::after{
@@ -202,33 +202,33 @@ nav{
 .journey-content{
   position:relative;
   z-index:2;
-  max-width:800px;
-  padding:60px 80px;
-  background: var(--content-bg);
-  border-radius:16px;
+  max-width:850px;
+  padding:70px 90px;
+  background: var(--text-overlay);
+  border-radius:20px;
   box-shadow: var(--shadow-soft);
   border: var(--border-gold);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   text-align:center;
 }
 .journey h3{
   font-family:'Cinzel', serif;
-  font-size:clamp(2.5rem,6vw,4rem);
+  font-size:clamp(2.8rem,7vw,4.5rem);
   color: var(--accent);
-  margin-bottom:30px;
+  margin-bottom:35px;
 }
 .journey p{
-  font-size:1.25rem;
-  margin-bottom:30px;
+  font-size:1.3rem;
+  margin-bottom:35px;
 }
 .quote{
   font-family:'Cinzel', serif;
-  font-size:1.8rem;
+  font-size:2rem;
   font-style:italic;
   color: var(--accent);
-  border-left:4px solid var(--accent);
-  padding-left:20px;
-  margin:40px 0;
+  border-left:5px solid var(--accent);
+  padding-left:25px;
+  margin:50px 0;
 }
 
 /* LEVEL IMAGES */
@@ -253,39 +253,39 @@ nav{
 }
 .journal-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
-  gap:50px;
+  grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+  gap:60px;
 }
 .article-card{
-  background: var(--content-bg);
-  border-radius:16px;
+  background: var(--text-overlay);
+  border-radius:20px;
   overflow:hidden;
   box-shadow: var(--shadow-soft);
   border: var(--border-gold);
   transition:.4s;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 .article-card:hover{
-  transform:translateY(-12px);
-  box-shadow:0 25px 70px rgba(0,0,0,0.2);
+  transform:translateY(-15px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.25);
 }
 .article-card img{
   width:100%;
-  height:320px;
+  height:340px;
   object-fit:cover;
 }
 .article-card h3{
   font-family:'Cinzel', serif;
-  font-size:1.8rem;
+  font-size:1.9rem;
   color: var(--accent);
-  padding:20px 30px 10px;
+  padding:25px 35px 15px;
 }
 .article-card p{
-  padding:0 30px 30px;
-  font-size:1.1rem;
+  padding:0 35px 35px;
+  font-size:1.15rem;
 }
 
-/* FOOTER - Full image beauty with readable text */
+/* FOOTER - Image fully visible */
 footer{
   padding:140px 10%;
   text-align:center;
@@ -301,17 +301,17 @@ footer::before{
 footer p{
   position:relative;
   color: #fff;
-  font-size:1rem;
-  letter-spacing:2px;
-  text-shadow:0 3px 12px rgba(0,0,0,0.7);
+  font-size:1.1rem;
+  letter-spacing:3px;
+  text-shadow:0 4px 16px rgba(0,0,0,0.8);
 }
 
 /* RESPONSIVE */
 @media(max-width:900px){
   .about{grid-template-columns:1fr; gap:60px;}
   .about-img{height:500px;}
-  .journey-content{padding:40px 30px;}
-  .hero-content, .journey-content{padding:40px 30px;}
+  .journey-content, .hero-content{padding:50px 40px;}
+  .journal-grid{gap:40px;}
 }
 </style>
 </head>
@@ -437,10 +437,10 @@ footer p{
 gsap.registerPlugin(ScrollTrigger);
 
 gsap.utils.toArray('.journey-content, .about-text, .video-container h2, .journal h2').forEach(el => {
-  gsap.from(el, {opacity:0, y:60, duration:1.2, ease:"power3.out", scrollTrigger:{trigger:el, start:"top 85%"}});
+  gsap.from(el, {opacity:0, y:60, duration:1.4, ease:"power3.out", scrollTrigger:{trigger:el, start:"top 85%"}});
 });
 
-gsap.from('.hero-content', {opacity:0, scale:0.95, duration:1.5, ease:"power2.out"});
+gsap.from('.hero-content', {opacity:0, scale:0.96, duration:1.8, ease:"power2.out"});
 </script>
 
 </body>
