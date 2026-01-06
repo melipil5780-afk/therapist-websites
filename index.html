@@ -1,3 +1,13 @@
+Yes! To make the text go **over the photo** on mobile while keeping it readable, we can use a "dark glass" effect.
+
+Here is how we do it:
+
+1. **The Background:** We set your photo as the background of the entire section on mobile.
+2. **The Overlay:** We give the text box a **semi-transparent black background** (`rgba`). This dims the photo *just behind the text* so the white letters pop out clearly, but you can still see the image texture behind it.
+
+Here is the updated code. I have modified the **CSS** specifically in the `@media` section at the bottom.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +22,7 @@
   --accent: #c9a96e; 
   --bg-earth: #1a1612; 
   --text-light: #fdfcfb;
+  --text-muted: #bbb;
 }
 
 * {margin:0; padding:0; box-sizing:border-box;}
@@ -19,7 +30,7 @@ body {
   font-family:'Inter', sans-serif;
   background-color: var(--bg-earth);
   color: var(--text-light);
-  line-height:1.8;
+  line-height:1.9;
   overflow-x: hidden;
 }
 
@@ -31,11 +42,11 @@ nav {
   display:flex;
   justify-content:space-between;
   z-index:1000;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to bottom, rgba(26,22,18,0.95), transparent);
 }
 .logo { font-family:'Cinzel', serif; letter-spacing:6px; color: var(--accent); font-weight:700; }
 
-/* --- HERO: THE DOOR --- */
+/* --- HERO --- */
 .hero {
   position: relative;
   height: 100vh;
@@ -46,10 +57,8 @@ nav {
   text-align: center;
 }
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.35); /* Readability layer */
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.4);
 }
 .hero-content { position: relative; z-index: 2; }
 .hero h1 { 
@@ -58,10 +67,58 @@ nav {
     text-shadow: 0 5px 25px rgba(0,0,0,0.7); 
 }
 
-/* --- SECTION WRAPS --- */
+/* --- THE SPLIT BIO SECTION --- */
+.bio-container {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  /* Default Desktop background is just the color */
+  background-color: var(--bg-earth);
+}
+
+/* Left Side: Sticky Image (Desktop) */
+.bio-image-col {
+  flex: 1;
+  min-width: 50%;
+  height: 100vh; 
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+  background: url('Subject.png') center/cover no-repeat;
+  z-index: 1;
+}
+
+/* Right Side: Text (Desktop) */
+.bio-text-col {
+  flex: 1;
+  min-width: 350px;
+  background-color: var(--bg-earth);
+  padding: 8% 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 2;
+}
+
+.bio-block { margin-bottom: 80px; }
+h2 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 30px; font-size: 3rem; line-height: 1.1; }
+p { margin-bottom: 20px; font-weight: 300; font-size: 1.1rem; color: var(--text-muted); }
+.highlight { color: var(--text-light); font-weight: 400; border-bottom: 1px solid var(--accent); }
+
+/* Video Styling */
+.video-container { 
+  margin-top:40px; 
+  padding-bottom:56.25%; 
+  position:relative; 
+  border: 1px solid var(--accent); 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.video-container iframe { position:absolute; width:100%; height:100%; top:0; left:0; }
+
+/* --- STEPS SECTION --- */
 .section-wrap {
   display: flex;
-  min-height: 100vh;
+  min-height: 80vh; 
   align-items: center;
   flex-wrap: wrap;
 }
@@ -69,24 +126,20 @@ nav {
 
 .img-box { 
   flex: 1; 
-  min-height: 85vh; 
+  height: 80vh; 
   min-width: 50%; 
   overflow:hidden;
 }
 .img-box img { 
     width: 100%; height: 100%; object-fit: cover; 
-    filter: brightness(1.05); /* Keeps the image from looking dull */
+    filter: brightness(0.9) sepia(0.2); 
 }
-
 .text-box { flex: 1; padding: 8%; min-width: 350px; }
-h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px; font-size: 3.2rem; }
+h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px; font-size: 2.5rem; }
 
-.video-container { margin-top:30px; padding-bottom:56.25%; position:relative; border: 1px solid var(--accent); }
-.video-container iframe { position:absolute; width:100%; height:100%; top:0; left:0; }
-
-/* --- FOOTER: THE TREES PATH --- */
+/* --- FOOTER --- */
 footer {
-  height: 100vh;
+  height: 80vh;
   background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg') center/cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -96,30 +149,59 @@ footer {
   position: relative;
 }
 footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, var(--bg-earth) 10%, rgba(0,0,0,0.2) 100%);
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--bg-earth) 5%, rgba(0,0,0,0.4) 100%);
 }
 .footer-content { position: relative; z-index: 2; }
 .btn { 
   display: inline-block; 
-  padding: 22px 55px; 
-  background: var(--accent); 
-  color: #1a1612; 
+  padding: 20px 50px; 
+  border: 1px solid var(--accent);
+  color: var(--accent); 
   text-decoration: none; 
   font-family: 'Cinzel'; 
   font-weight: 700; 
   margin-top: 30px; 
   letter-spacing: 3px;
   text-transform: uppercase;
+  transition: 0.3s;
 }
+.btn:hover { background: var(--accent); color: #1a1612; }
 
-/* --- RESPONSIVE --- */
-@media (max-width:768px) {
+/* --- RESPONSIVE MOBILE STYLES --- */
+@media (max-width:900px) {
+  
+  /* 1. Set the background image on the Container instead of the column */
+  .bio-container {
+    background: url('Subject.png') center top/cover no-repeat;
+    /* Optional: Fixed attachment makes the image stay still while text scrolls over */
+    background-attachment: scroll; 
+    display: block; /* Stack content */
+  }
+
+  /* 2. Hide the desktop image column (since we moved the image to background) */
+  .bio-image-col { 
+    display: none; 
+  }
+
+  /* 3. Make the Text Column transparent but with a dark overlay box */
+  .bio-text-col { 
+    width: 100%; 
+    padding: 80px 20px;
+    background-color: rgba(26, 22, 18, 0.75); /* 75% opacity dark earth */
+    backdrop-filter: blur(5px); /* Optional: Blurs the photo behind text slightly for readability */
+    min-height: 100vh; /* Ensure it covers the full photo height */
+  }
+
+  /* Adjust text colors for overlay contrast */
+  .bio-text-col p { color: #fdfcfb; } 
+
+  /* Standard Responsive Fixes */
   .section-wrap { flex-direction: column !important; }
-  .img-box { min-height: 50vh; width: 100%; }
-  .text-box { width: 100%; padding: 50px 25px; }
+  .img-box { height: 50vh; width: 100%; flex: none;}
+  .text-box { width: 100%; padding: 50px 25px; flex: none;}
+  
+  h2 { font-size: 2.2rem; }
 }
 </style>
 </head>
@@ -134,21 +216,32 @@ footer::before {
   </div>
 </section>
 
-<section class="section-wrap">
-  <div class="img-box">
-    <img src="Subject.png" alt="Meli Pil Therapist">
-  </div>
-  <div class="text-box">
-    <h2>The Approach</h2>
-    <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is about understanding how emotions play out in your body to transform distress into growth.</p>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+<div class="bio-container">
+  
+  <div class="bio-image-col"></div>
+
+  <div class="bio-text-col">
+    
+    <div class="bio-block">
+      <h2>About Me</h2>
+      <p>I am a mental health counselor passionate about helping individuals become psychologically and emotionally healthy and happy.</p>
+      <p>My work is dedicated to uncovering the parts of yourself that are hidden, repressed, or denied. I help you do <span class="highlight">deep emotional transformational work</span> that leads to clarity, the integration of different parts of the self, and the exploration of a personal, meaningful, and fulfilling life.</p>
     </div>
+
+    <div class="bio-block">
+      <h2>My Approach</h2>
+      <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is not just about talking; it is about understanding how emotions play out in your body to transform distress into growth.</p>
+      
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
   </div>
-</section>
+</div>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-raybilcliff-1672813.jpg"></div>
+  <div class="img-box"><img src="pexels-raybilcliff-1672813.jpg" alt="Arrival"></div>
   <div class="text-box">
     <h3>01 Arrival</h3>
     <p>Stand before the threshold. Feel your breath, your body, and the ground beneath you.</p>
@@ -156,7 +249,7 @@ footer::before {
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-octoptimist-3546132.jpg"></div>
+  <div class="img-box"><img src="pexels-octoptimist-3546132.jpg" alt="Chair Work"></div>
   <div class="text-box">
     <h3>02 Chair Work</h3>
     <p>Two chairs face each other. One holds you. The other holds a part of you or a loved one.</p>
@@ -164,7 +257,7 @@ footer::before {
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-lkloeppel-545960.jpg"></div>
+  <div class="img-box"><img src="pexels-lkloeppel-545960.jpg" alt="Movement"></div>
   <div class="text-box">
     <h3>03 Movement</h3>
     <p>Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
@@ -172,7 +265,7 @@ footer::before {
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-will-74514991-8531908.jpg"></div>
+  <div class="img-box"><img src="pexels-will-74514991-8531908.jpg" alt="Sensing"></div>
   <div class="text-box">
     <h3>04 Sensing</h3>
     <p>Pause. Feel what remains. Notice the heat, the tingling, the spaciousness.</p>
@@ -180,7 +273,7 @@ footer::before {
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-philippedonn-1133957.jpg"></div>
+  <div class="img-box"><img src="pexels-philippedonn-1133957.jpg" alt="Voice"></div>
   <div class="text-box">
     <h3>05 Voice</h3>
     <p>Name what moved. Connect sensation to meaning and turn raw energy into insight.</p>
@@ -188,7 +281,7 @@ footer::before {
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-anniroenkae-5278835.jpg"></div>
+  <div class="img-box"><img src="pexels-anniroenkae-5278835.jpg" alt="Integration"></div>
   <div class="text-box">
     <h3>06 Integration</h3>
     <p>Carry the shift into your world. This is not just a session; it is a new way of being.</p>
@@ -197,7 +290,7 @@ footer::before {
 
 <footer>
   <div class="footer-content">
-    <h2 style="color:white; font-size: 4rem;">Living the Change</h2>
+    <h2 style="color:white; font-size: 3.5rem;">Living the Change</h2>
     <a href="#" class="btn">Book Consultation</a>
     <p style="margin-top:70px; opacity:0.6; font-size: 0.9rem;">© 2026 MELI PIL</p>
   </div>
@@ -207,29 +300,33 @@ footer::before {
 gsap.registerPlugin(ScrollTrigger);
 
 window.onload = () => {
-  // Smooth fade reveal for text boxes
-  gsap.utils.toArray(".text-box").forEach(box => {
-    gsap.from(box, { 
+  // Fade in for Bio Text
+  gsap.utils.toArray(".bio-block").forEach(block => {
+    gsap.from(block, { 
       opacity: 0, 
-      y: 50, 
-      duration: 1.2, 
+      y: 30, 
+      duration: 1, 
       scrollTrigger: { 
-        trigger: box, 
-        start: "top 85%",
-        toggleActions: "play none none none"
+        trigger: block, 
+        start: "top 80%" 
       }
     });
   });
 
-  // Subtle image zoom on scroll
+  // Fade in for Step Text
+  gsap.utils.toArray(".text-box").forEach(box => {
+    gsap.from(box, { 
+      opacity: 0, y: 50, duration: 1.2, 
+      scrollTrigger: { trigger: box, start: "top 85%" }
+    });
+  });
+
+  // Zoom effect for images
   gsap.utils.toArray(".img-box img").forEach(img => {
     gsap.to(img, {
       scale: 1.1,
       ease: "none",
-      scrollTrigger: {
-        trigger: img,
-        scrub: true
-      }
+      scrollTrigger: { trigger: img, scrub: true }
     });
   });
 };
@@ -237,3 +334,6 @@ window.onload = () => {
 
 </body>
 </html>
+
+```
+
