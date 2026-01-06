@@ -1,300 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embodied Path | Immersive Experiential Therapy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <style>
-        :root {
-            --bg: #0b0805;
-            --text: #f0e6d9;
-            --accent: #c9a96e;
-            --overlay: rgba(11, 8, 5, 0.55);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.9;
-            overflow-x: hidden;
-        }
-        .loading {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        .loading h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 3.8rem;
-            margin-bottom: 3rem;
-            letter-spacing: 2px;
-        }
-        .enter-btn {
-            padding: 18px 50px;
-            font-size: 1.3rem;
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
-            transition: all 0.4s;
-        }
-        .enter-btn:hover { background: var(--accent); color: var(--bg); }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Embodied Path</title>
 
-        .progress {
-            position: fixed;
-            top: 40px;
-            right: 40px;
-            font-size: 1.2rem;
-            font-family: 'Cinzel', serif;
-            z-index: 10;
-            color: var(--accent);
-        }
-        .counter {
-            position: fixed;
-            top: 50%;
-            left: 40px;
-            font-size: 9rem;
-            font-family: 'Cinzel', serif;
-            opacity: 0.08;
-            transform: translateY(-50%);
-            z-index: 5;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:wght@400&display=swap" rel="stylesheet">
 
-        section {
-            min-height: 100vh;
-            padding: 20vh 12vw 15vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--overlay);
-            z-index: 1;
-        }
-        .bg {
-            position: absolute;
-            inset: 0;
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
-            will-change: transform;
-        }
-        .content {
-            position: relative;
-            z-index: 2;
-            max-width: 850px;
-        }
-        h2 {
-            font-family: 'Cinzel', serif;
-            font-size: 4.2rem;
-            margin-bottom: 3rem;
-            line-height: 1.2;
-        }
-        p {
-            font-size: 1.55rem;
-            margin-bottom: 2.2rem;
-            opacity: 0;
-        }
-        .quote {
-            font-style: italic;
-            font-size: 2.1rem;
-            margin: 6rem 0;
-            opacity: 0;
-            font-weight: 300;
-        }
-        .cta {
-            margin-top: 6rem;
-            font-size: 1.7rem;
-        }
-        .cta a {
-            color: var(--accent);
-            text-decoration: none;
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 6px;
-        }
+<style>
+:root {
+  --bg: #f5f2ee;
+  --ink: #1e1e1e;
+  --muted: #6b6b6b;
+  --accent: #9a8f7a;
+}
 
-        #s1 .bg { background-image: url('Gemini_Generated_Image_psuglopsuglopsug.png'); }
-        #s2 .bg { background-image: url('Gemini_Generated_Image_jq3f3mjq3f3mjq3f.png'); }
-        #s3 .bg { background-image: url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.png'); }
-        #s4 .bg, #s5 .bg, #s6 .bg { background: linear-gradient(135deg, #1a120b, #0b0805); }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        @media (max-width: 768px) {
-            h2 { font-size: 3rem; }
-            p { font-size: 1.3rem; }
-            .quote { font-size: 1.7rem; margin: 4rem 0; }
-            .counter { font-size: 6rem; left: 20px; }
-            .progress { top: 20px; right: 20px; }
-            section { padding: 15vh 8vw; }
-        }
-    </style>
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ---------- LIVING BACKGROUND ---------- */
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.gradient {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    #e8e2da,
+    #f5f2ee 60%
+  );
+  animation: breathe 18s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%   { transform: scale(1) translate(0, 0); }
+  50%  { transform: scale(1.03) translate(-2%, -1%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+/* subtle grain */
+.noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+/* ---------- CONTENT ---------- */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 18vh 10vw 20vh;
+}
+
+section {
+  margin-bottom: 22vh;
+}
+
+h1, h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 1.25rem;
+  color: var(--muted);
+  max-width: 720px;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- CTA ---------- */
+
+a.cta {
+  display: inline-block;
+  margin-top: 4rem;
+  font-size: 1.1rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 6px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+  main {
+    padding: 14vh 7vw 18vh;
+  }
+
+  p {
+    font-size: 1.15rem;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="loading" id="loading">
-        <h1>Embodied Path</h1>
-        <button class="enter-btn">Enter the Journey</button>
-    </div>
+<div class="background">
+  <div class="gradient"></div>
+  <div class="noise"></div>
+</div>
 
-    <div class="progress">00 / 06</div>
-    <div class="counter" id="counter">01</div>
+<main>
+  <section class="fade">
+    <h1>Therapy that works at the pace of the nervous system</h1>
+    <p>
+      Change does not arrive through force or insight alone. It unfolds when the
+      mind and body are allowed to settle, sense, and respond in their own time.
+    </p>
+  </section>
 
-    <section id="s1">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>01 Arrival at the Threshold</h2>
-            <p>Stand before the glowing gateway.</p>
-            <p>Here, we begin not with words alone, but with presence.</p>
-            <p>Feel your breath, your body, the ground beneath you.</p>
-            <p>This is where emotional change starts — in the lived experience of now.</p>
-            <p class="quote">“Healing begins when we fully inhabit the moment.”</p>
-        </div>
-    </section>
+  <section class="fade">
+    <h2>Experience before explanation</h2>
+    <p>
+      Rather than beginning with interpretation, the work starts with what is
+      already present—emotion, sensation, relational patterns—noticed gently,
+      without urgency.
+    </p>
+  </section>
 
-    <section id="s2">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>02 Relational Chair Work</h2>
-            <p>In this quiet sanctuary, two chairs face each other.</p>
-            <p>One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
-            <p>Speak. Listen. Switch places.</p>
-            <p>Embody each side. Feel the unspoken become alive in your body and voice.</p>
-            <p class="quote">“We heal in relationship — even when the other is imagined.”</p>
-        </div>
-    </section>
+  <section class="fade">
+    <h2>Where emotion lives</h2>
+    <p>
+      Feelings are not abstract concepts. They emerge in posture, breath, tone,
+      and impulse. When the body is included, something shifts that talking alone
+      cannot reach.
+    </p>
+  </section>
 
-    <section id="s3">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>03 Releasing Through Movement</h2>
-            <p>Along this ancient path, energy moves.</p>
-            <p>Anger, grief, fear — they live in the body.</p>
-            <p>Strike cushions, push against walls, stomp, shake, roar.</p>
-            <p>Let the stuck emotion flow out through action.</p>
-            <p>The body speaks what words have held back.</p>
-            <p class="quote">“What is held in the body must be moved to be freed.”</p>
-        </div>
-    </section>
+  <section class="fade">
+    <h2>Integration, not intensity</h2>
+    <p>
+      The goal is not catharsis for its own sake, but integration—so what changes
+      here can be carried into daily life with steadiness and clarity.
+    </p>
 
-    <section id="s4">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>04 Sensing the Shift</h2>
-            <p>After the wave of movement, pause.</p>
-            <p>Feel what remains. Where does the energy live now?</p>
-            <p>Notice heat, tingling, spaciousness, or tears.</p>
-            <p>The body has shifted. Stay with the sensation — this is where transformation deepens.</p>
-            <p class="quote">“Awareness of the body is the bridge to lasting change.”</p>
-        </div>
-    </section>
+    <a class="cta" href="mailto:your@email.com">
+      Begin a conversation
+    </a>
+  </section>
+</main>
 
-    <section id="s5">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>05 Giving Voice to the Experience</h2>
-            <p>Now, speak.</p>
-            <p>Name what moved through you.</p>
-            <p>“I felt rage in my chest… then release in my arms.”</p>
-            <p>Connect sensation to meaning. Reflect. Integrate.</p>
-            <p>The emotional flood becomes a story you can carry forward with wisdom.</p>
-            <p class="quote">“Words after movement turn raw energy into insight.”</p>
-        </div>
-    </section>
+<script>
+const fades = document.querySelectorAll('.fade');
 
-    <section id="s6">
-        <div class="bg"></div>
-        <div class="content">
-            <h2>06 Living the Change</h2>
-            <p>You emerge different.</p>
-            <p>The body remembers. The mind understands.</p>
-            <p>Together, they guide new choices.</p>
-            <p>This is experiential therapy — not just talking about change, but living it through movement, relation, and reflection.</p>
-            <div class="cta">
-                Ready to walk this path in a real session?<br><br>
-                <a href="mailto:your@email.com">Schedule Your Experiential Session</a>
-            </div>
-        </div>
-    </section>
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  },
+  { threshold: 0.25 }
+);
 
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
+fades.forEach(el => observer.observe(el));
+</script>
 
-        // Enter button
-        document.querySelector('.enter-btn').addEventListener('click', () => {
-            gsap.to('.loading', {
-                opacity: 0,
-                duration: 1.2,
-                onComplete: () => document.getElementById('loading').style.display = 'none'
-            });
-        });
-
-        // Parallax + subtle zoom for "alive" backgrounds
-        document.querySelectorAll('section').forEach(section => {
-            const bg = section.querySelector('.bg');
-            if (bg) {
-                gsap.to(bg, {
-                    yPercent: -40,
-                    scale: 1.15,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top bottom",
-                        end: "bottom top",
-                        scrub: true
-                    }
-                });
-            }
-
-            // Staggered, rhythmic text animation (like the original)
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top 75%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-
-            tl.from(section.querySelector('h2'), { opacity: 0, y: 60, duration: 1.2 });
-            tl.from(section.querySelectorAll('p:not(.quote)'), {
-                opacity: 0,
-                y: 40,
-                stagger: 0.5,
-                duration: 1.4
-            }, "-=0.8");
-            tl.from(section.querySelector('.quote'), {
-                opacity: 0,
-                y: 30,
-                duration: 1.6
-            }, "-=1");
-            if (section.querySelector('.cta')) {
-                tl.from(section.querySelector('.cta'), { opacity: 0, y: 40, duration: 1.4 }, "-=0.6");
-            }
-        });
-
-        // Global progress counter
-        ScrollTrigger.create({
-            onUpdate: self => {
-                const progress = Math.min(Math.floor(self.progress * 6) + 1, 6);
-                const num = String(progress).padStart(2, '0');
-                document.querySelector('.progress').textContent = `${num} / 06`;
-                document.getElementById('counter').textContent = num;
-            }
-        });
-    </script>
 </body>
 </html>
