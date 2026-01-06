@@ -21,18 +21,17 @@ body {
   background-color: var(--bg-earth);
   color: var(--text-light);
   line-height:1.8;
-  overflow-x:hidden;
 }
 
+/* --- NAVIGATION --- */
 nav {
   position:fixed;
   top:0; width:100%;
   padding:25px 5%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   z-index:1000;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
 }
 .logo { font-family:'Cinzel', serif; letter-spacing:6px; color: var(--accent); font-weight:700; }
 
@@ -43,64 +42,66 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  text-align: center;
 }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, var(--bg-earth)); }
+.hero h1 { font-family:'Cinzel'; font-size: clamp(3rem, 8vw, 6rem); text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-/* --- SECTION WRAPPERS --- */
+/* --- SECTION STRUCTURE: SPLIT SCREEN FOR CLARITY --- */
 .section-wrap {
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
   align-items: center;
-  padding: 100px 8%;
-  gap: 60px;
   flex-wrap: wrap;
 }
 .section-wrap:nth-child(even) { flex-direction: row-reverse; }
 
 .img-box {
-  flex: 1.2;
-  height: 80vh;
-  min-width: 380px;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-  border: 1px solid var(--border);
+  flex: 1;
+  height: 100vh;
+  min-width: 50%;
 }
 .img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-.text-box { flex: 1; min-width: 350px; }
-h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px; font-size: clamp(2.5rem, 5vw, 3.5rem); }
-.quote { font-style:italic; border-left: 2px solid var(--accent); padding-left: 20px; color: var(--accent); margin-top: 20px; }
+.text-box {
+  flex: 1;
+  padding: 10%;
+  min-width: 350px;
+}
+h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px; font-size: 3rem; }
 
 /* --- VIDEO --- */
-.video-container { margin-top:20px; padding-bottom:56.25%; position:relative; border: 1px solid var(--accent); }
+.video-container { margin-top:30px; padding-bottom:56.25%; position:relative; border: 1px solid var(--accent); }
 .video-container iframe { position:absolute; width:100%; height:100%; top:0; left:0; }
 
-/* --- JOURNAL --- */
-.journal { padding: 100px 8%; text-align: center; }
-.journal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-.card { border: 1px solid var(--border); background: rgba(255,255,255,0.02); text-align: left; text-decoration: none; color: white; transition: 0.3s; }
-.card img { width: 100%; height: 250px; object-fit: cover; }
-
-/* --- FOOTER: THE TREES --- */
-.footer-wrap {
-  position: relative;
+/* --- FOOTER: THE TREES PATH --- */
+footer {
   height: 100vh;
-  overflow: hidden;
+  background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg') center/cover no-repeat;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  position: relative;
 }
-.footer-bg {
+footer::before {
+  content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 130%;
-  background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg') center/cover no-repeat;
-  z-index: 1;
+  inset: 0;
+  background: linear-gradient(to top, var(--bg-earth) 10%, transparent 100%);
 }
-.footer-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--bg-earth) 20%, transparent 100%); z-index: 2; }
-.footer-content { position: relative; z-index: 3; text-align: center; }
-.btn { display: inline-block; padding: 15px 40px; background: var(--accent); color: #1e1610; text-decoration: none; font-weight: 700; font-family: 'Cinzel'; margin-top: 20px; }
+.footer-content { position: relative; z-index: 2; }
+.btn { 
+  display: inline-block; 
+  padding: 20px 50px; 
+  background: var(--accent); 
+  color: #1a1612; 
+  text-decoration: none; 
+  font-family: 'Cinzel'; 
+  font-weight: 700; 
+  margin-top: 30px; 
+  letter-spacing: 2px;
+}
 
 </style>
 </head>
@@ -109,10 +110,9 @@ h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px
 <nav><div class="logo">MELI PIL</div></nav>
 
 <section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content" style="position:relative; z-index:2; text-align:center;">
-    <h1 style="font-family:'Cinzel'; font-size: clamp(3rem, 7vw, 5rem); color: white;">Beyond The Story.</h1>
-    <p style="letter-spacing:10px; color: var(--accent);">EXPERIENTIAL PSYCHOTHERAPY</p>
+  <div class="hero-content">
+    <h1>Beyond The Story.</h1>
+    <p style="letter-spacing:10px; color: var(--accent); text-transform: uppercase;">Experiential Psychotherapy</p>
   </div>
 </section>
 
@@ -120,7 +120,7 @@ h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px
   <div class="img-box"><img src="Subject.jpg"></div>
   <div class="text-box">
     <h2>The Approach</h2>
-    <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused by the recurring patterns in your life. My work isn't just about identifying problems; it's about understanding how emotions play out in your body.</p>
+    <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is about understanding how emotions play out in your body to transform distress into growth.</p>
     <div class="video-container">
       <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
     </div>
@@ -128,94 +128,51 @@ h2, h3 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 20px
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg"></div>
+  <div class="img-box"><img src="pexels-raybilcliff-1672813.jpg"></div>
   <div class="text-box">
     <h3>01 Arrival</h3>
-    <p>Stand before the threshold. Feel your breath, your body, and the ground beneath you.</p>
-    <div class="quote">“Healing begins when we fully inhabit the moment.”</div>
+    <p>Stand before the threshold. Here, we begin with presence. Feel your breath and the ground beneath you.</p>
   </div>
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg"></div>
+  <div class="img-box"><img src="pexels-octoptimist-3546132.jpg"></div>
   <div class="text-box">
     <h3>02 Chair Work</h3>
-    <p>Two chairs face each other. One holds you. The other holds a part of you or a loved one.</p>
-    <div class="quote">“We heal in relationship.”</div>
+    <p>Two chairs face each other. One holds you. The other holds a part of you or an inner voice. We bridge the gap between words and felt truth.</p>
   </div>
 </section>
 
 <section class="section-wrap">
-  <div class="img-box"><img src="pexels-anniroenkae-5278835.jpg"></div>
+  <div class="img-box"><img src="pexels-lkloeppel-545960.jpg"></div>
   <div class="text-box">
     <h3>03 Movement</h3>
-    <p>Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar. What is held must be moved to be freed.</p>
+    <p>Anger, grief, fear — they live in the body. What is held must be moved to be freed. We turn stagnant energy into purposeful action.</p>
   </div>
 </section>
 
-<section class="section-wrap">
-  <div class="img-box"><img src="pexels-packermann-1666012.jpg"></div>
-  <div class="text-box">
-    <h3>04 Sensing</h3>
-    <p>Pause. Feel what remains. Notice the heat, the tingling, the spaciousness.</p>
-  </div>
-</section>
-
-<section class="journal">
-  <h3>The Sanctuary of Thought</h3>
-  <div class="journal-grid">
-    <a href="#" class="card">
-      <img src="Subject.jpg"> 
-      <h4>Unlocking the Source</h4>
-      <p>The roots of anxiety and shame.</p>
-    </a>
-    <a href="#" class="card">
-      <img src="pexels-simon73-1266810.jpg">
-      <h4>The Horizon of Self</h4>
-      <p>Nature and internal landscapes.</p>
-    </a>
-    <a href="#" class="card">
-      <img src="pexels-liubava-fedoryshyn-1833670446-28430595.jpg">
-      <h4>Mirroring the Body</h4>
-      <p>Somatic integration science.</p>
-    </a>
-  </div>
-</section>
-
-<section class="footer-wrap">
-  <div class="footer-bg"></div>
-  <div class="footer-overlay"></div>
+<footer>
   <div class="footer-content">
-    <h2 style="color:white; font-size: 3.5rem; font-family:'Cinzel';">Living the Change</h2>
+    <h2 style="color:white; font-size: 4rem;">Living the Change</h2>
+    <p>Your journey toward integration begins here.</p>
     <a href="#" class="btn">Book Consultation</a>
-    <p style="margin-top:80px; opacity:0.5;">© 2026 MELI PIL</p>
+    <p style="margin-top:80px; opacity:0.6; font-size: 0.8rem;">© 2026 MELI PIL</p>
   </div>
-</section>
+</footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Parallax for the Tree Footer
-gsap.to(".footer-bg", {
-  y: "-20%",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".footer-wrap",
-    start: "top bottom",
-    end: "bottom top",
-    scrub: true
-  }
-});
-
-// Image reveals
-gsap.utils.toArray(".img-box").forEach(img => {
-  gsap.from(img, { 
+// Clean fade reveals
+gsap.utils.toArray(".text-box").forEach(box => {
+  gsap.from(box, { 
     opacity: 0, 
-    clipPath: "inset(0 100% 0 0)", 
-    duration: 1.5, 
-    scrollTrigger: { trigger: img, start: "top 85%" }
+    y: 50, 
+    duration: 1, 
+    scrollTrigger: { trigger: box, start: "top 80%" }
   });
 });
 </script>
+
 </body>
 </html>
