@@ -9,10 +9,9 @@
 
 <style>
 :root {
-  --bg: #f5f2ee;
-  --ink: #1e1e1e;
-  --muted: #6b6b6b;
-  --accent: #9a8f7a;
+  --bg: #f4f1ed;
+  --ink: #1c1c1c;
+  --muted: #6a6a6a;
 }
 
 * {
@@ -29,47 +28,84 @@ html, body {
   overflow-x: hidden;
 }
 
-/* ---------- LIVING BACKGROUND ---------- */
+/* ===============================
+   AMBIENT LIVING BACKGROUND
+   =============================== */
 
-.background {
+.ambient {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   overflow: hidden;
 }
 
-.gradient {
+.layer {
   position: absolute;
-  width: 120%;
-  height: 120%;
+  inset: -20%;
   background: radial-gradient(
     circle at 30% 30%,
-    #e8e2da,
-    #f5f2ee 60%
+    #e6e1da,
+    #f4f1ed 60%
   );
-  animation: breathe 18s ease-in-out infinite;
+  animation: driftOne 40s linear infinite;
 }
 
-@keyframes breathe {
-  0%   { transform: scale(1) translate(0, 0); }
-  50%  { transform: scale(1.03) translate(-2%, -1%); }
-  100% { transform: scale(1) translate(0, 0); }
+.layer.two {
+  background: radial-gradient(
+    circle at 70% 60%,
+    #ded7cd,
+    #f4f1ed 65%
+  );
+  animation: driftTwo 55s linear infinite;
+  opacity: 0.7;
+}
+
+.layer.three {
+  background: radial-gradient(
+    circle at 50% 50%,
+    #ebe6df,
+    #f4f1ed 70%
+  );
+  animation: driftThree 70s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes driftOne {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-3%, -2%) scale(1.03); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes driftTwo {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(2%, -3%) scale(1.04); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes driftThree {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-2%, 2%) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 
 /* subtle grain */
 .noise {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  z-index: -2;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   mix-blend-mode: soft-light;
 }
 
-/* ---------- CONTENT ---------- */
+/* ===============================
+   CONTENT
+   =============================== */
 
 main {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 18vh 10vw 20vh;
+  padding: 20vh 10vw 22vh;
 }
 
 section {
@@ -82,49 +118,58 @@ h1, h2 {
 }
 
 h1 {
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  margin-bottom: 3rem;
+  font-size: clamp(3rem, 5vw, 4.2rem);
+  margin-bottom: 3.5rem;
+  max-width: 900px;
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  margin-bottom: 2rem;
+  font-size: clamp(2.1rem, 4vw, 2.9rem);
+  margin-bottom: 2.2rem;
 }
 
 p {
   font-size: 1.25rem;
   color: var(--muted);
-  max-width: 720px;
+  max-width: 760px;
 }
 
-.fade {
+/* ===============================
+   VERY RESTRAINED REVEALS
+   =============================== */
+
+.reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.8s ease, transform 1.8s ease;
+  transform: translateY(50px);
+  transition: opacity 2.2s ease, transform 2.2s ease;
 }
 
-.fade.visible {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ---------- CTA ---------- */
+/* ===============================
+   CTA
+   =============================== */
 
-a.cta {
+.cta {
   display: inline-block;
-  margin-top: 4rem;
-  font-size: 1.1rem;
+  margin-top: 4.5rem;
+  font-size: 1.15rem;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--ink);
   padding-bottom: 6px;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ===============================
+   RESPONSIVE
+   =============================== */
 
 @media (max-width: 768px) {
   main {
-    padding: 14vh 7vw 18vh;
+    padding: 16vh 7vw 18vh;
   }
 
   p {
@@ -136,53 +181,61 @@ a.cta {
 
 <body>
 
-<div class="background">
-  <div class="gradient"></div>
-  <div class="noise"></div>
+<div class="ambient">
+  <div class="layer"></div>
+  <div class="layer two"></div>
+  <div class="layer three"></div>
 </div>
+<div class="noise"></div>
 
 <main>
-  <section class="fade">
-    <h1>Therapy that works at the pace of the nervous system</h1>
+  <section class="reveal">
+    <h1>
+      Therapy that unfolds slowly, intelligently, and at depth
+    </h1>
     <p>
-      Change does not arrive through force or insight alone. It unfolds when the
-      mind and body are allowed to settle, sense, and respond in their own time.
+      Not everything that matters announces itself. Some change happens quietly,
+      through attention, timing, and allowing experience to take shape without force.
     </p>
   </section>
 
-  <section class="fade">
-    <h2>Experience before explanation</h2>
+  <section class="reveal">
+    <h2>
+      A different pace
+    </h2>
     <p>
-      Rather than beginning with interpretation, the work starts with what is
-      already present—emotion, sensation, relational patterns—noticed gently,
-      without urgency.
+      This work does not rush toward solutions. It listens for patterns, emotions,
+      and relational movements that emerge when space is held carefully enough.
     </p>
   </section>
 
-  <section class="fade">
-    <h2>Where emotion lives</h2>
+  <section class="reveal">
+    <h2>
+      Where experience lives
+    </h2>
     <p>
-      Feelings are not abstract concepts. They emerge in posture, breath, tone,
-      and impulse. When the body is included, something shifts that talking alone
-      cannot reach.
+      Thought, feeling, and bodily response are not separate systems. When they are
+      approached together, something begins to reorganize on its own.
     </p>
   </section>
 
-  <section class="fade">
-    <h2>Integration, not intensity</h2>
+  <section class="reveal">
+    <h2>
+      Integration over performance
+    </h2>
     <p>
-      The goal is not catharsis for its own sake, but integration—so what changes
-      here can be carried into daily life with steadiness and clarity.
+      The aim is not intensity, insight, or catharsis alone, but integration—so what
+      shifts here can be carried forward with stability and clarity.
     </p>
 
-    <a class="cta" href="mailto:your@email.com">
+    <a href="mailto:your@email.com" class="cta">
       Begin a conversation
     </a>
   </section>
 </main>
 
 <script>
-const fades = document.querySelectorAll('.fade');
+const reveals = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver(
   entries => {
@@ -192,10 +245,10 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.25 }
+  { threshold: 0.3 }
 );
 
-fades.forEach(el => observer.observe(el));
+reveals.forEach(el => observer.observe(el));
 </script>
 
 </body>
