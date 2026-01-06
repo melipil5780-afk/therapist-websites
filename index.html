@@ -11,20 +11,20 @@
 
 <style>
 :root {
-  --bg:#0b0805;
+  --bg-gradient: linear-gradient(135deg, #1e1610, #2b1f13); 
   --text:#f0e6d9;
   --accent:#c9a96e;
-  --veil-strong:rgba(11,8,5,.78);
-  --veil-soft:rgba(11,8,5,.45);
-  --border:rgba(201,169,110,.25);
+  --veil-soft: rgba(11,8,5,0.25);
+  --veil-medium: rgba(11,8,5,0.45);
+  --border: rgba(201,169,110,.25);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-
+/* BASIC RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  background: var(--bg-gradient);
+  color: var(--text);
   line-height:1.85;
   overflow-x:hidden;
 }
@@ -39,21 +39,19 @@ nav{
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  background:linear-gradient(to bottom,rgba(11,8,5,.85),transparent);
+  background: linear-gradient(to bottom, rgba(11,8,5,0.6), transparent);
 }
-.logo{
-  font-family:'Cinzel',serif;
-  letter-spacing:3px;
-  color:var(--accent);
-}
+.logo{ font-family:'Cinzel', serif; letter-spacing:3px; color: var(--accent);}
 .nav-btn{
-  font-family:'Cinzel',serif;
+  font-family:'Cinzel', serif;
   text-decoration:none;
   padding:10px 22px;
-  background:var(--accent);
-  color:var(--bg);
+  background: var(--accent);
+  color: #1e1610;
   font-size:.8rem;
+  transition:.3s;
 }
+.nav-btn:hover{background:#fff;}
 
 /* HERO SECTION */
 .hero{
@@ -67,7 +65,7 @@ nav{
   content:'';
   position:absolute;
   inset:0;
-  background: linear-gradient(to bottom, rgba(11,8,5,.35), rgba(11,8,5,.85));
+  background: var(--veil-soft);
 }
 .hero-content{
   position:relative;
@@ -79,11 +77,13 @@ nav{
   font-family:'Cinzel',serif;
   font-size:clamp(3.5rem,9vw,6rem);
   margin-bottom:24px;
+  text-shadow:0 5px 15px rgba(0,0,0,0.6);
 }
 .hero p{
   letter-spacing:4px;
   font-weight:500;
-  opacity:.85;
+  opacity:.95;
+  text-shadow:0 3px 10px rgba(0,0,0,0.5);
 }
 
 /* JOURNEY SECTION */
@@ -94,6 +94,7 @@ nav{
   padding:120px 12%;
   position:relative;
   overflow:hidden;
+  background: var(--bg-gradient);
 }
 .journey-bg{
   position:absolute;
@@ -106,7 +107,6 @@ nav{
   content:'';
   position:absolute;
   inset:0;
-  background:linear-gradient(to right, var(--veil-strong), var(--veil-soft));
   z-index:1;
 }
 .journey-content{
@@ -119,6 +119,7 @@ nav{
   font-size:3.2rem;
   color:var(--accent);
   margin-bottom:28px;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
 .journey p{
   font-size:1.25rem;
@@ -129,26 +130,37 @@ nav{
   font-size:1.6rem;
   border-left:3px solid var(--accent);
   padding-left:28px;
-  opacity:.8;
+  opacity:.85;
 }
 
-/* LEVEL IMAGES */
+/* LEVEL IMAGES AND OVERLAYS */
 #lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');}
+#lvl1::before{background: var(--veil-medium);} 
+
 #lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg');}
-#lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg');}
-#lvl4 .journey-bg{background-image:url('pexels-packermann-1666012.jpg');}
-#lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg');}
+#lvl2::before{background: var(--veil-medium);} 
+
+#lvl3 .journey-bg{background-image:url('Gemini_Generated_Image_lvl3.jpg');}
+#lvl3::before{background: rgba(201,169,110,0.2);} /* warm overlay for movement */
+
+#lvl4 .journey-bg{background-image:url('Gemini_Generated_Image_lvl4.jpg');}
+#lvl4::before{background: rgba(100,150,200,0.2);} /* soft blue overlay for sensing */
+
+#lvl5 .journey-bg{background-image:url('Gemini_Generated_Image_lvl5.jpg');}
+#lvl5::before{background: rgba(150,100,200,0.2);} /* purple overlay for voice */
+
 #lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg');}
+#lvl6::before{background: var(--veil-medium);}
 
 /* FLOATING CTA */
 .cta-float{
   position:fixed;
   bottom:40px;
   right:40px;
-  background:var(--accent);
-  color:var(--bg);
+  background: var(--accent);
+  color: #1e1610;
   padding:16px 30px;
-  font-family:'Cinzel',serif;
+  font-family:'Cinzel', serif;
   text-decoration:none;
   z-index:1000;
   box-shadow:0 10px 30px rgba(0,0,0,.5);
@@ -170,12 +182,13 @@ footer::before{
   content:'';
   position:absolute;
   inset:0;
-  background: rgba(11,8,5,.85);
+  background: var(--veil-soft);
 }
 footer p{
   position:relative;
-  opacity:.6;
+  opacity:.85;
   font-size:.85rem;
+  text-shadow:0 2px 10px rgba(0,0,0,0.5);
 }
 
 /* MOBILE */
@@ -285,7 +298,7 @@ gsap.utils.toArray(".journey-content").forEach((el)=>{
   });
 });
 
-/* SELECTIVE PARALLAX */
+/* PARALLAX */
 ["#lvl1","#lvl3","#lvl6"].forEach(id=>{
   gsap.to(`${id} .journey-bg`,{
     yPercent:25,
@@ -296,6 +309,10 @@ gsap.utils.toArray(".journey-content").forEach((el)=>{
     }
   });
 });
+
+// Hero slow zoom
+gsap.to(".hero", { scale:1.03, duration:12, repeat:-1, yoyo:true, ease:"sine.inOut" });
+
 </script>
 
 </body>
