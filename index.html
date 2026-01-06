@@ -14,6 +14,7 @@
   --accent: #c9a96e;
   --text: #1e1610;
   --border: rgba(201,169,110,0.2);
+  --overlay: rgba(255,255,255,0.2);
 }
 
 /* RESET */
@@ -81,6 +82,12 @@ nav{
   place-items:center;
   position:relative;
   background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.png') center/cover no-repeat;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.3);
 }
 .hero-content{
   position:relative;
@@ -175,6 +182,7 @@ nav{
   align-items:center;
   padding:100px 10%;
   position:relative;
+  overflow:hidden;
 }
 .journey-bg{
   position:absolute;
@@ -182,32 +190,39 @@ nav{
   background-size:cover;
   background-position:center;
   z-index:0;
+  filter: brightness(0.85);
+}
+.journey-bg::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.25);
 }
 .journey-content{
   position:relative;
   z-index:2;
   max-width:650px;
-  background: rgba(255,255,255,0.02);
-  padding:20px;
-  border-radius:6px;
+  padding:25px 20px;
+  border-radius:8px;
+  background: rgba(255,255,255,0.08); /* subtle overlay for readability */
 }
 .journey h3{
   font-family:'Cinzel', serif;
-  font-size:3rem;
+  font-size:clamp(2rem,5vw,3rem);
   margin-bottom:20px;
   color: var(--accent);
 }
 .journey p{
-  font-size:1.2rem;
+  font-size:1.15rem;
   margin-bottom:20px;
   color:#1e1610;
 }
 .quote{
   font-style:italic;
-  font-size:1.5rem;
+  font-size:1.4rem;
   border-left:3px solid var(--accent);
-  padding-left:20px;
-  opacity:.85;
+  padding-left:15px;
+  opacity:.9;
 }
 
 /* LEVEL IMAGES */
@@ -216,7 +231,7 @@ nav{
 #lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg');}
 #lvl4 .journey-bg{background-image:url('pexels-packermann-1666012.jpg');}
 #lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg');}
-#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg');}
+#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.png');}
 
 /* JOURNAL / ARTICLES */
 .journal{
@@ -282,6 +297,9 @@ footer p{
   .about{grid-template-columns:1fr}
   .about-img{height:400px}
   .journey{padding:80px 5%}
+  .journey-content{padding:20px 15px}
+  .journey h3{font-size:2rem}
+  .quote{font-size:1.2rem}
   .journal-grid{gap:20px}
 }
 </style>
@@ -327,7 +345,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>01 Arrival</h3>
-    <p>Stand before the threshold. We begin with presence. Feel your breath, your body, the ground beneath you.</p>
+    <p>Stand before the threshold. Here, we begin not with words alone, but with presence. Feel your breath, your body, the ground beneath you.</p>
     <div class="quote">“Healing begins when we fully inhabit the moment.”</div>
   </div>
 </section>
@@ -336,7 +354,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>02 Relational Chair Work</h3>
-    <p>Two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
+    <p>In this quiet sanctuary, two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
     <div class="quote">“We heal in relationship — even when the other is imagined.”</div>
   </div>
 </section>
@@ -345,7 +363,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>03 Releasing Through Movement</h3>
-    <p>Along this path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
+    <p>Along this ancient path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
     <div class="quote">“What is held in the body must be moved to be freed.”</div>
   </div>
 </section>
@@ -354,7 +372,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>04 Sensing the Shift</h3>
-    <p>After movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears.</p>
+    <p>After the wave of movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears.</p>
     <div class="quote">“Awareness of the body is the bridge to lasting change.”</div>
   </div>
 </section>
@@ -363,7 +381,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>05 Giving Voice</h3>
-    <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.”</p>
+    <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.” Connect sensation to meaning.</p>
     <div class="quote">“Words after movement turn raw energy into insight.”</div>
   </div>
 </section>
