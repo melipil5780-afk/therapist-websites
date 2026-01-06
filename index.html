@@ -12,8 +12,7 @@
             --bg: #0b0805;
             --text: #f0e6d9;
             --accent: #c9a96e;
-            /* Slightly darker overlay for better text contrast on complex images */
-            --overlay: rgba(11, 8, 5, 0.75);
+            --overlay: rgba(11, 8, 5, 0.6);
             --border: rgba(201, 169, 110, 0.3);
         }
 
@@ -54,7 +53,7 @@
         }
         .nav-btn:hover { background: #fff; }
 
-        /* --- HERO (UPDATED WITH NEW DOOR IMAGE) --- */
+        /* --- HERO SECTION (HEADER) --- */
         .hero {
             height: 100vh;
             display: flex;
@@ -62,15 +61,18 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            /* Using the new Ornate Door image here */
-            background: url('Gemini_Generated_Image_psuglopsuglopsug.jpg') center/cover no-repeat;
+            /* UPDATED: Using the 'Inner Journey' door image */
+            background-image: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
-        .hero::before { content: ''; position: absolute; inset: 0; background: var(--overlay); }
+        .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); } 
         .hero-content { position: relative; z-index: 2; }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(3rem, 9vw, 6rem); margin-bottom: 20px; letter-spacing: -2px; }
-        .hero p { font-size: 1.2rem; letter-spacing: 4px; font-weight: 300; color: var(--accent); }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(3rem, 9vw, 6rem); margin-bottom: 20px; letter-spacing: -2px; text-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.2rem; letter-spacing: 4px; font-weight: 600; color: #fff; text-shadow: 0 5px 15px rgba(0,0,0,0.8); }
 
-        /* --- VIDEO SECTION (Solid Background for Contrast) --- */
+        /* --- VIDEO SECTION --- */
         .video-container {
             padding: 120px 10%;
             text-align: center;
@@ -82,17 +84,14 @@
             max-width: 900px;
             margin: 50px auto 0;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
             border: 1px solid var(--border);
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-        /* --- ABOUT ME (Solid Background) --- */
+        /* --- ABOUT ME --- */
         .about {
             padding: 150px 10%;
             display: grid;
@@ -101,16 +100,17 @@
             align-items: center;
             background: var(--bg);
         }
-        /* Using the Man in Clouds image here as it fits the "internal world" theme */
         .about-img {
             height: 650px;
-            background: url('pexels-yunustug-8337508.jpg') center/cover;
+            /* UPDATED: Using 'Man on Cliff' image */
+            background-image: url('pexels-yunustug-8337508.jpg');
+            background-size: cover;
+            background-position: center;
             border: 1px solid var(--border);
         }
         .about h2 { font-family: 'Cinzel', serif; font-size: 3rem; color: var(--accent); margin-bottom: 30px; }
-        .about p { margin-bottom: 25px; opacity: 0.9; }
 
-        /* --- THE JOURNEY (Image Backgrounds) --- */
+        /* --- THE JOURNEY --- */
         .journey-section {
             position: relative;
             min-height: 100vh;
@@ -126,40 +126,49 @@
             background-position: center;
             z-index: 0;
         }
-        /* Darker overlay for journey sections so text pops */
-        .journey-section::before { content: ''; position: absolute; inset: 0; background: rgba(11, 8, 5, 0.8); z-index: 1; }
-
-        .journey-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
+        .journey-section::before { content: ''; position: absolute; inset: 0; background: rgba(11, 8, 5, 0.75); z-index: 1; }
+        .journey-content { position: relative; z-index: 2; max-width: 700px; }
         .journey-content h3 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 25px; color: var(--accent); }
         .journey-content p { font-size: 1.4rem; margin-bottom: 25px; }
         .quote { font-style: italic; font-size: 1.8rem; border-left: 3px solid var(--accent); padding-left: 30px; margin-top: 50px; color: rgba(255,255,255,0.8); }
 
-        /* --- IMAGES FOR LEVELS --- */
-        /* Level 1: The original forest door concept works well here as the first step */
-        #lvl1 .journey-bg { background-image: url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg'); }
-        /* Level 2: Chair work -> The peaceful room with chair */
-        #lvl2 .journey-bg { background-image: url('pexels-raybilcliff-1672813.jpg'); }
-        /* Level 3: Movement/Anger -> The dark, stormy abstract */
-        #lvl3 .journey-bg { background-image: url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg'); }
-        /* Level 4: Sensing shift -> The foggy mountain vista */
-        #lvl4 .journey-bg { background-image: url('pexels-packermann-1666012.jpg'); }
-        /* Level 5: Voice/Clarity -> The bright, clear mountain sunrise */
-        #lvl5 .journey-bg { background-image: url('pexels-philippedonn-1133957.jpg'); }
+        /* --- LEVEL IMAGES MAPPED TO YOUR FILES --- */
         
-        /* --- UPDATED LEVEL 6 --- */
-        /* Using the new Misty Forest Path image for the final stage */
-        #lvl6 .journey-bg { background-image: url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg'); }
+        /* Level 1: The 'Unseen Gate' Door */
+        #lvl1 .journey-bg { background-image: url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg'); } 
+        
+        /* Level 2: The Room with Chairs */
+        #lvl2 .journey-bg { background-image: url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg'); } 
+        
+        /* Level 3: Abstract/Fractal for Movement */
+        #lvl3 .journey-bg { background-image: url('pexels-anniroenkae-5278835.jpg'); } 
+        
+        /* Level 4: Misty Mountains for Sensing */
+        #lvl4 .journey-bg { background-image: url('pexels-packermann-1666012.jpg'); } 
+        
+        /* Level 5: Bird/Flower for Voice */
+        #lvl5 .journey-bg { background-image: url('pexels-philippedonn-1133957.jpg'); } 
+        
+        /* Level 6: THE END / PATH */
+        #lvl6 .journey-bg { 
+            /* This is the forest path image you provided */
+            background-image: url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg'); 
+        }
 
-
-        /* --- JOURNAL (Solid Background) --- */
+        /* --- JOURNAL --- */
         .journal { padding: 150px 10%; background: #110e0b; }
         .journal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; margin-top: 80px; }
         .article-card { text-decoration: none; color: var(--text); }
-        .article-card img { width: 100%; height: 350px; object-fit: cover; border: 1px solid var(--border); margin-bottom: 25px; transition: 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        
+        .article-card img { 
+            width: 100%; 
+            height: 350px; 
+            object-fit: cover; 
+            border: 1px solid var(--border); 
+            margin-bottom: 25px; 
+            transition: 0.6s;
+        }
+        
         .article-card:hover img { transform: scale(1.03); border-color: var(--accent); }
         .article-card h3 { font-family: 'Cinzel', serif; font-size: 1.6rem; margin-bottom: 15px; }
 
@@ -184,9 +193,8 @@
             .about { grid-template-columns: 1fr; }
             .about-img { height: 400px; }
             h1 { font-size: 3.5rem; }
-            .journey-content h3 { font-size: 2.5rem; }
             nav { padding: 20px; }
-            .nav-btn { display: none; } /* Hide top button on mobile, keep floating one */
+            .nav-btn { display: none; }
         }
     </style>
 </head>
@@ -208,7 +216,6 @@
 
     <section class="video-container">
         <h2 style="font-family: 'Cinzel'; font-size: 2.5rem; color: var(--accent);">A Message From Meli</h2>
-        <p style="opacity: 0.8;">Understanding the experiential approach.</p>
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
         </div>
@@ -228,7 +235,6 @@
         <div class="journey-content">
             <h3>01 Arrival</h3>
             <p>Stand before the threshold. Here, we begin not with words alone, but with presence. Feel your breath, your body, the ground beneath you.</p>
-            <p>This is where emotional change starts — in the lived experience of now.</p>
             <div class="quote">“Healing begins when we fully inhabit the moment.”</div>
         </div>
     </section>
@@ -238,7 +244,6 @@
         <div class="journey-content">
             <h3>02 Relational Chair Work</h3>
             <p>In this quiet sanctuary, two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
-            <p>Speak. Listen. Switch places. Embody each side. Feel the unspoken become alive in your body and voice.</p>
             <div class="quote">“We heal in relationship — even when the other is imagined.”</div>
         </div>
     </section>
@@ -248,7 +253,6 @@
         <div class="journey-content">
             <h3>03 Releasing Through Movement</h3>
             <p>Along this ancient path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
-            <p>Let the stuck emotion flow out through action. The body speaks what words have held back.</p>
             <div class="quote">“What is held in the body must be moved to be freed.”</div>
         </div>
     </section>
@@ -258,7 +262,6 @@
         <div class="journey-content">
             <h3>04 Sensing the Shift</h3>
             <p>After the wave of movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears.</p>
-            <p>The body has shifted. Stay with the sensation — this is where transformation deepens.</p>
             <div class="quote">“Awareness of the body is the bridge to lasting change.”</div>
         </div>
     </section>
@@ -267,8 +270,7 @@
         <div class="journey-bg"></div>
         <div class="journey-content">
             <h3>05 Giving Voice</h3>
-            <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.”</p>
-            <p>Connect sensation to meaning. Reflect. Integrate. The emotional flood becomes a story you can carry forward with wisdom.</p>
+            <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.” Connect sensation to meaning.</p>
             <div class="quote">“Words after movement turn raw energy into insight.”</div>
         </section>
 
@@ -277,25 +279,26 @@
         <div class="journey-content">
             <h3>06 Living the Change</h3>
             <p>You emerge different. The body remembers. The mind understands. Together, they guide new choices.</p>
-            <p>This is experiential therapy — not just talking about change, but walking the path of living it.</p>
             <div class="quote">"Ready to begin the journey?"</div>
         </div>
     </section>
 
     <section class="journal">
         <h2 style="font-family: 'Cinzel'; font-size: 3rem; margin-bottom: 20px;">The Sanctuary of Thought</h2>
-        <p style="opacity: 0.7;">Exploring the intersections of philosophy and somatic healing.</p>
         <div class="journal-grid">
+            
             <a href="#" class="article-card">
-                <img src="image.jpg" alt="Puzzle">
+                <img src="image.jpg" alt="Puzzle Lightbulb">
                 <h3>Unlocking the Source</h3>
                 <p>A deep dive into the roots of anxiety and shame.</p>
             </a>
+            
             <a href="#" class="article-card">
                 <img src="pexels-simon73-1266810.jpg" alt="Nature Mountains">
                 <h3>The Horizon of the Self</h3>
                 <p>How nature reflects our internal emotional landscapes.</p>
             </a>
+            
             <a href="#" class="article-card">
                 <img src="pexels-liubava-fedoryshyn-1833670446-28430595.jpg" alt="Mirror Hands">
                 <h3>Mirroring the Body</h3>
@@ -328,7 +331,7 @@
             });
         });
 
-        // Parallax effect for journey backgrounds
+        // Parallax effect
         document.querySelectorAll('.journey-bg').forEach(bg => {
             gsap.to(bg, {
                 yPercent: 30,
@@ -340,7 +343,6 @@
             });
         });
         
-        // Parallax for About image
          gsap.to(".about-img", {
             backgroundPositionY: "100%",
             ease: "none",
