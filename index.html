@@ -5,15 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Embodied Path</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Libre+Baskerville:wght@400&display=swap" rel="stylesheet">
-
 <style>
-:root {
-  --bg: #f4f1ed;
-  --ink: #1c1c1c;
-  --muted: #6a6a6a;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -21,234 +13,181 @@
 }
 
 html, body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.8;
+  background: #0f0f0f;
+  color: #f2f2f2;
+  font-family: system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 /* ===============================
-   AMBIENT LIVING BACKGROUND
+   FLOATING CIRCLE
    =============================== */
 
-.ambient {
+.circle {
   position: fixed;
-  inset: 0;
-  z-index: -3;
-  overflow: hidden;
+  top: 20%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* ===============================
+   SECTIONS
+   =============================== */
+
+section {
+  position: relative;
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  padding: 0 10vw;
 }
 
 .layer {
   position: absolute;
-  inset: -20%;
-  background: radial-gradient(
-    circle at 30% 30%,
-    #e6e1da,
-    #f4f1ed 60%
-  );
-  animation: driftOne 40s linear infinite;
-}
-
-.layer.two {
-  background: radial-gradient(
-    circle at 70% 60%,
-    #ded7cd,
-    #f4f1ed 65%
-  );
-  animation: driftTwo 55s linear infinite;
-  opacity: 0.7;
-}
-
-.layer.three {
-  background: radial-gradient(
-    circle at 50% 50%,
-    #ebe6df,
-    #f4f1ed 70%
-  );
-  animation: driftThree 70s linear infinite;
-  opacity: 0.5;
-}
-
-@keyframes driftOne {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(-3%, -2%) scale(1.03); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes driftTwo {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(2%, -3%) scale(1.04); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes driftThree {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(-2%, 2%) scale(1.02); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-/* subtle grain */
-.noise {
-  position: fixed;
   inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
 }
 
-/* ===============================
-   CONTENT
-   =============================== */
-
-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20vh 10vw 22vh;
+.layer.back {
+  transform: translateY(0);
+  opacity: 0.4;
 }
 
-section {
-  margin-bottom: 22vh;
+.layer.mid {
+  transform: translateY(0);
+  opacity: 0.6;
 }
 
-h1, h2 {
-  font-family: 'Libre Baskerville', serif;
-  font-weight: 400;
-}
-
-h1 {
-  font-size: clamp(3rem, 5vw, 4.2rem);
-  margin-bottom: 3.5rem;
-  max-width: 900px;
-}
-
-h2 {
-  font-size: clamp(2.1rem, 4vw, 2.9rem);
-  margin-bottom: 2.2rem;
-}
-
-p {
-  font-size: 1.25rem;
-  color: var(--muted);
-  max-width: 760px;
-}
-
-/* ===============================
-   VERY RESTRAINED REVEALS
-   =============================== */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 2.2s ease, transform 2.2s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
+.layer.front {
   transform: translateY(0);
 }
 
-/* ===============================
-   CTA
-   =============================== */
+.content {
+  position: relative;
+  max-width: 600px;
+  z-index: 5;
+}
 
-.cta {
-  display: inline-block;
-  margin-top: 4.5rem;
-  font-size: 1.15rem;
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 2px solid var(--ink);
-  padding-bottom: 6px;
+h1, h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  opacity: 0.85;
 }
 
 /* ===============================
-   RESPONSIVE
+   IMAGE REVEAL
    =============================== */
 
-@media (max-width: 768px) {
-  main {
-    padding: 16vh 7vw 18vh;
-  }
-
-  p {
-    font-size: 1.15rem;
-  }
+.image-wrap {
+  position: absolute;
+  right: 10vw;
+  width: 380px;
+  height: 520px;
+  overflow: hidden;
 }
+
+.image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.15);
+  will-change: transform;
+}
+
+/* ===============================
+   DEMO IMAGES (replace these)
+   =============================== */
+
+#s1 .back { background: radial-gradient(circle at 30% 30%, #333, #0f0f0f); }
+#s2 .back { background: radial-gradient(circle at 70% 40%, #2a2a2a, #0f0f0f); }
+#s3 .back { background: radial-gradient(circle at 50% 50%, #222, #0f0f0f); }
+
 </style>
 </head>
 
 <body>
 
-<div class="ambient">
-  <div class="layer"></div>
-  <div class="layer two"></div>
-  <div class="layer three"></div>
-</div>
-<div class="noise"></div>
+<div class="circle" id="circle"></div>
 
-<main>
-  <section class="reveal">
-    <h1>
-      Therapy that unfolds slowly, intelligently, and at depth
-    </h1>
+<section id="s1">
+  <div class="layer back"></div>
+  <div class="content">
+    <h1>Experience unfolds</h1>
     <p>
-      Not everything that matters announces itself. Some change happens quietly,
-      through attention, timing, and allowing experience to take shape without force.
+      Not everything appears at once. Meaning arrives through movement,
+      timing, and depth.
     </p>
-  </section>
+  </div>
+</section>
 
-  <section class="reveal">
-    <h2>
-      A different pace
-    </h2>
+<section id="s2">
+  <div class="layer back"></div>
+  <div class="image-wrap">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80">
+  </div>
+  <div class="content">
+    <h2>Images move with you</h2>
     <p>
-      This work does not rush toward solutions. It listens for patterns, emotions,
-      and relational movements that emerge when space is held carefully enough.
+      As you move down the page, elements shift, drift, and reorient —
+      creating a sense of spatial presence.
     </p>
-  </section>
+  </div>
+</section>
 
-  <section class="reveal">
-    <h2>
-      Where experience lives
-    </h2>
+<section id="s3">
+  <div class="layer back"></div>
+  <div class="image-wrap">
+    <img src="https://images.unsplash.com/photo-1499084732479-de2c02d45fc4?auto=format&fit=crop&w=900&q=80">
+  </div>
+  <div class="content">
+    <h2>Nothing is static</h2>
     <p>
-      Thought, feeling, and bodily response are not separate systems. When they are
-      approached together, something begins to reorganize on its own.
+      The page responds continuously, not through clicks,
+      but through movement.
     </p>
-  </section>
-
-  <section class="reveal">
-    <h2>
-      Integration over performance
-    </h2>
-    <p>
-      The aim is not intensity, insight, or catharsis alone, but integration—so what
-      shifts here can be carried forward with stability and clarity.
-    </p>
-
-    <a href="mailto:your@email.com" class="cta">
-      Begin a conversation
-    </a>
-  </section>
-</main>
+  </div>
+</section>
 
 <script>
-const reveals = document.querySelectorAll('.reveal');
+const circle = document.getElementById('circle');
+const sections = document.querySelectorAll('section');
+const images = document.querySelectorAll('.image-wrap img');
 
-const observer = new IntersectionObserver(
-  entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  },
-  { threshold: 0.3 }
-);
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
 
-reveals.forEach(el => observer.observe(el));
+  /* move circle */
+  circle.style.transform =
+    `translate(-50%, ${scrollY * 0.15}px)`;
+
+  /* parallax images */
+  images.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    const offset = (window.innerHeight - rect.top) * 0.08;
+    img.style.transform = `scale(1.15) translateY(${offset}px)`;
+  });
+
+  /* section depth */
+  sections.forEach(section => {
+    const layer = section.querySelector('.back');
+    const speed = section.offsetTop * 0.04;
+    layer.style.transform =
+      `translateY(${scrollY - speed}px)`;
+  });
+});
 </script>
 
 </body>
