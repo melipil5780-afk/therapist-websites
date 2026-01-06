@@ -1,13 +1,3 @@
-Yes! To make the text go **over the photo** on mobile while keeping it readable, we can use a "dark glass" effect.
-
-Here is how we do it:
-
-1. **The Background:** We set your photo as the background of the entire section on mobile.
-2. **The Overlay:** We give the text box a **semi-transparent black background** (`rgba`). This dims the photo *just behind the text* so the white letters pop out clearly, but you can still see the image texture behind it.
-
-Here is the updated code. I have modified the **CSS** specifically in the `@media` section at the bottom.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +62,6 @@ nav {
   display: flex;
   flex-wrap: wrap;
   position: relative;
-  /* Default Desktop background is just the color */
   background-color: var(--bg-earth);
 }
 
@@ -84,7 +73,9 @@ nav {
   position: -webkit-sticky; 
   position: sticky;
   top: 0;
-  background: url('Subject.png') center/cover no-repeat;
+  
+  /* IMPORTANT: Center Top ensures the head is visible */
+  background: url('Subject.png') center top/cover no-repeat; 
   z-index: 1;
 }
 
@@ -93,14 +84,17 @@ nav {
   flex: 1;
   min-width: 350px;
   background-color: var(--bg-earth);
-  padding: 8% 6%;
+  
+  /* This large padding pushes the text down so you see the photo first */
+  padding: 90vh 6% 15vh 6%; 
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 2;
 }
 
-.bio-block { margin-bottom: 80px; }
+.bio-block { margin-bottom: 120px; } /* Increased spacing between text blocks */
 h2 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 30px; font-size: 3rem; line-height: 1.1; }
 p { margin-bottom: 20px; font-weight: 300; font-size: 1.1rem; color: var(--text-muted); }
 .highlight { color: var(--text-light); font-weight: 400; border-bottom: 1px solid var(--accent); }
@@ -171,32 +165,27 @@ footer::before {
 /* --- RESPONSIVE MOBILE STYLES --- */
 @media (max-width:900px) {
   
-  /* 1. Set the background image on the Container instead of the column */
+  /* Mobile: Background Image on Container */
   .bio-container {
     background: url('Subject.png') center top/cover no-repeat;
-    /* Optional: Fixed attachment makes the image stay still while text scrolls over */
     background-attachment: scroll; 
-    display: block; /* Stack content */
+    display: block; 
   }
 
-  /* 2. Hide the desktop image column (since we moved the image to background) */
-  .bio-image-col { 
-    display: none; 
-  }
+  /* Hide Desktop Column */
+  .bio-image-col { display: none; }
 
-  /* 3. Make the Text Column transparent but with a dark overlay box */
+  /* Mobile: Text Overlay */
   .bio-text-col { 
     width: 100%; 
-    padding: 80px 20px;
-    background-color: rgba(26, 22, 18, 0.75); /* 75% opacity dark earth */
-    backdrop-filter: blur(5px); /* Optional: Blurs the photo behind text slightly for readability */
-    min-height: 100vh; /* Ensure it covers the full photo height */
+    padding: 60vh 20px 80px 20px; /* Top padding 60vh shows the photo first on mobile too! */
+    background: linear-gradient(to bottom, transparent 0%, rgba(26, 22, 18, 0.9) 30%, #1a1612 100%);
+    min-height: 100vh;
   }
 
-  /* Adjust text colors for overlay contrast */
+  /* Text color fixes for overlay */
   .bio-text-col p { color: #fdfcfb; } 
 
-  /* Standard Responsive Fixes */
   .section-wrap { flex-direction: column !important; }
   .img-box { height: 50vh; width: 100%; flex: none;}
   .text-box { width: 100%; padding: 50px 25px; flex: none;}
@@ -308,7 +297,7 @@ window.onload = () => {
       duration: 1, 
       scrollTrigger: { 
         trigger: block, 
-        start: "top 80%" 
+        start: "top 85%" 
       }
     });
   });
@@ -335,5 +324,4 @@ window.onload = () => {
 </body>
 </html>
 
-```
 
