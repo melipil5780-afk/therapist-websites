@@ -11,21 +11,18 @@
 
 <style>
 :root {
-  --bg-gradient: linear-gradient(135deg, #1e1610, #2b1f13); 
-  --text:#f0e6d9;
-  --accent:#c9a96e;
-  --veil-soft: rgba(11,8,5,0.25);
-  --veil-medium: rgba(11,8,5,0.45);
-  --border: rgba(201,169,110,.25);
+  --accent: #c9a96e;
+  --text: #1e1610;
+  --border: rgba(201,169,110,0.2);
 }
 
-/* BASIC RESET */
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Inter',sans-serif;
-  background: var(--bg-gradient);
+  background:#f9f8f6;
   color: var(--text);
-  line-height:1.85;
+  line-height:1.7;
   overflow-x:hidden;
 }
 
@@ -39,118 +36,24 @@ nav{
   justify-content:space-between;
   align-items:center;
   z-index:1000;
-  background: linear-gradient(to bottom, rgba(11,8,5,0.6), transparent);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(6px);
 }
-.logo{ font-family:'Cinzel', serif; letter-spacing:3px; color: var(--accent);}
+.logo{
+  font-family:'Cinzel',serif;
+  letter-spacing:3px;
+  color: var(--accent);
+}
 .nav-btn{
-  font-family:'Cinzel', serif;
+  font-family:'Cinzel',serif;
   text-decoration:none;
   padding:10px 22px;
   background: var(--accent);
-  color: #1e1610;
-  font-size:.8rem;
+  color:#1e1610;
+  font-size:.85rem;
   transition:.3s;
 }
 .nav-btn:hover{background:#fff;}
-
-/* HERO SECTION */
-.hero{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  position:relative;
-  background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.jpg') center/cover no-repeat;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background: var(--veil-soft);
-}
-.hero-content{
-  position:relative;
-  text-align:center;
-  max-width:900px;
-  padding:0 10%;
-}
-.hero h1{
-  font-family:'Cinzel',serif;
-  font-size:clamp(3.5rem,9vw,6rem);
-  margin-bottom:24px;
-  text-shadow:0 5px 15px rgba(0,0,0,0.6);
-}
-.hero p{
-  letter-spacing:4px;
-  font-weight:500;
-  opacity:.95;
-  text-shadow:0 3px 10px rgba(0,0,0,0.5);
-}
-
-/* JOURNEY SECTION */
-.journey{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  padding:120px 12%;
-  position:relative;
-  overflow:hidden;
-  background: var(--bg-gradient);
-}
-.journey-bg{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  filter:contrast(1.05) saturate(1.05);
-}
-.journey::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-.journey-content{
-  position:relative;
-  z-index:2;
-  max-width:650px;
-}
-.journey h3{
-  font-family:'Cinzel',serif;
-  font-size:3.2rem;
-  color:var(--accent);
-  margin-bottom:28px;
-  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
-}
-.journey p{
-  font-size:1.25rem;
-  margin-bottom:26px;
-}
-.quote{
-  font-style:italic;
-  font-size:1.6rem;
-  border-left:3px solid var(--accent);
-  padding-left:28px;
-  opacity:.85;
-}
-
-/* LEVEL IMAGES AND OVERLAYS */
-#lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');}
-#lvl1::before{background: var(--veil-medium);} 
-
-#lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg');}
-#lvl2::before{background: var(--veil-medium);} 
-
-#lvl3 .journey-bg{background-image:url('Gemini_Generated_Image_lvl3.jpg');}
-#lvl3::before{background: rgba(201,169,110,0.2);} /* warm overlay for movement */
-
-#lvl4 .journey-bg{background-image:url('Gemini_Generated_Image_lvl4.jpg');}
-#lvl4::before{background: rgba(100,150,200,0.2);} /* soft blue overlay for sensing */
-
-#lvl5 .journey-bg{background-image:url('Gemini_Generated_Image_lvl5.jpg');}
-#lvl5::before{background: rgba(150,100,200,0.2);} /* purple overlay for voice */
-
-#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg');}
-#lvl6::before{background: var(--veil-medium);}
 
 /* FLOATING CTA */
 .cta-float{
@@ -163,7 +66,7 @@ nav{
   font-family:'Cinzel', serif;
   text-decoration:none;
   z-index:1000;
-  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  box-shadow:0 10px 30px rgba(0,0,0,.4);
   transition:.3s;
 }
 .cta-float:hover{
@@ -171,31 +74,215 @@ nav{
   background:#fff;
 }
 
+/* HERO SECTION */
+.hero{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  position:relative;
+  background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.jpg') center/cover no-repeat;
+}
+.hero-content{
+  position:relative;
+  text-align:center;
+  max-width:900px;
+  padding:0 10%;
+}
+.hero h1{
+  font-family:'Cinzel',serif;
+  font-size:clamp(3.5rem,9vw,6rem);
+  margin-bottom:24px;
+  text-shadow:0 3px 12px rgba(0,0,0,0.5);
+  color:#fff;
+}
+.hero p{
+  font-weight:500;
+  letter-spacing:4px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
+  color:#fff;
+}
+
+/* VIDEO SECTION */
+.video-container{
+  padding:120px 10%;
+  text-align:center;
+  position:relative;
+  background: #f9f8f6;
+}
+.video-container h2{
+  font-family:'Cinzel', serif;
+  font-size:2.7rem;
+  color:var(--accent);
+  margin-bottom:50px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.video-wrapper{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+  padding-bottom:56.25%;
+  height:0;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  transition:.4s ease;
+}
+.video-wrapper:hover{
+  transform: scale(1.02);
+}
+.video-wrapper iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+/* ABOUT ME SECTION */
+.about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  padding:120px 10%;
+}
+.about-img{
+  height:600px;
+  background-image: url('pexels-yunustug-8337508.jpg');
+  background-size:cover;
+  background-position:center;
+  border-radius:8px;
+  border:1px solid var(--border);
+}
+.about-text h2{
+  font-family:'Cinzel', serif;
+  font-size:3rem;
+  color: var(--accent);
+  margin-bottom:30px;
+}
+.about-text p{
+  font-size:1.15rem;
+  margin-bottom:20px;
+  color:#1e1610;
+}
+
+/* JOURNEY SECTION */
+.journey{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  padding:100px 10%;
+  position:relative;
+}
+.journey-bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  z-index:0;
+}
+.journey-content{
+  position:relative;
+  z-index:2;
+  max-width:650px;
+  background: rgba(255,255,255,0.02);
+  padding:20px;
+  border-radius:6px;
+}
+.journey h3{
+  font-family:'Cinzel', serif;
+  font-size:3rem;
+  margin-bottom:20px;
+  color: var(--accent);
+}
+.journey p{
+  font-size:1.2rem;
+  margin-bottom:20px;
+  color:#1e1610;
+}
+.quote{
+  font-style:italic;
+  font-size:1.5rem;
+  border-left:3px solid var(--accent);
+  padding-left:20px;
+  opacity:.85;
+}
+
+/* LEVEL IMAGES */
+#lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');}
+#lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg');}
+#lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg');}
+#lvl4 .journey-bg{background-image:url('pexels-packermann-1666012.jpg');}
+#lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg');}
+#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.jpg');}
+
+/* JOURNAL / ARTICLES */
+.journal{
+  padding:120px 10%;
+}
+.journal h2{
+  font-family:'Cinzel', serif;
+  font-size:3rem;
+  margin-bottom:40px;
+  color: var(--accent);
+}
+.journal-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:40px;
+}
+.article-card{
+  text-decoration:none;
+  color:#1e1610;
+  transition:.3s;
+}
+.article-card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:8px;
+  border:1px solid var(--border);
+  transition:.4s;
+}
+.article-card:hover img{
+  transform:scale(1.03);
+}
+.article-card h3{
+  font-family:'Cinzel', serif;
+  font-size:1.5rem;
+  margin:15px 0 8px 0;
+}
+.article-card p{
+  font-size:1rem;
+  color:#444;
+}
+
 /* FOOTER */
 footer{
   position:relative;
-  padding:160px 10%;
+  padding:120px 10%;
   text-align:center;
   background:url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.jpg') center/cover no-repeat;
-}
-footer::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background: var(--veil-soft);
+  border-top:1px solid var(--border);
+  border-radius:6px;
 }
 footer p{
   position:relative;
-  opacity:.85;
+  color:#fff;
   font-size:.85rem;
-  text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  text-shadow:0 2px 8px rgba(0,0,0,0.5);
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:20px}
   .nav-btn{display:none}
-  .journey{padding:100px 8%}
+  .about{grid-template-columns:1fr}
+  .about-img{height:400px}
+  .journey{padding:80px 5%}
+  .journal-grid{gap:20px}
 }
 </style>
 </head>
@@ -209,6 +296,7 @@ footer p{
 
 <a class="cta-float" href="#consult">Free 15-Min Consultation</a>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Beyond the Story.</h1>
@@ -216,11 +304,30 @@ footer p{
   </div>
 </section>
 
+<!-- VIDEO -->
+<section class="video-container">
+  <h2>A Message From Meli</h2>
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-img"></div>
+  <div class="about-text">
+    <h2>The Approach</h2>
+    <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused by recurring patterns in your life.</p>
+    <p>My work isn't just about identifying problems; it's about understanding how emotions play out in your body. We look at core vulnerabilities and find primary emotions that transform distress into growth.</p>
+  </div>
+</section>
+
+<!-- JOURNEY SECTIONS -->
 <section class="journey" id="lvl1">
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>01 Arrival</h3>
-    <p>Stand before the threshold. Here, we begin not with words alone, but with presence. Feel your breath, your body, the ground beneath you.</p>
+    <p>Stand before the threshold. We begin with presence. Feel your breath, your body, the ground beneath you.</p>
     <div class="quote">“Healing begins when we fully inhabit the moment.”</div>
   </div>
 </section>
@@ -229,7 +336,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>02 Relational Chair Work</h3>
-    <p>In this quiet sanctuary, two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
+    <p>Two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice.</p>
     <div class="quote">“We heal in relationship — even when the other is imagined.”</div>
   </div>
 </section>
@@ -238,7 +345,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>03 Releasing Through Movement</h3>
-    <p>Along this ancient path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
+    <p>Along this path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar.</p>
     <div class="quote">“What is held in the body must be moved to be freed.”</div>
   </div>
 </section>
@@ -247,7 +354,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>04 Sensing the Shift</h3>
-    <p>After the wave of movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears.</p>
+    <p>After movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears.</p>
     <div class="quote">“Awareness of the body is the bridge to lasting change.”</div>
   </div>
 </section>
@@ -256,7 +363,7 @@ footer p{
   <div class="journey-bg"></div>
   <div class="journey-content">
     <h3>05 Giving Voice</h3>
-    <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.” Connect sensation to meaning.</p>
+    <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.”</p>
     <div class="quote">“Words after movement turn raw energy into insight.”</div>
   </div>
 </section>
@@ -270,6 +377,29 @@ footer p{
   </div>
 </section>
 
+<!-- JOURNAL / ARTICLES -->
+<section class="journal">
+  <h2>The Sanctuary of Thought</h2>
+  <div class="journal-grid">
+    <a href="#" class="article-card">
+      <img src="image.jpg" alt="Puzzle Lightbulb">
+      <h3>Unlocking the Source</h3>
+      <p>A deep dive into the roots of anxiety and shame.</p>
+    </a>
+    <a href="#" class="article-card">
+      <img src="pexels-simon73-1266810.jpg" alt="Nature Mountains">
+      <h3>The Horizon of the Self</h3>
+      <p>How nature reflects our internal emotional landscapes.</p>
+    </a>
+    <a href="#" class="article-card">
+      <img src="pexels-liubava-fedoryshyn-1833670446-28430595.jpg" alt="Mirror Hands">
+      <h3>Mirroring the Body</h3>
+      <p>The science of somatic integration in the therapy room.</p>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <p>© 2026 MELI PIL — PHENOMENAL EXPERIENTIAL THERAPY</p>
 </footer>
@@ -277,42 +407,14 @@ footer p{
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-/* HERO REVEAL */
-gsap.from(".hero-content",{
-  y:60,
-  opacity:0,
-  duration:1.6,
-  ease:"power3.out"
+/* Fade-in text for journey sections */
+gsap.utils.toArray('.journey-content').forEach(el=>{
+  gsap.from(el,{opacity:0, y:40, duration:1, scrollTrigger:{trigger:el, start:"top 80%"}});
 });
 
-/* JOURNEY SECTIONS FADE-IN */
-gsap.utils.toArray(".journey-content").forEach((el)=>{
-  gsap.from(el,{
-    opacity:0,
-    y:40,
-    duration:1.2,
-    scrollTrigger:{
-      trigger:el,
-      start:"top 70%"
-    }
-  });
-});
-
-/* PARALLAX */
-["#lvl1","#lvl3","#lvl6"].forEach(id=>{
-  gsap.to(`${id} .journey-bg`,{
-    yPercent:25,
-    ease:"none",
-    scrollTrigger:{
-      trigger:id,
-      scrub:true
-    }
-  });
-});
-
-// Hero slow zoom
-gsap.to(".hero", { scale:1.03, duration:12, repeat:-1, yoyo:true, ease:"sine.inOut" });
-
+/* Fade-in About text and Video heading */
+gsap.from('.about-text',{opacity:0, y:40, duration:1, scrollTrigger:{trigger:'.about', start:"top 80%"}});
+gsap.from('.video-container h2',{opacity:0, y:30, duration:1, scrollTrigger:{trigger:'.video-container', start:"top 80%"}});
 </script>
 
 </body>
