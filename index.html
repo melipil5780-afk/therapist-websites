@@ -14,9 +14,10 @@
   --accent: #c9a96e;
   --text: #1e1610;
   --bg: #f9f8f6;
-  --light-overlay: rgba(0,0,0,0.12);
-  --content-bg: rgba(249,248,246,0.92);
-  --border-gold: 1px solid rgba(201,169,110,0.3);
+  --light-overlay: rgba(0,0,0,0.08); /* Very subtle for full image beauty */
+  --content-bg: rgba(249,248,246,0.88); /* Light, elegant semi-transparent panel */
+  --border-gold: 1px solid rgba(201,169,110,0.25);
+  --shadow-soft: 0 15px 50px rgba(0,0,0,0.12);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -81,13 +82,13 @@ nav{
   box-shadow:0 16px 50px rgba(201,169,110,0.5);
 }
 
-/* HERO */
+/* HERO - Full image beauty preserved */
 .hero{
   min-height:100vh;
   display:grid;
   place-items:center;
   position:relative;
-  background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.png') center/cover no-repeat;
+  background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.png') center/cover no-repeat fixed;
 }
 .hero::before{
   content:'';
@@ -99,12 +100,12 @@ nav{
   position:relative;
   text-align:center;
   max-width:1000px;
-  padding:0 10%;
-  background: var(--content-bg);
   padding:60px 80px;
+  background: var(--content-bg);
   border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-soft);
   border: var(--border-gold);
+  backdrop-filter: blur(4px);
 }
 .hero h1{
   font-family:'Cinzel',serif;
@@ -136,7 +137,7 @@ nav{
   margin:0 auto;
   border-radius:16px;
   overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-soft);
   border: var(--border-gold);
 }
 
@@ -155,14 +156,15 @@ nav{
   background-size:cover;
   background-position:center;
   border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-soft);
   border: var(--border-gold);
 }
 .about-text{
   padding:40px;
   background: var(--content-bg);
   border-radius:16px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(4px);
 }
 .about-text h2{
   font-family:'Cinzel', serif;
@@ -175,7 +177,7 @@ nav{
   margin-bottom:28px;
 }
 
-/* JOURNEY */
+/* JOURNEY - Full image visible, text perfectly readable */
 .journey{
   min-height:90vh;
   display:grid;
@@ -188,6 +190,7 @@ nav{
   inset:0;
   background-size:cover;
   background-position:center;
+  background-attachment:fixed; /* Parallax for immersion */
   z-index:0;
 }
 .journey-bg::after{
@@ -203,8 +206,9 @@ nav{
   padding:60px 80px;
   background: var(--content-bg);
   border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
+  box-shadow: var(--shadow-soft);
   border: var(--border-gold);
+  backdrop-filter: blur(6px);
   text-align:center;
 }
 .journey h3{
@@ -227,13 +231,13 @@ nav{
   margin:40px 0;
 }
 
-/* LEVEL IMAGES - Keeping your original images but with elegant framing */
-#lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg');}
-#lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg');}
-#lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg');}
-#lvl4 .journey-bg{background-image:url('pexels-packermann-1666012.jpg');}
-#lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg');}
-#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.png');}
+/* LEVEL IMAGES */
+#lvl1 .journey-bg{background-image:url('Gemini_Generated_Image_gs7ouzgs7ouzgs7o.jpg'); background-attachment:fixed;}
+#lvl2 .journey-bg{background-image:url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.jpg'); background-attachment:fixed;}
+#lvl3 .journey-bg{background-image:url('pexels-anniroenkae-5278835.jpg'); background-attachment:fixed;}
+#lvl4 .journey-bg{background-image:url('pexels-packermann-1666012.jpg'); background-attachment:fixed;}
+#lvl5 .journey-bg{background-image:url('pexels-philippedonn-1133957.jpg'); background-attachment:fixed;}
+#lvl6 .journey-bg{background-image:url('Gemini_Generated_Image_evwjnmevwjnmevwj.png'); background-attachment:fixed;}
 
 /* JOURNAL */
 .journal{
@@ -256,9 +260,10 @@ nav{
   background: var(--content-bg);
   border-radius:16px;
   overflow:hidden;
-  box-shadow:0 15px 50px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-soft);
   border: var(--border-gold);
   transition:.4s;
+  backdrop-filter: blur(4px);
 }
 .article-card:hover{
   transform:translateY(-12px);
@@ -280,24 +285,25 @@ nav{
   font-size:1.1rem;
 }
 
-/* FOOTER */
+/* FOOTER - Full image beauty with readable text */
 footer{
   padding:140px 10%;
   text-align:center;
-  background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.png') center/cover no-repeat;
+  background: url('Gemini_Generated_Image_evwjnmevwjnmevwj.png') center/cover no-repeat fixed;
   position:relative;
 }
 footer::before{
   content:'';
   position:absolute;
   inset:0;
-  background: rgba(249,248,246,0.9);
+  background: var(--light-overlay);
 }
 footer p{
   position:relative;
-  color: var(--text);
+  color: #fff;
   font-size:1rem;
   letter-spacing:2px;
+  text-shadow:0 3px 12px rgba(0,0,0,0.7);
 }
 
 /* RESPONSIVE */
@@ -305,7 +311,7 @@ footer p{
   .about{grid-template-columns:1fr; gap:60px;}
   .about-img{height:500px;}
   .journey-content{padding:40px 30px;}
-  .journal-grid{gap:40px;}
+  .hero-content, .journey-content{padding:40px 30px;}
 }
 </style>
 </head>
