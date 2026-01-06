@@ -3,258 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystical Path Consultations</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <title>Embodied Path | Experiential Therapy Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #0b0805;
+            --text: #f0e6d9;
+            --accent: #c9a96e;
+            --overlay-light: rgba(11, 8, 5, 0.4);
+            --overlay-dark: rgba(11, 8, 5, 0.65);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            font-family: 'Cinzel', serif;
-            color: #333;
-            background-color: #1a1a1a;
-            scroll-behavior: smooth;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.9;
             overflow-x: hidden;
         }
-        .hero {
-            background: url('Gemini_Generated_Image_psuglopsuglopsug.png') no-repeat center center/cover;
-            min-height: 100vh;
+        canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+        .loading {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
+            z-index: 100;
+            transition: opacity 1.5s ease;
         }
-        .hero::before {
+        .loading.hidden { opacity: 0; pointer-events: none; }
+        .loading h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+        .enter-btn {
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            cursor: pointer;
+            transition: all 0.5s;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+        .enter-btn:hover { background: var(--accent); color: var(--bg); transform: scale(1.05); }
+
+        .main { opacity: 0; transition: opacity 1.5s ease; }
+        .main.visible { opacity: 1; }
+
+        .progress {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            z-index: 10;
+            color: var(--accent);
+        }
+        .counter {
+            position: fixed;
+            top: 50%;
+            left: 40px;
+            font-size: 9rem;
+            font-family: 'Cinzel', serif;
+            opacity: 0.08;
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 5;
+            transition: opacity 0.8s ease;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 20vh 12vw 15vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        section::before {
             content: '';
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
+            inset: 0;
+            background: var(--overlay-dark);
+            z-index: -1;
+            transition: background 0.8s ease;
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeIn 2.5s ease-in-out;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            margin-bottom: 2.5rem;
+            max-width: 900px;
+            line-height: 1.2;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
+        p {
+            font-size: 1.5rem;
+            max-width: 750px;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
-        /* Particle effects for wow factor */
-        .particles {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: 1;
-            pointer-events: none;
+        .quote {
+            font-style: italic;
+            font-size: 2rem;
+            margin: 5rem 0;
+            opacity: 0.85;
+            font-weight: 300;
         }
-        .particle {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: sparkle 5s infinite ease-in-out;
-        }
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 15px 0;
-            z-index: 10;
-            transition: background 0.3s;
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-        }
-        nav li { margin: 0 25px; }
-        nav a { color: #fff; text-decoration: none; font-weight: 700; transition: color 0.3s; }
-        nav a:hover { color: #ffd700; }
-        section {
-            padding: 80px 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+
+        #s1 { background: url('Gemini_Generated_Image_psuglopsuglopsug.png') center/cover no-repeat fixed; }
+        #s2 { background: url('Gemini_Generated_Image_jq3f3mjq3f3mjq3f.png') center/cover no-repeat fixed; }
+        #s3 { background: url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.png') center/cover no-repeat fixed; }
+        #s4, #s5, #s6 { background: linear-gradient(135deg, #1a120b, #0b0805); }
+
+        .fade-in {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transform: translateY(60px);
+            transition: opacity 1.5s ease, transform 1.5s ease;
         }
-        section.visible {
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        .article-section {
-            background: rgba(255, 255, 255, 0.9);
-            margin-bottom: 50px;
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            position: relative;
-        }
-        #approach {
-            background: url('Gemini_Generated_Image_jq3f3mjq3f3mjq3f.png') no-repeat center center/cover;
-            color: white;
-            position: relative;
-            padding: 100px 20px;
-            min-height: 80vh;
-        }
-        #approach::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        #approach .article-section {
-            z-index: 2;
-            background: transparent;
-            box-shadow: none;
-        }
-        #journey-map {
-            background: linear-gradient(to bottom, #1a1a1a, #333);
-            color: #fff;
-            text-align: center;
-        }
-        #consultation {
-            background: url('Gemini_Generated_Image_3l3x3v3l3x3v3l3x.png') no-repeat center center/cover;
-            color: white;
-            position: relative;
-            padding: 100px 20px;
-            min-height: 80vh;
-        }
-        #consultation::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1;
-        }
-        #consultation .content {
-            z-index: 2;
-            text-align: center;
-        }
-        button {
-            background: #ffd700;
-            color: #1a1a1a;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.2em;
-            transition: transform 0.3s;
-        }
-        button:hover { transform: scale(1.05); }
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 30px;
-        }
-        .parallax { background-attachment: fixed; background-size: cover; }
+
         @media (max-width: 768px) {
-            .hero { min-height: 100vh; }
-            section { padding: 60px 15px; }
-            .article-section { padding: 30px; }
-            .parallax { background-attachment: scroll; } /* Fix mobile parallax issues */
-            nav ul { flex-wrap: wrap; }
-            nav li { margin: 10px; }
-        }
-        @media (min-width: 1920px) {
-            section { max-width: 1800px; }
-            h1 { font-size: 4em; }
+            h2 { font-size: 2.8rem; }
+            p { font-size: 1.3rem; }
+            .quote { font-size: 1.6rem; }
+            .counter { font-size: 6rem; left: 20px; }
+            .progress { top: 20px; right: 20px; }
+            section { padding: 15vh 8vw; }
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#hero">Entrance</a></li>
-            <li><a href="#articles">Wisdom Paths</a></li>
-            <li><a href="#journey-map">Journey Map</a></li>
-            <li><a href="#consultation">Seek Guidance</a></li>
-        </ul>
-    </nav>
 
-    <div id="hero" class="hero parallax">
-        <div class="particles">
-            <div class="particle" style="top:20%;left:10%;width:5px;height:5px;animation-delay:0s;"></div>
-            <div class="particle" style="top:40%;left:30%;width:8px;height:8px;animation-delay:1s;"></div>
-            <div class="particle" style="top:60%;left:50%;width:6px;height:6px;animation-delay:2s;"></div>
-            <div class="particle" style="top:80%;left:70%;width:7px;height:7px;animation-delay:3s;"></div>
-            <div class="particle" style="top:30%;left:90%;width:4px;height:4px;animation-delay:4s;"></div>
-        </div>
-        <div class="hero-content">
-            <h1>Enter the Mystical Path</h1>
-            <p>Step through the gateway to enlightenment and self-discovery.</p>
-            <a href="#articles" style="color: #1a1a1a; background: #ffd700; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: 700;">Begin Your Journey</a>
-        </div>
+    <div class="loading" id="loading">
+        <h1>Embodied Path</h1>
+        <button class="enter-btn">Begin the Journey</button>
     </div>
 
-    <section id="articles">
-        <h2>Paths of Wisdom</h2>
-        
-        <div class="article-section">
-            <h3>Article 1: The Gateway to Inner Peace</h3>
-            <!-- Placeholder for inline image: Add <img src="your_generated_image.png" alt="Gateway" style="width:100%; border-radius:10px; margin-bottom:20px;"> if you generate one -->
-            <p>[Your first article content goes here. Explore the ancient doors that lead to serenity...]</p>
-        </div>
-        
-        <div id="approach" class="parallax">
-            <div class="article-section">
-                <h3>Article 2: Our Approach to Mindfulness</h3>
-                <!-- Placeholder for inline image: Add <img src="your_generated_image.png" alt="Mindfulness Room" style="width:100%; border-radius:10px; margin-bottom:20px;"> if you generate one -->
-                <p>[Your second article content goes here. In this sacred space, find your center...]</p>
+    <div class="main" id="main">
+        <canvas id="bg"></canvas>
+        <div class="progress">00 / 06</div>
+        <div class="counter" id="counter">01</div>
+
+        <section id="s1">
+            <div class="fade-in">
+                <h2>01 Arrival at the Threshold</h2>
+                <p>Stand before the glowing gateway. Here, we begin not with words alone, but with presence. Feel your breath, your body, the ground beneath you. This is where emotional change starts — in the lived experience of now.</p>
+                <p class="quote">“Healing begins when we fully inhabit the moment.”</p>
             </div>
-        </div>
-        
-        <div class="article-section">
-            <h3>Article 3: Paths to Personal Growth</h3>
-            <!-- Placeholder for inline image: Add <img src="your_generated_image.png" alt="Growth Path" style="width:100%; border-radius:10px; margin-bottom:20px;"> if you generate one -->
-            <p>[Your third article content goes here. Wander the trails of transformation...]</p>
-        </div>
-    </section>
+        </section>
 
-    <section id="journey-map">
-        <h2>Your Journey Map</h2>
-        <p>From the gateway, through reflection, to the endless path ahead – visualize your progress in this enchanted realm.</p>
-        <!-- Add background image here if you generate one: background: url('your_new_image.png') no-repeat center center/cover; -->
-        <button>View Interactive Map (Coming Soon)</button>
-    </section>
+        <section id="s2">
+            <div class="fade-in">
+                <h2>02 Relational Chair Work</h2>
+                <p>In this quiet sanctuary, two chairs face each other. One holds you. The other holds a part of you, a loved one, or an inner voice. Speak. Listen. Switch places. Embody each side. Feel the unspoken become alive in your body and voice.</p>
+                <p class="quote">“We heal in relationship — even when the other is imagined.”</p>
+            </div>
+        </section>
 
-    <section id="consultation" class="parallax">
-        <div class="content">
-            <h2>Seek a Personal Consultation</h2>
-            <p>Embark deeper with guidance tailored to your soul's path.</p>
-            <p><em>"A transformative experience that opened new doors!" – Enlightened Traveler</em></p>
-            <button>Contact the Guardians</button>
-        </div>
-    </section>
+        <section id="s3">
+            <div class="fade-in">
+                <h2>03 Releasing Through Movement</h2>
+                <p>Along this ancient path, energy moves. Anger, grief, fear — they live in the body. Strike cushions, push against walls, stomp, shake, roar. Let the stuck emotion flow out through action. The body speaks what words have held back.</p>
+                <p class="quote">“What is held in the body must be moved to be freed.”</p>
+            </div>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 Mystical Path Consultations. Crafted with Ancient Wisdom.</p>
-    </footer>
+        <section id="s4">
+            <div class="fade-in">
+                <h2>04 Sensing the Shift</h2>
+                <p>After the wave of movement, pause. Feel what remains. Where does the energy live now? Notice heat, tingling, spaciousness, or tears. The body has shifted. Stay with the sensation — this is where transformation deepens.</p>
+                <p class="quote">“Awareness of the body is the bridge to lasting change.”</p>
+            </div>
+        </section>
+
+        <section id="s5">
+            <div class="fade-in">
+                <h2>05 Giving Voice to the Experience</h2>
+                <p>Now, speak. Name what moved through you. “I felt rage in my chest… then release in my arms.” Connect sensation to meaning. Reflect. Integrate. The emotional flood becomes a story you can carry forward with wisdom.</p>
+                <p class="quote">“Words after movement turn raw energy into insight.”</p>
+            </div>
+        </section>
+
+        <section id="s6">
+            <div class="fade-in">
+                <h2>06 Living the Change</h2>
+                <p>You emerge different. The body remembers. The mind understands. Together, they guide new choices. This is experiential therapy — not just talking about change, but living it through movement, relation, and reflection.</p>
+                <p style="margin-top: 5rem; font-size: 1.7rem;">
+                    Ready to walk this path in a real session?<br><br>
+                    <a href="mailto:your@email.com" style="color: var(--accent); text-decoration: none; border-bottom: 3px solid var(--accent); padding-bottom: 5px;">Schedule Your Experiential Session</a>
+                </p>
+            </div>
+        </section>
+    </div>
 
     <script>
+        // Loading screen
+        const loading = document.getElementById('loading');
+        const main = document.getElementById('main');
+        const enterBtn = document.querySelector('.enter-btn');
+        enterBtn.addEventListener('click', () => {
+            loading.classList.add('hidden');
+            setTimeout(() => { main.classList.add('visible'); }, 800);
+        });
+
+        // Scroll progress & counter
+        const progress = document.querySelector('.progress');
+        const counter = document.getElementById('counter');
         const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        const fadeIns = document.querySelectorAll('.fade-in');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY + window.innerHeight / 2;
+            const docHeight = document.body.offsetHeight;
+            let current = 1;
+            sections.forEach((sec, i) => {
+                if (scrollTop > sec.offsetTop) current = i + 1;
+            });
+            const sectionNum = String(current).padStart(2, '0');
+            progress.textContent = `${sectionNum} / 06`;
+            counter.textContent = sectionNum;
+
+            fadeIns.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                    el.classList.add('visible');
                 }
             });
-        }, { threshold: 0.2 });
-        sections.forEach(section => observer.observe(section));
+        });
+
+        // 3D Background - glowing particles + floating orbs
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+
+        // Particles
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCnt = 8000;
+        const posArray = new Float32Array(particlesCnt * 3);
+        for (let i = 0; i < particlesCnt * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 10;
+        }
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particleMaterial = new THREE.PointsMaterial({
+            size: 0.005,
+            color: 0xc9a96e,
+            blending: THREE.AdditiveBlending,
+            transparent: true,
+            opacity: 0.8
+        });
+        const particlesMesh = new THREE.Points(particlesGeometry, particleMaterial);
+        scene.add(particlesMesh);
+
+        // Floating orbs
+        const orbGeometry = new THREE.SphereGeometry(0.15, 32, 32);
+        const orbMaterial = new THREE.MeshBasicMaterial({ color: 0xc9a96e, transparent: true, opacity: 0.6 });
+        for (let i = 0; i < 20; i++) {
+            const orb = new THREE.Mesh(orbGeometry, orbMaterial);
+            orb.position.set(
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 8,
+                (Math.random() - 0.5) * 8
+            );
+            scene.add(orb);
+        }
+
+        camera.position.z = 3;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particlesMesh.rotation.y += 0.0003;
+            particlesMesh.rotation.x += 0.0002;
+            scene.children.forEach(child => {
+                if (child instanceof THREE.Mesh && child.geometry.type === 'SphereGeometry') {
+                    child.position.y += Math.sin(Date.now() * 0.001 + child.position.x) * 0.001;
+                }
+            });
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 </html>
