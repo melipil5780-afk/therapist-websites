@@ -40,17 +40,41 @@ nav {
 .hero {
   position: relative;
   height: 100vh;
-  background: url('Gemini_Generated_Image_h9nmcvh9nmcvh9nm.png') center/cover no-repeat;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 }
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
 .hero::before {
-  content: ''; position: absolute; inset: 0;
-  background: rgba(0,0,0,0.4);
+  content: ''; 
+  position: absolute; 
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 2;
 }
-.hero-content { position: relative; z-index: 2; }
+
+.hero-content { 
+  position: relative; 
+  z-index: 3; 
+  opacity: 0; 
+}
+
 .hero h1 { 
     font-family:'Cinzel'; 
     font-size: clamp(3rem, 8vw, 6rem); 
@@ -65,41 +89,32 @@ nav {
   background-color: var(--bg-earth);
 }
 
-/* Left Side: Sticky Image (Desktop) */
 .bio-image-col {
   flex: 1;
   min-width: 50%;
   height: 100vh; 
-  position: -webkit-sticky; 
   position: sticky;
   top: 0;
-  
-  /* IMPORTANT: Center Top ensures the head is visible */
   background: url('Subject.png') center top/cover no-repeat; 
   z-index: 1;
 }
 
-/* Right Side: Text (Desktop) */
 .bio-text-col {
   flex: 1;
   min-width: 350px;
   background-color: var(--bg-earth);
-  
-  /* This large padding pushes the text down so you see the photo first */
   padding: 90vh 6% 15vh 6%; 
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
   z-index: 2;
 }
 
-.bio-block { margin-bottom: 120px; } /* Increased spacing between text blocks */
+.bio-block { margin-bottom: 120px; }
 h2 { font-family: 'Cinzel', serif; color: var(--accent); margin-bottom: 30px; font-size: 3rem; line-height: 1.1; }
 p { margin-bottom: 20px; font-weight: 300; font-size: 1.1rem; color: var(--text-muted); }
 .highlight { color: var(--text-light); font-weight: 400; border-bottom: 1px solid var(--accent); }
 
-/* Video Styling */
 .video-container { 
   margin-top:40px; 
   padding-bottom:56.25%; 
@@ -162,34 +177,22 @@ footer::before {
 }
 .btn:hover { background: var(--accent); color: #1a1612; }
 
-/* --- RESPONSIVE MOBILE STYLES --- */
 @media (max-width:900px) {
-  
-  /* Mobile: Background Image on Container */
   .bio-container {
     background: url('Subject.png') center top/cover no-repeat;
-    background-attachment: scroll; 
     display: block; 
   }
-
-  /* Hide Desktop Column */
   .bio-image-col { display: none; }
-
-  /* Mobile: Text Overlay */
   .bio-text-col { 
     width: 100%; 
-    padding: 60vh 20px 80px 20px; /* Top padding 60vh shows the photo first on mobile too! */
+    padding: 60vh 20px 80px 20px; 
     background: linear-gradient(to bottom, transparent 0%, rgba(26, 22, 18, 0.9) 30%, #1a1612 100%);
     min-height: 100vh;
   }
-
-  /* Text color fixes for overlay */
   .bio-text-col p { color: #fdfcfb; } 
-
   .section-wrap { flex-direction: column !important; }
   .img-box { height: 50vh; width: 100%; flex: none;}
   .text-box { width: 100%; padding: 50px 25px; flex: none;}
-  
   h2 { font-size: 2.2rem; }
 }
 </style>
@@ -199,6 +202,10 @@ footer::before {
 <nav><div class="logo">MELI PIL</div></nav>
 
 <section class="hero">
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="generated_video.mp4.MP4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <div class="hero-content">
     <h1>Beyond The Story.</h1>
     <p style="letter-spacing:10px; color: var(--accent); text-transform: uppercase; margin-top: 15px;">Experiential Psychotherapy</p>
@@ -206,11 +213,8 @@ footer::before {
 </section>
 
 <div class="bio-container">
-  
   <div class="bio-image-col"></div>
-
   <div class="bio-text-col">
-    
     <div class="bio-block">
       <h2>About Me</h2>
       <p>I am a mental health counselor passionate about helping individuals become psychologically and emotionally healthy and happy.</p>
@@ -220,12 +224,10 @@ footer::before {
     <div class="bio-block">
       <h2>My Approach</h2>
       <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is not just about talking; it is about understanding how emotions play out in your body to transform distress into growth.</p>
-      
       <div class="video-container">
         <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -289,39 +291,31 @@ footer::before {
 gsap.registerPlugin(ScrollTrigger);
 
 window.onload = () => {
-  // Fade in for Bio Text
-  gsap.utils.toArray(".bio-block").forEach(block => {
-    gsap.from(block, { 
+  // Reveal Hero Text
+  gsap.to(".hero-content", {
+    opacity: 1,
+    y: -20,
+    duration: 2.5,
+    delay: 3, 
+    ease: "power2.out"
+  });
+
+  // Bio and Step Text animations
+  gsap.utils.toArray(".bio-block, .text-box").forEach(el => {
+    gsap.from(el, { 
       opacity: 0, 
       y: 30, 
       duration: 1, 
-      scrollTrigger: { 
-        trigger: block, 
-        start: "top 85%" 
-      }
+      scrollTrigger: { trigger: el, start: "top 85%" }
     });
   });
 
-  // Fade in for Step Text
-  gsap.utils.toArray(".text-box").forEach(box => {
-    gsap.from(box, { 
-      opacity: 0, y: 50, duration: 1.2, 
-      scrollTrigger: { trigger: box, start: "top 85%" }
-    });
-  });
-
-  // Zoom effect for images
+  // Image zoom scroll effects
   gsap.utils.toArray(".img-box img").forEach(img => {
-    gsap.to(img, {
-      scale: 1.1,
-      ease: "none",
-      scrollTrigger: { trigger: img, scrub: true }
-    });
+    gsap.to(img, { scale: 1.1, scrollTrigger: { trigger: img, scrub: true } });
   });
 };
 </script>
 
 </body>
 </html>
-
-
