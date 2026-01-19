@@ -1193,7 +1193,7 @@ html {
   <div class="booking-container">
     <div class="booking-info">
       <h2>Begin Your Journey</h2>
-      <p>Ready to transform your relationship with yourself? Book a free 15-minute consultation to see if we're a good fit, or schedule your first session directly.</p>
+      <p>Ready to explore experiential therapy? Book a free 15-minute consultation call or schedule your first session. I'll reach out within 24 hours to confirm your appointment.</p>
       
       <div class="contact-info">
         <div class="contact-item">
@@ -1231,16 +1231,22 @@ html {
     </div>
     
     <div class="booking-form">
-      <form id="consultationForm">
+      <form action="https://formsubmit.co/melipil5780@gmail.com" method="POST">
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_subject" value="New Appointment Request - Meli Pil Therapy">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://yourusername.github.io/yourrepo/thank-you.html">
+        
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name *</label>
-            <input type="text" id="firstName" name="firstName" required>
+            <input type="text" id="firstName" name="First_Name" required>
           </div>
           
           <div class="form-group">
             <label for="lastName">Last Name *</label>
-            <input type="text" id="lastName" name="lastName" required>
+            <input type="text" id="lastName" name="Last_Name" required>
           </div>
         </div>
         
@@ -1251,33 +1257,46 @@ html {
         
         <div class="form-group">
           <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="phone" required>
+          <input type="tel" id="phone" name="Phone" required>
         </div>
         
         <div class="form-group">
-          <label for="sessionType">Session Type *</label>
-          <select id="sessionType" name="sessionType" required>
-            <option value="">Select a session type</option>
-            <option value="consultation">Free 15-Min Consultation</option>
-            <option value="individual">Individual Session (50 min - $180)</option>
-            <option value="extended">Extended Session (90 min - $300)</option>
-            <option value="intensive">Intensive Package (4 sessions - $1,200)</option>
+          <label for="appointmentType">Appointment Type *</label>
+          <select id="appointmentType" name="Appointment_Type" required>
+            <option value="">Select appointment type</option>
+            <option value="free-consultation">Free 15-Minute Consultation Call</option>
+            <option value="initial-session">Schedule Initial Session</option>
+            <option value="question">I Have a Question</option>
           </select>
         </div>
         
-        <div class="form-group">
-          <label for="preferredDate">Preferred Date</label>
-          <input type="date" id="preferredDate" name="preferredDate">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="preferredDate">Preferred Date</label>
+            <input type="date" id="preferredDate" name="Preferred_Date">
+          </div>
+          
+          <div class="form-group">
+            <label for="preferredTime">Preferred Time</label>
+            <select id="preferredTime" name="Preferred_Time">
+              <option value="">Select a time</option>
+              <option value="morning">Morning (9 AM - 12 PM)</option>
+              <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+              <option value="evening">Evening (5 PM - 7 PM)</option>
+            </select>
+          </div>
         </div>
         
         <div class="form-group">
-          <label for="message">What brings you to therapy? *</label>
-          <textarea id="message" name="message" required placeholder="Share a bit about what you're hoping to work on..."></textarea>
+          <label for="additionalInfo">Additional Information (Optional)</label>
+          <textarea id="additionalInfo" name="Additional_Info" placeholder="Any scheduling preferences or questions about my services..."></textarea>
         </div>
         
         <button type="submit" class="submit-btn">Request Appointment</button>
         
-        <div class="form-message" id="formMessage"></div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; text-align: center; max-width: none;">
+          By submitting this form, you agree to be contacted about scheduling. No health information is collected through this form.
+        </p>
       </form>
     </div>
   </div>
@@ -1364,9 +1383,13 @@ document.querySelectorAll('.faq-question').forEach(question => {
   });
 });
 
-// Form handling
+// Form handling with EmailJS
 const form = document.getElementById('consultationForm');
 const formMessage = document.getElementById('formMessage');
+
+// Initialize EmailJS (you'll need to replace these with your actual keys)
+// Get free account at https://www.emailjs.com/
+emailjs.init('YOUR_PUBLIC_KEY'); // Replace with your EmailJS public key
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -1375,20 +1398,31 @@ form.addEventListener('submit', (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
   
-  // Simulate form submission (replace with actual backend call)
-  setTimeout(() => {
-    formMessage.className = 'form-message success';
-    formMessage.textContent = 'Thank you! Your request has been received. I\'ll be in touch within 24 hours.';
-    formMessage.style.display = 'block';
-    
-    form.reset();
-    submitBtn.disabled = false;
-    submitBtn.textContent = 'Request Appointment';
-    
-    setTimeout(() => {
-      formMessage.style.display = 'none';
-    }, 5000);
-  }, 1500);
+  // Send email using EmailJS
+  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form)
+    .then(() => {
+      formMessage.className = 'form-message success';
+      formMessage.textContent = 'Thank you! Your request has been received. I\'ll be in touch within 24 hours.';
+      formMessage.style.display = 'block';
+      
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Appointment';
+      
+      setTimeout(() => {
+        formMessage.style.display = 'none';
+      }, 5000);
+    })
+    .catch((error) => {
+      formMessage.className = 'form-message error';
+      formMessage.textContent = 'Oops! Something went wrong. Please email me directly at meli@melipil.com';
+      formMessage.style.display = 'block';
+      
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Request Appointment';
+      
+      console.error('EmailJS error:', error);
+    });
 });
 
 // GSAP Animations
