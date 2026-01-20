@@ -1,90 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clinical Journal | Meli Pil, MHC-LP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root { --forest: #2D3A30; --sage: #6B7F6D; --sand: #F4F1EA; --white: #ffffff; }
-        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--sand); color: #333; }
-        
-        /* Minimalist Nav */
-        nav { padding: 30px 60px; display: flex; justify-content: space-between; align-items: center; background: var(--white); }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--forest); text-decoration: none; font-weight: 700; }
-        
-        .header { text-align: center; padding: 100px 20px; background: var(--white); }
-        .header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--forest); margin: 0; }
-        .header p { color: var(--sage); letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; margin-top: 15px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog | Meli Pil - Experiential Psychotherapy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<style>
+:root {
+  --accent: #d4af6a; 
+  --accent-dark: #b8954f;
+  --bg-earth: #0f0d0a; 
+  --bg-card: #1a1612;
+  --text-light: #fdfcfb;
+  --text-muted: #c4bfb8;
+  --border-subtle: rgba(212, 175, 106, 0.15);
+}
 
-        .container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; }
-        
-        .featured-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; }
-        
-        .card { 
-            background: var(--white); text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s;
-        }
-        .card:hover { transform: translateY(-10px); }
-        .card-img { height: 300px; background-size: cover; background-position: center; }
-        .card-content { padding: 40px; }
-        .card-content span { font-size: 0.7rem; font-weight: 700; color: var(--sage); letter-spacing: 1px; }
-        .card-content h2 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--forest); margin: 15px 0; }
-        .card-content p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+* {margin:0; padding:0; box-sizing:border-box;}
 
-        footer { background: var(--forest); color: var(--sand); padding: 60px; text-align: center; font-size: 0.8rem; }
-    </style>
+body {
+  font-family:'Inter', sans-serif;
+  background-color: var(--bg-earth);
+  color: var(--text-light);
+  line-height:1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position:fixed;
+  top:0; width:100%;
+  padding:25px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  z-index:1000;
+  background: rgba(15, 13, 10, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.logo { 
+  font-family:'Cinzel', serif; 
+  letter-spacing:8px; 
+  color: var(--accent); 
+  font-weight:700; 
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  letter-spacing: 10px;
+  color: var(--text-light);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+.blog-header {
+  padding: 150px 6% 80px;
+  text-align: center;
+  background: linear-gradient(to bottom, var(--bg-card) 0%, var(--bg-earth) 100%);
+}
+
+.blog-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--accent);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.blog-header p {
+  font-size: 1.3rem;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.blog-section {
+  padding: 80px 6% 120px;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.blog-image {
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+
+.blog-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.blog-card:hover .blog-image img {
+  transform: scale(1.08);
+}
+
+.blog-content {
+  padding: 40px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  color: var(--accent);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.blog-content h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  line-height: 1.3;
+}
+
+.blog-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  flex: 1;
+}
+
+.read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.read-more:hover {
+  gap: 15px;
+  color: var(--text-light);
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.read-more:hover .arrow {
+  transform: translateX(5px);
+}
+
+footer {
+  padding: 60px 6% 40px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+footer p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--text-light);
+}
+
+@media (max-width: 900px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+}
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html" class="logo">MELI PIL, MHC-LP</a>
-        <div class="nav-links">
-            <a href="index.html" style="text-decoration:none; color:var(--forest); font-size:0.8rem; font-weight:600;">BACK TO HOME</a>
+<nav>
+  <a href="index.html" class="logo">MELI PIL</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#booking">Book Now</a></li>
+  </ul>
+</nav>
+
+<div class="blog-header">
+  <h1>Insights & Reflections</h1>
+  <p>Exploring the journey of transformation, healing, and discovering wholeness through experiential psychotherapy</p>
+</div>
+
+<section class="blog-section">
+  <div class="blog-grid">
+    
+    <article class="blog-card">
+      <div class="blog-image">
+        <img src="IMG_2054.jpeg" alt="Breaking Chains of Limitation">
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span>Transformation</span>
+          <span>•</span>
+          <span>5 min read</span>
         </div>
-    </nav>
+        <h3>Breaking Chains of Limitation</h3>
+        <p>Exploring how we create invisible boundaries that keep us from our true potential, and the experiential work that helps shatter these self-imposed constraints.</p>
+        <a href="blog/breaking-chains.html" class="read-more">
+          Read Article <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
 
-    <div class="header">
-        <h1>The Journal</h1>
-        <p>Essays on Schema Therapy, Depression, and the Path to Healing</p>
-    </div>
-
-    <div class="container">
-        <div class="featured-grid">
-            
-            <a href="blog-unlocking.html" class="card">
-                <div class="card-img" style="background-image: url('pexels-being-the-traveller-579914-2730218.jpg');"></div>
-                <div class="card-content">
-                    <span>SCHEMA THERAPY</span>
-                    <h2>Unlocking the Source of Darkness</h2>
-                    <p>Exploring the core unmet needs and maladaptive patterns that fuel emotional pain.</p>
-                </div>
-            </a>
-
-            <a href="blog-depression.html" class="card">
-                <div class="card-img" style="background-image: url('pexels-solce-31661850.jpg');"></div>
-                <div class="card-content">
-                    <span>CLINICAL INSIGHTS</span>
-                    <h2>Struggling with Depression?</h2>
-                    <p>Moving beyond symptoms to understand the root causes of deep sadness and numbness.</p>
-                </div>
-            </a>
-
-            <a href="blog-emotions.html" class="card">
-                <div class="card-img" style="background-image: url('pexels-vividcafe-681391.jpg');"></div>
-                <div class="card-content">
-                    <span>ROADMAP</span>
-                    <h2>6 Principles for Emotions</h2>
-                    <p>A clinical framework for processing, regulating, and transforming your emotional world.</p>
-                </div>
-            </a>
-
+    <article class="blog-card">
+      <div class="blog-image">
+        <img src="IMG_2051.jpeg" alt="The Wings of Self-Discovery">
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span>Self-Discovery</span>
+          <span>•</span>
+          <span>6 min read</span>
         </div>
-    </div>
+        <h3>The Wings of Self-Discovery</h3>
+        <p>How experiential therapy helps uncover the parts of ourselves that have been hidden or denied, allowing our authentic nature to emerge and take flight.</p>
+        <a href="blog/wings-discovery.html" class="read-more">
+          Read Article <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
 
-    <footer>
-        &copy; 2026 Meli Pil, MHC-LP | Brooklyn, NY | In-Person Sessions Only
-    </footer>
+    <article class="blog-card">
+      <div class="blog-image">
+        <img src="pexels-anniroenkae-5278835.jpg" alt="Integration in Daily Life">
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span>Integration</span>
+          <span>•</span>
+          <span>7 min read</span>
+        </div>
+        <h3>Integration in Daily Life</h3>
+        <p>The journey from therapeutic insight to living transformation. How to carry the shifts from session into your relationships, work, and sense of self.</p>
+        <a href="blog/integration.html" class="read-more">
+          Read Article <span class="arrow">→</span>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 MELI PIL · Licensed Mental Health Counselor · Experiential Psychotherapy</p>
+  <p style="margin-top: 15px;"><a href="index.html">← Back to Home</a></p>
+</footer>
+
+<script>
+// Animate cards on load
+window.onload = () => {
+  const cards = document.querySelectorAll('.blog-card');
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.6s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 50);
+    }, i * 100);
+  });
+};
+</script>
 
 </body>
 </html>
