@@ -1,0 +1,28 @@
+# _config.yml
+title: "My Blog"
+description: "A blog managed through Claude"
+baseurl: ""  # Leave empty for main site
+url: ""      # Cloudflare will fill this in
+
+# Jekyll settings
+theme: minima
+markdown: kramdown
+permalink: pretty
+
+# Collections
+collections_dir: .
+collections:
+  posts:
+    output: true
+    permalink: /:year/:month/:day/:title/
+
+# Build settings
+safe: true
+lsi: false
+incremental: false
+
+# Custom variables
+author: "Your Name"
+email: "your-email@example.com"
+twitter_username: yourtwitter
+github_username:  yourgithub
