@@ -1,0 +1,8 @@
+# Admin panel
+/admin/* /admin/index.html 200
+
+# Blog posts
+/blog/* /blog/index.html 200
+
+# API endpoints
+/api/* /api/:splat 200
