@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You | Meli Pil | Experiential Psychotherapy</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #d4af6a; 
+  --accent-dark: #b8954f;
+  --bg-earth: #0f0d0a; 
+  --bg-card: #1a1612;
+  --text-light: #fdfcfb;
+  --text-muted: #c4bfb8;
+  --border-subtle: rgba(212, 175, 106, 0.15);
+  --success: #6ab88d;
+  --error: #d46a6a;
+}
+
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+  font-family:'Inter', sans-serif;
+  background-color: var(--bg-earth);
+  color: var(--text-light);
+  line-height:1.8;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* — NAVIGATION — */
+nav {
+  position: fixed;
+  top:0; width:100%;
+  padding:30px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  z-index:1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav.scrolled {
+  background: rgba(15, 13, 10, 0.98);
+  padding: 20px 6%;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.logo {
+  font-family:'Cinzel', serif;
+  letter-spacing:8px;
+  color: var(--accent);
+  font-weight:700;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.logo:hover {
+  letter-spacing: 10px;
+  color: var(--text-light);
+}
+
+/* — THANK YOU CONTENT — */
+.thank-you-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.thank-you-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, 
+    rgba(212, 175, 106, 0.05) 0%, 
+    transparent 70%);
+  z-index: 1;
+}
+
+.thank-you-card {
+  background: var(--bg-card);
+  padding: 80px 60px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  transform: translateY(0);
+  animation: floatIn 1s ease-out;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thank-you-icon {
+  font-size: 5rem;
+  margin-bottom: 30px;
+  color: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.thank-you-card h1 {
+  font-family: 'Cinzel', serif;
+  color: var(--accent);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 30px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.thank-you-card p {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.highlight {
+  color: var(--text-light);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent), transparent);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 18px 40px;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg-earth);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 106, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn-secondary:hover {
+  background: rgba(212, 175, 106, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 106, 0.1);
+}
+
+.next-steps {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border-subtle);
+  text-align: left;
+}
+
+.next-steps h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.next-steps ul {
+  list-style: none;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.next-steps li {
+  padding: 12px 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+  position: relative;
+  padding-left: 30px;
+}
+
+.next-steps li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* — FOOTER — */
+footer {
+  padding: 40px 6%;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-copyright {
+  opacity: 0.6;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+/* — RESPONSIVE — */
+@media (max-width: 768px) {
+  .thank-you-card {
+    padding: 50px 30px;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .thank-you-icon {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .thank-you-card {
+    padding: 40px 20px;
+  }
+  
+  .thank-you-card h1 {
+    font-size: 2rem;
+  }
+  
+  .thank-you-card p {
+    font-size: 1rem;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg-earth);
+}
+</style>
+
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="logo">MELI PIL</a>
+</nav>
+
+<div class="thank-you-container">
+  <div class="thank-you-card">
+    <div class="thank-you-icon">✓</div>
+    
+    <h1>Thank You!</h1>
+    
+    <p>Your appointment request has been received successfully.</p>
+    
+    <p>I've received your inquiry and will be in touch within <span class="highlight">24 hours</span> to confirm your appointment or consultation call.</p>
+    
+    <p>If you need to reach me urgently, please email me directly at <span class="highlight">melipil5780@gmail.com</span> or call <span class="highlight">(555) 123-4567</span>.</p>
+    
+    <div class="action-buttons">
+      <a href="index.html" class="btn btn-primary">RETURN TO HOME</a>
+      <a href="index.html#booking" class="btn btn-secondary">BOOK ANOTHER APPOINTMENT</a>
+    </div>
+    
+    <div class="next-steps">
+      <h3>What happens next?</h3>
+      <ul>
+        <li>You'll receive a confirmation email within 24 hours</li>
+        <li>I'll contact you to finalize appointment details</li>
+        <li>You'll receive any necessary intake forms via email</li>
+        <li>We'll have our first session at the scheduled time</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-copyright">
+      © 2026 MELI PIL · Licensed Mental Health Counselor · Experiential Psychotherapy
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Add a slight delay to the animation for better effect
+window.onload = () => {
+  // The animation is handled by CSS
+};
+</script>
+
+</body>
+</html>
