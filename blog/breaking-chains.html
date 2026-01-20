@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Breaking Chains of Limitation | Meli Pil</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #d4af6a; 
+  --bg-earth: #0f0d0a; 
+  --bg-card: #1a1612;
+  --text-light: #fdfcfb;
+  --text-muted: #c4bfb8;
+  --border-subtle: rgba(212, 175, 106, 0.15);
+}
+
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+  font-family:'Inter', sans-serif;
+  background-color: var(--bg-earth);
+  color: var(--text-light);
+  line-height:1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position:fixed;
+  top:0; width:100%;
+  padding:25px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  z-index:1000;
+  background: rgba(15, 13, 10, 0.98);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.logo {
+  font-family:'Cinzel', serif;
+  letter-spacing:8px;
+  color: var(--accent);
+  font-weight:700;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.back-btn {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.back-btn:hover {
+  color: var(--accent);
+}
+
+.article-header {
+  padding: 150px 6% 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.article-category {
+  color: var(--accent);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.article-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--text-light);
+  margin-bottom: 30px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.featured-image {
+  max-width: 1200px;
+  margin: 0 auto 80px;
+  padding: 0 6%;
+}
+
+.featured-image img {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+  border: 1px solid var(--border-subtle);
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 6% 100px;
+}
+
+.article-content h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--accent);
+  font-size: 2rem;
+  margin: 60px 0 25px;
+  font-weight: 600;
+}
+
+.article-content h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-light);
+  font-size: 1.5rem;
+  margin: 40px 0 20px;
+  font-weight: 500;
+}
+
+.article-content p {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+}
+
+.article-content blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 30px;
+  margin: 40px 0;
+  font-style: italic;
+  color: var(--text-light);
+  font-size: 1.3rem;
+  line-height: 1.8;
+}
+
+.article-content ul {
+  margin: 25px 0 25px 40px;
+  color: var(--text-muted);
+}
+
+.article-content li {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.article-content strong {
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.article-content em {
+  color: var(--accent);
+}
+
+.article-cta {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 60px;
+  margin: 80px 0;
+  text-align: center;
+}
+
+.article-cta h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--accent);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.article-cta p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 18px 45px;
+  background: var(--accent);
+  color: var(--bg-earth);
+  text-decoration: none;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #b8954f;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 175, 106, 0.3);
+}
+
+.related-articles {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 100px 6%;
+  background: var(--bg-card);
+}
+
+.related-articles h2 {
+  font-family: 'Cinzel', serif;
+  color: var(--accent);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+
+.related-card {
+  background: var(--bg-earth);
+  border: 1px solid var(--border-subtle);
+  padding: 30px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.related-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+}
+
+.related-card h4 {
+  font-family: 'Cinzel', serif;
+  color: var(--text-light);
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.related-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .article-header {
+    padding: 120px 6% 40px;
+  }
+  
+  .article-content {
+    padding-bottom: 60px;
+  }
+  
+  .article-cta {
+    padding: 40px 30px;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">MELI PIL</a>
+  <a href="../blog.html" class="back-btn">← All Articles</a>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="article-category">Transformation</div>
+    <h1>Breaking Chains of Limitation</h1>
+    <div class="article-meta">
+      <span>By Meli Pil</span>
+      <span>•</span>
+      <span>5 min read</span>
+    </div>
+  </header>
+
+  <div class="featured-image">
+    <img src="../IMG_2054.jpeg" alt="Breaking chains and finding freedom">
+  </div>
+
+  <div class="article-content">
+    <p>We all carry invisible chains. These aren't the physical restraints we can see and touch, but rather the psychological barriers we've constructed over years of conditioning, trauma, and self-protection.</p>
+
+    <p>In my years working with clients through experiential psychotherapy, I've witnessed countless moments where these chains become visible—and breakable. It's rarely a gentle process. True transformation demands that we confront what we've been avoiding.</p>
+
+    <h2>The Architecture of Our Limitations</h2>
+
+    <p>Our limitations aren't random. They're carefully constructed defenses, built brick by brick throughout our lives. Perhaps you learned as a child that expressing anger led to rejection, so you developed an elaborate system of people-pleasing.</p>
+
+    <blockquote>"The same walls that kept danger out now keep possibility at bay."</blockquote>
+
+    <h2>When Words Aren't Enough</h2>
+
+    <p>Traditional talk therapy has its place, but some chains can't be reasoned with. They live deeper than thought—in the body, in the nervous system, in the wordless parts of ourselves that react before we can think.</p>
+
+    <p>This is where experiential work becomes essential. When we engage with our limitations through the body, through dialogue with different parts of ourselves, through movement and sound and sensation, we access the level where these patterns were originally formed.</p>
+
+    <h3>The Power of Empty Chair Work</h3>
+
+    <p>I often use empty chair work with clients who feel trapped by limiting beliefs. We place a chair opposite them—this chair holds the limitation itself.</p>
+
+    <p>Then something remarkable happens. Instead of talking <em>about</em> this limitation, you talk <em>to</em> it. And more importantly, you become it, moving to the other chair and speaking from its perspective.</p>
+
+    <div class="article-cta">
+      <h3>Ready to Break Your Chains?</h3>
+      <p>Book a free consultation to explore how experiential therapy can help you transform your limitations into possibilities.</p>
+      <a href="../index.html#booking" class="cta-btn">Book Consultation</a>
+    </div>
+
+    <h2>The Somatic Dimension</h2>
+
+    <p>Our bodies hold the truth that our minds try to edit. When you're speaking about a limitation, I'm watching your body. Does your breath become shallow? Do your shoulders hunch?</p>
+
+    <p>These somatic responses aren't just symptoms—they're doorways. When we bring awareness to how limitation lives in the body, we can work with it directly.</p>
+
+    <h2>Your Next Step</h2>
+
+    <p>Breaking chains of limitation isn't about willpower or positive thinking. It's about meeting yourself exactly where you are, with all your defenses and patterns, and creating space for something new to emerge.</p>
+
+    <p>If you're ready to explore what's possible when you step beyond your limitations, I invite you to reach out. The first step is simply being willing to look at the chains you've been carrying.</p>
+  </div>
+</article>
+
+<div class="related-articles">
+  <h2>Continue Reading</h2>
+  <div class="related-grid">
+    <a href="wings-discovery.html" class="related-card">
+      <h4>The Wings of Self-Discovery</h4>
+      <p>Uncovering the hidden parts of ourselves through experiential therapy.</p>
+    </a>
+    <a href="integration.html" class="related-card">
+      <h4>Integration in Daily Life</h4>
+      <p>Carrying therapeutic insights into your everyday world.</p>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
