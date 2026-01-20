@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -20,939 +21,1132 @@
   --error: #d46a6a;
 }
 
-* {margin:0; padding:0; box-sizing:border-box;}
+- {margin:0; padding:0; box-sizing:border-box;}
 
 body {
-  font-family:'Inter', sans-serif;
-  background-color: var(--bg-earth);
-  color: var(--text-light);
-  line-height:1.8;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+font-family:‘Inter’, sans-serif;
+background-color: var(–bg-earth);
+color: var(–text-light);
+line-height:1.8;
+overflow-x: hidden;
+-webkit-font-smoothing: antialiased;
 }
 
 /* — NAVIGATION — */
 nav {
-  position:fixed;
-  top:0; width:100%;
-  padding:30px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items: center;
-  z-index:1000;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+position:fixed;
+top:0; width:100%;
+padding:30px 6%;
+display:flex;
+justify-content:space-between;
+align-items: center;
+z-index:1000;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 nav.scrolled {
-  background: rgba(15, 13, 10, 0.98);
-  padding: 20px 6%;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+background: rgba(15, 13, 10, 0.98);
+padding: 20px 6%;
+backdrop-filter: blur(10px);
+border-bottom: 1px solid var(–border-subtle);
+box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 .logo {
-  font-family:'Cinzel', serif;
-  letter-spacing:8px;
-  color: var(--accent);
-  font-weight:700;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  cursor: pointer;
+font-family:‘Cinzel’, serif;
+letter-spacing:8px;
+color: var(–accent);
+font-weight:700;
+font-size: 1.3rem;
+transition: all 0.3s ease;
+cursor: pointer;
 }
 
 .logo:hover {
-  letter-spacing: 10px;
-  color: var(--text-light);
+letter-spacing: 10px;
+color: var(–text-light);
 }
 
 .nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
+display: flex;
+gap: 40px;
+list-style: none;
 }
 
 .nav-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-  position: relative;
-  font-weight: 400;
+color: var(–text-muted);
+text-decoration: none;
+font-size: 0.95rem;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+position: relative;
+font-weight: 400;
 }
 
 .nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent);
-  transition: width 0.3s ease;
+content: ‘’;
+position: absolute;
+bottom: -5px;
+left: 0;
+width: 0;
+height: 1px;
+background: var(–accent);
+transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+color: var(–accent);
 }
 
 .nav-links a:hover::after {
-  width: 100%;
+width: 100%;
 }
 
 .mobile-menu {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+display: none;
+flex-direction: column;
+gap: 5px;
+cursor: pointer;
 }
 
 .mobile-menu span {
-  width: 25px;
-  height: 2px;
-  background: var(--accent);
-  transition: all 0.3s ease;
+width: 25px;
+height: 2px;
+background: var(–accent);
+transition: all 0.3s ease;
 }
 
 /* — HERO — */
 .hero {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  overflow: hidden;
+position: relative;
+height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+overflow: hidden;
 }
 
 .hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: 1;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
+position: absolute;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: 1;
+transform: translate(-50%, -50%);
+object-fit: cover;
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
-  z-index: 2;
+content: ‘’;
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+z-index: 2;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 3;
-  opacity: 0;
-  max-width: 1200px;
-  padding: 0 20px;
+position: relative;
+z-index: 3;
+opacity: 0;
+max-width: 1200px;
+padding: 0 20px;
 }
 
 .hero h1 {
-  font-family:'Cinzel';
-  font-size: clamp(3.5rem, 9vw, 7rem);
-  text-shadow: 0 8px 32px rgba(0,0,0,0.8);
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  line-height: 1.1;
+font-family:‘Cinzel’;
+font-size: clamp(3.5rem, 9vw, 7rem);
+text-shadow: 0 8px 32px rgba(0,0,0,0.8);
+font-weight: 600;
+letter-spacing: 2px;
+margin-bottom: 20px;
+line-height: 1.1;
 }
 
 .hero-subtitle {
-  letter-spacing:12px;
-  color: var(--accent);
-  text-transform: uppercase;
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-  font-weight: 500;
-  opacity: 0;
+letter-spacing:12px;
+color: var(–accent);
+text-transform: uppercase;
+font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+font-weight: 500;
+opacity: 0;
 }
 
 /* — BIO SECTION — */
 .bio-container {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  background-color: var(--bg-earth);
+display: flex;
+flex-wrap: wrap;
+position: relative;
+background-color: var(–bg-earth);
 }
 
 .bio-image-col {
-  flex: 1;
-  min-width: 50%;
-  height: 100vh;
-  position: sticky;
-  top: 0;
-  background: url('Subject.png') center top/cover no-repeat;
-  z-index: 1;
+flex: 1;
+min-width: 50%;
+height: 100vh;
+position: sticky;
+top: 0;
+background: url(‘Subject.png’) center top/cover no-repeat;
+z-index: 1;
 }
 
 .bio-image-col::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, transparent 60%, var(--bg-earth) 100%);
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(to right, transparent 60%, var(–bg-earth) 100%);
 }
 
 .bio-text-col {
-  flex: 1;
-  min-width: 400px;
-  background-color: var(--bg-earth);
-  padding: 100vh 8% 20vh 8%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 2;
+flex: 1;
+min-width: 400px;
+background-color: var(–bg-earth);
+padding: 100vh 8% 20vh 8%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+z-index: 2;
 }
 
 .bio-block {
-  margin-bottom: 140px;
-  opacity: 0;
-  transform: translateY(40px);
+margin-bottom: 140px;
+opacity: 0;
+transform: translateY(40px);
 }
 
 h2 {
-  font-family: 'Cinzel', serif;
-  color: var(--accent);
-  margin-bottom: 40px;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  line-height: 1.2;
-  font-weight: 600;
-  letter-spacing: 1px;
+font-family: ‘Cinzel’, serif;
+color: var(–accent);
+margin-bottom: 40px;
+font-size: clamp(2.5rem, 5vw, 4rem);
+line-height: 1.2;
+font-weight: 600;
+letter-spacing: 1px;
 }
 
 p {
-  margin-bottom: 24px;
-  font-weight: 300;
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 650px;
+margin-bottom: 24px;
+font-weight: 300;
+font-size: 1.15rem;
+color: var(–text-muted);
+max-width: 650px;
 }
 
 .highlight {
-  color: var(--text-light);
-  font-weight: 500;
-  position: relative;
-  padding-bottom: 2px;
+color: var(–text-light);
+font-weight: 500;
+position: relative;
+padding-bottom: 2px;
 }
 
 .highlight::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, var(--accent), transparent);
+content: ‘’;
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 1px;
+background: linear-gradient(to right, var(–accent), transparent);
 }
 
 .video-container {
-  margin-top:50px;
-  padding-bottom:56.25%;
-  position:relative;
-  border: 2px solid var(--border-subtle);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.6);
-  overflow: hidden;
-  transition: all 0.4s ease;
+margin-top:50px;
+padding-bottom:56.25%;
+position:relative;
+border: 2px solid var(–border-subtle);
+box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+overflow: hidden;
+transition: all 0.4s ease;
 }
 
 .video-container:hover {
-  border-color: var(--accent);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 60px rgba(212, 175, 106, 0.2);
+border-color: var(–accent);
+transform: translateY(-5px);
+box-shadow: 0 20px 60px rgba(212, 175, 106, 0.2);
 }
 
 .video-container iframe {
-  position:absolute;
-  width:100%;
-  height:100%;
-  top:0;
-  left:0;
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
 }
 
 /* — SERVICES SECTION — */
 .services-section {
-  padding: 120px 6%;
-  background: var(--bg-card);
+padding: 120px 6%;
+background: var(–bg-card);
 }
 
 .section-header {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto 80px;
+text-align: center;
+max-width: 800px;
+margin: 0 auto 80px;
 }
 
 .section-header h2 {
-  margin-bottom: 20px;
+margin-bottom: 20px;
 }
 
 .section-header p {
-  margin: 0 auto;
-  color: var(--text-muted);
-  font-size: 1.2rem;
+margin: 0 auto;
+color: var(–text-muted);
+font-size: 1.2rem;
 }
 
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 40px;
+max-width: 1400px;
+margin: 0 auto;
 }
 
 .service-card {
-  background: var(--bg-earth);
-  border: 1px solid var(--border-subtle);
-  padding: 50px 40px;
-  transition: all 0.4s ease;
-  position: relative;
-  overflow: hidden;
+background: var(–bg-earth);
+border: 1px solid var(–border-subtle);
+padding: 50px 40px;
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
 }
 
 .service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(to right, var(--accent), transparent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s ease;
+content: ‘’;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 3px;
+background: linear-gradient(to right, var(–accent), transparent);
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.4s ease;
 }
 
 .service-card:hover::before {
-  transform: scaleX(1);
+transform: scaleX(1);
 }
 
 .service-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+transform: translateY(-10px);
+border-color: var(–accent);
+box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
 
 .service-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  color: var(--text-light);
+font-size: 1.8rem;
+margin-bottom: 15px;
+color: var(–text-light);
 }
 
 .service-card .price {
-  color: var(--accent);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  font-family: 'Cinzel', serif;
+color: var(–accent);
+font-size: 1.3rem;
+font-weight: 600;
+margin-bottom: 20px;
+font-family: ‘Cinzel’, serif;
 }
 
 .service-card p {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 0;
-  max-width: none;
+font-size: 1rem;
+line-height: 1.8;
+margin-bottom: 0;
+max-width: none;
 }
 
 .service-card ul {
-  list-style: none;
-  margin-top: 20px;
+list-style: none;
+margin-top: 20px;
 }
 
 .service-card li {
-  padding: 8px 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  position: relative;
-  padding-left: 25px;
+padding: 8px 0;
+color: var(–text-muted);
+font-size: 0.95rem;
+position: relative;
+padding-left: 25px;
 }
 
 .service-card li::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
+content: ‘→’;
+position: absolute;
+left: 0;
+color: var(–accent);
 }
 
 /* — STEPS SECTION — */
 .section-wrap {
-  display: flex;
-  min-height: 85vh;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
+display: flex;
+min-height: 85vh;
+align-items: center;
+flex-wrap: wrap;
+position: relative;
 }
 
 .section-wrap:nth-child(even) {
-  flex-direction: row-reverse;
+flex-direction: row-reverse;
 }
 
 .img-box {
-  flex: 1;
-  height: 85vh;
-  min-width: 50%;
-  overflow:hidden;
-  position: relative;
+flex: 1;
+height: 85vh;
+min-width: 50%;
+overflow:hidden;
+position: relative;
 }
 
 .img-box::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(212, 175, 106, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
+content: ‘’;
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(212, 175, 106, 0.1) 0%, transparent 50%);
+pointer-events: none;
+opacity: 0;
+transition: opacity 0.6s ease;
 }
 
 .section-wrap:hover .img-box::after {
-  opacity: 1;
+opacity: 1;
 }
 
 .img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.85) contrast(1.05) sepia(0.15);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+width: 100%;
+height: 100%;
+object-fit: cover;
+filter: brightness(0.85) contrast(1.05) sepia(0.15);
+transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .section-wrap:hover .img-box img {
-  filter: brightness(1) contrast(1.1) sepia(0.05);
+filter: brightness(1) contrast(1.1) sepia(0.05);
 }
 
 .text-box {
-  flex: 1;
-  padding: 10%;
-  min-width: 400px;
-  background: var(--bg-earth);
+flex: 1;
+padding: 10%;
+min-width: 400px;
+background: var(–bg-earth);
 }
 
 .step-number {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  color: var(--accent);
-  letter-spacing: 4px;
-  margin-bottom: 15px;
-  font-weight: 500;
-  opacity: 0.8;
+font-family: ‘Cinzel’, serif;
+font-size: 1rem;
+color: var(–accent);
+letter-spacing: 4px;
+margin-bottom: 15px;
+font-weight: 500;
+opacity: 0.8;
 }
 
 h3 {
-  font-family: 'Cinzel', serif;
-  color: var(--text-light);
-  margin-bottom: 25px;
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 1.2;
+font-family: ‘Cinzel’, serif;
+color: var(–text-light);
+margin-bottom: 25px;
+font-size: clamp(2rem, 4vw, 3rem);
+font-weight: 600;
+letter-spacing: 1px;
+line-height: 1.2;
 }
 
 .text-box p {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  color: var(--text-muted);
+font-size: 1.1rem;
+line-height: 1.9;
+color: var(–text-muted);
+}
+
+/* — BLOG SECTION — */
+.blog-section {
+padding: 120px 6%;
+background: var(–bg-earth);
+position: relative;
+}
+
+.blog-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+gap: 50px;
+max-width: 1400px;
+margin: 0 auto 60px;
+}
+
+.blog-card {
+background: var(–bg-card);
+border: 1px solid var(–border-subtle);
+overflow: hidden;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+cursor: pointer;
+position: relative;
+}
+
+.blog-card::before {
+content: ‘’;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 4px;
+background: linear-gradient(90deg, var(–accent), var(–accent-dark));
+transform: scaleX(0);
+transform-origin: left;
+transition: transform 0.4s ease;
+z-index: 2;
+}
+
+.blog-card:hover::before {
+transform: scaleX(1);
+}
+
+.blog-card:hover {
+transform: translateY(-10px);
+border-color: var(–accent);
+box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+
+.blog-image {
+width: 100%;
+height: 280px;
+overflow: hidden;
+position: relative;
+background: var(–bg-earth);
+}
+
+.blog-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+filter: brightness(0.8) contrast(1.1);
+}
+
+.blog-card:hover .blog-image img {
+transform: scale(1.08);
+filter: brightness(1) contrast(1.15);
+}
+
+.blog-content {
+padding: 40px;
+}
+
+.blog-meta {
+display: flex;
+gap: 20px;
+margin-bottom: 20px;
+font-size: 0.85rem;
+color: var(–accent);
+letter-spacing: 1.5px;
+text-transform: uppercase;
+font-weight: 500;
+}
+
+.blog-date,
+.blog-category {
+position: relative;
+}
+
+.blog-category::before {
+content: ‘•’;
+margin-right: 20px;
+color: var(–border-subtle);
+}
+
+.blog-card h3 {
+font-family: ‘Cinzel’, serif;
+font-size: 1.8rem;
+margin-bottom: 15px;
+color: var(–text-light);
+line-height: 1.3;
+transition: color 0.3s ease;
+}
+
+.blog-card:hover h3 {
+color: var(–accent);
+}
+
+.blog-excerpt {
+color: var(–text-muted);
+line-height: 1.8;
+margin-bottom: 25px;
+font-size: 1rem;
+max-width: none;
+}
+
+.read-more {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+color: var(–accent);
+font-weight: 500;
+letter-spacing: 1px;
+font-size: 0.9rem;
+text-transform: uppercase;
+transition: all 0.3s ease;
+}
+
+.read-more::after {
+content: ‘→’;
+transition: transform 0.3s ease;
+}
+
+.blog-card:hover .read-more::after {
+transform: translateX(5px);
+}
+
+.blog-cta {
+text-align: center;
+margin-top: 80px;
+}
+
+.view-all-btn {
+display: inline-block;
+padding: 18px 50px;
+background: transparent;
+color: var(–accent);
+border: 2px solid var(–accent);
+font-family: ‘Cinzel’, serif;
+font-weight: 600;
+letter-spacing: 3px;
+text-transform: uppercase;
+text-decoration: none;
+transition: all 0.4s ease;
+position: relative;
+overflow: hidden;
+}
+
+.view-all-btn::before {
+content: ‘’;
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: var(–accent);
+transition: left 0.4s ease;
+z-index: -1;
+}
+
+.view-all-btn:hover::before {
+left: 0;
+}
+
+.view-all-btn:hover {
+color: var(–bg-earth);
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(212, 175, 106, 0.3);
 }
 
 /* — TESTIMONIALS — */
 .testimonials-section {
-  padding: 120px 6%;
-  background: var(--bg-earth);
+padding: 120px 6%;
+background: var(–bg-card);
 }
 
 .testimonials-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+gap: 40px;
 }
 
 .testimonial-card {
-  background: var(--bg-card);
-  padding: 50px;
-  border-left: 3px solid var(--accent);
-  position: relative;
+background: var(–bg-earth);
+padding: 50px;
+border-left: 3px solid var(–accent);
+position: relative;
 }
 
 .testimonial-card::before {
-  content: '"';
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 5rem;
-  color: var(--accent);
-  opacity: 0.2;
-  font-family: 'Cinzel', serif;
+content: ‘”’;
+position: absolute;
+top: 20px;
+left: 20px;
+font-size: 5rem;
+color: var(–accent);
+opacity: 0.2;
+font-family: ‘Cinzel’, serif;
 }
 
 .testimonial-card p {
-  font-style: italic;
-  margin-bottom: 25px;
-  position: relative;
-  z-index: 1;
-  max-width: none;
+font-style: italic;
+margin-bottom: 25px;
+position: relative;
+z-index: 1;
+max-width: none;
 }
 
 .testimonial-author {
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 1rem;
+font-weight: 600;
+color: var(–accent);
+font-size: 1rem;
 }
 
 /* — FAQ SECTION — */
 .faq-section {
-  padding: 120px 6%;
-  background: var(--bg-card);
+padding: 120px 6%;
+background: var(–bg-earth);
 }
 
 .faq-container {
-  max-width: 900px;
-  margin: 0 auto;
+max-width: 900px;
+margin: 0 auto;
 }
 
 .faq-item {
-  margin-bottom: 20px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-earth);
-  overflow: hidden;
-  transition: all 0.3s ease;
+margin-bottom: 20px;
+border: 1px solid var(–border-subtle);
+background: var(–bg-card);
+overflow: hidden;
+transition: all 0.3s ease;
 }
 
 .faq-item:hover {
-  border-color: var(--accent);
+border-color: var(–accent);
 }
 
 .faq-question {
-  padding: 30px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 500;
-  color: var(--text-light);
-  font-size: 1.15rem;
-  user-select: none;
+padding: 30px;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-weight: 500;
+color: var(–text-light);
+font-size: 1.15rem;
+user-select: none;
 }
 
 .faq-question:hover {
-  color: var(--accent);
+color: var(–accent);
 }
 
 .faq-icon {
-  font-size: 1.5rem;
-  color: var(--accent);
-  transition: transform 0.3s ease;
+font-size: 1.5rem;
+color: var(–accent);
+transition: transform 0.3s ease;
 }
 
 .faq-item.active .faq-icon {
-  transform: rotate(45deg);
+transform: rotate(45deg);
 }
 
 .faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-  padding: 0 30px;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.4s ease, padding 0.4s ease;
+padding: 0 30px;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 500px;
-  padding: 0 30px 30px;
+max-height: 500px;
+padding: 0 30px 30px;
 }
 
 .faq-answer p {
-  color: var(--text-muted);
-  line-height: 1.8;
-  max-width: none;
+color: var(–text-muted);
+line-height: 1.8;
+max-width: none;
 }
 
 /* — BOOKING SECTION — */
 .booking-section {
-  padding: 120px 6%;
-  background: var(--bg-earth);
+padding: 120px 6%;
+background: var(–bg-card);
 }
 
 .booking-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
+max-width: 1200px;
+margin: 0 auto;
+display: grid;
+grid-template-columns: 1fr 1.2fr;
+gap: 80px;
 }
 
 .booking-info h2 {
-  margin-bottom: 30px;
+margin-bottom: 30px;
 }
 
 .booking-info p {
-  margin-bottom: 40px;
-  max-width: none;
+margin-bottom: 40px;
+max-width: none;
 }
 
 .contact-info {
-  background: var(--bg-card);
-  padding: 40px;
-  border-left: 3px solid var(--accent);
+background: var(–bg-earth);
+padding: 40px;
+border-left: 3px solid var(–accent);
 }
 
 .contact-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 25px;
+display: flex;
+align-items: center;
+gap: 20px;
+margin-bottom: 25px;
 }
 
 .contact-icon {
-  width: 50px;
-  height: 50px;
-  background: var(--accent);
-  color: var(--bg-earth);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  flex-shrink: 0;
+width: 50px;
+height: 50px;
+background: var(–accent);
+color: var(–bg-earth);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 700;
+font-size: 1.2rem;
+flex-shrink: 0;
 }
 
 .contact-details h4 {
-  color: var(--accent);
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 5px;
+font-size: 0.9rem;
+letter-spacing: 2px;
+text-transform: uppercase;
 }
 
 .contact-details p {
-  margin: 0;
-  color: var(--text-light);
+margin: 0;
+color: var(–text-light);
 }
 
 .booking-form {
-  background: var(--bg-card);
-  padding: 50px;
-  border: 1px solid var(--border-subtle);
+background: var(–bg-earth);
+padding: 50px;
+border: 1px solid var(–border-subtle);
 }
 
 .form-group {
-  margin-bottom: 25px;
+margin-bottom: 25px;
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--accent);
-  font-weight: 500;
-  letter-spacing: 1px;
-  font-size: 0.9rem;
+display: block;
+margin-bottom: 10px;
+color: var(–accent);
+font-weight: 500;
+letter-spacing: 1px;
+font-size: 0.9rem;
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-  width: 100%;
-  padding: 15px 20px;
-  background: var(--bg-earth);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-light);
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+width: 100%;
+padding: 15px 20px;
+background: var(–bg-card);
+border: 1px solid var(–border-subtle);
+color: var(–text-light);
+font-family: ‘Inter’, sans-serif;
+font-size: 1rem;
+transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(212, 175, 106, 0.1);
+outline: none;
+border-color: var(–accent);
+box-shadow: 0 0 0 3px rgba(212, 175, 106, 0.1);
 }
 
 .form-group textarea {
-  resize: vertical;
-  min-height: 150px;
+resize: vertical;
+min-height: 150px;
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 25px;
 }
 
 .submit-btn {
-  width: 100%;
-  padding: 20px;
-  background: var(--accent);
-  color: var(--bg-earth);
-  border: none;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1rem;
+width: 100%;
+padding: 20px;
+background: var(–accent);
+color: var(–bg-earth);
+border: none;
+font-family: ‘Cinzel’, serif;
+font-weight: 600;
+letter-spacing: 3px;
+text-transform: uppercase;
+cursor: pointer;
+transition: all 0.3s ease;
+font-size: 1rem;
 }
 
 .submit-btn:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(212, 175, 106, 0.3);
+background: var(–accent-dark);
+transform: translateY(-2px);
+box-shadow: 0 10px 30px rgba(212, 175, 106, 0.3);
 }
 
 .submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+opacity: 0.5;
+cursor: not-allowed;
 }
 
 .form-message {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 5px;
-  text-align: center;
-  display: none;
+margin-top: 20px;
+padding: 15px;
+border-radius: 5px;
+text-align: center;
+display: none;
 }
 
 .form-message.success {
-  background: rgba(106, 184, 141, 0.2);
-  border: 1px solid var(--success);
-  color: var(--success);
+background: rgba(106, 184, 141, 0.2);
+border: 1px solid var(–success);
+color: var(–success);
 }
 
 .form-message.error {
-  background: rgba(212, 106, 106, 0.2);
-  border: 1px solid var(--error);
-  color: var(--error);
+background: rgba(212, 106, 106, 0.2);
+border: 1px solid var(–error);
+color: var(–error);
 }
 
 /* — FOOTER — */
 footer {
-  padding: 80px 6% 40px;
-  background: var(--bg-card);
-  border-top: 1px solid var(--border-subtle);
+padding: 80px 6% 40px;
+background: var(–bg-earth);
+border-top: 1px solid var(–border-subtle);
 }
 
 .footer-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
+max-width: 1400px;
+margin: 0 auto;
+text-align: center;
 }
 
 .footer-content h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 20px;
+font-size: clamp(2rem, 4vw, 3rem);
+margin-bottom: 20px;
 }
 
 .footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-  flex-wrap: wrap;
+display: flex;
+justify-content: center;
+gap: 40px;
+margin: 40px 0;
+flex-wrap: wrap;
 }
 
 .footer-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1rem;
+color: var(–text-muted);
+text-decoration: none;
+transition: color 0.3s ease;
+font-size: 1rem;
 }
 
 .footer-links a:hover {
-  color: var(--accent);
+color: var(–accent);
 }
 
 .footer-copyright {
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid var(--border-subtle);
-  opacity: 0.6;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  color: var(--text-muted);
+margin-top: 60px;
+padding-top: 30px;
+border-top: 1px solid var(–border-subtle);
+opacity: 0.6;
+font-size: 0.85rem;
+letter-spacing: 2px;
+color: var(–text-muted);
 }
 
 /* — RESPONSIVE — */
 @media (max-width: 1024px) {
-  .booking-container {
-    grid-template-columns: 1fr;
-    gap: 50px;
-  }
+.booking-container {
+grid-template-columns: 1fr;
+gap: 50px;
+}
 
-  .nav-links {
-    gap: 25px;
-  }
+.nav-links {
+gap: 25px;
+}
+
+.blog-grid {
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 40px;
+}
 }
 
 @media (max-width:900px) {
-  .bio-container {
-    background: url('Subject.png') center top/cover no-repeat;
-    display: block;
-  }
+.bio-container {
+background: url(‘Subject.png’) center top/cover no-repeat;
+display: block;
+}
 
-  .bio-image-col { display: none; }
+.bio-image-col { display: none; }
 
-  .bio-text-col {
-    width: 100%;
-    min-width: unset;
-    padding: 70vh 6% 100px 6%;
-    background: linear-gradient(to bottom, transparent 0%, rgba(15, 13, 10, 0.95) 35%, var(--bg-earth) 100%);
-    min-height: 100vh;
-  }
+.bio-text-col {
+width: 100%;
+min-width: unset;
+padding: 70vh 6% 100px 6%;
+background: linear-gradient(to bottom, transparent 0%, rgba(15, 13, 10, 0.95) 35%, var(–bg-earth) 100%);
+min-height: 100vh;
+}
 
-  .bio-text-col p { color: var(--text-light); }
+.bio-text-col p { color: var(–text-light); }
 
-  .section-wrap {
-    flex-direction: column !important;
-    min-height: auto;
-  }
+.section-wrap {
+flex-direction: column !important;
+min-height: auto;
+}
 
-  .img-box {
-    height: 60vh;
-    width: 100%;
-    flex: none;
-    min-width: unset;
-  }
+.img-box {
+height: 60vh;
+width: 100%;
+flex: none;
+min-width: unset;
+}
 
-  .text-box {
-    width: 100%;
-    padding: 60px 6%;
-    flex: none;
-    min-width: unset;
-  }
+.text-box {
+width: 100%;
+padding: 60px 6%;
+flex: none;
+min-width: unset;
+}
 
-  h2 { font-size: 2.5rem; }
+h2 { font-size: 2.5rem; }
 
-  nav.scrolled {
-    padding: 18px 6%;
-  }
+nav.scrolled {
+padding: 18px 6%;
+}
 
-  .logo {
-    font-size: 1.1rem;
-    letter-spacing: 6px;
-  }
+.logo {
+font-size: 1.1rem;
+letter-spacing: 6px;
+}
 
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 80%;
-    max-width: 400px;
-    background: rgba(15, 13, 10, 0.98);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-left: 1px solid var(--border-subtle);
-    z-index: 999;
-  }
+.nav-links {
+position: fixed;
+top: 0;
+right: -100%;
+height: 100vh;
+width: 80%;
+max-width: 400px;
+background: rgba(15, 13, 10, 0.98);
+backdrop-filter: blur(10px);
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 40px;
+transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+border-left: 1px solid var(–border-subtle);
+z-index: 999;
+}
 
-  .nav-links.active {
-    right: 0;
-  }
+.nav-links.active {
+right: 0;
+}
 
-  .nav-links li {
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all 0.3s ease;
-  }
+.nav-links li {
+opacity: 0;
+transform: translateX(50px);
+transition: all 0.3s ease;
+}
 
-  .nav-links.active li {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.nav-links.active li {
+opacity: 1;
+transform: translateX(0);
+}
 
-  .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
-  .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
-  .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
-  .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
-  .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
+.nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+.nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+.nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+.nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+.nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
 
-  .nav-links a {
-    font-size: 1.3rem;
-    color: var(--text-light);
-  }
+.nav-links a {
+font-size: 1.3rem;
+color: var(–text-light);
+}
 
-  .mobile-menu {
-    display: flex;
-    z-index: 1001;
-  }
+.mobile-menu {
+display: flex;
+z-index: 1001;
+}
 
-  .mobile-menu.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-  }
+.mobile-menu.active span:nth-child(1) {
+transform: rotate(45deg) translate(5px, 5px);
+}
 
-  .mobile-menu.active span:nth-child(2) {
-    opacity: 0;
-  }
+.mobile-menu.active span:nth-child(2) {
+opacity: 0;
+}
 
-  .mobile-menu.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -6px);
-  }
+.mobile-menu.active span:nth-child(3) {
+transform: rotate(-45deg) translate(7px, -6px);
+}
 
-  .mobile-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    z-index: 998;
-  }
+.mobile-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background: rgba(0, 0, 0, 0.8);
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.4s ease;
+z-index: 998;
+}
 
-  .mobile-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-  }
+.mobile-overlay.active {
+opacity: 1;
+pointer-events: all;
+}
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
+.form-row {
+grid-template-columns: 1fr;
+}
 
-  .testimonials-container {
-    grid-template-columns: 1fr;
-  }
+.testimonials-container {
+grid-template-columns: 1fr;
+}
+
+.blog-grid {
+grid-template-columns: 1fr;
+}
 }
 
 @media (max-width: 600px) {
-  .hero h1 {
-    font-size: 2.8rem;
-  }
+.hero h1 {
+font-size: 2.8rem;
+}
 
-  .hero-subtitle {
-    letter-spacing: 8px;
-    font-size: 0.75rem;
-  }
+.hero-subtitle {
+letter-spacing: 8px;
+font-size: 0.75rem;
+}
 
-  .booking-form {
-    padding: 30px 20px;
-  }
+.booking-form {
+padding: 30px 20px;
+}
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+.services-grid {
+grid-template-columns: 1fr;
+}
+
+.blog-card {
+min-width: 280px;
+}
 }
 
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--bg-earth);
+background: var(–accent);
+color: var(–bg-earth);
 }
 </style>
 
@@ -965,6 +1159,7 @@ html {
     <li><a href="#about" class="nav-link">About</a></li>
     <li><a href="#services" class="nav-link">Services</a></li>
     <li><a href="#process" class="nav-link">Process</a></li>
+    <li><a href="#blog" class="nav-link">Blog</a></li>
     <li><a href="#booking" class="nav-link">Book Now</a></li>
   </ul>
   <div class="mobile-menu" id="mobileMenu">
@@ -977,7 +1172,7 @@ html {
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
 <section class="hero">
-  <video autoplay muted playsinline class="hero-video" id="heroVideo">
+  <video autoplay muted loop playsinline class="hero-video" id="heroVideo">
     <source src="generated_video.mp4.MP4" type="video/mp4">
   </video>
   <div class="hero-content">
@@ -996,13 +1191,16 @@ html {
       <p>With over 10 years of experience in experiential psychotherapy, I've helped hundreds of clients break through emotional barriers and discover their authentic selves. My approach combines evidence-based therapeutic techniques with somatic experiencing to create lasting change.</p>
     </div>
 
-    <div class="bio-block">
-      <h2>My Approach</h2>
-      <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is not just about talking; it is about understanding how emotions play out in your body to transform distress into growth.</p>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </div>
+```
+<div class="bio-block">
+  <h2>My Approach</h2>
+  <p>I help people with a variety of presentations—whether you are feeling anxious, depressed, or simply confused. My work is not just about talking; it is about understanding how emotions play out in your body to transform distress into growth.</p>
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/ujKka2Eo9rU" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+```
+
   </div>
 </div>
 
@@ -1025,29 +1223,32 @@ html {
       </ul>
     </div>
 
-    <div class="service-card">
-      <h3>Extended Session</h3>
-      <div class="price">$300 / 90 min</div>
-      <p>Deeper dive into transformational work with extended time for processing and integration.</p>
-      <ul>
-        <li>Extended therapeutic container</li>
-        <li>Multi-modal interventions</li>
-        <li>Deeper somatic processing</li>
-        <li>Comprehensive integration</li>
-      </ul>
-    </div>
+```
+<div class="service-card">
+  <h3>Extended Session</h3>
+  <div class="price">$300 / 90 min</div>
+  <p>Deeper dive into transformational work with extended time for processing and integration.</p>
+  <ul>
+    <li>Extended therapeutic container</li>
+    <li>Multi-modal interventions</li>
+    <li>Deeper somatic processing</li>
+    <li>Comprehensive integration</li>
+  </ul>
+</div>
 
-    <div class="service-card">
-      <h3>Intensive Package</h3>
-      <div class="price">$1,200 / 4 sessions</div>
-      <p>Accelerated transformation with committed weekly sessions over one month.</p>
-      <ul>
-        <li>Four 90-minute sessions</li>
-        <li>Email support between sessions</li>
-        <li>Customized integration exercises</li>
-        <li>Save $180 on package</li>
-      </ul>
-    </div>
+<div class="service-card">
+  <h3>Intensive Package</h3>
+  <div class="price">$1,200 / 4 sessions</div>
+  <p>Accelerated transformation with committed weekly sessions over one month.</p>
+  <ul>
+    <li>Four 90-minute sessions</li>
+    <li>Email support between sessions</li>
+    <li>Customized integration exercises</li>
+    <li>Save $180 on package</li>
+  </ul>
+</div>
+```
+
   </div>
 </section>
 
@@ -1107,6 +1308,52 @@ html {
   </section>
 </section>
 
+<section class="blog-section" id="blog">
+  <div class="section-header">
+    <h2>Insights & Reflections</h2>
+    <p>Exploring the depths of emotional transformation and therapeutic practice</p>
+  </div>
+
+  <div class="blog-grid">
+    <div class="blog-card" onclick="window.location.href='blog.html#transforming-emotions'">
+      <div class="blog-image">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&h=600&fit=crop" alt="Abstract cosmic background" style="object-position: center;">
+      </div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span class="blog-date">Jan 15, 2026</span>
+          <span class="blog-category">Therapeutic Practice</span>
+        </div>
+        <h3>Transforming Emotions Through Embodiment</h3>
+        <p class="blog-excerpt">Discover how somatic experiencing and body-centered therapy can unlock deep emotional healing that traditional talk therapy often misses.</p>
+        <span class="read-more">Read More</span>
+      </div>
+    </div>
+
+```
+<div class="blog-card" onclick="window.location.href='blog.html#chair-work'">
+  <div class="blog-image">
+    <img src="https://images.unsplash.com/photo-1494059980473-813e73ee784b?w=800&h=600&fit=crop" alt="Contemplative portrait" style="object-position: center;">
+  </div>
+  <div class="blog-content">
+    <div class="blog-meta">
+      <span class="blog-date">Jan 8, 2026</span>
+      <span class="blog-category">Techniques</span>
+    </div>
+    <h3>The Power of Chair Work in Experiential Therapy</h3>
+    <p class="blog-excerpt">Learn about the transformative practice of Gestalt chair work and how dialogue with different parts of yourself creates profound integration.</p>
+    <span class="read-more">Read More</span>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="blog-cta">
+    <a href="blog.html" class="view-all-btn">View All Blog Posts</a>
+  </div>
+</section>
+
 <section class="testimonials-section" id="testimonials">
   <div class="section-header">
     <h2>Client Experiences</h2>
@@ -1119,15 +1366,18 @@ html {
       <div class="testimonial-author">— Sarah M.</div>
     </div>
 
-    <div class="testimonial-card">
-      <p>I came in feeling completely disconnected from myself. Meli's approach helped me reconnect with my body and emotions in ways that years of traditional talk therapy never did. I finally feel whole.</p>
-      <div class="testimonial-author">— James K.</div>
-    </div>
+```
+<div class="testimonial-card">
+  <p>I came in feeling completely disconnected from myself. Meli's approach helped me reconnect with my body and emotions in ways that years of traditional talk therapy never did. I finally feel whole.</p>
+  <div class="testimonial-author">— James K.</div>
+</div>
 
-    <div class="testimonial-card">
-      <p>The somatic work we did together transformed my relationship with anxiety. Instead of being controlled by it, I now understand what my body is trying to tell me. This work is profound.</p>
-      <div class="testimonial-author">— Maria L.</div>
-    </div>
+<div class="testimonial-card">
+  <p>The somatic work we did together transformed my relationship with anxiety. Instead of being controlled by it, I now understand what my body is trying to tell me. This work is profound.</p>
+  <div class="testimonial-author">— Maria L.</div>
+</div>
+```
+
   </div>
 </section>
 
@@ -1148,45 +1398,48 @@ html {
       </div>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>How is this different from traditional talk therapy?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>While traditional talk therapy focuses primarily on cognitive understanding, experiential therapy engages the whole person—mind, body, and emotions. We use active techniques to help you feel and process emotions in real-time, leading to deeper and often faster transformation.</p>
-      </div>
-    </div>
+```
+<div class="faq-item">
+  <div class="faq-question">
+    <span>How is this different from traditional talk therapy?</span>
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    <p>While traditional talk therapy focuses primarily on cognitive understanding, experiential therapy engages the whole person—mind, body, and emotions. We use active techniques to help you feel and process emotions in real-time, leading to deeper and often faster transformation.</p>
+  </div>
+</div>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>What should I expect in my first session?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>Your first session will begin with us getting to know each other and understanding what brings you to therapy. I'll explain my approach and we'll discuss your goals. We may begin some gentle experiential work if you're comfortable, but there's no pressure—we'll move at your pace.</p>
-      </div>
-    </div>
+<div class="faq-item">
+  <div class="faq-question">
+    <span>What should I expect in my first session?</span>
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    <p>Your first session will begin with us getting to know each other and understanding what brings you to therapy. I'll explain my approach and we'll discuss your goals. We may begin some gentle experiential work if you're comfortable, but there's no pressure—we'll move at your pace.</p>
+  </div>
+</div>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>Do you accept insurance?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>I am currently an out-of-network provider. I can provide you with a superbill (detailed receipt) that you can submit to your insurance company for potential reimbursement, depending on your out-of-network benefits.</p>
-      </div>
-    </div>
+<div class="faq-item">
+  <div class="faq-question">
+    <span>Do you accept insurance?</span>
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    <p>I am currently an out-of-network provider. I can provide you with a superbill (detailed receipt) that you can submit to your insurance company for potential reimbursement, depending on your out-of-network benefits.</p>
+  </div>
+</div>
 
-    <div class="faq-item">
-      <div class="faq-question">
-        <span>How long does therapy typically last?</span>
-        <span class="faq-icon">+</span>
-      </div>
-      <div class="faq-answer">
-        <p>The duration varies based on individual needs and goals. Some clients find significant shifts within 8-12 sessions, while others prefer ongoing support. We'll regularly check in about your progress and adjust our work together as needed.</p>
-      </div>
-    </div>
+<div class="faq-item">
+  <div class="faq-question">
+    <span>How long does therapy typically last?</span>
+    <span class="faq-icon">+</span>
+  </div>
+  <div class="faq-answer">
+    <p>The duration varies based on individual needs and goals. Some clients find significant shifts within 8-12 sessions, while others prefer ongoing support. We'll regularly check in about your progress and adjust our work together as needed.</p>
+  </div>
+</div>
+```
+
   </div>
 </section>
 
@@ -1196,112 +1449,116 @@ html {
       <h2>Begin Your Journey</h2>
       <p>Ready to explore experiential therapy? Book a free 15-minute consultation call or schedule your first session. I'll reach out within 24 hours to confirm your appointment.</p>
 
-      <div class="contact-info">
-        <div class="contact-item">
-          <div class="contact-icon">📧</div>
-          <div class="contact-details">
-            <h4>Email</h4>
-            <p>melipil5780@gmail.com</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">📞</div>
-          <div class="contact-details">
-            <h4>Phone</h4>
-            <p>(555) 123-4567</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">📍</div>
-          <div class="contact-details">
-            <h4>Location</h4>
-            <p>123 Mindful Way, Suite 200<br>San Francisco, CA 94110</p>
-          </div>
-        </div>
-        
-        <div class="contact-item">
-          <div class="contact-icon">🕐</div>
-          <div class="contact-details">
-            <h4>Hours</h4>
-            <p>Mon-Fri: 9:00 AM - 7:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
-          </div>
-        </div>
+```
+  <div class="contact-info">
+    <div class="contact-item">
+      <div class="contact-icon">📧</div>
+      <div class="contact-details">
+        <h4>Email</h4>
+        <p>melipil5780@gmail.com</p>
       </div>
     </div>
-
-    <div class="booking-form">
-      <form action="https://formsubmit.co/melipil5780@gmail.com" method="POST" id="consultationForm">
-        <!-- FormSubmit Configuration -->
-        <input type="hidden" name="_subject" value="New Appointment Request - Meli Pil Therapy">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://yourusername.github.io/yourrepo/thank-you.html">
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name *</label>
-            <input type="text" id="firstName" name="First_Name" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="lastName">Last Name *</label>
-            <input type="text" id="lastName" name="Last_Name" required>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="Phone" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="appointmentType">Appointment Type *</label>
-          <select id="appointmentType" name="Appointment_Type" required>
-            <option value="">Select appointment type</option>
-            <option value="free-consultation">Free 15-Minute Consultation Call</option>
-            <option value="initial-session">Schedule Initial Session</option>
-            <option value="question">I Have a Question</option>
-          </select>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="preferredDate">Preferred Date</label>
-            <input type="date" id="preferredDate" name="Preferred_Date">
-          </div>
-          
-          <div class="form-group">
-            <label for="preferredTime">Preferred Time</label>
-            <select id="preferredTime" name="Preferred_Time">
-              <option value="">Select a time</option>
-              <option value="morning">Morning (9 AM - 12 PM)</option>
-              <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
-              <option value="evening">Evening (5 PM - 7 PM)</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="additionalInfo">Additional Information (Optional)</label>
-          <textarea id="additionalInfo" name="Additional_Info" placeholder="Any scheduling preferences or questions about my services..."></textarea>
-        </div>
-        
-        <button type="submit" class="submit-btn">Request Appointment</button>
-        
-        <div class="form-message" id="formMessage"></div>
-        
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; text-align: center; max-width: none;">
-          By submitting this form, you agree to be contacted about scheduling. No health information is collected through this form.
-        </p>
-      </form>
+    
+    <div class="contact-item">
+      <div class="contact-icon">📞</div>
+      <div class="contact-details">
+        <h4>Phone</h4>
+        <p>(555) 123-4567</p>
+      </div>
     </div>
+    
+    <div class="contact-item">
+      <div class="contact-icon">📍</div>
+      <div class="contact-details">
+        <h4>Location</h4>
+        <p>123 Mindful Way, Suite 200<br>San Francisco, CA 94110</p>
+      </div>
+    </div>
+    
+    <div class="contact-item">
+      <div class="contact-icon">🕐</div>
+      <div class="contact-details">
+        <h4>Hours</h4>
+        <p>Mon-Fri: 9:00 AM - 7:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="booking-form">
+  <form action="https://formsubmit.co/melipil5780@gmail.com" method="POST" id="consultationForm">
+    <input type="hidden" name="_subject" value="New Appointment Request - Meli Pil Therapy">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="thank-you.html">
+    <input type="hidden" name="_autoresponse" value="Thank you for your appointment request with Meli Pil Therapy. I've received your inquiry and will be in touch within 24 hours to confirm your appointment. - Meli">
+    <input type="text" name="_honey" style="display:none">
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">First Name *</label>
+        <input type="text" id="firstName" name="First_Name" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" id="lastName" name="Last_Name" required>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Phone Number *</label>
+      <input type="tel" id="phone" name="Phone" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="appointmentType">Appointment Type *</label>
+      <select id="appointmentType" name="Appointment_Type" required>
+        <option value="">Select appointment type</option>
+        <option value="free-consultation">Free 15-Minute Consultation Call</option>
+        <option value="initial-session">Schedule Initial Session</option>
+        <option value="question">I Have a Question</option>
+      </select>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group">
+        <label for="preferredDate">Preferred Date</label>
+        <input type="date" id="preferredDate" name="Preferred_Date">
+      </div>
+      
+      <div class="form-group">
+        <label for="preferredTime">Preferred Time</label>
+        <select id="preferredTime" name="Preferred_Time">
+          <option value="">Select a time</option>
+          <option value="morning">Morning (9 AM - 12 PM)</option>
+          <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+          <option value="evening">Evening (5 PM - 7 PM)</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="additionalInfo">Additional Information (Optional)</label>
+      <textarea id="additionalInfo" name="Additional_Info" placeholder="Any scheduling preferences or questions about my services..."></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">Request Appointment</button>
+    
+    <div class="form-message" id="formMessage"></div>
+    
+    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; text-align: center; max-width: none;">
+      By submitting this form, you agree to be contacted about scheduling. No health information is collected through this form.
+    </p>
+  </form>
+</div>
+```
+
   </div>
 </section>
 
@@ -1310,25 +1567,28 @@ html {
     <h2>Take the First Step</h2>
     <p style="max-width: 600px; margin: 20px auto 0;">Transformation begins with presence. Let's explore what becomes possible when you meet yourself fully.</p>
 
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#process">Process</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#booking">Contact</a>
-      <a href="#">Privacy Policy</a>
-    </div>
+```
+<div class="footer-links">
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#blog">Blog</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#booking">Contact</a>
+  <a href="#">Privacy Policy</a>
+</div>
 
-    <div class="footer-copyright">
-      © 2026 MELI PIL · Licensed Mental Health Counselor · Experiential Psychotherapy
-    </div>
+<div class="footer-copyright">
+  © 2026 MELI PIL · Licensed Mental Health Counselor · Experiential Psychotherapy
+</div>
+```
+
   </div>
 </footer>
 
 <script>
 gsap.registerPlugin(ScrollTrigger);
 
-// Navbar scroll effect
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
   if (window.scrollY > 100) {
@@ -1338,7 +1598,6 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Mobile menu toggle
 const mobileMenu = document.getElementById('mobileMenu');
 const navLinks = document.getElementById('navLinks');
 const mobileOverlay = document.getElementById('mobileOverlay');
@@ -1362,7 +1621,6 @@ navLinkItems.forEach(link => {
   });
 });
 
-// Video control
 const heroVideo = document.getElementById('heroVideo');
 heroVideo.addEventListener('ended', () => {
   gsap.to(heroVideo, {
@@ -1372,7 +1630,6 @@ heroVideo.addEventListener('ended', () => {
   });
 });
 
-// FAQ Accordion
 document.querySelectorAll('.faq-question').forEach(question => {
   question.addEventListener('click', () => {
     const item = question.parentElement;
@@ -1386,76 +1643,45 @@ document.querySelectorAll('.faq-question').forEach(question => {
   });
 });
 
-// Form handling with FormSubmit
 const form = document.getElementById('consultationForm');
 const formMessage = document.getElementById('formMessage');
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  const submitBtn = form.querySelector('.submit-btn');
-  const originalText = submitBtn.textContent;
-  
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-  
-  // Simple form validation
-  const formData = new FormData(form);
-  const formValues = Object.fromEntries(formData);
-  
-  // Check required fields
-  if (!formValues.First_Name || !formValues.Last_Name || !formValues.email || !formValues.Phone || !formValues.Appointment_Type) {
-    formMessage.className = 'form-message error';
-    formMessage.textContent = 'Please fill in all required fields.';
-    formMessage.style.display = 'block';
+if (form) {
+  form.addEventListener('submit', function(e) {
+    const submitBtn = this.querySelector('.submit-btn');
     
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
+    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'appointmentType'];
+    let isValid = true;
     
-    setTimeout(() => {
-      formMessage.style.display = 'none';
-    }, 5000);
-    return;
-  }
-  
-  // Submit form using FormSubmit
-  fetch(form.action, {
-    method: 'POST',
-    body: new URLSearchParams(new FormData(form)).toString(),
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      formMessage.className = 'form-message success';
-      formMessage.textContent = 'Thank you! Your request has been received. I\'ll be in touch within 24 hours.';
+    requiredFields.forEach(fieldId => {
+      const field = document.getElementById(fieldId);
+      if (!field || !field.value.trim()) {
+        isValid = false;
+        field.style.borderColor = 'var(--error)';
+      } else {
+        field.style.borderColor = '';
+      }
+    });
+    
+    if (!isValid) {
+      e.preventDefault();
+      formMessage.className = 'form-message error';
+      formMessage.textContent = 'Please fill in all required fields marked with *.';
       formMessage.style.display = 'block';
-      
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = originalText;
       
       setTimeout(() => {
         formMessage.style.display = 'none';
       }, 5000);
     } else {
-      throw new Error('Form submission failed');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      formMessage.className = 'form-message success';
+      formMessage.textContent = 'Sending your request...';
+      formMessage.style.display = 'block';
     }
-  })
-  .catch((error) => {
-    formMessage.className = 'form-message error';
-    formMessage.textContent = 'Oops! Something went wrong. Please email me directly at melipil5780@gmail.com';
-    formMessage.style.display = 'block';
-    
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
-    
-    console.error('Form submission error:', error);
   });
-});
+}
 
-// GSAP Animations
 window.onload = () => {
   const heroTimeline = gsap.timeline({ delay: 0.8 });
   
@@ -1522,6 +1748,21 @@ window.onload = () => {
       y: 50,
       duration: 0.8,
       delay: i * 0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: card,
+        start: "top 85%",
+        once: true
+      }
+    });
+  });
+
+  gsap.utils.toArray(".blog-card").forEach((card, i) => {
+    gsap.from(card, {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      delay: i * 0.15,
       ease: "power2.out",
       scrollTrigger: {
         trigger: card,
