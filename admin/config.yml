@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+  repo: yourusername/melipil # ← Change to your GitHub username/repo
+
+# Enable local editing (optional)
+local_backend: true
+
+# Media storage
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+# Site URL (will be auto-filled by Cloudflare)
+site_url: "https://your-site.pages.dev"
+display_url: "https://your-site.pages.dev"
+
+# Collections
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm" }
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Transformation", value: "Transformation" }
+          - { label: "Self-Discovery", value: "Self-Discovery" }
+          - { label: "Integration", value: "Integration" }
+          - { label: "Healing", value: "Healing" }
+          - { label: "Mindfulness", value: "Mindfulness" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Body", name: "body", widget: "markdown" }
