@@ -858,53 +858,6 @@ h3 {
   color: var(--error);
 }
 
-/* — FOOTER — */
-footer {
-  padding: 80px 6% 40px;
-  background: var(--bg-earth);
-  border-top: 1px solid var(--border-subtle);
-}
-
-.footer-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.footer-content h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 20px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin: 40px 0;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.3s ease;
-  font-size: 1rem;
-}
-
-.footer-links a:hover {
-  color: var(--accent);
-}
-
-.footer-copyright {
-  margin-top: 60px;
-  padding-top: 30px;
-  border-top: 1px solid var(--border-subtle);
-  opacity: 0.6;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  color: var(--text-muted);
-}
-
 /* ============================================
    MULTI-STEP FORM STYLES
    ============================================ */
@@ -1193,22 +1146,51 @@ footer {
   width: 100%;
 }
 
-.email-sent-confirmation {
+/* — FOOTER — */
+footer {
+  padding: 80px 6% 40px;
+  background: var(--bg-earth);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
   text-align: center;
-  padding: 40px;
-  background: rgba(106, 184, 141, 0.1);
-  border: 1px solid var(--success);
-  border-radius: 8px;
-  margin: 30px 0;
 }
 
-.email-sent-confirmation h3 {
-  color: var(--success);
-  margin-bottom: 15px;
+.footer-content h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 20px;
 }
 
-.booking-form.multi-step-active #consultationForm {
-  display: none;
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-copyright {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-subtle);
+  opacity: 0.6;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
 }
 
 /* — RESPONSIVE — */
@@ -1718,6 +1700,9 @@ html {
   </div>
 </section>
 
+<!-- ============================================
+     FIXED BOOKING FORM SECTION
+     ============================================ -->
 <section class="booking-section" id="booking">
   <div class="booking-container">
     <div class="booking-info">
@@ -1911,71 +1896,30 @@ html {
           <div class="instruction-step">
             <div class="step-number-circle">1</div>
             <div>
-              <strong>Click "Open Email & Send" below</strong><br>
-              Your email app will open with a pre-written message to Meli
+              <strong>Click "Send" below</strong><br>
+              Your email app will open with a pre-written message
             </div>
           </div>
           <div class="instruction-step">
             <div class="step-number-circle">2</div>
             <div>
               <strong>Send the email from your email app</strong><br>
-              Review the message and click SEND in your email app (Gmail, Outlook, etc.)
-            </div>
-          </div>
-          <div class="instruction-step">
-            <div class="step-number-circle">3</div>
-            <div>
-              <strong>Return to this tab and continue</strong><br>
-              Come back here after sending to complete the process
+              Click SEND in your email app (Gmail, Outlook, etc.)
             </div>
           </div>
         </div>
 
+        <!-- FIXED BUTTON - Just says "Send" -->
         <div class="button-group">
           <button type="button" id="backStep2" class="btn-secondary">← Edit Details</button>
-          <button type="button" id="openEmailBtn" class="submit-btn">
-            <span>📧 Open Email & Send</span>
+          <button type="button" id="sendEmailBtn" class="submit-btn">
+            Send
           </button>
         </div>
       </div>
 
-      <!-- Step 3: Send Confirmation -->
+      <!-- Step 3: Thank You -->
       <div class="form-step" id="step3">
-        <div class="email-sent-confirmation">
-          <h3>✅ Email Opened!</h3>
-          <p>Your email app should now be open with your appointment request ready to send.</p>
-          
-          <div class="instructions-box" style="margin-top: 30px;">
-            <h4>📝 Final Steps</h4>
-            <div class="instruction-step">
-              <div class="step-number-circle">1</div>
-              <div><strong>Switch to your email app</strong><br>Review the message and click SEND</div>
-            </div>
-            <div class="instruction-step">
-              <div class="step-number-circle">2</div>
-              <div><strong>Return to this browser tab</strong><br>Come back here after sending</div>
-            </div>
-            <div class="instruction-step">
-              <div class="step-number-circle">3</div>
-              <div><strong>Click the button below</strong><br>To complete your request</div>
-            </div>
-          </div>
-          
-          <div class="button-group">
-            <button type="button" id="backStep3" class="btn-secondary">← Back to Review</button>
-            <button type="button" id="confirmSentBtn" class="submit-btn">
-              ✅ I've Sent the Email
-            </button>
-          </div>
-          
-          <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">
-            Didn't work? <a href="#" id="retryEmail" style="color: var(--accent);">Try opening email again</a>
-          </p>
-        </div>
-      </div>
-
-      <!-- Step 4: Thank You -->
-      <div class="form-step" id="step4">
         <div class="thank-you-container">
           <div class="success-icon">✓</div>
           
@@ -2119,7 +2063,10 @@ document.querySelectorAll('.faq-question').forEach(question => {
   });
 });
 
-// Multi-step form logic
+// ============================================
+// FIXED FORM FUNCTIONALITY
+// ============================================
+
 let currentStep = 1;
 let formData = {};
 
@@ -2288,7 +2235,7 @@ ${formData.firstName} ${formData.lastName}`;
   // Open email in new tab
   window.open(mailtoLink, '_blank');
   
-  // Go to step 3
+  // Go to thank you page
   goToStep(3);
 }
 
@@ -2310,24 +2257,8 @@ document.addEventListener('DOMContentLoaded', function() {
     goToStep(1);
   });
   
-  // Step 2: Open Email button
-  document.getElementById('openEmailBtn').addEventListener('click', openEmail);
-  
-  // Step 3: Back button
-  document.getElementById('backStep3').addEventListener('click', function() {
-    goToStep(2);
-  });
-  
-  // Step 3: Confirm Sent button
-  document.getElementById('confirmSentBtn').addEventListener('click', function() {
-    goToStep(4);
-  });
-  
-  // Step 3: Retry email link
-  document.getElementById('retryEmail').addEventListener('click', function(e) {
-    e.preventDefault();
-    openEmail();
-  });
+  // Step 2: Send Email button
+  document.getElementById('sendEmailBtn').addEventListener('click', openEmail);
   
   // Form submission (original form) - prevent default
   const originalForm = document.getElementById('consultationForm');
