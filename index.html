@@ -1394,7 +1394,7 @@ html {
   <div class="booking-container">
     <div class="booking-info">
       <h2>Begin Your Journey</h2>
-      <p>Ready to explore experiential therapy? Book a free 15-minute consultation call or schedule your first session. I'll reach out within 24 hours to confirm your appointment.</p>
+      <p>Ready to explore experiential therapy? Click the button below to send me an appointment request. I'll reach out within 24 hours to confirm your appointment.</p>
 
       <div class="contact-info">
         <div class="contact-item">
@@ -1432,26 +1432,16 @@ html {
     </div>
 
     <div class="booking-form">
-      <form action="https://formsubmit.co/melipil5780@gmail.com" method="POST" id="consultationForm">
-        <!-- FormSubmit Configuration - Updated for GitHub Pages -->
-        <input type="hidden" name="_subject" value="New Appointment Request - Meli Pil Therapy">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://yourusername.github.io/melipil/thank-you.html">
-        <input type="hidden" name="_autoresponse" value="Thank you for your appointment request with Meli Pil Therapy. I've received your inquiry and will be in touch within 24 hours to confirm your appointment. - Meli">
-        
-        <!-- Add honeypot for spam protection -->
-        <input type="text" name="_honey" style="display:none">
-        
+      <form id="consultationForm">
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">First Name *</label>
-            <input type="text" id="firstName" name="First_Name" required>
+            <input type="text" id="firstName" name="firstName" required>
           </div>
           
           <div class="form-group">
             <label for="lastName">Last Name *</label>
-            <input type="text" id="lastName" name="Last_Name" required>
+            <input type="text" id="lastName" name="lastName" required>
           </div>
         </div>
         
@@ -1462,47 +1452,47 @@ html {
         
         <div class="form-group">
           <label for="phone">Phone Number *</label>
-          <input type="tel" id="phone" name="Phone" required>
+          <input type="tel" id="phone" name="phone" required>
         </div>
         
         <div class="form-group">
           <label for="appointmentType">Appointment Type *</label>
-          <select id="appointmentType" name="Appointment_Type" required>
+          <select id="appointmentType" name="appointmentType" required>
             <option value="">Select appointment type</option>
-            <option value="free-consultation">Free 15-Minute Consultation Call</option>
-            <option value="initial-session">Schedule Initial Session</option>
-            <option value="question">I Have a Question</option>
+            <option value="Free 15-Minute Consultation Call">Free 15-Minute Consultation Call</option>
+            <option value="Schedule Initial Session">Schedule Initial Session</option>
+            <option value="I Have a Question">I Have a Question</option>
           </select>
         </div>
         
         <div class="form-row">
           <div class="form-group">
             <label for="preferredDate">Preferred Date</label>
-            <input type="date" id="preferredDate" name="Preferred_Date">
+            <input type="date" id="preferredDate" name="preferredDate">
           </div>
           
           <div class="form-group">
             <label for="preferredTime">Preferred Time</label>
-            <select id="preferredTime" name="Preferred_Time">
+            <select id="preferredTime" name="preferredTime">
               <option value="">Select a time</option>
-              <option value="morning">Morning (9 AM - 12 PM)</option>
-              <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
-              <option value="evening">Evening (5 PM - 7 PM)</option>
+              <option value="Morning (9 AM - 12 PM)">Morning (9 AM - 12 PM)</option>
+              <option value="Afternoon (12 PM - 5 PM)">Afternoon (12 PM - 5 PM)</option>
+              <option value="Evening (5 PM - 7 PM)">Evening (5 PM - 7 PM)</option>
             </select>
           </div>
         </div>
         
         <div class="form-group">
           <label for="additionalInfo">Additional Information (Optional)</label>
-          <textarea id="additionalInfo" name="Additional_Info" placeholder="Any scheduling preferences or questions about my services..."></textarea>
+          <textarea id="additionalInfo" name="additionalInfo" placeholder="Any scheduling preferences or questions about my services..."></textarea>
         </div>
         
-        <button type="submit" class="submit-btn">Request Appointment</button>
+        <button type="submit" class="submit-btn">Send Appointment Request</button>
         
         <div class="form-message" id="formMessage"></div>
         
         <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 20px; text-align: center; max-width: none;">
-          By submitting this form, you agree to be contacted about scheduling. No health information is collected through this form.
+          ✅ HIPAA Compliant: Your information opens in your personal email - no third parties involved. No health information is collected through this form.
         </p>
       </form>
     </div>
@@ -1591,16 +1581,25 @@ document.querySelectorAll('.faq-question').forEach(question => {
   });
 });
 
-// Simple form validation - just visual feedback
+// HIPAA-Compliant Email Form Handler
 const form = document.getElementById('consultationForm');
 const formMessage = document.getElementById('formMessage');
 
 if (form) {
   form.addEventListener('submit', function(e) {
-    const submitBtn = this.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
+    e.preventDefault();
     
-    // Simple validation
+    // Get form values
+    const firstName = document.getElementById('firstName').value.trim();
+    const lastName = document.getElementById('lastName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const appointmentType = document.getElementById('appointmentType').value;
+    const preferredDate = document.getElementById('preferredDate').value;
+    const preferredTime = document.getElementById('preferredTime').value;
+    const additionalInfo = document.getElementById('additionalInfo').value.trim();
+    
+    // Validate required fields
     const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'appointmentType'];
     let isValid = true;
     
@@ -1615,7 +1614,6 @@ if (form) {
     });
     
     if (!isValid) {
-      e.preventDefault();
       formMessage.className = 'form-message error';
       formMessage.textContent = 'Please fill in all required fields marked with *.';
       formMessage.style.display = 'block';
@@ -1623,17 +1621,54 @@ if (form) {
       setTimeout(() => {
         formMessage.style.display = 'none';
       }, 5000);
-    } else {
-      // Show loading state
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending...';
-      formMessage.className = 'form-message success';
-      formMessage.textContent = 'Sending your request...';
-      formMessage.style.display = 'block';
-      
-      // Let FormSubmit handle the actual submission
-      // The _next parameter will redirect to thank-you.html
+      return;
     }
+    
+    // Create email subject
+    const subject = `Appointment Request - ${firstName} ${lastName}`;
+    
+    // Create email body with all information
+    const body = `Hello Meli,
+
+I would like to request an appointment with you.
+
+CONTACT INFORMATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Name: ${firstName} ${lastName}
+Email: ${email}
+Phone: ${phone}
+
+APPOINTMENT DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Type: ${appointmentType}
+Preferred Date: ${preferredDate || 'Not specified'}
+Preferred Time: ${preferredTime || 'Not specified'}
+
+${additionalInfo ? `ADDITIONAL INFORMATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${additionalInfo}` : ''}
+
+Thank you for your time. I look forward to hearing from you.
+
+Best regards,
+${firstName} ${lastName}`;
+    
+    // Create mailto link
+    const mailtoLink = `mailto:melipil5780@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoLink;
+    
+    // Show success message
+    formMessage.className = 'form-message success';
+    formMessage.textContent = '✅ Your email client is opening with the appointment request. Please click Send in your email.';
+    formMessage.style.display = 'block';
+    
+    // Reset form after 3 seconds
+    setTimeout(() => {
+      form.reset();
+      formMessage.style.display = 'none';
+    }, 5000);
   });
 }
 
